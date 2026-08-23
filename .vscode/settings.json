@@ -1,0 +1,60 @@
+{
+	"editor.tabSize": 2,
+	// Add customizations to make highlights similar to godot editor
+	"editor.tokenColorCustomizations": {
+		"textMateRules": [
+			{
+				"scope": [
+					"keyword.language.region.gdscript"
+				],
+				"settings": {
+					"foreground": "#ad75c4",
+					"fontStyle": "bold"
+				}
+			},
+			{
+				"scope": [
+					"punctuation.definition.comment.number-sign.gdscript",
+					"comment.line.number-sign.gdscript",
+					"meta.function.gdscript",
+				],
+				"settings": {
+					"foreground": "#8094a8",
+					"fontStyle": "bold"
+				}
+			},
+			{
+				"scope": [
+					"storage.type.function.gdscript",
+				],
+				"settings": {
+					"foreground": "#ff7085",
+					"fontStyle": "bold"
+				}
+			},
+			{
+				"scope": [
+					"entity.name.function.decorator.gdscript",
+				],
+				"settings": {
+					"foreground": "#ffb273",
+					// "foreground": "#AACC34",
+					"fontStyle": "bold"
+				}
+			}
+		]
+	},
+	"cSpell.words": [
+	],
+	// "files.exclude": {
+	// 	"**/*.uid": true
+	// },
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
+  "explorer.fileNesting.patterns": {
+    "*.gd": "${basename}.gd.uid",
+    "*.cs": "${basename}.cs.uid",
+    "*.res": "${basename}.res.uid",
+    "*.tres": "${basename}.tres.uid"
+  }
+}
