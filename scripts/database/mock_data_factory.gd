@@ -60,11 +60,10 @@ static func generate_vehicle_sightings(count: int = 100, persons: Array[SchemaRm
 static func generate_vehicle_sighting(sighting_id: int = 1, persons: Array[SchemaRmsPersons] = []) -> SchemaVehicleSightings:
 	var sighting := SchemaVehicleSightings.new()
 	sighting.sighting_id = sighting_id
-	sighting.car_plate = persons.pick_random().car_plate if not persons.is_empty() else _generate_plate()
+	sighting.vehicle_plate = persons.pick_random().car_plate if not persons.is_empty() else _generate_plate()
 
 	var now := Time.get_unix_time_from_system()
-	var past_unix := now - randi_range(0, SIGHTING_LOOKBACK_SECONDS)
-	sighting.timestamp = Time.get_datetime_string_from_unix_time(int(past_unix), true)
+	sighting.unix_timestamp = int(now - randi_range(0, SIGHTING_LOOKBACK_SECONDS))
 
 	sighting.camera_id = "CAM-%03d" % randi_range(1, 40)
 	sighting.vehicle_color = VEHICLE_COLORS.pick_random()

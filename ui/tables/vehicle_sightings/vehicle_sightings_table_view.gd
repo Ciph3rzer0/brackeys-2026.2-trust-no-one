@@ -13,4 +13,4 @@ func set_table_items(rows: Array[SchemaVehicleSightings]):
 
 func _on_plate_filter_filter_changed(text: String) -> void:
 	for row in _rows:
-		row.visible = !text or text.is_subsequence_ofn(row.source_row.car_plate)
+		row.visible = !text or text.is_subsequence_ofn(row.source_row.vehicle_plate)
