@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://ddl1mvjku5iq"]
+
+[ext_resource type="PackedScene" uid="uid://dlxjetybghqpd" path="res://assets/models/office/room.glb" id="1_jwaux"]
+[ext_resource type="PackedScene" uid="uid://c1q51y6vqxm1" path="res://assets/models/office/pottedPlant.glb" id="2_7jj4f"]
+[ext_resource type="PackedScene" uid="uid://bevtot6h0we4v" path="res://assets/models/office/chair.glb" id="3_qphb6"]
+[ext_resource type="PackedScene" uid="uid://b8vxt6ijnj74q" path="res://assets/models/office/desk.glb" id="4_2knxt"]
+[ext_resource type="PackedScene" uid="uid://bnhtdbhbnklps" path="res://assets/models/office/filingCabinet.glb" id="5_fmddn"]
+[ext_resource type="PackedScene" uid="uid://cxlqbbcxinico" path="res://assets/models/office/paperTray.glb" id="6_gdafm"]
+[ext_resource type="PackedScene" uid="uid://qxst5b3aqpoo" path="res://assets/models/office/computer.glb" id="7_in4ui"]
+[ext_resource type="PackedScene" uid="uid://d4dkrl8n2c4i7" path="res://assets/models/city/camera.glb" id="8_fmddn"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_6hbky"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_h45xw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0o143"]
+transparency = 1
+albedo_color = Color(0.40589744, 0.5937938, 0.5406829, 0.050980393)
+refraction_enabled = true
+refraction_scale = 0.75
+
+[node name="Office" type="Node3D" unique_id=2119133953]
+
+[node name="room" parent="." unique_id=359625459 instance=ExtResource("1_jwaux")]
+transform = Transform3D(0.14204764, 0, 0, 0, 0.14204764, 0, 0, 0, 0.14204764, 1.166569, 0.18830088, 0.4664774)
+
+[node name="floorStaticBody" type="StaticBody3D" parent="room" unique_id=38122905]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.017379522, 0, 0.10347867)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="room/floorStaticBody" unique_id=408028874]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.59643555)
+shape = SubResource("WorldBoundaryShape3D_6hbky")
+
+[node name="pottedPlant" parent="." unique_id=671362458 instance=ExtResource("2_7jj4f")]
+transform = Transform3D(0.12016827, 0, 0.07574378, 0, 0.14204764, 0, -0.07574378, 0, 0.12016827, -2.6490257, 0.14701751, -0.9509721)
+
+[node name="chair" parent="." unique_id=114191316 instance=ExtResource("3_qphb6")]
+transform = Transform3D(0.10429261, 0, -0.09643954, 0, 0.14204764, 0, 0.09643954, 0, 0.10429261, 4.118725, 0.1887236, 0.040243387)
+
+[node name="desk2" parent="." unique_id=1129029929 instance=ExtResource("4_2knxt")]
+transform = Transform3D(0.14204764, 0, 0, 0, 0.14204764, 0, 0, 0, 0.14204764, 3.4287162, 0.18830088, 2.1605897)
+
+[node name="filingCabinet" parent="." unique_id=1015927099 instance=ExtResource("5_fmddn")]
+transform = Transform3D(0.14204764, 0, 0, 0, 0.14204764, 0, 0, 0, 0.14204764, -2.907347, 0.18830088, 1.5436988)
+
+[node name="paperTray" parent="." unique_id=1747680248 instance=ExtResource("6_gdafm")]
+transform = Transform3D(0.14204764, 0, 0, 0, 0.14204764, 0, 0, 0, 0.14204764, 2.5083206, 1.5565013, 2.1171203)
+
+[node name="computer" parent="." unique_id=1636787968 instance=ExtResource("7_in4ui")]
+transform = Transform3D(0.14204764, 0, 0, 0, 0.14204764, 0, 0, 0, 0.14204764, 3.831891, 1.8248844, 2.3904476)
+
+[node name="Window" type="MeshInstance3D" parent="." unique_id=1725740009]
+transform = Transform3D(-29.588774, 8.742273e-08, 7.784447e-14, 0, -4.371137e-08, 20.370823, 2.5867328e-06, 0.99999946, 8.904369e-07, 0.369812, 18, 20.214256)
+mesh = SubResource("PlaneMesh_h45xw")
+surface_material_override/0 = SubResource("StandardMaterial3D_0o143")
+
+[node name="roomLight" type="AreaLight3D" parent="." unique_id=378018363]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 1.060077, 4.0096, 0.2907697)
+light_color = Color(0.9999996, 0.8725206, 0.8106262, 1)
+light_energy = 15.67
+light_size = 0.356
+light_bake_mode = 1
+area_size = Vector2(8.729128, 4.2352867)
+
+[node name="skyLight" type="AreaLight3D" parent="." unique_id=682612581]
+transform = Transform3D(1, 0, 0, 0, 0.7071067, 0.7071068, 0, -0.7071068, 0.7071067, 1.060077, 3.8728118, 4.8876686)
+light_color = Color(0.36985144, 0.8647792, 0.9999998, 1)
+light_energy = 0.5
+area_size = Vector2(8.729128, 4.2352867)
+
+[node name="camera" parent="." unique_id=1478130473 instance=ExtResource("8_fmddn")]
+transform = Transform3D(0.048851147, 0, -0.04991035, 0, 0.06983894, 0, 0.04991035, 0, 0.048851147, -2.9908223, 1.3335645, -1.1351453)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=891360997]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.6891432, 3.15486, -3.8517218)
