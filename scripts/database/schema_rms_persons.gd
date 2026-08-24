@@ -1,5 +1,4 @@
-class_name DatabaseRow
-
+class_name SchemaRmsPersons
 
 var first_name: String
 var last_name: String
