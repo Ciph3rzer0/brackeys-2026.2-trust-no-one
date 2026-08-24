@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://b3p4jengkbkto"
-path="res://.godot/imported/empty.glb-15781703f92eb53a074a0668d713ac7c.scn"
+path="res://.godot/imported/intersection.glb-7ec9e1d00d5fac37ea14a526f8de45df.scn"
 
 [deps]
 
-source_file="res://assets/models/city/street/empty.glb"
-dest_files=["res://.godot/imported/empty.glb-15781703f92eb53a074a0668d713ac7c.scn"]
+source_file="res://assets/models/city/street/intersection.glb"
+dest_files=["res://.godot/imported/intersection.glb-7ec9e1d00d5fac37ea14a526f8de45df.scn"]
 
 [params]
 
