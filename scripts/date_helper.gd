@@ -25,7 +25,7 @@ static func month_day_smart(unix_time: int) -> String:
 ## "9:23 AM"
 static func time_12h(unix_time: int) -> String:
 	var dt := Time.get_datetime_dict_from_unix_time(unix_time)
-	var period := "AM" if dt.hour < 12 else "PM"
+	var period := "am" if dt.hour < 12 else "pm"
 	var hour_12: int = dt.hour % 12
 	if hour_12 == 0:
 		hour_12 = 12

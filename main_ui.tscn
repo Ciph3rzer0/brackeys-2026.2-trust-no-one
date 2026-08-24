@@ -35,15 +35,15 @@ text = "License Plate:"
 visible = false
 layout_mode = 0
 offset_left = 0.0
-offset_top = 86.0
+offset_top = 0.0
 offset_right = 760.0
-offset_bottom = 630.0
+offset_bottom = 544.0
 
 [node name="VehicleSightingsTableView" parent="." unique_id=2111511885 instance=ExtResource("4_4uoxc")]
 layout_mode = 0
-offset_left = 35.0
-offset_top = 103.0
-offset_right = 1256.0
-offset_bottom = 647.0
+offset_left = 15.0
+offset_top = 78.0
+offset_right = 1259.0
+offset_bottom = 622.0
 
 [connection signal="filter_changed" from="PlateFilter" to="VehicleSightingsTableView" method="_on_plate_filter_filter_changed"]

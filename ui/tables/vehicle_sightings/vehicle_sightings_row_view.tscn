@@ -8,6 +8,7 @@ theme = ExtResource("1_fgbac")
 script = ExtResource("1_scse7")
 
 [node name="SightingID" type="Label" parent="." unique_id=1648860638]
+visible = false
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 text = "Sighting ID"
@@ -21,10 +22,17 @@ text = "License Plate"
 clip_text = true
 text_overrun_behavior = 5
 
-[node name="Timestamp" type="Label" parent="." unique_id=2036714697]
-custom_minimum_size = Vector2(120, 0)
+[node name="Date" type="Label" parent="." unique_id=2036714697]
+custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
-text = "Timestamp"
+text = "Date"
+clip_text = true
+text_overrun_behavior = 5
+
+[node name="Time" type="Label" parent="." unique_id=318960022]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "Time"
 clip_text = true
 text_overrun_behavior = 5
 
