@@ -2,8 +2,6 @@ class_name Database
 
 var rows: Array[DatabaseRow]
 
-func _ready():
+func _init():
 	seed(7)
 	rows = MockDataFactory.generate_rows(100)
-
-	

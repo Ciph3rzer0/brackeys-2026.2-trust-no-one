@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://bkmp0qtqdsq8u"]
+
+[ext_resource type="PackedScene" uid="uid://bruwwu67e4wym" path="res://ui/table/table_row.tscn" id="1_2ppmm"]
+[ext_resource type="Script" uid="uid://cfglhopesv3kn" path="res://game_test.gd" id="1_4uoxc"]
+[ext_resource type="Theme" uid="uid://t1raxlx3ogkq" path="res://ui/table/table_theme.tres" id="1_w37m7"]
+[ext_resource type="Script" uid="uid://dihrp1e8bq8b7" path="res://ui/table/table_ui.gd" id="2_ktt6o"]
+
+[node name="Control" type="Control" unique_id=694152180]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4uoxc")
+metadata/_edit_lock_ = true
+
+[node name="PlateFilter" type="TextEdit" parent="." unique_id=2046144793]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 39.0
+offset_right = 168.0
+offset_bottom = 72.0
+
+[node name="LablePlate" type="Label" parent="PlateFilter" unique_id=1775027030]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -25.0
+offset_right = 107.0
+offset_bottom = -2.0
+text = "License Plate:"
+
+[node name="TableUI" type="PanelContainer" parent="." unique_id=900904750]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 85.0
+offset_right = 783.0
+offset_bottom = 629.0
+theme = ExtResource("1_w37m7")
+script = ExtResource("2_ktt6o")
+
+[node name="MarginContainer" type="MarginContainer" parent="TableUI" unique_id=230455846]
+layout_mode = 2
+
+[node name="HSplitContainer" type="VSplitContainer" parent="TableUI/MarginContainer" unique_id=257972787]
+layout_mode = 2
+split_offsets = PackedInt32Array(23)
+split_offset = 23
+
+[node name="TableHeader" parent="TableUI/MarginContainer/HSplitContainer" unique_id=1285161061 instance=ExtResource("1_2ppmm")]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TableUI/MarginContainer/HSplitContainer" unique_id=1390634988]
+layout_mode = 2
+
+[node name="TableBody" type="VBoxContainer" parent="TableUI/MarginContainer/HSplitContainer/ScrollContainer" unique_id=2093467921]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TableRow" parent="TableUI/MarginContainer/HSplitContainer/ScrollContainer/TableBody" unique_id=321700152 instance=ExtResource("1_2ppmm")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 0
