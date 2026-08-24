@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://c23h1weuhwrjv"]
+
+[ext_resource type="Theme" uid="uid://t1raxlx3ogkq" path="res://ui/tables/table_theme.tres" id="1_fgbac"]
+[ext_resource type="Script" uid="uid://coyenoh4kdnlv" path="res://ui/tables/vehicle_sightings/vehicle_sightings_row_view.gd" id="1_scse7"]
+
+[node name="VehicleSightingsTableRow" type="HBoxContainer" unique_id=1285161061]
+theme = ExtResource("1_fgbac")
+script = ExtResource("1_scse7")
+
+[node name="SightingID" type="Label" parent="." unique_id=1648860638]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+text = "Sighting ID"
+clip_text = true
+text_overrun_behavior = 5
+
+[node name="LicensePlate" type="Label" parent="." unique_id=1057562029]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+text = "License Plate"
+clip_text = true
+text_overrun_behavior = 5
+
+[node name="Timestamp" type="Label" parent="." unique_id=2036714697]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Timestamp"
+clip_text = true
+text_overrun_behavior = 5
+
+[node name="CameraID" type="Label" parent="." unique_id=94543752]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Camera ID"
+clip_text = true
+text_overrun_behavior = 5
+
+[node name="VehicleColor" type="Label" parent="." unique_id=811470654]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Vehicle Color"
+clip_text = true
+text_overrun_behavior = 5
+
+[node name="VehicleType" type="Label" parent="." unique_id=900088983]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Vehicle Type"
+clip_text = true
+text_overrun_behavior = 5
+
+[node name="Features" type="Label" parent="." unique_id=834029008]
+custom_minimum_size = Vector2(440, 0)
+layout_mode = 2
+text = "Features"
+clip_text = true
+text_overrun_behavior = 5

@@ -67,9 +67,9 @@ static func generate_vehicle_sighting(sighting_id: int = 1, persons: Array[Schem
 	sighting.timestamp = Time.get_datetime_string_from_unix_time(int(past_unix), true)
 
 	sighting.camera_id = "CAM-%03d" % randi_range(1, 40)
-	sighting.color = VEHICLE_COLORS.pick_random()
+	sighting.vehicle_color = VEHICLE_COLORS.pick_random()
 	sighting.vehicle_type = VEHICLE_TYPES.pick_random()
-	sighting.features = _generate_features()
+	sighting.vehicle_features = _generate_features()
 
 	return sighting
 

@@ -1,10 +1,9 @@
 [gd_scene format=3 uid="uid://bkmp0qtqdsq8u"]
 
-[ext_resource type="PackedScene" uid="uid://bruwwu67e4wym" path="res://ui/table/rms_persons_row_view.tscn" id="1_2ppmm"]
 [ext_resource type="Script" uid="uid://cfglhopesv3kn" path="res://game_test.gd" id="1_4uoxc"]
-[ext_resource type="Theme" uid="uid://t1raxlx3ogkq" path="res://ui/table/table_theme.tres" id="1_w37m7"]
-[ext_resource type="Script" uid="uid://dihrp1e8bq8b7" path="res://ui/table/rms_persons_table_view.gd" id="2_ktt6o"]
-[ext_resource type="Script" uid="uid://cflir6f77prq" path="res://ui/table/text_edit_filter.gd" id="2_llbac"]
+[ext_resource type="Script" uid="uid://cflir6f77prq" path="res://ui/tables/text_edit_filter.gd" id="2_llbac"]
+[ext_resource type="PackedScene" uid="uid://cg32ljqw0tgrn" path="res://ui/tables/rms_persons/rms_persons_table_view.tscn" id="3_ktt6o"]
+[ext_resource type="PackedScene" uid="uid://dvphuceq43kt8" path="res://ui/tables/vehicle_sightings/vehicle_sightings_table_view.tscn" id="4_4uoxc"]
 
 [node name="Control" type="Control" unique_id=694152180]
 layout_mode = 3
@@ -32,39 +31,19 @@ offset_right = 107.0
 offset_bottom = -2.0
 text = "License Plate:"
 
-[node name="TableUI" type="PanelContainer" parent="." unique_id=900904750]
-layout_mode = 0
-offset_left = 23.0
-offset_top = 85.0
-offset_right = 783.0
-offset_bottom = 629.0
-theme = ExtResource("1_w37m7")
-script = ExtResource("2_ktt6o")
-
-[node name="MarginContainer" type="MarginContainer" parent="TableUI" unique_id=230455846]
-layout_mode = 2
-
-[node name="HSplitContainer" type="VSplitContainer" parent="TableUI/MarginContainer" unique_id=257972787]
-layout_mode = 2
-split_offsets = PackedInt32Array(23)
-dragging_enabled = false
-split_offset = 23
-
-[node name="TableHeader" parent="TableUI/MarginContainer/HSplitContainer" unique_id=1285161061 instance=ExtResource("1_2ppmm")]
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="ScrollContainer" type="ScrollContainer" parent="TableUI/MarginContainer/HSplitContainer" unique_id=1390634988]
-layout_mode = 2
-
-[node name="TableBody" type="VBoxContainer" parent="TableUI/MarginContainer/HSplitContainer/ScrollContainer" unique_id=2093467921]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="TableRow" parent="TableUI/MarginContainer/HSplitContainer/ScrollContainer/TableBody" unique_id=321700152 instance=ExtResource("1_2ppmm")]
-unique_name_in_owner = true
+[node name="RmsPersonsTableView" parent="." unique_id=737813966 instance=ExtResource("3_ktt6o")]
 visible = false
-layout_mode = 2
-size_flags_vertical = 0
+layout_mode = 0
+offset_left = 0.0
+offset_top = 86.0
+offset_right = 760.0
+offset_bottom = 630.0
 
-[connection signal="filter_changed" from="PlateFilter" to="TableUI" method="_on_plate_filter_filter_changed"]
+[node name="VehicleSightingsTableView" parent="." unique_id=2111511885 instance=ExtResource("4_4uoxc")]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 103.0
+offset_right = 1256.0
+offset_bottom = 647.0
+
+[connection signal="filter_changed" from="PlateFilter" to="VehicleSightingsTableView" method="_on_plate_filter_filter_changed"]

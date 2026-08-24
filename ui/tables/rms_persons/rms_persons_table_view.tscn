@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://cg32ljqw0tgrn"]
+
+[ext_resource type="Theme" uid="uid://t1raxlx3ogkq" path="res://ui/tables/table_theme.tres" id="1_46xvm"]
+[ext_resource type="Script" uid="uid://dihrp1e8bq8b7" path="res://ui/tables/rms_persons/rms_persons_table_view.gd" id="2_fvici"]
+[ext_resource type="PackedScene" uid="uid://bruwwu67e4wym" path="res://ui/tables/rms_persons/rms_persons_row_view.tscn" id="3_uk5sx"]
+
+[node name="RmsPersonsTableView" type="PanelContainer" unique_id=737813966]
+offset_left = 23.0
+offset_top = 85.0
+offset_right = 783.0
+offset_bottom = 629.0
+theme = ExtResource("1_46xvm")
+script = ExtResource("2_fvici")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=418277657]
+layout_mode = 2
+
+[node name="HSplitContainer" type="VSplitContainer" parent="MarginContainer" unique_id=1241418990]
+layout_mode = 2
+split_offsets = PackedInt32Array(23)
+dragging_enabled = false
+split_offset = 23
+
+[node name="TableHeader" parent="MarginContainer/HSplitContainer" unique_id=1285161061 instance=ExtResource("3_uk5sx")]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HSplitContainer" unique_id=572966982]
+layout_mode = 2
+
+[node name="TableBody" type="VBoxContainer" parent="MarginContainer/HSplitContainer/ScrollContainer" unique_id=62885424]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TableRow" parent="MarginContainer/HSplitContainer/ScrollContainer/TableBody" unique_id=169196258 instance=ExtResource("3_uk5sx")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 0

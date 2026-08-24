@@ -1,11 +1,11 @@
-class_name TableUI
+class_name VehicleSightingsTableView
 extends PanelContainer
 
-var _rows: Array[RmsPersonsRowView]
+var _rows: Array[VehicleSightingsRowView]
 
-func set_table_items(rows: Array[SchemaRmsPersons]):
+func set_table_items(rows: Array[SchemaVehicleSightings]):
 	for new_source_row in rows:
-		var new_table_row: RmsPersonsRowView = %TableRow.duplicate()
+		var new_table_row: VehicleSightingsRowView = %TableRow.duplicate()
 		new_table_row.set_source_row(new_source_row)
 		new_table_row.visible = true
 		_rows.append(new_table_row)

@@ -1,26 +1,36 @@
 [gd_scene format=3 uid="uid://bruwwu67e4wym"]
 
-[ext_resource type="Script" uid="uid://dpk4e8tb7xx3w" path="res://ui/table/rms_persons_row_view.gd" id="1_8tmnv"]
+[ext_resource type="Script" uid="uid://dpk4e8tb7xx3w" path="res://ui/tables/rms_persons/rms_persons_row_view.gd" id="1_8tmnv"]
+[ext_resource type="Theme" uid="uid://t1raxlx3ogkq" path="res://ui/tables/table_theme.tres" id="1_jog7e"]
 
-[node name="TableRow" type="HBoxContainer" unique_id=1285161061]
+[node name="RmsPersonsTableRow" type="HBoxContainer" unique_id=1285161061]
+theme = ExtResource("1_jog7e")
 script = ExtResource("1_8tmnv")
 
 [node name="FirstName" type="Label" parent="." unique_id=1648860638]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 text = "First Name"
+clip_text = true
+text_overrun_behavior = 5
 
 [node name="LastName" type="Label" parent="." unique_id=900088983]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 text = "Last Name"
+clip_text = true
+text_overrun_behavior = 5
 
 [node name="Plate" type="Label" parent="." unique_id=1272640251]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 text = "Plate #"
+clip_text = true
+text_overrun_behavior = 5
 
 [node name="Home" type="Label" parent="." unique_id=834029008]
 custom_minimum_size = Vector2(260, 0)
 layout_mode = 2
 text = "Home Address"
+clip_text = true
+text_overrun_behavior = 5
