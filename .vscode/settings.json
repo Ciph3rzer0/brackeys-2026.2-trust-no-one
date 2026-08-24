@@ -46,9 +46,11 @@
 	},
 	"cSpell.words": [
 	],
-	// "files.exclude": {
-	// 	"**/*.uid": true
-	// },
+	"files.exclude": {
+		"**/*.uid": true,
+		".godot": true,
+		"**/*.import": true
+	},
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.expand": false,
   "explorer.fileNesting.patterns": {
