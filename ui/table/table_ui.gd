@@ -1,25 +1,15 @@
 class_name TableUI
 extends PanelContainer
 
-var _database: Database
-var _rows: Array[TableRow]
+var _rows: Array[RmsPersonsRowView]
 
-func _ready() -> void:
-	_database = Database.new()
-	
-	assert(_database != null)
-	set_table_items(_database)
-
-func set_table_items(database: Database):
-	_database = database
-	
-	for new_source_row in database.rows:
-		var new_table_row: TableRow = %TableRow.duplicate()
+func set_table_items(rows: Array[SchemaRmsPersons]):
+	for new_source_row in rows:
+		var new_table_row: RmsPersonsRowView = %TableRow.duplicate()
 		new_table_row.set_source_row(new_source_row)
 		new_table_row.visible = true
 		_rows.append(new_table_row)
 		%TableBody.add_child(new_table_row)
-
 
 func _on_plate_filter_filter_changed(text: String) -> void:
 	for row in _rows:

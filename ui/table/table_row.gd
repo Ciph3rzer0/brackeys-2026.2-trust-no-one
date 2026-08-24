@@ -1,9 +1,9 @@
 extends HBoxContainer
-class_name TableRow
+class_name RmsPersonsRowView
 
-var source_row: DatabaseRow
+var source_row: SchemaRmsPersons
 
-func set_source_row(_source_row: DatabaseRow) -> void:
+func set_source_row(_source_row: SchemaRmsPersons) -> void:
 	source_row = _source_row
 	update()
 

@@ -47,6 +47,7 @@ layout_mode = 2
 [node name="HSplitContainer" type="VSplitContainer" parent="TableUI/MarginContainer" unique_id=257972787]
 layout_mode = 2
 split_offsets = PackedInt32Array(23)
+dragging_enabled = false
 split_offset = 23
 
 [node name="TableHeader" parent="TableUI/MarginContainer/HSplitContainer" unique_id=1285161061 instance=ExtResource("1_2ppmm")]
