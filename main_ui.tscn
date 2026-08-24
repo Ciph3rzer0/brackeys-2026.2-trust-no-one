@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://bkmp0qtqdsq8u"]
 
-[ext_resource type="PackedScene" uid="uid://bruwwu67e4wym" path="res://ui/table/table_row.tscn" id="1_2ppmm"]
+[ext_resource type="PackedScene" uid="uid://bruwwu67e4wym" path="res://ui/table/rms_persons_row_view.tscn" id="1_2ppmm"]
 [ext_resource type="Script" uid="uid://cfglhopesv3kn" path="res://game_test.gd" id="1_4uoxc"]
 [ext_resource type="Theme" uid="uid://t1raxlx3ogkq" path="res://ui/table/table_theme.tres" id="1_w37m7"]
-[ext_resource type="Script" uid="uid://dihrp1e8bq8b7" path="res://ui/table/table_ui.gd" id="2_ktt6o"]
+[ext_resource type="Script" uid="uid://dihrp1e8bq8b7" path="res://ui/table/rms_persons_table_view.gd" id="2_ktt6o"]
 [ext_resource type="Script" uid="uid://cflir6f77prq" path="res://ui/table/text_edit_filter.gd" id="2_llbac"]
 
 [node name="Control" type="Control" unique_id=694152180]

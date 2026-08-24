@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bruwwu67e4wym"]
 
-[ext_resource type="Script" uid="uid://dpk4e8tb7xx3w" path="res://ui/table/table_row.gd" id="1_8tmnv"]
+[ext_resource type="Script" uid="uid://dpk4e8tb7xx3w" path="res://ui/table/rms_persons_row_view.gd" id="1_8tmnv"]
 
 [node name="TableRow" type="HBoxContainer" unique_id=1285161061]
 script = ExtResource("1_8tmnv")
