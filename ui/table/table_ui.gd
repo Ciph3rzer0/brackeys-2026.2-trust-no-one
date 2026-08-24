@@ -23,4 +23,4 @@ func set_table_items(database: Database):
 
 func _on_plate_filter_filter_changed(text: String) -> void:
 	for row in _rows:
-		row.visible = !text or row.source_row.car_plate.containsn(text)
+		row.visible = !text or text.is_subsequence_ofn(row.source_row.car_plate)
