@@ -1,0 +1,15 @@
+[gd_resource type="Theme" format=3 uid="uid://brneh6lnfaibv"]
+
+[ext_resource type="StyleBox" uid="uid://vwgt7v6xqkw" path="res://theme/default_style_box_flat.tres" id="1_afw5t"]
+
+[resource]
+Control/colors/font_color = Color(0, 0, 0, 1)
+Control/colors/font_outline_color = Color(0.8346143, 0.8346143, 0.8346143, 1)
+Control/colors/font_shadow_color = Color(0.59, 0.59, 0.59, 0.39215687)
+Control/font_sizes/font_size = 12
+PanelContainer/styles/panel = ExtResource("1_afw5t")
+TextEdit/styles/normal = ExtResource("1_afw5t")
+white_text/base_type = &"Control"
+white_text/colors/font_color = Color(1, 1, 1, 1)
+white_text/colors/font_outline_color = Color(0, 0, 0, 1)
+white_text/colors/font_shadow_color = Color(0, 0, 0, 1)

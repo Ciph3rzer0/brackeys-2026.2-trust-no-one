@@ -3,7 +3,11 @@
 [ext_resource type="Script" uid="uid://cfglhopesv3kn" path="res://game_test.gd" id="1_4uoxc"]
 [ext_resource type="Script" uid="uid://cflir6f77prq" path="res://ui/tables/text_edit_filter.gd" id="2_llbac"]
 [ext_resource type="PackedScene" uid="uid://cg32ljqw0tgrn" path="res://ui/tables/rms_persons/rms_persons_table_view.tscn" id="3_ktt6o"]
+[ext_resource type="Theme" uid="uid://brneh6lnfaibv" path="res://theme/main_theme.tres" id="3_llbac"]
 [ext_resource type="PackedScene" uid="uid://dvphuceq43kt8" path="res://ui/tables/vehicle_sightings/vehicle_sightings_table_view.tscn" id="4_4uoxc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uhg71"]
+bg_color = Color(0, 0.18039216, 0.57254905, 1)
 
 [node name="Control" type="Control" unique_id=694152180]
 layout_mode = 3
@@ -15,12 +19,21 @@ grow_vertical = 2
 script = ExtResource("1_4uoxc")
 metadata/_edit_lock_ = true
 
+[node name="Background" type="Panel" parent="." unique_id=1473614629]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_uhg71")
+
 [node name="PlateFilter" type="TextEdit" parent="." unique_id=2046144793]
 layout_mode = 0
-offset_left = 23.0
-offset_top = 39.0
-offset_right = 168.0
-offset_bottom = 72.0
+offset_left = 16.0
+offset_top = 41.0
+offset_right = 161.0
+offset_bottom = 74.0
 script = ExtResource("2_llbac")
 
 [node name="LablePlate" type="Label" parent="PlateFilter" unique_id=1775027030]
@@ -29,6 +42,9 @@ offset_left = 1.0
 offset_top = -25.0
 offset_right = 107.0
 offset_bottom = -2.0
+theme = ExtResource("3_llbac")
+theme_type_variation = &"white_text"
+theme_override_font_sizes/font_size = 15
 text = "License Plate:"
 
 [node name="RmsPersonsTableView" parent="." unique_id=737813966 instance=ExtResource("3_ktt6o")]
