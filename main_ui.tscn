@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://cg32ljqw0tgrn" path="res://ui/tables/rms_persons/rms_persons_table_view.tscn" id="3_ktt6o"]
 [ext_resource type="Theme" uid="uid://brneh6lnfaibv" path="res://theme/main_theme.tres" id="3_llbac"]
 [ext_resource type="PackedScene" uid="uid://dvphuceq43kt8" path="res://ui/tables/vehicle_sightings/vehicle_sightings_table_view.tscn" id="4_4uoxc"]
+[ext_resource type="PackedScene" uid="uid://dukf0r3kv7h3u" path="res://ui/crime-report/crime_report.tscn" id="6_n1q3t"]
+[ext_resource type="PackedScene" uid="uid://caageh3xw4bpg" path="res://draggable-resizable-panel.tscn" id="7_il2or"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uhg71"]
 bg_color = Color(0, 0.18039216, 0.57254905, 1)
@@ -61,5 +63,21 @@ offset_left = 15.0
 offset_top = 78.0
 offset_right = 1259.0
 offset_bottom = 622.0
+
+[node name="CrimeReport" parent="." unique_id=1163959814 instance=ExtResource("6_n1q3t")]
+visible = false
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 375.0
+offset_bottom = 464.0
+
+[node name="ComputerWindow" parent="." unique_id=24755338 instance=ExtResource("7_il2or")]
+layout_mode = 1
+offset_left = 301.0
+offset_top = 208.0
+offset_right = -496.0
+offset_bottom = -236.0
+content_scene_path = "uid://dukf0r3kv7h3u"
 
 [connection signal="filter_changed" from="PlateFilter" to="VehicleSightingsTableView" method="_on_plate_filter_filter_changed"]

@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://caageh3xw4bpg"]
+
+[ext_resource type="Script" uid="uid://bjuvnmtu36cgp" path="res://draggable-resizable-panel.gd" id="1_jm4yj"]
+
+[node name="ComputerWindow" type="Panel" unique_id=24755338]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jm4yj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=722884977]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleBar" type="PanelContainer" parent="VBoxContainer" unique_id=187471893]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TitleBar" unique_id=1910996498]
+layout_mode = 2
+
+[node name="MinimizeButton" type="Button" parent="VBoxContainer/TitleBar/HBoxContainer" unique_id=1278391636]
+custom_minimum_size = Vector2(22, 22)
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="Content" type="MarginContainer" parent="VBoxContainer" unique_id=956470122]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[connection signal="pressed" from="VBoxContainer/TitleBar/HBoxContainer/MinimizeButton" to="." method="_on_minimize_button_pressed"]
