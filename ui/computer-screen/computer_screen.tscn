@@ -1,24 +1,24 @@
 [gd_scene format=3 uid="uid://bkmp0qtqdsq8u"]
 
-[ext_resource type="Script" uid="uid://cfglhopesv3kn" path="res://game_test.gd" id="1_4uoxc"]
-[ext_resource type="Script" uid="uid://cflir6f77prq" path="res://ui/tables/text_edit_filter.gd" id="2_llbac"]
-[ext_resource type="PackedScene" uid="uid://cg32ljqw0tgrn" path="res://ui/tables/rms_persons/rms_persons_table_view.tscn" id="3_ktt6o"]
-[ext_resource type="Theme" uid="uid://brneh6lnfaibv" path="res://theme/main_theme.tres" id="3_llbac"]
-[ext_resource type="PackedScene" uid="uid://dvphuceq43kt8" path="res://ui/tables/vehicle_sightings/vehicle_sightings_table_view.tscn" id="4_4uoxc"]
-[ext_resource type="PackedScene" uid="uid://dukf0r3kv7h3u" path="res://ui/crime-report/crime_report.tscn" id="6_n1q3t"]
-[ext_resource type="PackedScene" uid="uid://caageh3xw4bpg" path="res://draggable-resizable-panel.tscn" id="7_il2or"]
+[ext_resource type="Script" uid="uid://cfglhopesv3kn" path="res://ui/computer-screen/computer_screen.gd" id="1_5btdj"]
+[ext_resource type="Script" uid="uid://cflir6f77prq" path="res://ui/tables/text_edit_filter.gd" id="2_i7m88"]
+[ext_resource type="Theme" uid="uid://brneh6lnfaibv" path="res://theme/main_theme.tres" id="3_ni5x2"]
+[ext_resource type="PackedScene" uid="uid://cg32ljqw0tgrn" path="res://ui/tables/rms_persons/rms_persons_table_view.tscn" id="4_tb1cc"]
+[ext_resource type="PackedScene" uid="uid://dvphuceq43kt8" path="res://ui/tables/vehicle_sightings/vehicle_sightings_table_view.tscn" id="5_hkea7"]
+[ext_resource type="PackedScene" uid="uid://dukf0r3kv7h3u" path="res://ui/crime-report/crime_report.tscn" id="6_5hd8n"]
+[ext_resource type="PackedScene" uid="uid://caageh3xw4bpg" path="res://draggable-resizable-panel.tscn" id="7_8qfsr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uhg71"]
 bg_color = Color(0, 0.18039216, 0.57254905, 1)
 
-[node name="Control" type="Control" unique_id=694152180]
+[node name="ComputerScreen" type="Control" unique_id=694152180]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_4uoxc")
+script = ExtResource("1_5btdj")
 metadata/_edit_lock_ = true
 
 [node name="Background" type="Panel" parent="." unique_id=1473614629]
@@ -36,7 +36,7 @@ offset_left = 16.0
 offset_top = 41.0
 offset_right = 161.0
 offset_bottom = 74.0
-script = ExtResource("2_llbac")
+script = ExtResource("2_i7m88")
 
 [node name="LablePlate" type="Label" parent="PlateFilter" unique_id=1775027030]
 layout_mode = 0
@@ -44,12 +44,12 @@ offset_left = 1.0
 offset_top = -25.0
 offset_right = 107.0
 offset_bottom = -2.0
-theme = ExtResource("3_llbac")
+theme = ExtResource("3_ni5x2")
 theme_type_variation = &"white_text"
 theme_override_font_sizes/font_size = 15
 text = "License Plate:"
 
-[node name="RmsPersonsTableView" parent="." unique_id=737813966 instance=ExtResource("3_ktt6o")]
+[node name="RmsPersonsTableView" parent="." unique_id=737813966 instance=ExtResource("4_tb1cc")]
 visible = false
 layout_mode = 0
 offset_left = 0.0
@@ -57,14 +57,14 @@ offset_top = 0.0
 offset_right = 760.0
 offset_bottom = 544.0
 
-[node name="VehicleSightingsTableView" parent="." unique_id=2111511885 instance=ExtResource("4_4uoxc")]
+[node name="VehicleSightingsTableView" parent="." unique_id=2111511885 instance=ExtResource("5_hkea7")]
 layout_mode = 0
 offset_left = 15.0
 offset_top = 78.0
 offset_right = 1259.0
 offset_bottom = 622.0
 
-[node name="CrimeReport" parent="." unique_id=1163959814 instance=ExtResource("6_n1q3t")]
+[node name="CrimeReport" parent="." unique_id=1163959814 instance=ExtResource("6_5hd8n")]
 visible = false
 layout_mode = 0
 offset_left = 0.0
@@ -72,7 +72,7 @@ offset_top = 0.0
 offset_right = 375.0
 offset_bottom = 464.0
 
-[node name="ComputerWindow" parent="." unique_id=24755338 instance=ExtResource("7_il2or")]
+[node name="ComputerWindow" parent="." unique_id=24755338 instance=ExtResource("7_8qfsr")]
 layout_mode = 1
 offset_left = 301.0
 offset_top = 208.0

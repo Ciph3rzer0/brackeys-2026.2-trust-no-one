@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Brackeys-Trust No One"
-run/main_scene="uid://bkmp0qtqdsq8u"
+run/main_scene="uid://dwoulkmsgbok7"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="uid://c6t3oxng53jc8"
 
