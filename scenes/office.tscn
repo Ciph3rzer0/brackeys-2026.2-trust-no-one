@@ -40,12 +40,14 @@ refraction_scale = 0.1
 [node name="MorningCoffee" type="AudioStreamPlayer3D" parent="." unique_id=740585966]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7078304, 0.5476111, 0.3506484)
 stream = SubResource("AudioStreamWAV_ujkv6")
-volume_db = -20.0
+attenuation_model = 3
+volume_db = -30.0
 autoplay = true
 bus = &"Music"
+attenuation_filter_cutoff_hz = 20500.0
 
 [node name="room" parent="." unique_id=359625459 instance=ExtResource("1_jwaux")]
-transform = Transform3D(0.14204764, 0, 0, 0, 0.14204764, 0, 0, 0, 0.14204764, 1.166569, 0.18830088, 0.4664774)
+transform = Transform3D(1.3984075, 0, 0, 0, 1.3984075, 0, 0, 0, 1.3984075, 1.166569, 0.18830088, 0.4664774)
 
 [node name="floorStaticBody" type="StaticBody3D" parent="room" unique_id=38122905]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.017379522, 0, 0.10347867)
