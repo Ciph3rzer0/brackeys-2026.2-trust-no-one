@@ -36,12 +36,7 @@ viewport_path = NodePath("ComputerScreenRenders/ComputerMonitor")
 resource_local_to_scene = true
 albedo_texture = SubResource("ViewportTexture_obbxu")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q8eg3"]
-emission_enabled = true
-emission = Color(0.7408339, 0.22149116, 0, 1)
-
 [sub_resource type="QuadMesh" id="QuadMesh_obbxu"]
-material = SubResource("StandardMaterial3D_q8eg3")
 size = Vector2(4.615, 2.84)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_q8eg3"]
@@ -85,12 +80,14 @@ environment = SubResource("Environment_h45xw")
 
 [node name="Player" parent="." unique_id=1743660579 instance=ExtResource("7_drx7m")]
 transform = Transform3D(1.7261236, 0, 0, 0, 1.7261236, 0, 0, 0, 1.7261236, 1.0056765, 35.59699, -55.954548)
+visible = false
 metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="Office" parent="." unique_id=2119133953 instance=ExtResource("6_2jj31")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2601624, 35.22836, -55.920532)
-metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="ComputerScreen" type="MeshInstance3D" parent="Office" unique_id=1861852960]
 transform = Transform3D(-0.14204764, 0, 0, 0, 0.14204764, 0, 0, 0, -0.14204764, 3.7677896, 2.2150154, 2.0289497)
