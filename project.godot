@@ -29,6 +29,10 @@ window/stretch/aspect="expand"
 
 theme/custom="uid://brneh6lnfaibv"
 
+[layer_names]
+
+3d_render/layer_16="Camera Grid"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
