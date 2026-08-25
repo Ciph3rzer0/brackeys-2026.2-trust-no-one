@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://qxst5b3aqpoo" path="res://assets/models/office/computer.glb" id="7_in4ui"]
 [ext_resource type="PackedScene" uid="uid://d4dkrl8n2c4i7" path="res://assets/models/city/camera.glb" id="8_fmddn"]
 [ext_resource type="AudioStream" uid="uid://wp6coykaawrh" path="res://assets/audio/music/morning-coffee.wav" id="9_gdafm"]
+[ext_resource type="PackedScene" uid="uid://8y18dm0ibu5p" path="res://assets/models/office/gooseneckClamp.glb" id="10_6hbky"]
+[ext_resource type="PackedScene" uid="uid://dxlj7u4pgo3u3" path="res://scenes/crimeReport.tscn" id="11_o23kw"]
+[ext_resource type="PackedScene" uid="uid://de35ov58wu763" path="res://assets/models/office/corkboard.glb" id="12_o23kw"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_6hbky"]
 
@@ -21,6 +24,13 @@ refraction_enabled = true
 refraction_scale = 0.1
 
 [node name="Office" type="Node3D" unique_id=2119133953]
+
+[node name="MorningCoffee" type="AudioStreamPlayer3D" parent="." unique_id=740585966]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7078304, 0.5476111, 0.3506484)
+stream = ExtResource("9_gdafm")
+volume_db = -15.0
+autoplay = true
+bus = &"Music"
 
 [node name="room" parent="." unique_id=359625459 instance=ExtResource("1_jwaux")]
 transform = Transform3D(0.14204764, 0, 0, 0, 0.14204764, 0, 0, 0, 0.14204764, 1.166569, 0.18830088, 0.4664774)
@@ -51,7 +61,7 @@ transform = Transform3D(0.14204764, 0, 0, 0, 0.14204764, 0, 0, 0, 0.14204764, 2.
 transform = Transform3D(0.14204764, 0, 0, 0, 0.14204764, 0, 0, 0, 0.14204764, 3.831891, 1.8248844, 2.3904476)
 
 [node name="Window" type="MeshInstance3D" parent="." unique_id=1725740009]
-transform = Transform3D(4.012913, -2.1290061e-08, -1.8466758e-14, 1.2463634e-21, -5.322516e-09, 2.4162483, -7.0164003e-07, -0.12176496, -1.05617545e-07, 1.4060528, 2.9495215, 3.292104)
+transform = Transform3D(4.012913, -2.1290061e-08, -1.8466758e-14, 1.2463634e-21, -5.322516e-09, 2.4162483, -7.0164003e-07, -0.12176496, -1.05617545e-07, 1.3165216, 2.9495215, 3.292104)
 mesh = SubResource("PlaneMesh_h45xw")
 surface_material_override/0 = SubResource("StandardMaterial3D_0o143")
 
@@ -65,15 +75,17 @@ area_range = 8.418
 area_attenuation = 0.375
 area_size = Vector2(9.721287, 10.079965)
 
-[node name="skyLight" type="AreaLight3D" parent="." unique_id=682612581]
-transform = Transform3D(1, 0, 0, 0, 0.7071067, 0.7071068, 0, -0.7071068, 0.7071067, 1.060077, 3.8728118, 4.8876686)
-light_color = Color(0.36985144, 0.8647792, 0.9999998, 1)
-light_energy = 0.5
-area_size = Vector2(8.729128, 4.2352867)
-
-[node name="camera" parent="." unique_id=1478130473 instance=ExtResource("8_fmddn")]
+[node name="spyCam" parent="." unique_id=1478130473 instance=ExtResource("8_fmddn")]
 transform = Transform3D(0.048851147, 0, -0.04991035, 0, 0.06983894, 0, 0.04991035, 0, 0.048851147, -2.9908223, 1.3335645, -1.1351453)
 
-[node name="MorningCoffee" type="AudioStreamPlayer3D" parent="." unique_id=740585966]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7078304, 0.5476111, 0.3506484)
-stream = ExtResource("9_gdafm")
+[node name="gooseneckClamp" parent="." unique_id=555761378 instance=ExtResource("10_6hbky")]
+transform = Transform3D(1.7347819, 0, 0, 0, 1.7347819, 0, 0, 0, 1.7347819, 3.0299675, 2.5492256, 2.2716348)
+
+[node name="CrimeReport" parent="." unique_id=787598383 instance=ExtResource("11_o23kw")]
+transform = Transform3D(-0.16664635, 6.368176e-16, -1.4568688e-08, 1.4568688e-08, 7.2843442e-09, -0.16664635, 0, -0.16664635, -7.2843442e-09, 2.7783883, 2.2456958, 2.2350566)
+
+[node name="CrimeReport2" parent="." unique_id=314048997 instance=ExtResource("11_o23kw")]
+transform = Transform3D(-0.16664635, 6.3681763e-16, -1.4568688e-08, -6.368176e-16, 0.16664635, 1.4568688e-08, 1.4568688e-08, 1.4568688e-08, -0.16664635, 2.2768204, 1.5935378, 2.0989347)
+
+[node name="corkboard2" parent="." unique_id=1877018735 instance=ExtResource("12_o23kw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7087893, 3.9522834, 0.3879993)
