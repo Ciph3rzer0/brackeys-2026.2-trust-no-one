@@ -1,7 +1,9 @@
 #https://github.com/Linko-3D/Godot-Simple-First-Person-Controller/blob/main/player/player.gd
 extends CharacterBody3D
 
-@export var footstep_sound: Array[AudioStream]
+@export var footstep_sound : Array[AudioStream]
+
+@export var cam : Camera3D
 
 var run_speed = 5.5
 var speed = run_speed
@@ -22,9 +24,8 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		rotation_degrees.y -= event.relative.x / 10
-		%Camera3D.rotation_degrees.x -= event.relative.y / 10
-		%Camera3D.rotation_degrees.x = clamp(%Camera3D.rotation_degrees.x, -90, 90)
-
+		cam.rotation_degrees.x -= event.relative.y / 10
+		cam.rotation_degrees.x = clamp(cam.rotation_degrees.x, -90, 90)
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -56,7 +57,7 @@ func _physics_process(delta: float) -> void:
 		$CollisionShape3D.shape.height = lerp($CollisionShape3D.shape.height, 1.38, 0.1)
 
 	$MeshInstance3D.mesh.height = $CollisionShape3D.shape.height
-	%HeadPosition.position.y = $CollisionShape3D.shape.height - 0.25
+	#%HeadPosition.position.y = $CollisionShape3D.shape.height - 0.25
 
 	# Movement inputs
 	var input_dir = Vector2.ZERO
@@ -97,9 +98,9 @@ func landing_animation(landing_velocity):
 
 	var tween = get_tree().create_tween().set_trans(Tween.TRANS_SINE)
 	var amplitude = clamp(landing_velocity / 100, 0.0, 0.3)
-
-	tween.tween_property(%LandingAnimation, "position:y", -amplitude, amplitude)
-	tween.tween_property(%LandingAnimation, "position:y", 0, amplitude)
+#
+	#tween.tween_property(%LandingAnimation, "position:y", -amplitude, amplitude)
+	#tween.tween_property(%LandingAnimation, "position:y", 0, amplitude)
 
 
 func play_random_footstep_sound() -> void:

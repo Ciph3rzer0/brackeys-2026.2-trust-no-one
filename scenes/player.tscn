@@ -8,14 +8,15 @@
 
 [node name="Player" type="Node3D" unique_id=1743660579]
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1865119778]
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1865119778 node_paths=PackedStringArray("cam")]
 script = ExtResource("1_3vyb7")
+cam = NodePath("Camera3D")
 
 [node name="HeadPosition" type="Node3D" parent="CharacterBody3D" unique_id=692060840]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9875141, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D" unique_id=849469399]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3650273, 0)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.3650273, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" unique_id=311267293]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

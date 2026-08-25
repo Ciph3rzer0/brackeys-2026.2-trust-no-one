@@ -51,17 +51,19 @@ transform = Transform3D(0.14204764, 0, 0, 0, 0.14204764, 0, 0, 0, 0.14204764, 2.
 transform = Transform3D(0.14204764, 0, 0, 0, 0.14204764, 0, 0, 0, 0.14204764, 3.831891, 1.8248844, 2.3904476)
 
 [node name="Window" type="MeshInstance3D" parent="." unique_id=1725740009]
-transform = Transform3D(4.012913, -2.1290061e-08, -1.8466758e-14, 1.2463634e-21, -5.322516e-09, 2.4162483, -7.0164003e-07, -0.12176496, -1.05617545e-07, 1.2103043, 2.951724, 3.3428693)
+transform = Transform3D(4.012913, -2.1290061e-08, -1.8466758e-14, 1.2463634e-21, -5.322516e-09, 2.4162483, -7.0164003e-07, -0.12176496, -1.05617545e-07, 1.4060528, 2.9495215, 3.292104)
 mesh = SubResource("PlaneMesh_h45xw")
 surface_material_override/0 = SubResource("StandardMaterial3D_0o143")
 
 [node name="roomLight" type="AreaLight3D" parent="." unique_id=378018363]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 1.060077, 4.0096, 0.2907697)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 1.060077, 7.32155, -0.91183126)
 light_color = Color(0.9999996, 0.8725206, 0.8106262, 1)
 light_energy = 15.67
-light_size = 0.356
+light_size = 0.123
 light_bake_mode = 1
-area_size = Vector2(8.729128, 4.2352867)
+area_range = 8.418
+area_attenuation = 0.375
+area_size = Vector2(9.721287, 10.079965)
 
 [node name="skyLight" type="AreaLight3D" parent="." unique_id=682612581]
 transform = Transform3D(1, 0, 0, 0, 0.7071067, 0.7071068, 0, -0.7071068, 0.7071067, 1.060077, 3.8728118, 4.8876686)
