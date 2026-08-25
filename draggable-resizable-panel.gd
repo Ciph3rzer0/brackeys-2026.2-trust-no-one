@@ -107,6 +107,12 @@ func _update_cursor_shape() -> void:
 	else:
 		mouse_default_cursor_shape = Control.CURSOR_ARROW
 
-
+var oldy := 0.0
 func _on_minimize_button_pressed() -> void:
 	content_container.visible = !content_container.visible
+	
+	if content_container.visible:
+		size.y = oldy
+	else:
+		oldy = size.y
+		size.y = 30

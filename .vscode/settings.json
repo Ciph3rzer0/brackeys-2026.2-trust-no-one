@@ -45,6 +45,11 @@
 		]
 	},
 	"cSpell.words": [
+		"FDIAGSIZE",
+		"HSIZE",
+		"oldy",
+		"tscn",
+		"VSIZE"
 	],
 	"files.exclude": {
 		"**/*.uid": true,
