@@ -27,14 +27,6 @@ tags = {
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_6hbky"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1whnq"]
-emission_enabled = true
-emission = Color(0.7408339, 0.22149116, 0, 1)
-
-[sub_resource type="QuadMesh" id="QuadMesh_32ncx"]
-material = SubResource("StandardMaterial3D_1whnq")
-size = Vector2(6, 5.35)
-
 [sub_resource type="PlaneMesh" id="PlaneMesh_h45xw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0o143"]
@@ -73,10 +65,6 @@ transform = Transform3D(0.14204764, 0, 0, 0, 0.14204764, 0, 0, 0, 0.14204764, 3.
 
 [node name="filingCabinet" parent="." unique_id=1015927099 instance=ExtResource("5_fmddn")]
 transform = Transform3D(0.14204764, 0, 0, 0, 0.14204764, 0, 0, 0, 0.14204764, -2.907347, 0.18830088, 1.5436988)
-
-[node name="ComputerScreen" type="MeshInstance3D" parent="." unique_id=1918808711]
-transform = Transform3D(-0.14204764, 0, 0, 0, 0.14204764, 0, 0, 0, -0.14204764, 3.7677896, 2.2207263, 2.028951)
-mesh = SubResource("QuadMesh_32ncx")
 
 [node name="computer" parent="." unique_id=1636787968 instance=ExtResource("7_in4ui")]
 transform = Transform3D(0.14204764, 0, 0, 0, 0.14204764, 0, 0, 0, 0.14204764, 3.831891, 1.8248844, 2.3904476)

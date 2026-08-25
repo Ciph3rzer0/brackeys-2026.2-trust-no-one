@@ -76,23 +76,23 @@ func _physics_process(delta: float) -> void:
 	if Input.is_key_pressed(KEY_CTRL):
 		$CollisionShape3D.shape.height = lerp($CollisionShape3D.shape.height, 1.38, 0.1)
 
-	$MeshInstance3D.mesh.height = $CollisionShape3D.shape.height
+	$CapsuleBody.mesh.height = $CollisionShape3D.shape.height
 	#%HeadPosition.position.y = $CollisionShape3D.shape.height - 0.25
 
 	# Movement inputs
 	var input_dir = Vector2.ZERO
 	# Forward (W)
 	if Input.is_key_pressed(KEY_W):
-		input_dir.y -= 1
+		input_dir.y += 1
 	# Backward (S)
 	if Input.is_key_pressed(KEY_S):
-		input_dir.y += 1
+		input_dir.y -= 1
 	# Left (A)
 	if Input.is_key_pressed(KEY_A):
-		input_dir.x -= 1
+		input_dir.x += 1
 	# Right (D)
 	if Input.is_key_pressed(KEY_D):
-		input_dir.x += 1
+		input_dir.x -= 1
 
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
