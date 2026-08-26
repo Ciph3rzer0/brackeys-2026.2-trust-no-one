@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://xegybr8jnngu"]
+
+[ext_resource type="Script" uid="uid://dyism05q6lpu7" path="res://ui/start_menu.gd" id="1_xrvln"]
+[ext_resource type="Texture2D" uid="uid://c6t3oxng53jc8" path="res://thumbnail.png" id="2_g1ph5"]
+
+[sub_resource type="Gradient" id="Gradient_rmr83"]
+offsets = PackedFloat32Array(0, 0.99858755)
+colors = PackedColorArray(0.1254902, 0.21568628, 0.39607844, 0.47058824, 0, 0, 0, 0.7607843)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h45xw"]
+gradient = SubResource("Gradient_rmr83")
+fill_from = Vector2(0.13139932, 1)
+fill_to = Vector2(0.78327644, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_80iay"]
+font_size = 94
+
+[node name="StartMenu" type="Control" unique_id=668045221]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xrvln")
+
+[node name="Background2" type="TextureRect" parent="." unique_id=1627181151]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_g1ph5")
+
+[node name="Background" type="TextureRect" parent="." unique_id=2052596641]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_h45xw")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1115787601]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuPanel" type="PanelContainer" parent="CenterContainer" unique_id=97168499]
+custom_minimum_size = Vector2(500, 570)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/MenuPanel" unique_id=1388476239]
+layout_mode = 2
+theme_override_constants/margin_left = 54
+theme_override_constants/margin_top = 26
+theme_override_constants/margin_right = 54
+theme_override_constants/margin_bottom = 26
+
+[node name="Content" type="BoxContainer" parent="CenterContainer/MenuPanel/MarginContainer" unique_id=1681026255]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Title" type="Label" parent="CenterContainer/MenuPanel/MarginContainer/Content" unique_id=116672986]
+layout_mode = 2
+text = "Camera Co"
+label_settings = SubResource("LabelSettings_80iay")
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="CenterContainer/MenuPanel/MarginContainer/Content" unique_id=2116047318]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="CenterContainer/MenuPanel/MarginContainer/Content" unique_id=1269322790]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Start"
+
+[node name="QuitButton" type="Button" parent="CenterContainer/MenuPanel/MarginContainer/Content" unique_id=191947077]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Quit"
+
+[connection signal="pressed" from="CenterContainer/MenuPanel/MarginContainer/Content/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="CenterContainer/MenuPanel/MarginContainer/Content/QuitButton" to="." method="_on_quit_button_pressed"]

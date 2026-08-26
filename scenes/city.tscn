@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://bkmp0qtqdsq8u" path="res://ui/computer-screen/computer_screen.tscn" id="12_q8eg3"]
 [ext_resource type="Script" uid="uid://g1t4orm3d6pu" path="res://interactable_mount.gd" id="14_yles7"]
 [ext_resource type="QuadMesh" uid="uid://qaplr8l4g05l" path="res://ui/computer-screen/screen_quad_mesh.tres" id="15_agolw"]
+[ext_resource type="PackedScene" uid="uid://b3842lt8vl0sp" path="res://assets/models/city/vehicles/hatchback.glb" id="20_ibljb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_80iay"]
 sky_top_color = Color(0.17573944, 0.48172218, 0.64240384, 1)
@@ -399,9 +400,6 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -14.
 
 [node name="pickupTruck7" parent="trucks" unique_id=449604985 instance=ExtResource("9_4lp1f")]
 transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, -22.483154, -0.03928113, -7.3096237)
-
-[node name="pickupTruck8" parent="trucks" unique_id=1747791372 instance=ExtResource("9_4lp1f")]
-transform = Transform3D(0.86564213, 0, -0.50066334, 0, 1, 0, 0.50066334, 0, 0.86564213, -23.158905, -0.03928113, 41.497795)
 
 [node name="weiner" parent="trucks" unique_id=1701113981 instance=ExtResource("10_obbxu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.58136, 1.9883385, 15.9311695)
@@ -4255,5 +4253,8 @@ cull_mask = 1015808
 environment = SubResource("Environment_q8eg3")
 projection = 1
 size = 150.0
+
+[node name="hatchback2" parent="." unique_id=819623859 instance=ExtResource("20_ibljb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.44442, 1.1127148, 33.669254)
 
 [editable path="Office"]
