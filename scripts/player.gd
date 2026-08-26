@@ -15,8 +15,9 @@ var landing_velocity
 
 var distance = 0
 var footstep_distance = 2.1
-var is_mouse_free := false
 
+var is_mouse_free := false
+var _mounted_object: Area3D
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -38,6 +39,21 @@ func _input(event: InputEvent) -> void:
 		cam.rotation_degrees.x -= event.relative.y / 10
 		cam.rotation_degrees.x = clamp(cam.rotation_degrees.x, -90, 90)
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("pc_interact"):
+		if _mounted_object:
+			_mounted_object = null
+		else:
+			try_mount()
+
+func try_mount():
+	var mounts = get_tree().get_nodes_in_group("InteractiveMount") as Array[Area3D]
+	for mount in mounts:
+		if mount.overlaps_body(self):
+			global_position = mount.global_position
+			global_rotation = mount.global_rotation
+			_mounted_object = mount
+
 var exit_button_held_timer := 0.0
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("ui_exit_game"):
@@ -48,6 +64,9 @@ func _process(delta: float) -> void:
 		exit_button_held_timer = 0
 		
 func _physics_process(delta: float) -> void:
+	# No player movement while mounted
+	if _mounted_object: return
+	
 	if not is_on_floor():
 		velocity += get_gravity() * 2 * delta
 		landing_velocity = -velocity.y

@@ -49,6 +49,10 @@ shader_parameter/frosted_noise_scale = 200.0
 shader_parameter/glass_thickness = 0.2
 shader_parameter/ior = 1.45
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uhg71"]
+radius = 1.4682617
+height = 2.9365234
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_ruxf0"]
 viewport_path = NodePath("ComputerScreenRenders/ComputerMonitor")
 
@@ -106,14 +110,17 @@ metadata/_edit_lock_ = true
 
 [node name="Office" parent="." unique_id=2119133953 instance=ExtResource("6_2jj31")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2601624, 35.22836, -55.920532)
-metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="MorningCoffee" parent="Office" index="0" unique_id=1402947618]
 volume_db = -25.0
 
 [node name="room" parent="Office" index="3" unique_id=359625459]
 transform = Transform3D(1.3984075, 0, 0, 0, 1.3984075, 0, 0, 0, 1.3984075, 1.1665301, 0.18830109, 0.4686966)
+
+[node name="chair" parent="Office/work area" parent_id_path=PackedInt32Array(2119133953, 2052434724) index="1" unique_id=114191316]
+transform = Transform3D(0.04772356, 0, -0.044130053, 0, 0.065, 0, 0.044130053, 0, 0.04772356, -0.36422777, -0.64325285, 3.533385)
 
 [node name="CrimeReport2" parent="Office/work area" parent_id_path=PackedInt32Array(2119133953, 2052434724) index="3" unique_id=617504038]
 transform = Transform3D(8.918091e-09, -0.20402214, -8.918091e-09, 1.7836182e-08, 8.918092e-09, -0.20402214, 0.20402214, 8.918089e-09, 1.7836182e-08, 0.622524, 1.4867287, 2.4853783)
@@ -407,11 +414,17 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -15.
 [node name="policeOfficer" parent="trucks" unique_id=2026070074 instance=ExtResource("12_hyhbb")]
 transform = Transform3D(0.31999412, 0, -0.27076468, 0, 0.41917747, 0, 0.27076468, 0, 0.31999412, 32.04847, 1.4036803, 37.339485)
 
+[node name="Chair Interaction" type="Area3D" parent="." unique_id=402669167 groups=["InteractiveMount"]]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 2.2714262, 35.188118, -54.854343)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chair Interaction" unique_id=1974498237]
+transform = Transform3D(1.0000002, 0, -5.9604645e-08, 0, 1, 0, 5.9604645e-08, 0, 1.0000002, 0, 0.8417969, 0)
+shape = SubResource("CapsuleShape3D_uhg71")
+
 [node name="Screens" type="Node3D" parent="." unique_id=167141141]
 
 [node name="ComputerScreen" type="StaticBody3D" parent="Screens" unique_id=2105178651 node_paths=PackedStringArray("computer_viewport")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.555, 37.457, -53.86)
-visible = false
 script = ExtResource("3_obbxu")
 computer_viewport = NodePath("../../ComputerScreenRenders/ComputerMonitor")
 quad_mesh = ExtResource("15_agolw")
