@@ -17,7 +17,7 @@ var distance = 0
 var footstep_distance = 2.1
 
 var is_mouse_free := false
-var _mounted_object: Area3D
+var _mounted_object: InteractableMount
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -40,15 +40,19 @@ func _input(event: InputEvent) -> void:
 		cam.rotation_degrees.x = clamp(cam.rotation_degrees.x, -90, 90)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("pc_interact"):
+	if (!_mounted_object or !is_mouse_free) and event.is_action_pressed("pc_interact"):
 		if _mounted_object:
 			_mounted_object = null
 			set_mouse_free(false)
 		else:
 			try_mount()
+	
+	if _mounted_object:
+		if event is InputEventKey:
+			_mounted_object.push_keypress_to_viewport(event)
 
 func try_mount():
-	var mounts = get_tree().get_nodes_in_group("InteractiveMount") as Array[Area3D]
+	var mounts = get_tree().get_nodes_in_group("InteractiveMount") as Array[InteractableMount]
 	for mount in mounts:
 		if mount.overlaps_body(self):
 			global_position = mount.global_position

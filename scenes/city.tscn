@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://b336hyl1odnbm" path="res://assets/models/city/vehicles/sport.glb" id="11_hlin5"]
 [ext_resource type="PackedScene" uid="uid://cm61umfkyivbf" path="res://assets/models/characters/policeOfficer.glb" id="12_hyhbb"]
 [ext_resource type="PackedScene" uid="uid://bkmp0qtqdsq8u" path="res://ui/computer-screen/computer_screen.tscn" id="12_q8eg3"]
+[ext_resource type="Script" uid="uid://g1t4orm3d6pu" path="res://interactable_mount.gd" id="14_yles7"]
 [ext_resource type="QuadMesh" uid="uid://qaplr8l4g05l" path="res://ui/computer-screen/screen_quad_mesh.tres" id="15_agolw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_80iay"]
@@ -414,8 +415,10 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -15.
 [node name="policeOfficer" parent="trucks" unique_id=2026070074 instance=ExtResource("12_hyhbb")]
 transform = Transform3D(0.31999412, 0, -0.27076468, 0, 0.41917747, 0, 0.27076468, 0, 0.31999412, 32.04847, 1.4036803, 37.339485)
 
-[node name="Chair Interaction" type="Area3D" parent="." unique_id=402669167 groups=["InteractiveMount"]]
+[node name="Chair Interaction" type="Area3D" parent="." unique_id=402669167 node_paths=PackedStringArray("redirect_input") groups=["InteractiveMount"]]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 2.2714262, 35.188118, -54.854343)
+script = ExtResource("14_yles7")
+redirect_input = NodePath("../ComputerScreenRenders/ComputerMonitor")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Chair Interaction" unique_id=1974498237]
 transform = Transform3D(1.0000002, 0, -5.9604645e-08, 0, 1, 0, 5.9604645e-08, 0, 1.0000002, 0, 0.8417969, 0)

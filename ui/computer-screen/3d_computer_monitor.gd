@@ -7,6 +7,13 @@ var screen_size: Vector2
 func _ready() -> void:
 	screen_size = quad_mesh.size
 
+func push_keypress_to_viewport(event: InputEventKey):
+		var key_event_copy = event.duplicate()
+		
+		# Push the input event into the computer monitor viewport
+		computer_viewport.push_input(key_event_copy, true)
+		get_viewport().set_input_as_handled()
+
 func _input_event(_camera: Camera3D, event: InputEvent, event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if event is InputEventMouseButton or event is InputEventMouseMotion:
 		# transform 3D click local to this object.
@@ -18,15 +25,16 @@ func _input_event(_camera: Camera3D, event: InputEvent, event_position: Vector3,
 			local.x / screen_size.x + 0.5,
 			0.5 - local.y / screen_size.y
 		)
-
+		
 		# Duplicate Input event
 		var translated_input_event = event.duplicate()
-
+		
 		# Translate the input into the viewport screen space
 		translated_input_event.position = Vector2(uv.x * 1280, uv.y * 1200)
-
+		
 		# Push the translated input event into the computer monitor viewport
 		computer_viewport.push_input(translated_input_event, true)
+		get_viewport().set_input_as_handled()
 
 
 func spawn_sphere_3d(spawn_position: Vector3):
