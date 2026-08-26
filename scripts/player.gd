@@ -42,8 +42,7 @@ func _input(event: InputEvent) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if (!_mounted_object or !is_mouse_free) and event.is_action_pressed("pc_interact"):
 		if _mounted_object:
-			_mounted_object = null
-			set_mouse_free(false)
+			dismount()
 		else:
 			try_mount()
 	
@@ -61,6 +60,10 @@ func try_mount():
 			cam.rotation_degrees.x = 0
 			set_mouse_free(true)
 
+func dismount():
+	_mounted_object = null
+	set_mouse_free(false)
+
 var exit_button_held_timer := 0.0
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("ui_exit_game"):
@@ -71,6 +74,12 @@ func _process(delta: float) -> void:
 		exit_button_held_timer = 0
 		
 func _physics_process(delta: float) -> void:
+	var input_dir = Input.get_vector( "pc_right", "pc_left", "pc_back" ,"pc_forward")
+	
+	# If the player moves while camera is locked (look mode), dismount
+	if !is_mouse_free and !input_dir.is_zero_approx():
+		dismount()
+	
 	# No player movement while mounted
 	if _mounted_object: return
 	
@@ -106,20 +115,6 @@ func _physics_process(delta: float) -> void:
 	#%HeadPosition.position.y = $CollisionShape3D.shape.height - 0.25
 
 	# Movement inputs
-	var input_dir = Vector2.ZERO
-	# Forward (W)
-	if Input.is_key_pressed(KEY_W):
-		input_dir.y += 1
-	# Backward (S)
-	if Input.is_key_pressed(KEY_S):
-		input_dir.y -= 1
-	# Left (A)
-	if Input.is_key_pressed(KEY_A):
-		input_dir.x += 1
-	# Right (D)
-	if Input.is_key_pressed(KEY_D):
-		input_dir.x -= 1
-
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
 		velocity.x = direction.x * speed
