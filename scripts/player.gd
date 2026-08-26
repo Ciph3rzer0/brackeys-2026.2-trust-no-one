@@ -22,16 +22,16 @@ var _mounted_object: Area3D
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-func toggle_mouse():
-	is_mouse_free = !is_mouse_free
-	if is_mouse_free:
+func set_mouse_free(val: bool):
+	is_mouse_free = val
+	if val:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
-			toggle_mouse()
+		set_mouse_free(!is_mouse_free)
 	
 	if is_mouse_free: return
 	if event is InputEventMouseMotion:
@@ -43,6 +43,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pc_interact"):
 		if _mounted_object:
 			_mounted_object = null
+			set_mouse_free(false)
 		else:
 			try_mount()
 
@@ -53,6 +54,8 @@ func try_mount():
 			global_position = mount.global_position
 			global_rotation = mount.global_rotation
 			_mounted_object = mount
+			cam.rotation_degrees.x = 0
+			set_mouse_free(true)
 
 var exit_button_held_timer := 0.0
 func _process(delta: float) -> void:
