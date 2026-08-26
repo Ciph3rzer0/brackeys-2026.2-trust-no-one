@@ -10,7 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://bxc4ceq66ael3" path="res://scenes/player.tscn" id="7_drx7m"]
 [ext_resource type="PackedScene" uid="uid://caxrs5g8ulost" path="res://assets/models/city/vehicles/pickupTruck.glb" id="9_4lp1f"]
 [ext_resource type="Shader" uid="uid://x57eaea1vorh" path="res://scenes/mapgrid.gdshader" id="10_4lp1f"]
+[ext_resource type="PackedScene" uid="uid://bbhrhc2pyvof8" path="res://assets/models/city/vehicles/weiner.glb" id="10_obbxu"]
 [ext_resource type="Script" uid="uid://d2obv1fxmvya7" path="res://scenes/grid_generator.gd" id="11_07bxp"]
+[ext_resource type="PackedScene" uid="uid://b336hyl1odnbm" path="res://assets/models/city/vehicles/sport.glb" id="11_hlin5"]
+[ext_resource type="PackedScene" uid="uid://cm61umfkyivbf" path="res://assets/models/characters/policeOfficer.glb" id="12_hyhbb"]
 [ext_resource type="PackedScene" uid="uid://bkmp0qtqdsq8u" path="res://ui/computer-screen/computer_screen.tscn" id="12_q8eg3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_80iay"]
@@ -86,8 +89,18 @@ metadata/_edit_lock_ = true
 
 [node name="Office" parent="." unique_id=2119133953 instance=ExtResource("6_2jj31")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2601624, 35.22836, -55.920532)
-metadata/_edit_group_ = true
-metadata/_edit_lock_ = true
+
+[node name="room" parent="Office" index="0" unique_id=359625459]
+transform = Transform3D(1.3984075, 0, 0, 0, 1.3984075, 0, 0, 0, 1.3984075, 1.1665301, 0.18830109, 0.4686966)
+
+[node name="CrimeReport2" parent="Office" index="11" unique_id=617504038]
+transform = Transform3D(8.91809e-09, -0.20402212, -8.918091e-09, 1.7836182e-08, 8.918092e-09, -0.20402212, 0.20402212, 8.918089e-09, 1.7836182e-08, 5.614093, 3.3208275, 0.8904953)
+
+[node name="corkboard2" parent="Office" index="12" unique_id=1877018735]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.6445374, 3.952282, 0.3880005)
+
+[node name="MorningCoffee" parent="Office" index="18" unique_id=1402947618]
+volume_db = -25.0
 
 [node name="ComputerScreen" type="MeshInstance3D" parent="Office" unique_id=1861852960]
 transform = Transform3D(-0.14204764, 0, 0, 0, 0.14204764, 0, 0, 0, -0.14204764, 3.7677896, 2.2150154, 2.0289497)
@@ -336,9 +349,6 @@ transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, -47.
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="van2" parent="trucks" unique_id=1907656677 instance=ExtResource("5_3br4m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.071075, 0.4083023, 19.231054)
-
 [node name="van3" parent="trucks" unique_id=1293294082 instance=ExtResource("5_3br4m")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 110.52015, 0.4083023, 43.520317)
 
@@ -368,6 +378,18 @@ transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, -22.
 
 [node name="pickupTruck8" parent="trucks" unique_id=1747791372 instance=ExtResource("9_4lp1f")]
 transform = Transform3D(0.86564213, 0, -0.50066334, 0, 1, 0, 0.50066334, 0, 0.86564213, -23.158905, -0.03928113, 41.497795)
+
+[node name="weiner" parent="trucks" unique_id=1701113981 instance=ExtResource("10_obbxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.58136, 1.9883385, 15.9311695)
+
+[node name="sport2" parent="trucks" unique_id=1929661198 instance=ExtResource("11_hlin5")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 102.27576, 0.42947483, 86.91739)
+
+[node name="sport3" parent="trucks" unique_id=1701359066 instance=ExtResource("11_hlin5")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -15.207687, 0.43933296, 3.7514248)
+
+[node name="policeOfficer" parent="trucks" unique_id=2026070074 instance=ExtResource("12_hyhbb")]
+transform = Transform3D(0.31999412, 0, -0.27076468, 0, 0.41917747, 0, 0.27076468, 0, 0.31999412, 32.04847, 1.4036803, 37.339485)
 
 [node name="Node3D" type="Node3D" parent="." unique_id=704324119]
 visible = false
