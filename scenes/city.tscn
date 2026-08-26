@@ -116,10 +116,10 @@ volume_db = -25.0
 [node name="room" parent="Office" index="3" unique_id=359625459]
 transform = Transform3D(1.3984075, 0, 0, 0, 1.3984075, 0, 0, 0, 1.3984075, 1.1665301, 0.18830109, 0.4686966)
 
-[node name="CrimeReport2" parent="Office/work area" parent_id_path=PackedInt32Array(2119133953, 2052434724) index="7" unique_id=617504038]
+[node name="CrimeReport2" parent="Office/work area" parent_id_path=PackedInt32Array(2119133953, 2052434724) index="3" unique_id=617504038]
 transform = Transform3D(8.918091e-09, -0.20402214, -8.918091e-09, 1.7836182e-08, 8.918092e-09, -0.20402214, 0.20402214, 8.918089e-09, 1.7836182e-08, 0.622524, 1.4867287, 2.4853783)
 
-[node name="corkboard2" parent="Office/work area" parent_id_path=PackedInt32Array(2119133953, 2052434724) index="8" unique_id=1877018735]
+[node name="corkboard2" parent="Office/work area" parent_id_path=PackedInt32Array(2119133953, 2052434724) index="4" unique_id=1877018735]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65296817, 2.1181793, 1.9828835)
 
 [node name="Window" parent="Office" index="6" unique_id=1725740009]
