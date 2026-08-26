@@ -14,8 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://bosjilrctrsn7" path="res://assets/models/office/gooseneckTablet.glb" id="13_wruke"]
 [ext_resource type="PackedScene" uid="uid://bo0akjnab2yy2" path="res://assets/models/office/faxTable.glb" id="14_k578b"]
 [ext_resource type="PackedScene" uid="uid://clm0ltpnrt7du" path="res://assets/models/office/faxMachine.glb" id="15_07d2k"]
-[ext_resource type="PackedScene" uid="uid://cqt60i3hqdbm4" path="res://assets/models/office/coffeeCup.glb" id="15_k578b"]
 [ext_resource type="AudioStream" uid="uid://wp6coykaawrh" path="res://assets/audio/music/morning-coffee.wav" id="16_07d2k"]
+[ext_resource type="PackedScene" uid="uid://b085wqdb2gvpt" path="res://scenes/coffeeCup.tscn" id="16_gnmmx"]
+[ext_resource type="AudioStream" uid="uid://dssagk4uh4quc" path="res://assets/audio/sfx/rain.mp3" id="17_gnmmx"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_6hbky"]
 
@@ -29,35 +30,25 @@ refraction_scale = 0.1
 
 [node name="Office" type="Node3D" unique_id=2119133953]
 
-[node name="room" parent="." unique_id=359625459 instance=ExtResource("1_jwaux")]
-transform = Transform3D(1.3984075, 0, 0, 0, 1.3984075, 0, 0, 0, 1.3984075, 1.166569, 0.18830088, 0.4664774)
+[node name="MorningCoffee" type="AudioStreamPlayer3D" parent="." unique_id=1402947618]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3038962, 0.6451453, 2.0154862)
+stream = ExtResource("16_07d2k")
+attenuation_model = 3
+volume_db = -20.0
+autoplay = true
+panning_strength = 0.1
+bus = &"Music"
+attenuation_filter_cutoff_hz = 20500.0
 
-[node name="floorStaticBody" type="StaticBody3D" parent="room" unique_id=38122905]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.017379522, 0, 0.10347867)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="room/floorStaticBody" unique_id=408028874]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.59643555)
-shape = SubResource("WorldBoundaryShape3D_6hbky")
-
-[node name="pottedPlant" parent="." unique_id=671362458 instance=ExtResource("2_7jj4f")]
-transform = Transform3D(0.12016827, 0, 0.07574378, 0, 0.14204764, 0, -0.07574378, 0, 0.12016827, -2.6490257, 0.14701751, -0.9509721)
-
-[node name="chair" parent="." unique_id=114191316 instance=ExtResource("3_qphb6")]
-transform = Transform3D(0.10429261, 0, -0.09643954, 0, 0.14204764, 0, 0.09643954, 0, 0.10429261, 4.118725, 0.1887236, 0.040243387)
-
-[node name="desk2" parent="." unique_id=1129029929 instance=ExtResource("4_2knxt")]
-transform = Transform3D(0.14204764, 0, 0, 0, 0.14204764, 0, 0, 0, 0.14204764, 3.4287162, 0.18830088, 2.1605897)
-
-[node name="filingCabinet" parent="." unique_id=1015927099 instance=ExtResource("5_fmddn")]
-transform = Transform3D(0.14204764, 0, 0, 0, 0.14204764, 0, 0, 0, 0.14204764, -2.907347, 0.18830088, 1.5436988)
-
-[node name="computer" parent="." unique_id=1636787968 instance=ExtResource("7_in4ui")]
-transform = Transform3D(1.3833177, 0, 0, 0, 1.3833177, 0, 0, 0, 1.3833177, 3.831891, 1.8248844, 2.3904476)
-
-[node name="Window" type="MeshInstance3D" parent="." unique_id=1725740009]
-transform = Transform3D(4.012913, -2.1290061e-08, -1.8466758e-14, 1.2463634e-21, -5.322516e-09, 2.4162483, -7.0164003e-07, -0.12176496, -1.05617545e-07, 1.3165216, 2.9495215, 3.292104)
-mesh = SubResource("PlaneMesh_h45xw")
-surface_material_override/0 = SubResource("StandardMaterial3D_0o143")
+[node name="Rain" type="AudioStreamPlayer3D" parent="." unique_id=105857967]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1283921, 1.0637031, 6.396698)
+stream = ExtResource("17_gnmmx")
+volume_db = -20.0
+pitch_scale = 0.5
+autoplay = true
+bus = &"SFX"
+attenuation_filter_cutoff_hz = 5948.0
+attenuation_filter_db = -40.6
 
 [node name="roomLight" type="AreaLight3D" parent="." unique_id=378018363]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 1.060077, 7.32155, -0.91183126)
@@ -69,41 +60,69 @@ area_range = 8.418
 area_attenuation = 0.375
 area_size = Vector2(9.721287, 10.079965)
 
-[node name="spyCam" parent="." unique_id=1478130473 instance=ExtResource("8_fmddn")]
-transform = Transform3D(0.048851147, 0, -0.04991035, 0, 0.06983894, 0, 0.04991035, 0, 0.048851147, -2.9908223, 1.3335645, -1.1351453)
+[node name="room" parent="." unique_id=359625459 instance=ExtResource("1_jwaux")]
+transform = Transform3D(1.3984075, 0, 0, 0, 1.3984075, 0, 0, 0, 1.3984075, 1.166569, 0.18830088, 0.4664774)
 
-[node name="gooseneckClamp" parent="." unique_id=555761378 instance=ExtResource("10_6hbky")]
-transform = Transform3D(1.7347819, 0, 0, 0, 1.7347819, 0, 0, 0, 1.7347819, 3.0865626, 2.5492256, 2.2716348)
+[node name="floorStaticBody" type="StaticBody3D" parent="room" unique_id=38122905]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.017379522, 0, 0.10347867)
 
-[node name="CrimeReport" parent="." unique_id=787598383 instance=ExtResource("11_o23kw")]
-transform = Transform3D(-0.20402214, 7.796444e-16, -1.7836184e-08, 1.7836184e-08, 8.918093e-09, -0.20402214, 0, -0.20402214, -8.918093e-09, 2.8349833, 2.1993988, 2.2350566)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="room/floorStaticBody" unique_id=408028874]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.59643555)
+shape = SubResource("WorldBoundaryShape3D_6hbky")
 
-[node name="CrimeReport2" parent="." unique_id=617504038 instance=ExtResource("11_o23kw")]
-transform = Transform3D(8.91809e-09, -0.20402212, -8.918091e-09, 1.7836182e-08, 8.918092e-09, -0.20402212, 0.20402212, 8.918089e-09, 1.7836182e-08, 5.6783447, 3.3208265, 0.8904942)
-
-[node name="corkboard2" parent="." unique_id=1877018735 instance=ExtResource("12_o23kw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7087893, 3.9522834, 0.3879993)
-
-[node name="door2" parent="." unique_id=1698441969 instance=ExtResource("12_wruke")]
-transform = Transform3D(1.6940675, 0, 0, 0, 1.6940675, 0, 0, 0, 1.6940675, -1.0021813, 1.890615, -5.6861143)
-
-[node name="gooseneckTablet" parent="." unique_id=963414952 instance=ExtResource("13_wruke")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.848815, 2.9043589, 2.1063266)
-
-[node name="faxTable" parent="." unique_id=739480162 instance=ExtResource("14_k578b")]
+[node name="work area" type="Node3D" parent="." unique_id=2052434724]
 transform = Transform3D(1.4062078, 0, 0, 0, 1.4062078, 0, 0, 0, 1.4062078, 4.6309047, 1.0932708, -4.9284306)
 
-[node name="faxMachine" parent="." unique_id=880050772 instance=ExtResource("15_07d2k")]
-transform = Transform3D(-5.6499555e-08, 0, 1.2925591, 0, 1.2925591, 0, -1.2925591, 0, -5.6499555e-08, 4.6083984, 1.8175709, -4.906624)
+[node name="coffeeCup" parent="work area" unique_id=2141730045 instance=ExtResource("16_gnmmx")]
+transform = Transform3D(1.1587414, 0, 0, 0, 1.1587414, 0, 0, 0, 1.1587414, 0.3076514, 0.43100306, 5.0859513)
 
-[node name="coffeeCup" parent="." unique_id=1135056873 instance=ExtResource("15_k578b")]
-transform = Transform3D(1.377012, 0, 0, 0, 1.377012, 0, 0, 0, 1.377012, 2.1522586, 1.6386267, 2.122443)
+[node name="chair" parent="work area" unique_id=114191316 instance=ExtResource("3_qphb6")]
+transform = Transform3D(0.05858278, 0, -0.05417159, 0, 0.07979037, 0, 0.05417159, 0, 0.05858278, -0.36422777, -0.64325285, 3.533385)
 
-[node name="MorningCoffee" type="AudioStreamPlayer3D" parent="." unique_id=1402947618]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3038962, 0.6451453, 2.0154862)
-stream = ExtResource("16_07d2k")
-attenuation_model = 3
-volume_db = -20.0
-autoplay = true
-bus = &"Music"
-attenuation_filter_cutoff_hz = 20500.0
+[node name="desk2" parent="work area" unique_id=1129029929 instance=ExtResource("4_2knxt")]
+transform = Transform3D(0.10101469, 0, 0, 0, 0.10101469, 0, 0, 0, 0.10101469, -0.5126437, -0.6435535, 5.0412326)
+
+[node name="CrimeReport2" parent="work area" unique_id=617504038 instance=ExtResource("11_o23kw")]
+transform = Transform3D(6.3419434e-09, -0.14508675, -6.3419443e-09, 1.2683889e-08, 6.3419447e-09, -0.14508675, 0.14508675, 6.341943e-09, 1.2683889e-08, 0.74486876, 1.5840871, 4.138026)
+
+[node name="corkboard2" parent="work area" unique_id=1877018735 instance=ExtResource("12_o23kw")]
+transform = Transform3D(0.71113247, 0, 0, 0, 0.71113247, 0, 0, 0, 0.71113247, 0.7665186, 2.0331366, 3.780686)
+
+[node name="faxTable" parent="work area" unique_id=739480162 instance=ExtResource("14_k578b")]
+
+[node name="faxMachine" parent="work area" unique_id=880050772 instance=ExtResource("15_07d2k")]
+transform = Transform3D(-4.017867e-08, 0, 0.91918075, 0, 0.91918075, 0, -0.91918075, 0, -4.017867e-08, -0.0160048, 0.5150733, 0.01550746)
+
+[node name="computerAccessories" type="Node3D" parent="work area" unique_id=965257853]
+
+[node name="CrimeReport" parent="work area/computerAccessories" unique_id=787598383 instance=ExtResource("11_o23kw")]
+transform = Transform3D(-0.14508677, 5.5443044e-16, -1.26838895e-08, 1.26838895e-08, 6.341946e-09, -0.14508677, 0, -0.14508677, -6.341946e-09, -1.277138, 0.7866037, 5.0941887)
+
+[node name="gooseneckTablet" parent="work area/computerAccessories" unique_id=963414952 instance=ExtResource("13_wruke")]
+transform = Transform3D(0.71113247, 0, 0, 0, 0.71113247, 0, 0, 0, 0.71113247, -0.5561693, 1.2879236, 5.002644)
+
+[node name="computer" parent="work area/computerAccessories" unique_id=1636787968 instance=ExtResource("7_in4ui")]
+transform = Transform3D(0.98372215, 0, 0, 0, 0.98372215, 0, 0, 0, 0.98372215, -0.56820464, 0.52027416, 5.204692)
+
+[node name="gooseneckClamp" parent="work area/computerAccessories" unique_id=555761378 instance=ExtResource("10_6hbky")]
+transform = Transform3D(1.2336597, 0, 0, 0, 1.2336597, 0, 0, 0, 1.2336597, -1.0982318, 1.0353769, 5.1202)
+
+[node name="set dressing" type="Node3D" parent="." unique_id=33801651]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1283921, 1.0637031, 4.1342545)
+
+[node name="pottedPlant" parent="set dressing" unique_id=671362458 instance=ExtResource("2_7jj4f")]
+transform = Transform3D(0.12016827, 0, 0.07574378, 0, 0.14204764, 0, -0.07574378, 0, 0.12016827, -3.7774177, -0.9166856, -5.0852265)
+
+[node name="spyCam" parent="set dressing/pottedPlant" unique_id=1478130473 instance=ExtResource("8_fmddn")]
+transform = Transform3D(0.10357852, 0, -0.48062423, 0, 0.49165857, 0, 0.48062423, 0, 0.10357852, -1.3442268, 8.353163, -2.3799124)
+
+[node name="filingCabinet" parent="set dressing" unique_id=1015927099 instance=ExtResource("5_fmddn")]
+transform = Transform3D(0.14204764, 0, 0, 0, 0.14204764, 0, 0, 0, 0.14204764, -4.035739, -0.8754022, -2.5905557)
+
+[node name="door2" parent="set dressing" unique_id=1698441969 instance=ExtResource("12_wruke")]
+transform = Transform3D(1.6940675, 0, 0, 0, 1.6940675, 0, 0, 0, 1.6940675, -2.1305733, 0.8269119, -9.820369)
+
+[node name="Window" type="MeshInstance3D" parent="." unique_id=1725740009]
+transform = Transform3D(4.012913, -2.1290061e-08, -1.8466758e-14, 1.2463634e-21, -5.322516e-09, 2.4162483, -7.0164003e-07, -0.12176496, -1.05617545e-07, 1.3165216, 2.9495215, 3.292104)
+mesh = SubResource("PlaneMesh_h45xw")
+surface_material_override/0 = SubResource("StandardMaterial3D_0o143")
