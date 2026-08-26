@@ -127,7 +127,7 @@ transform = Transform3D(-4.012913, 2.1290061e-08, -2.1123512e-07, 3.5082005e-07,
 surface_material_override/0 = SubResource("ShaderMaterial_f7b0s")
 
 [node name="ComputerScreen" type="MeshInstance3D" parent="Office" unique_id=1861852960]
-transform = Transform3D(-0.14204764, 0, 0, 0, 0.14204764, 0, 0, 0, -0.14204764, 3.7677896, 2.2150154, 2.0289497)
+transform = Transform3D(-0.14204764, 0, 0, 0, 0.14204764, 0, 0, 0, -0.14204764, 3.7699718, 2.2150154, 2.0289497)
 mesh = SubResource("QuadMesh_32ncx")
 surface_material_override/0 = SubResource("StandardMaterial3D_hlin5")
 
@@ -4308,6 +4308,10 @@ mesh = SubResource("BoxMesh_q8eg3")
 surface_material_override/0 = SubResource("StandardMaterial3D_07bxp")
 
 [node name="ComputerMonitor" type="SubViewport" parent="ComputerScreenRenders" unique_id=8867527]
+physics_object_picking = true
+physics_object_picking_sort = true
+physics_object_picking_first_only = true
+size = Vector2i(1280, 1200)
 
 [node name="ComputerScreenUI" parent="ComputerScreenRenders/ComputerMonitor" unique_id=694152180 instance=ExtResource("12_q8eg3")]
 
