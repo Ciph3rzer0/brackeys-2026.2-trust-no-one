@@ -12,12 +12,11 @@
 bg_color = Color(0, 0.18039216, 0.57254905, 1)
 
 [node name="ComputerScreen" type="Control" unique_id=694152180]
+custom_minimum_size = Vector2(1280, 1200)
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 1200.0
 script = ExtResource("1_5btdj")
 metadata/_edit_lock_ = true
 
@@ -74,10 +73,10 @@ offset_bottom = 464.0
 
 [node name="ComputerWindow" parent="." unique_id=24755338 instance=ExtResource("7_8qfsr")]
 layout_mode = 1
-offset_left = 301.0
-offset_top = 208.0
-offset_right = -496.0
-offset_bottom = -236.0
+offset_left = 322.0
+offset_top = 670.0
+offset_right = -475.0
+offset_bottom = -209.0
 content_scene_path = "uid://dukf0r3kv7h3u"
 
 [connection signal="filter_changed" from="PlateFilter" to="VehicleSightingsTableView" method="_on_plate_filter_filter_changed"]

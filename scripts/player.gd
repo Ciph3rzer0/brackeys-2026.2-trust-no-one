@@ -15,28 +15,55 @@ var landing_velocity
 
 var distance = 0
 var footstep_distance = 2.1
-var is_mouse_free := false
 
+var is_mouse_free := false
+var _mounted_object: InteractableMount
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-func toggle_mouse():
-	is_mouse_free = !is_mouse_free
-	if is_mouse_free:
+func set_mouse_free(val: bool):
+	is_mouse_free = val
+	if val:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
-			toggle_mouse()
+		set_mouse_free(!is_mouse_free)
+		get_viewport().set_input_as_handled()
 	
 	if is_mouse_free: return
 	if event is InputEventMouseMotion:
 		rotation_degrees.y -= event.relative.x / 10
 		cam.rotation_degrees.x -= event.relative.y / 10
 		cam.rotation_degrees.x = clamp(cam.rotation_degrees.x, -90, 90)
+
+func _unhandled_input(event: InputEvent) -> void:
+	if (!_mounted_object or !is_mouse_free) and event.is_action_pressed("pc_interact"):
+		if _mounted_object:
+			dismount()
+		else:
+			try_mount()
+	
+	if _mounted_object:
+		if event is InputEventKey:
+			_mounted_object.push_keypress_to_viewport(event)
+
+func try_mount():
+	var mounts = get_tree().get_nodes_in_group("InteractiveMount") as Array[InteractableMount]
+	for mount in mounts:
+		if mount.overlaps_body(self):
+			global_position = mount.global_position
+			global_rotation = mount.global_rotation
+			_mounted_object = mount
+			cam.rotation_degrees.x = 0
+			set_mouse_free(true)
+
+func dismount():
+	_mounted_object = null
+	set_mouse_free(false)
 
 var exit_button_held_timer := 0.0
 func _process(delta: float) -> void:
@@ -48,6 +75,15 @@ func _process(delta: float) -> void:
 		exit_button_held_timer = 0
 		
 func _physics_process(delta: float) -> void:
+	var input_dir = Input.get_vector( "pc_right", "pc_left", "pc_back" ,"pc_forward")
+	
+	# If the player moves while camera is locked (look mode), dismount
+	if !is_mouse_free and !input_dir.is_zero_approx():
+		dismount()
+	
+	# No player movement while mounted
+	if _mounted_object: return
+	
 	if not is_on_floor():
 		velocity += get_gravity() * 2 * delta
 		landing_velocity = -velocity.y
@@ -80,20 +116,6 @@ func _physics_process(delta: float) -> void:
 	#%HeadPosition.position.y = $CollisionShape3D.shape.height - 0.25
 
 	# Movement inputs
-	var input_dir = Vector2.ZERO
-	# Forward (W)
-	if Input.is_key_pressed(KEY_W):
-		input_dir.y += 1
-	# Backward (S)
-	if Input.is_key_pressed(KEY_S):
-		input_dir.y -= 1
-	# Left (A)
-	if Input.is_key_pressed(KEY_A):
-		input_dir.x += 1
-	# Right (D)
-	if Input.is_key_pressed(KEY_D):
-		input_dir.x -= 1
-
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
 		velocity.x = direction.x * speed
