@@ -9,13 +9,10 @@
 [ext_resource type="Script" uid="uid://dyjgb3gbwv6my" path="res://ui/city-map/test_drive.gd" id="7_4hhcj"]
 [ext_resource type="Texture2D" uid="uid://ddxvv763xd43t" path="res://icon.svg" id="7_wgu0n"]
 [ext_resource type="PackedScene" uid="uid://rfby48jvh0km" path="res://ui/city-map/camera.tscn" id="9_qdywh"]
-[ext_resource type="Script" uid="uid://d2nygym3ldblc" path="res://ui/city-map/vehicle.gd" id="9_tbcoo"]
+[ext_resource type="PackedScene" uid="uid://b0sw7kg0mti8e" path="res://ui/city-map/vehicle.tscn" id="9_tbcoo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uhg71"]
 size = Vector2(1451, 956.5)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_uhg71"]
-radius = 45.4
 
 [node name="CityMap" type="Node2D" unique_id=84354765]
 position = Vector2(625, 396)
@@ -279,22 +276,9 @@ position = Vector2(1682, -1266)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("7_wgu0n")
 
-[node name="Vehicle" type="CharacterBody2D" parent="TestDrive" unique_id=1493115964]
+[node name="Vehicle" parent="TestDrive" unique_id=260464224 instance=ExtResource("9_tbcoo")]
 unique_name_in_owner = true
 position = Vector2(87, -808)
-scale = Vector2(0.5, 0.5)
-collision_layer = 16
-collision_mask = 0
-script = ExtResource("9_tbcoo")
-speed = 100.0
-arrive_threshold = 1.0
-
-[node name="Sprite2D" type="Sprite2D" parent="TestDrive/Vehicle" unique_id=1141970109]
-modulate = Color(0.65882355, 0.105882354, 0.15686275, 1)
-texture = ExtResource("7_wgu0n")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TestDrive/Vehicle" unique_id=2111509191]
-shape = SubResource("CircleShape2D_uhg71")
 
 [node name="Cameras" type="Node2D" parent="." unique_id=662735754]
 

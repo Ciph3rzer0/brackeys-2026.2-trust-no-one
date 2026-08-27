@@ -18,7 +18,6 @@ func set_table_items(rows: Array[SchemaVehicleSightings]):
 		%TableBody.add_child(new_table_row)
 
 func clear_table_rows():
-	print("clearing row")
 	for row in _rows:
 		row.queue_free()
 	_rows.clear()
