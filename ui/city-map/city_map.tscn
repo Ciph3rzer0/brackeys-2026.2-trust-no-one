@@ -2,16 +2,29 @@
 
 [ext_resource type="Script" uid="uid://brujxjeo2ideh" path="res://ui/city-map/city_map.gd" id="1_gt78b"]
 [ext_resource type="Texture2D" uid="uid://5v10mtdyygag" path="res://assets/city_map_draft.png" id="1_ygjum"]
+[ext_resource type="Texture2D" uid="uid://c4cdvmetoww61" path="res://ui/city-map/black_gradient_texture_2d.tres" id="3_1x8ky"]
 [ext_resource type="Script" uid="uid://c1srr6ekgv26i" path="res://ui/city-map/path_node_2d.gd" id="3_54v2r"]
+[ext_resource type="Script" uid="uid://dyt08uxo0fq3b" path="res://ui/city-map/clicker.gd" id="4_o1adu"]
+[ext_resource type="Texture2D" uid="uid://qlv27q81cyvk" path="res://ui/city-map/green_gradient_texture_2d.tres" id="5_wxgfj"]
+[ext_resource type="Script" uid="uid://dyjgb3gbwv6my" path="res://ui/city-map/test_drive.gd" id="7_4hhcj"]
+[ext_resource type="Texture2D" uid="uid://ddxvv763xd43t" path="res://icon.svg" id="7_wgu0n"]
 
-[sub_resource type="Gradient" id="Gradient_54v2r"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0, 0, 0, 0.078431375)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uhg71"]
+size = Vector2(1451, 956.5)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_o1adu"]
-gradient = SubResource("Gradient_54v2r")
+[sub_resource type="CircleShape2D" id="CircleShape2D_uhg71"]
+radius = 45.4
 
-[node name="CityMap" type="Node2D" unique_id=296626823]
+[node name="CityMap" type="Node2D" unique_id=84354765]
+position = Vector2(625, 396)
+
+[node name="CityMapDraft" type="Sprite2D" parent="." unique_id=866556907]
+z_index = -999
+texture = ExtResource("1_ygjum")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="AStarGraph2D" type="Node2D" parent="." unique_id=296626823]
 script = ExtResource("1_gt78b")
 node_color = Color(0, 1, 1, 0.39215687)
 node_radius = 20.0
@@ -20,199 +33,255 @@ edge_width = 6.0
 metadata/_custom_type_script = "uid://brujxjeo2ideh"
 metadata/_edit_lock_ = true
 
-[node name="CityMapDraft" type="Sprite2D" parent="." unique_id=866556907]
-z_index = -999
-texture = ExtResource("1_ygjum")
-metadata/_edit_group_ = true
-metadata/_edit_lock_ = true
-
-[node name="Intersection" type="Sprite2D" parent="." unique_id=1277637614]
+[node name="Intersection" type="Sprite2D" parent="AStarGraph2D" unique_id=1277637614]
 position = Vector2(508, 90)
-texture = SubResource("GradientTexture2D_o1adu")
+texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 
-[node name="Intersection3" type="Sprite2D" parent="." unique_id=1680682786]
+[node name="Intersection3" type="Sprite2D" parent="AStarGraph2D" unique_id=1680682786]
 position = Vector2(209, -351)
-texture = SubResource("GradientTexture2D_o1adu")
+texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection4"), NodePath("../Intersection6")])
 
-[node name="Intersection4" type="Sprite2D" parent="." unique_id=1439947389]
+[node name="Intersection4" type="Sprite2D" parent="AStarGraph2D" unique_id=1439947389]
 position = Vector2(334, -351)
-texture = SubResource("GradientTexture2D_o1adu")
+texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 
-[node name="Intersection5" type="Sprite2D" parent="." unique_id=2109170261]
+[node name="Intersection5" type="Sprite2D" parent="AStarGraph2D" unique_id=2109170261]
 position = Vector2(593, -351)
-texture = SubResource("GradientTexture2D_o1adu")
+texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection4")])
 
-[node name="Intersection6" type="Sprite2D" parent="." unique_id=700321665]
+[node name="Intersection6" type="Sprite2D" parent="AStarGraph2D" unique_id=700321665]
 position = Vector2(-159, -351)
-texture = SubResource("GradientTexture2D_o1adu")
+texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection8")])
 
-[node name="Intersection8" type="Sprite2D" parent="." unique_id=807434087]
+[node name="Intersection8" type="Sprite2D" parent="AStarGraph2D" unique_id=807434087]
 position = Vector2(-159, -241)
-texture = SubResource("GradientTexture2D_o1adu")
+texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection10")])
 
-[node name="Intersection10" type="Sprite2D" parent="." unique_id=211758626]
+[node name="Intersection10" type="Sprite2D" parent="AStarGraph2D" unique_id=211758626]
 position = Vector2(-159, -23)
-texture = SubResource("GradientTexture2D_o1adu")
+texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 
-[node name="Intersection11" type="Sprite2D" parent="." unique_id=1035826148]
+[node name="Intersection11" type="Sprite2D" parent="AStarGraph2D" unique_id=1035826148]
 position = Vector2(-39, -23)
-texture = SubResource("GradientTexture2D_o1adu")
+texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection10"), NodePath("../Intersection14")])
 
-[node name="Intersection12" type="Sprite2D" parent="." unique_id=1005609931]
+[node name="Intersection12" type="Sprite2D" parent="AStarGraph2D" unique_id=1005609931]
 position = Vector2(-276, -23)
-texture = SubResource("GradientTexture2D_o1adu")
+texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection10")])
 
-[node name="Intersection13" type="Sprite2D" parent="." unique_id=752325748]
+[node name="Intersection13" type="Sprite2D" parent="AStarGraph2D" unique_id=752325748]
 position = Vector2(-159, 90)
-texture = SubResource("GradientTexture2D_o1adu")
+texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection10"), NodePath("../Intersection15"), NodePath("../Intersection20"), NodePath("../Intersection14")])
 
-[node name="Intersection14" type="Sprite2D" parent="." unique_id=1454672724]
+[node name="Intersection14" type="Sprite2D" parent="AStarGraph2D" unique_id=1454672724]
 position = Vector2(-39, 90)
-texture = SubResource("GradientTexture2D_o1adu")
+texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 
-[node name="Intersection19" type="Sprite2D" parent="." unique_id=1992245243]
+[node name="Intersection19" type="Sprite2D" parent="AStarGraph2D" unique_id=1992245243]
 position = Vector2(84, 90)
-texture = SubResource("GradientTexture2D_o1adu")
+texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection14")])
 
-[node name="Intersection15" type="Sprite2D" parent="." unique_id=1178902924]
+[node name="Intersection15" type="Sprite2D" parent="AStarGraph2D" unique_id=1178902924]
 position = Vector2(-276, 90)
-texture = SubResource("GradientTexture2D_o1adu")
+texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 
-[node name="Intersection20" type="Sprite2D" parent="." unique_id=2052854936]
+[node name="Intersection20" type="Sprite2D" parent="AStarGraph2D" unique_id=2052854936]
 position = Vector2(-159, 197)
-texture = SubResource("GradientTexture2D_o1adu")
+texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 
-[node name="Intersection21" type="Sprite2D" parent="." unique_id=626715128]
+[node name="Intersection21" type="Sprite2D" parent="AStarGraph2D" unique_id=626715128]
 position = Vector2(-39, 197)
-texture = SubResource("GradientTexture2D_o1adu")
+texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection20"), NodePath("../Intersection14"), NodePath("../Intersection22"), NodePath("../Intersection25")])
 
-[node name="Intersection22" type="Sprite2D" parent="." unique_id=1492644815]
+[node name="Intersection22" type="Sprite2D" parent="AStarGraph2D" unique_id=1492644815]
 position = Vector2(84, 197)
-texture = SubResource("GradientTexture2D_o1adu")
+texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection26")])
 
-[node name="Intersection23" type="Sprite2D" parent="." unique_id=1349191247]
+[node name="Intersection23" type="Sprite2D" parent="AStarGraph2D" unique_id=1349191247]
 position = Vector2(-276, 197)
-texture = SubResource("GradientTexture2D_o1adu")
+texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection20")])
 
-[node name="Intersection24" type="Sprite2D" parent="." unique_id=1208113597]
+[node name="Intersection24" type="Sprite2D" parent="AStarGraph2D" unique_id=1208113597]
 position = Vector2(-159, 306)
-texture = SubResource("GradientTexture2D_o1adu")
+texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection20"), NodePath("../Intersection25")])
 
-[node name="Intersection25" type="Sprite2D" parent="." unique_id=2101834279]
+[node name="Intersection25" type="Sprite2D" parent="AStarGraph2D" unique_id=2101834279]
 position = Vector2(-39, 306)
-texture = SubResource("GradientTexture2D_o1adu")
+texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection26"), NodePath("../Intersection29")])
 
-[node name="Intersection26" type="Sprite2D" parent="." unique_id=1798421211]
+[node name="Intersection26" type="Sprite2D" parent="AStarGraph2D" unique_id=1798421211]
 position = Vector2(84, 306)
-texture = SubResource("GradientTexture2D_o1adu")
+texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection32")])
 
-[node name="Intersection32" type="Sprite2D" parent="." unique_id=1776038961]
+[node name="Intersection32" type="Sprite2D" parent="AStarGraph2D" unique_id=1776038961]
 position = Vector2(560, 306)
-texture = SubResource("GradientTexture2D_o1adu")
+texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 
-[node name="Intersection27" type="Sprite2D" parent="." unique_id=1953136134]
+[node name="Intersection27" type="Sprite2D" parent="AStarGraph2D" unique_id=1953136134]
 position = Vector2(-276, 306)
-texture = SubResource("GradientTexture2D_o1adu")
+texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection24")])
 
-[node name="Intersection28" type="Sprite2D" parent="." unique_id=1297093167]
+[node name="Intersection28" type="Sprite2D" parent="AStarGraph2D" unique_id=1297093167]
 position = Vector2(-159, 428)
-texture = SubResource("GradientTexture2D_o1adu")
+texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 
-[node name="Intersection29" type="Sprite2D" parent="." unique_id=2070483785]
+[node name="Intersection29" type="Sprite2D" parent="AStarGraph2D" unique_id=2070483785]
 position = Vector2(-39, 428)
-texture = SubResource("GradientTexture2D_o1adu")
+texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 
-[node name="Intersection30" type="Sprite2D" parent="." unique_id=872204951]
+[node name="Intersection30" type="Sprite2D" parent="AStarGraph2D" unique_id=872204951]
 position = Vector2(84, 428)
-texture = SubResource("GradientTexture2D_o1adu")
+texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 
-[node name="Intersection31" type="Sprite2D" parent="." unique_id=1662343053]
-position = Vector2(-276, 428)
-texture = SubResource("GradientTexture2D_o1adu")
-script = ExtResource("3_54v2r")
-
-[node name="Intersection16" type="Sprite2D" parent="." unique_id=264830865]
+[node name="Intersection16" type="Sprite2D" parent="AStarGraph2D" unique_id=264830865]
 position = Vector2(-395, 90)
-texture = SubResource("GradientTexture2D_o1adu")
+texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection15"), NodePath("../Intersection18"), NodePath("../Intersection17")])
 
-[node name="Intersection18" type="Sprite2D" parent="." unique_id=107943513]
+[node name="Intersection18" type="Sprite2D" parent="AStarGraph2D" unique_id=107943513]
 position = Vector2(-395, 348)
-texture = SubResource("GradientTexture2D_o1adu")
+texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 
-[node name="Intersection17" type="Sprite2D" parent="." unique_id=972841153]
+[node name="Intersection17" type="Sprite2D" parent="AStarGraph2D" unique_id=972841153]
 position = Vector2(-598, 90)
-texture = SubResource("GradientTexture2D_o1adu")
+texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 
-[node name="Intersection9" type="Sprite2D" parent="." unique_id=1745524581]
+[node name="Intersection9" type="Sprite2D" parent="AStarGraph2D" unique_id=1745524581]
 position = Vector2(-460, -241)
-texture = SubResource("GradientTexture2D_o1adu")
+texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection8")])
 
-[node name="Intersection7" type="Sprite2D" parent="." unique_id=1297667220]
+[node name="Intersection7" type="Sprite2D" parent="AStarGraph2D" unique_id=1297667220]
 position = Vector2(-272, -351)
-texture = SubResource("GradientTexture2D_o1adu")
+texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection6")])
 
-[node name="Intersection2" type="Sprite2D" parent="." unique_id=190291521]
+[node name="Intersection2" type="Sprite2D" parent="AStarGraph2D" unique_id=190291521]
 position = Vector2(209, 90)
-texture = SubResource("GradientTexture2D_o1adu")
+texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection"), NodePath("../Intersection19")])
 
-[node name="Intersection33" type="Sprite2D" parent="." unique_id=1400842595]
+[node name="Intersection33" type="Sprite2D" parent="AStarGraph2D" unique_id=1400842595]
 position = Vector2(209, -23)
-texture = SubResource("GradientTexture2D_o1adu")
+texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection2")])
 
-[node name="Intersection34" type="Sprite2D" parent="." unique_id=1854887510]
+[node name="Intersection34" type="Sprite2D" parent="AStarGraph2D" unique_id=1854887510]
 position = Vector2(209, -241)
-texture = SubResource("GradientTexture2D_o1adu")
+texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection3"), NodePath("../Intersection33")])
+
+[node name="CityExit" type="Sprite2D" parent="AStarGraph2D" unique_id=689469424]
+position = Vector2(332, -668)
+texture = ExtResource("5_wxgfj")
+script = ExtResource("3_54v2r")
+connections = Array[NodePath]([NodePath("../Intersection3")])
+
+[node name="CityExit2" type="Sprite2D" parent="AStarGraph2D" unique_id=1760566521]
+position = Vector2(-279, 895)
+texture = ExtResource("5_wxgfj")
+script = ExtResource("3_54v2r")
+connections = Array[NodePath]([NodePath("../Intersection27")])
+
+[node name="CityExit3" type="Sprite2D" parent="AStarGraph2D" unique_id=1300780649]
+position = Vector2(1200, 709)
+texture = ExtResource("5_wxgfj")
+script = ExtResource("3_54v2r")
+connections = Array[NodePath]([NodePath("../Intersection32")])
+
+[node name="CityExit4" type="Sprite2D" parent="AStarGraph2D" unique_id=1989954345]
+position = Vector2(1357, -351)
+texture = ExtResource("5_wxgfj")
+script = ExtResource("3_54v2r")
+connections = Array[NodePath]([NodePath("../Intersection5")])
+
+[node name="Clicker" type="StaticBody2D" parent="." unique_id=1737867403 node_paths=PackedStringArray("astar_graph_2d")]
+visible = false
+collision_layer = 8388608
+collision_mask = 0
+input_pickable = true
+script = ExtResource("4_o1adu")
+astar_graph_2d = NodePath("../AStarGraph2D")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Clicker" unique_id=1481374044]
+visible = false
+shape = SubResource("RectangleShape2D_uhg71")
+
+[node name="TestDrive" type="Sprite2D" parent="." unique_id=185132336 node_paths=PackedStringArray("astar_graph_2d")]
+position = Vector2(-156, 794)
+script = ExtResource("7_4hhcj")
+astar_graph_2d = NodePath("../AStarGraph2D")
+
+[node name="Start" type="Sprite2D" parent="TestDrive" unique_id=1476672309]
+unique_name_in_owner = true
+position = Vector2(-250, -58)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_wgu0n")
+
+[node name="Exit" type="Sprite2D" parent="TestDrive" unique_id=1426661668]
+unique_name_in_owner = true
+position = Vector2(1682, -1266)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_wgu0n")
+
+[node name="Car" type="CharacterBody2D" parent="TestDrive" unique_id=1493115964]
+unique_name_in_owner = true
+position = Vector2(87, -808)
+scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="TestDrive/Car" unique_id=1141970109]
+modulate = Color(0.65882355, 0.105882354, 0.15686275, 1)
+texture = ExtResource("7_wgu0n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TestDrive/Car" unique_id=2111509191]
+shape = SubResource("CircleShape2D_uhg71")
