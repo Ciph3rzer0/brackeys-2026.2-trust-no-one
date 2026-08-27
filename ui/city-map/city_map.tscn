@@ -21,7 +21,7 @@ position = Vector2(625, 396)
 scale = Vector2(0.535, 0.535)
 
 [node name="CityMapDraft" type="Sprite2D" parent="." unique_id=866556907]
-z_index = -999
+z_index = -1
 texture = ExtResource("1_ygjum")
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true

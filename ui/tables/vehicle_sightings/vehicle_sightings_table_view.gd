@@ -3,6 +3,11 @@ extends PanelContainer
 
 var _rows: Array[VehicleSightingsRowView]
 
+func _ready() -> void:
+	GameManager.database.data_refreshed.connect( func():
+		set_table_items(GameManager.database.vehicle_sightings)
+	)
+
 func set_table_items(rows: Array[SchemaVehicleSightings]):
 	for new_source_row in rows:
 		var new_table_row: VehicleSightingsRowView = %TableRow.duplicate()
