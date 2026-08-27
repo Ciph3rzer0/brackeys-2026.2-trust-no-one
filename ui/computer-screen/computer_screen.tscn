@@ -75,10 +75,10 @@ offset_bottom = 464.0
 
 [node name="ComputerWindow" parent="." unique_id=24755338 instance=ExtResource("7_8qfsr")]
 layout_mode = 1
-offset_left = 738.0
-offset_top = 30.0
-offset_right = -59.0
-offset_bottom = -598.0
+offset_left = 746.0
+offset_top = 28.0
+offset_right = -51.0
+offset_bottom = -600.0
 content_scene_path = "uid://dukf0r3kv7h3u"
 
 [node name="Button" type="Button" parent="." unique_id=1762318741]

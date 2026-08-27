@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dukf0r3kv7h3u"]
 
 [ext_resource type="Script" uid="uid://crvv5bco8yote" path="res://ui/crime-report/crime_report.gd" id="1_25t53"]
-[ext_resource type="Resource" uid="uid://mlx6hgu5bc7w" path="res://scripts/quests/first_quest.tres" id="2_eqs3u"]
 [ext_resource type="Theme" uid="uid://bd3ja6q1vwt2q" path="res://ui/crime-report/crime_report_theme.tres" id="3_tygkb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uhg71"]
@@ -14,7 +13,6 @@ border_color = Color(0.8, 0.8, 0.8, 0)
 offset_right = 513.0
 offset_bottom = 620.0
 script = ExtResource("1_25t53")
-quest = ExtResource("2_eqs3u")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=49873419]
 layout_mode = 2
