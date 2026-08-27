@@ -34,6 +34,30 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_uhg71")
 
+[node name="Button" type="Button" parent="." unique_id=1762318741]
+layout_mode = 0
+offset_left = 103.0
+offset_top = 894.0
+offset_right = 200.0
+offset_bottom = 991.0
+theme = ExtResource("8_vod3n")
+icon = ExtResource("9_5sf7k")
+expand_icon = true
+script = ExtResource("10_5sf7k")
+quest = ExtResource("11_4dgut")
+
+[node name="Button2" type="Button" parent="." unique_id=637476883]
+layout_mode = 0
+offset_left = 260.0
+offset_top = 894.0
+offset_right = 357.0
+offset_bottom = 991.0
+theme = ExtResource("8_vod3n")
+icon = ExtResource("9_5sf7k")
+expand_icon = true
+script = ExtResource("10_5sf7k")
+quest = ExtResource("12_n1ots")
+
 [node name="PlateFilter" type="TextEdit" parent="." unique_id=2046144793]
 layout_mode = 0
 offset_left = 16.0
@@ -81,29 +105,5 @@ offset_top = 28.0
 offset_right = -51.0
 offset_bottom = -600.0
 content_scene_path = "uid://dukf0r3kv7h3u"
-
-[node name="Button" type="Button" parent="." unique_id=1762318741]
-layout_mode = 0
-offset_left = 103.0
-offset_top = 894.0
-offset_right = 200.0
-offset_bottom = 991.0
-theme = ExtResource("8_vod3n")
-icon = ExtResource("9_5sf7k")
-expand_icon = true
-script = ExtResource("10_5sf7k")
-quest = ExtResource("11_4dgut")
-
-[node name="Button2" type="Button" parent="." unique_id=637476883]
-layout_mode = 0
-offset_left = 260.0
-offset_top = 894.0
-offset_right = 357.0
-offset_bottom = 991.0
-theme = ExtResource("8_vod3n")
-icon = ExtResource("9_5sf7k")
-expand_icon = true
-script = ExtResource("10_5sf7k")
-quest = ExtResource("12_n1ots")
 
 [connection signal="filter_changed" from="PlateFilter" to="VehicleSightingsTableView" method="_on_plate_filter_filter_changed"]
