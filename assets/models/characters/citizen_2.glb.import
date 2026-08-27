@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dtumtpbx6j36y"
-path="res://.godot/imported/block.glb-d40833f8ee842146cfb20bde8b4d9ef8.scn"
+uid="uid://cywm0m2rricqd"
+path="res://.godot/imported/citizen_2.glb-9bc3168932db3401080b29ca064d8fcb.scn"
 
 [deps]
 
-source_file="res://assets/models/city/block.glb"
-dest_files=["res://.godot/imported/block.glb-d40833f8ee842146cfb20bde8b4d9ef8.scn"]
+source_file="res://assets/models/characters/citizen_2.glb"
+dest_files=["res://.godot/imported/citizen_2.glb-9bc3168932db3401080b29ca064d8fcb.scn"]
 
 [params]
 
