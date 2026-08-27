@@ -1,0 +1,218 @@
+[gd_scene format=3 uid="uid://c2kuixd7eqbk1"]
+
+[ext_resource type="Script" uid="uid://brujxjeo2ideh" path="res://ui/city-map/city_map.gd" id="1_gt78b"]
+[ext_resource type="Texture2D" uid="uid://5v10mtdyygag" path="res://assets/city_map_draft.png" id="1_ygjum"]
+[ext_resource type="Script" uid="uid://c1srr6ekgv26i" path="res://ui/city-map/path_node_2d.gd" id="3_54v2r"]
+
+[sub_resource type="Gradient" id="Gradient_54v2r"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 0.078431375)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_o1adu"]
+gradient = SubResource("Gradient_54v2r")
+
+[node name="CityMap" type="Node2D" unique_id=296626823]
+script = ExtResource("1_gt78b")
+node_color = Color(0, 1, 1, 0.39215687)
+node_radius = 20.0
+edge_color = Color(0.63900006, 0, 0.71, 0.78431374)
+edge_width = 6.0
+metadata/_custom_type_script = "uid://brujxjeo2ideh"
+metadata/_edit_lock_ = true
+
+[node name="CityMapDraft" type="Sprite2D" parent="." unique_id=866556907]
+z_index = -999
+texture = ExtResource("1_ygjum")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="Intersection" type="Sprite2D" parent="." unique_id=1277637614]
+position = Vector2(508, 90)
+texture = SubResource("GradientTexture2D_o1adu")
+script = ExtResource("3_54v2r")
+
+[node name="Intersection3" type="Sprite2D" parent="." unique_id=1680682786]
+position = Vector2(209, -351)
+texture = SubResource("GradientTexture2D_o1adu")
+script = ExtResource("3_54v2r")
+connections = Array[NodePath]([NodePath("../Intersection4"), NodePath("../Intersection6")])
+
+[node name="Intersection4" type="Sprite2D" parent="." unique_id=1439947389]
+position = Vector2(334, -351)
+texture = SubResource("GradientTexture2D_o1adu")
+script = ExtResource("3_54v2r")
+
+[node name="Intersection5" type="Sprite2D" parent="." unique_id=2109170261]
+position = Vector2(593, -351)
+texture = SubResource("GradientTexture2D_o1adu")
+script = ExtResource("3_54v2r")
+connections = Array[NodePath]([NodePath("../Intersection4")])
+
+[node name="Intersection6" type="Sprite2D" parent="." unique_id=700321665]
+position = Vector2(-159, -351)
+texture = SubResource("GradientTexture2D_o1adu")
+script = ExtResource("3_54v2r")
+connections = Array[NodePath]([NodePath("../Intersection8")])
+
+[node name="Intersection8" type="Sprite2D" parent="." unique_id=807434087]
+position = Vector2(-159, -241)
+texture = SubResource("GradientTexture2D_o1adu")
+script = ExtResource("3_54v2r")
+connections = Array[NodePath]([NodePath("../Intersection10")])
+
+[node name="Intersection10" type="Sprite2D" parent="." unique_id=211758626]
+position = Vector2(-159, -23)
+texture = SubResource("GradientTexture2D_o1adu")
+script = ExtResource("3_54v2r")
+
+[node name="Intersection11" type="Sprite2D" parent="." unique_id=1035826148]
+position = Vector2(-39, -23)
+texture = SubResource("GradientTexture2D_o1adu")
+script = ExtResource("3_54v2r")
+connections = Array[NodePath]([NodePath("../Intersection10"), NodePath("../Intersection14")])
+
+[node name="Intersection12" type="Sprite2D" parent="." unique_id=1005609931]
+position = Vector2(-276, -23)
+texture = SubResource("GradientTexture2D_o1adu")
+script = ExtResource("3_54v2r")
+connections = Array[NodePath]([NodePath("../Intersection10")])
+
+[node name="Intersection13" type="Sprite2D" parent="." unique_id=752325748]
+position = Vector2(-159, 90)
+texture = SubResource("GradientTexture2D_o1adu")
+script = ExtResource("3_54v2r")
+connections = Array[NodePath]([NodePath("../Intersection10"), NodePath("../Intersection15"), NodePath("../Intersection20"), NodePath("../Intersection14")])
+
+[node name="Intersection14" type="Sprite2D" parent="." unique_id=1454672724]
+position = Vector2(-39, 90)
+texture = SubResource("GradientTexture2D_o1adu")
+script = ExtResource("3_54v2r")
+
+[node name="Intersection19" type="Sprite2D" parent="." unique_id=1992245243]
+position = Vector2(84, 90)
+texture = SubResource("GradientTexture2D_o1adu")
+script = ExtResource("3_54v2r")
+connections = Array[NodePath]([NodePath("../Intersection14")])
+
+[node name="Intersection15" type="Sprite2D" parent="." unique_id=1178902924]
+position = Vector2(-276, 90)
+texture = SubResource("GradientTexture2D_o1adu")
+script = ExtResource("3_54v2r")
+
+[node name="Intersection20" type="Sprite2D" parent="." unique_id=2052854936]
+position = Vector2(-159, 197)
+texture = SubResource("GradientTexture2D_o1adu")
+script = ExtResource("3_54v2r")
+
+[node name="Intersection21" type="Sprite2D" parent="." unique_id=626715128]
+position = Vector2(-39, 197)
+texture = SubResource("GradientTexture2D_o1adu")
+script = ExtResource("3_54v2r")
+connections = Array[NodePath]([NodePath("../Intersection20"), NodePath("../Intersection14"), NodePath("../Intersection22"), NodePath("../Intersection25")])
+
+[node name="Intersection22" type="Sprite2D" parent="." unique_id=1492644815]
+position = Vector2(84, 197)
+texture = SubResource("GradientTexture2D_o1adu")
+script = ExtResource("3_54v2r")
+connections = Array[NodePath]([NodePath("../Intersection26")])
+
+[node name="Intersection23" type="Sprite2D" parent="." unique_id=1349191247]
+position = Vector2(-276, 197)
+texture = SubResource("GradientTexture2D_o1adu")
+script = ExtResource("3_54v2r")
+connections = Array[NodePath]([NodePath("../Intersection20")])
+
+[node name="Intersection24" type="Sprite2D" parent="." unique_id=1208113597]
+position = Vector2(-159, 306)
+texture = SubResource("GradientTexture2D_o1adu")
+script = ExtResource("3_54v2r")
+connections = Array[NodePath]([NodePath("../Intersection20"), NodePath("../Intersection25")])
+
+[node name="Intersection25" type="Sprite2D" parent="." unique_id=2101834279]
+position = Vector2(-39, 306)
+texture = SubResource("GradientTexture2D_o1adu")
+script = ExtResource("3_54v2r")
+connections = Array[NodePath]([NodePath("../Intersection26"), NodePath("../Intersection29")])
+
+[node name="Intersection26" type="Sprite2D" parent="." unique_id=1798421211]
+position = Vector2(84, 306)
+texture = SubResource("GradientTexture2D_o1adu")
+script = ExtResource("3_54v2r")
+connections = Array[NodePath]([NodePath("../Intersection32")])
+
+[node name="Intersection32" type="Sprite2D" parent="." unique_id=1776038961]
+position = Vector2(560, 306)
+texture = SubResource("GradientTexture2D_o1adu")
+script = ExtResource("3_54v2r")
+
+[node name="Intersection27" type="Sprite2D" parent="." unique_id=1953136134]
+position = Vector2(-276, 306)
+texture = SubResource("GradientTexture2D_o1adu")
+script = ExtResource("3_54v2r")
+connections = Array[NodePath]([NodePath("../Intersection24")])
+
+[node name="Intersection28" type="Sprite2D" parent="." unique_id=1297093167]
+position = Vector2(-159, 428)
+texture = SubResource("GradientTexture2D_o1adu")
+script = ExtResource("3_54v2r")
+
+[node name="Intersection29" type="Sprite2D" parent="." unique_id=2070483785]
+position = Vector2(-39, 428)
+texture = SubResource("GradientTexture2D_o1adu")
+script = ExtResource("3_54v2r")
+
+[node name="Intersection30" type="Sprite2D" parent="." unique_id=872204951]
+position = Vector2(84, 428)
+texture = SubResource("GradientTexture2D_o1adu")
+script = ExtResource("3_54v2r")
+
+[node name="Intersection31" type="Sprite2D" parent="." unique_id=1662343053]
+position = Vector2(-276, 428)
+texture = SubResource("GradientTexture2D_o1adu")
+script = ExtResource("3_54v2r")
+
+[node name="Intersection16" type="Sprite2D" parent="." unique_id=264830865]
+position = Vector2(-395, 90)
+texture = SubResource("GradientTexture2D_o1adu")
+script = ExtResource("3_54v2r")
+connections = Array[NodePath]([NodePath("../Intersection15"), NodePath("../Intersection18"), NodePath("../Intersection17")])
+
+[node name="Intersection18" type="Sprite2D" parent="." unique_id=107943513]
+position = Vector2(-395, 348)
+texture = SubResource("GradientTexture2D_o1adu")
+script = ExtResource("3_54v2r")
+
+[node name="Intersection17" type="Sprite2D" parent="." unique_id=972841153]
+position = Vector2(-598, 90)
+texture = SubResource("GradientTexture2D_o1adu")
+script = ExtResource("3_54v2r")
+
+[node name="Intersection9" type="Sprite2D" parent="." unique_id=1745524581]
+position = Vector2(-460, -241)
+texture = SubResource("GradientTexture2D_o1adu")
+script = ExtResource("3_54v2r")
+connections = Array[NodePath]([NodePath("../Intersection8")])
+
+[node name="Intersection7" type="Sprite2D" parent="." unique_id=1297667220]
+position = Vector2(-272, -351)
+texture = SubResource("GradientTexture2D_o1adu")
+script = ExtResource("3_54v2r")
+connections = Array[NodePath]([NodePath("../Intersection6")])
+
+[node name="Intersection2" type="Sprite2D" parent="." unique_id=190291521]
+position = Vector2(209, 90)
+texture = SubResource("GradientTexture2D_o1adu")
+script = ExtResource("3_54v2r")
+connections = Array[NodePath]([NodePath("../Intersection"), NodePath("../Intersection19")])
+
+[node name="Intersection33" type="Sprite2D" parent="." unique_id=1400842595]
+position = Vector2(209, -23)
+texture = SubResource("GradientTexture2D_o1adu")
+script = ExtResource("3_54v2r")
+connections = Array[NodePath]([NodePath("../Intersection2")])
+
+[node name="Intersection34" type="Sprite2D" parent="." unique_id=1854887510]
+position = Vector2(209, -241)
+texture = SubResource("GradientTexture2D_o1adu")
+script = ExtResource("3_54v2r")
+connections = Array[NodePath]([NodePath("../Intersection3"), NodePath("../Intersection33")])
