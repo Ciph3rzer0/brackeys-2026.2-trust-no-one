@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://cis13gq7hy3o0"]
+
+[ext_resource type="PackedScene" uid="uid://clm0ltpnrt7du" path="res://assets/models/office/faxMachine.glb" id="1_iqwb4"]
+[ext_resource type="PackedScene" uid="uid://bo0akjnab2yy2" path="res://assets/models/office/faxTable.glb" id="2_6rukd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0o143"]
+albedo_color = Color(0.96202856, 0.83949524, 3.85046e-07, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_h45xw"]
+material = SubResource("StandardMaterial3D_0o143")
+
+[node name="FaxMachine" type="Node3D" unique_id=1072937977]
+
+[node name="faxMachine" parent="." unique_id=880050772 instance=ExtResource("1_iqwb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09218013, 1.1391083, 0)
+
+[node name="faxTable" parent="." unique_id=739480162 instance=ExtResource("2_6rukd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07513714, 0.60387325, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=123083281]
+transform = Transform3D(0.08799273, -0.026237383, 0, 0.026237383, 0.08799273, 0, 0, 0, 0.09182114, -0.014278889, 1.2457428, 0.37750444)
+mesh = SubResource("PlaneMesh_h45xw")
+
+[node name="Label3D" type="Label3D" parent="MeshInstance3D" unique_id=751628693]
+transform = Transform3D(2.0082592e-15, 1.0510675, 4.594362e-08, 4.594362e-08, -4.594362e-08, 1.0510675, 1.0510675, 0, -4.594362e-08, 0.009238243, 0.034438968, 0)
+modulate = Color(0, 0, 0, 1)
+text = "memo:
+OUTBOUND
+COMMUNICATIONS
+ONLY
+
+---
+thanks,
+mngmt"
+outline_size = 0
+uppercase = true
