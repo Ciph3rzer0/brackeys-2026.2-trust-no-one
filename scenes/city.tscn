@@ -1045,19 +1045,17 @@ transform = Transform3D(0.31999412, 0, -0.27076468, 0, 0.41917747, 0, 0.27076468
 [node name="Screens" type="Node3D" parent="." unique_id=167141141]
 
 [node name="ComputerScreen" type="StaticBody3D" parent="Screens" unique_id=2105178651 node_paths=PackedStringArray("computer_viewport")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.555, 37.457, -53.86)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 67.1187, 57.310745, -132.3323)
 collision_layer = 4096
 script = ExtResource("3_obbxu")
 computer_viewport = NodePath("../../ComputerScreenRenders/ComputerMonitor")
 quad_mesh = ExtResource("15_agolw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Screens/ComputerScreen" unique_id=1861852960]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.563705, 19.853745, 78.47229)
 mesh = ExtResource("15_agolw")
 surface_material_override/0 = SubResource("StandardMaterial3D_tfap4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Screens/ComputerScreen" unique_id=49235054]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.563705, 19.853745, 78.47229)
 shape = SubResource("ConcavePolygonShape3D_agolw")
 
 [node name="TabletScreen" type="MeshInstance3D" parent="Screens" unique_id=728728976]
@@ -4902,7 +4900,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.44442, 1.1127148, -27.330
 [node name="Gameplay" type="Node3D" parent="." unique_id=450888495]
 
 [node name="Chair Interaction" type="Area3D" parent="Gameplay" unique_id=402669167 node_paths=PackedStringArray("redirect_input") groups=["InteractiveMount"]]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 2.2714262, 35.188118, -54.854343)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 66.80487, 55.05782, -133.50659)
 collision_layer = 0
 input_ray_pickable = false
 monitorable = false
@@ -4910,7 +4908,7 @@ script = ExtResource("14_yles7")
 redirect_input = NodePath("../../ComputerScreenRenders/ComputerMonitor")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Chair Interaction" unique_id=1974498237]
-transform = Transform3D(0.99999976, 0, -5.9604623e-08, 0, 1, 0, 5.9604623e-08, 0, 0.99999976, 64.56369, 20.695541, -78.47229)
+transform = Transform3D(0.99999976, 0, -5.9604623e-08, 0, 1, 0, 5.9604623e-08, 0, 0.99999976, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_uhg71")
 
 [node name="SubmitQuest" type="Node3D" parent="Gameplay" unique_id=173485420]

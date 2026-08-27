@@ -3,7 +3,7 @@ extends Node
 var player: Player
 var database: Database
 
-func setplayer(_player: Player):
+func set_player(_player: Player):
 	assert(!player)
 	player = _player
 
