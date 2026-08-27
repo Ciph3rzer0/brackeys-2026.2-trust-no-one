@@ -17,6 +17,7 @@ radius = 45.4
 
 [node name="CityMap" type="Node2D" unique_id=84354765]
 position = Vector2(625, 396)
+scale = Vector2(0.535, 0.535)
 
 [node name="CityMapDraft" type="Sprite2D" parent="." unique_id=866556907]
 z_index = -999
@@ -27,9 +28,8 @@ metadata/_edit_lock_ = true
 [node name="AStarGraph2D" type="Node2D" parent="." unique_id=296626823]
 script = ExtResource("1_gt78b")
 node_color = Color(0, 1, 1, 0.39215687)
-node_radius = 20.0
 edge_color = Color(0.63900006, 0, 0.71, 0.78431374)
-edge_width = 6.0
+node_radius = 20.0
 metadata/_custom_type_script = "uid://brujxjeo2ideh"
 metadata/_edit_lock_ = true
 
@@ -257,10 +257,14 @@ metadata/_edit_lock_ = true
 visible = false
 shape = SubResource("RectangleShape2D_uhg71")
 
-[node name="TestDrive" type="Sprite2D" parent="." unique_id=185132336 node_paths=PackedStringArray("astar_graph_2d")]
+[node name="TestDrive" type="Node2D" parent="." unique_id=731682705 node_paths=PackedStringArray("astar_graph_2d", "start_marker", "end_marker")]
 position = Vector2(-156, 794)
 script = ExtResource("7_4hhcj")
 astar_graph_2d = NodePath("../AStarGraph2D")
+start_marker = NodePath("Start")
+end_marker = NodePath("End")
+speed = 50.0
+arrive_threshold = 1.0
 
 [node name="Start" type="Sprite2D" parent="TestDrive" unique_id=1476672309]
 unique_name_in_owner = true
@@ -268,7 +272,7 @@ position = Vector2(-250, -58)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("7_wgu0n")
 
-[node name="Exit" type="Sprite2D" parent="TestDrive" unique_id=1426661668]
+[node name="End" type="Sprite2D" parent="TestDrive" unique_id=1426661668]
 unique_name_in_owner = true
 position = Vector2(1682, -1266)
 scale = Vector2(0.5, 0.5)

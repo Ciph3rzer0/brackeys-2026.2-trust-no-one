@@ -9,9 +9,8 @@ extends Node2D
 ## At runtime, call build_astar() once to get a real AStar2D for pathfinding.
 
 @export var node_color: Color = Color.CYAN
-@export var node_radius: float = 6.0
 @export var edge_color: Color = Color(1.0, 0.9, 0.2, 0.8)
-@export var edge_width: float = 4.0
+@export var node_radius: float = 6.0
 
 ## If false, connections are one-way (A -> B only, unless B also lists A).
 ## Use false for one-way roads, true for ordinary two-way roads.
@@ -39,7 +38,7 @@ func _draw() -> void:
 		for path in node.connections:
 			var other := node.get_node_or_null(path) as PathNode2D
 			if other:
-				draw_line(node_pos, to_local(other.global_position), edge_color, edge_width)
+				draw_line(node_pos, to_local(other.global_position), edge_color, 2.0)
 
 	for node in nodes:
 		draw_circle(to_local(node.global_position), node_radius, node_color)
@@ -75,3 +74,15 @@ func build_astar() -> AStar2D:
 ## Look up the AStar2D point id for a node, after build_astar() has run.
 func get_id_for(node: PathNode2D) -> int:
 	return _id_by_node.get(node, -1)
+
+## Returns the PathNode2D whose global_position is nearest world_pos,
+## or null if this graph has no PathNode2D children.
+func find_closest_point(world_pos: Vector2) -> PathNode2D:
+	var closest: PathNode2D = null
+	var closest_dist := INF
+	for node in _get_path_nodes():
+		var dist := node.global_position.distance_squared_to(world_pos)
+		if dist < closest_dist:
+			closest_dist = dist
+			closest = node
+	return closest
