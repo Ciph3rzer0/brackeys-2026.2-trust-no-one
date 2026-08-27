@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dwoulkmsgbok7"]
 
-[ext_resource type="PackedScene" uid="uid://dtumtpbx6j36y" path="res://assets/models/city/block.glb" id="1_2jj31"]
+[ext_resource type="PackedScene" uid="uid://dtumtpbx6j36y" path="res://assets/models/city/blocks/block.glb" id="1_2jj31"]
 [ext_resource type="PackedScene" uid="uid://b3p4jengkbkto" path="res://assets/models/city/street/intersection.glb" id="2_drx7m"]
 [ext_resource type="PackedScene" uid="uid://3dfura4rgfja" path="res://assets/models/city/street/stoplight.glb" id="3_8uhr2"]
 [ext_resource type="Shader" uid="uid://clgq4liepl864" path="res://assets/shaders/city.gdshader" id="3_f7b0s"]
