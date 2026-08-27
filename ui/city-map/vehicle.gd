@@ -7,6 +7,11 @@ extends CharacterBody2D
 @export var speed: float = 200.0
 @export var arrive_threshold: float = 8.0
 
+var plate: String
+var color: String
+var type: String
+var features: Array[String]
+
 var path: PackedVector2Array
 var path_index: int = 0
 
@@ -20,6 +25,14 @@ func follow_path(new_path: PackedVector2Array) -> void:
 
 func is_done() -> bool:
 	return path_index >= path.size()
+
+func _ready() -> void:
+	seed(-7718)
+	var vehicle = GameManager.database.rms_vehicles.pick_random()
+	plate = vehicle.plate
+	color = vehicle.color
+	type = vehicle.type
+	features = vehicle.features
 
 func _physics_process(_delta: float) -> void:
 	if is_done():

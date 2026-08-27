@@ -50,26 +50,26 @@ const VEHICLE_FEATURES: Array[String] = [
 	"Sunroof", "Aftermarket exhaust"
 ]
 
-static func generate_vehicle_sightings(count: int = 100, persons: Array[SchemaRmsPersons] = []) -> Array[SchemaVehicleSightings]:
+static func generate_vehicle_sightings(count: int = 100, vehicles: Array[SchemaRmsVehicles] = []) -> Array[SchemaVehicleSightings]:
 	count = clampi(count, 0, 1000)
 	var sightings: Array[SchemaVehicleSightings] = []
 	for i in range(count):
-		sightings.append(generate_vehicle_sighting(i + 1, persons))
+		sightings.append(generate_vehicle_sighting(i + 1, vehicles))
 	return sightings
 
-static func generate_vehicle_sighting(sighting_id: int = 1, persons: Array[SchemaRmsPersons] = []) -> SchemaVehicleSightings:
+static func generate_vehicle_sighting(sighting_id: int = 1, vehicles: Array[SchemaRmsVehicles] = []) -> SchemaVehicleSightings:
 	var sighting := SchemaVehicleSightings.new()
 	sighting.sighting_id = sighting_id
-	sighting.vehicle_plate = persons.pick_random().car_plate if not persons.is_empty() else _generate_plate()
 
+	var vehicle: SchemaRmsVehicles = vehicles.pick_random() if not vehicles.is_empty() else generate_vehicle()
+
+	sighting.vehicle_plate = vehicle.plate
 	var now := Time.get_unix_time_from_system()
 	sighting.unix_timestamp = int(now - randi_range(0, SIGHTING_LOOKBACK_SECONDS))
-
 	sighting.camera_id = "CAM-%03d" % randi_range(1, 40)
-	sighting.vehicle_color = VEHICLE_COLORS.pick_random()
-	sighting.vehicle_type = VEHICLE_TYPES.pick_random()
-	sighting.vehicle_features = _generate_features()
-
+	sighting.vehicle_color = vehicle.color
+	sighting.vehicle_type = vehicle.type
+	sighting.vehicle_features = vehicle.features
 	return sighting
 
 static func generate_rows(count: int = 100) -> Array[SchemaRmsPersons]:

@@ -15,15 +15,15 @@ func _on_body_exited(_body: Node2D) -> void:
 	$ALERT.visible = false
 
 
-func log_car_sighting(vehicle: Node2D):
+func log_car_sighting(vehicle: Vehicle):
 	print("Camera ", camera_name, " sees ", vehicle.name)
 	var sighting = SchemaVehicleSightings.new()
 	#sighting.sighting_id: int
 	sighting.unix_timestamp = Time.get_unix_time_from_system()
 	sighting.camera_id = camera_name
-	#sighting.vehicle_plate: String
-	#sighting.vehicle_color: String
-	#sighting.vehicle_type: String
-	#sighting.vehicle_features: Array[String]
-
-	
+	sighting.vehicle_plate = vehicle.plate
+	sighting.vehicle_color = vehicle.color
+	sighting.vehicle_type = vehicle.type
+	sighting.vehicle_features = vehicle.features
+	GameManager.database.vehicle_sightings.append(sighting)
+	GameManager.database.refresh()
