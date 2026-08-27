@@ -2,8 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://dlxjetybghqpd" path="res://assets/models/office/room.glb" id="1_jwaux"]
 [ext_resource type="PackedScene" uid="uid://c1q51y6vqxm1" path="res://assets/models/office/pottedPlant.glb" id="2_7jj4f"]
+[ext_resource type="AudioStream" uid="uid://ndcuts0a2vjr" path="res://assets/audio/music/morning-coffee-loop.wav" id="2_gnmmx"]
 [ext_resource type="PackedScene" uid="uid://bevtot6h0we4v" path="res://assets/models/office/chair.glb" id="3_qphb6"]
 [ext_resource type="PackedScene" uid="uid://b8vxt6ijnj74q" path="res://assets/models/office/desk.glb" id="4_2knxt"]
+[ext_resource type="PackedScene" uid="uid://cis13gq7hy3o0" path="res://scenes/faxMachine.tscn" id="4_07d2k"]
 [ext_resource type="PackedScene" uid="uid://bnhtdbhbnklps" path="res://assets/models/office/filingCabinet.glb" id="5_fmddn"]
 [ext_resource type="PackedScene" uid="uid://qxst5b3aqpoo" path="res://assets/models/office/computer.glb" id="7_in4ui"]
 [ext_resource type="PackedScene" uid="uid://d4dkrl8n2c4i7" path="res://assets/models/city/camera.glb" id="8_fmddn"]
@@ -12,9 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://de35ov58wu763" path="res://assets/models/office/corkboard.glb" id="12_o23kw"]
 [ext_resource type="PackedScene" uid="uid://cu5og6niixvj7" path="res://assets/models/office/door.glb" id="12_wruke"]
 [ext_resource type="PackedScene" uid="uid://bosjilrctrsn7" path="res://assets/models/office/gooseneckTablet.glb" id="13_wruke"]
-[ext_resource type="PackedScene" uid="uid://bo0akjnab2yy2" path="res://assets/models/office/faxTable.glb" id="14_k578b"]
-[ext_resource type="PackedScene" uid="uid://clm0ltpnrt7du" path="res://assets/models/office/faxMachine.glb" id="15_07d2k"]
-[ext_resource type="AudioStream" uid="uid://wp6coykaawrh" path="res://assets/audio/music/morning-coffee.wav" id="16_07d2k"]
 [ext_resource type="PackedScene" uid="uid://b085wqdb2gvpt" path="res://scenes/coffeeCup.tscn" id="16_gnmmx"]
 [ext_resource type="AudioStream" uid="uid://dssagk4uh4quc" path="res://assets/audio/sfx/rain.mp3" id="17_gnmmx"]
 
@@ -30,16 +29,6 @@ refraction_scale = 0.1
 
 [node name="Office" type="Node3D" unique_id=2119133953]
 
-[node name="MorningCoffee" type="AudioStreamPlayer3D" parent="." unique_id=1402947618]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3038962, 0.6451453, 2.0154862)
-stream = ExtResource("16_07d2k")
-attenuation_model = 3
-volume_db = -20.0
-autoplay = true
-panning_strength = 0.1
-bus = &"Music"
-attenuation_filter_cutoff_hz = 20500.0
-
 [node name="Rain" type="AudioStreamPlayer3D" parent="." unique_id=105857967]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1283921, 1.0637031, 6.396698)
 stream = ExtResource("17_gnmmx")
@@ -49,6 +38,17 @@ autoplay = true
 bus = &"SFX"
 attenuation_filter_cutoff_hz = 5948.0
 attenuation_filter_db = -40.6
+
+[node name="MorningCoffeeLoop" type="AudioStreamPlayer3D" parent="." unique_id=446624946]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 1)
+stream = ExtResource("2_gnmmx")
+attenuation_model = 3
+volume_db = -20.0
+autoplay = true
+panning_strength = 0.1
+bus = &"Music"
+attenuation_filter_cutoff_hz = 20500.0
+attenuation_filter_db = 0.0
 
 [node name="roomLight" type="AreaLight3D" parent="." unique_id=378018363]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 1.060077, 7.32155, -0.91183126)
@@ -73,6 +73,9 @@ shape = SubResource("WorldBoundaryShape3D_6hbky")
 [node name="work area" type="Node3D" parent="." unique_id=2052434724]
 transform = Transform3D(1.4062078, 0, 0, 0, 1.4062078, 0, 0, 0, 1.4062078, 4.6309047, 1.0932708, -4.9284306)
 
+[node name="FaxMachine" parent="work area" unique_id=1658198781 instance=ExtResource("4_07d2k")]
+transform = Transform3D(-5.294753e-08, 0, 1.2112983, 0, 1.2112983, 0, -1.2112983, 0, -5.294753e-08, -0.04169499, -0.5900414, 0.25055265)
+
 [node name="coffeeCup" parent="work area" unique_id=2141730045 instance=ExtResource("16_gnmmx")]
 transform = Transform3D(1.1587414, 0, 0, 0, 1.1587414, 0, 0, 0, 1.1587414, 0.3076514, 0.43100306, 5.0859513)
 
@@ -87,11 +90,6 @@ transform = Transform3D(6.3419434e-09, -0.14508675, -6.3419443e-09, 1.2683889e-0
 
 [node name="corkboard2" parent="work area" unique_id=1877018735 instance=ExtResource("12_o23kw")]
 transform = Transform3D(0.71113247, 0, 0, 0, 0.71113247, 0, 0, 0, 0.71113247, 0.7665186, 2.0331366, 3.780686)
-
-[node name="faxTable" parent="work area" unique_id=739480162 instance=ExtResource("14_k578b")]
-
-[node name="faxMachine" parent="work area" unique_id=880050772 instance=ExtResource("15_07d2k")]
-transform = Transform3D(-4.017867e-08, 0, 0.91918075, 0, 0.91918075, 0, -0.91918075, 0, -4.017867e-08, -0.0160048, 0.5150733, 0.01550746)
 
 [node name="computerAccessories" type="Node3D" parent="work area" unique_id=965257853]
 
