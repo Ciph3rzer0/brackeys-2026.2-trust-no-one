@@ -37,17 +37,17 @@ const CITIES_STATES: Array[Array] = [
 ]
 
 const VEHICLE_COLORS: Array[String] = [
-	"Black", "White", "Silver", "Gray", "Red", "Blue", "Green", "Tan", "Yellow", "Maroon"
+	"Black", "White", "Silver", "Gray", "Red", "Blue", "Green", "Beige", "Gold", "Maroon"
 ]
 
 const VEHICLE_TYPES: Array[String] = [
-	"Sedan", "SUV", "Pickup Truck", "Coupe", "Hatchback", "Minivan", "Motorcycle", "Van"
+	"Sedan", "SUV", "Pickup Truck", "Van", "Coupe", "Hatchback", "Motorcycle", "Bus"
 ]
 
 const VEHICLE_FEATURES: Array[String] = [
-	"Tinted windows", "Roof rack", "Tow hitch", "Rear spoiler", "Bumper sticker",
-	"Dent - rear bumper", "Cracked windshield", "Aftermarket rims", "Ladder rack",
-	"Missing hubcap", "Commercial decal", "Bike rack", "Fog lights", "Sunroof"
+	"Tinted windows", "Roof rack", "Spoiler", "Cracked windshield", "Dented rear bumper",
+	"Custom rims", "Bumper sticker", "Missing hubcap", "Tow hitch", "Ladder rack",
+	"Sunroof", "Aftermarket exhaust"
 ]
 
 static func generate_vehicle_sightings(count: int = 100, persons: Array[SchemaRmsPersons] = []) -> Array[SchemaVehicleSightings]:
@@ -116,3 +116,30 @@ static func _generate_address() -> String:
 	var city_state: Array = CITIES_STATES.pick_random()
 	var zip_code := randi_range(10000, 99999)
 	return "%d %s, %s, %s %d" % [house_num, street, city_state[0], city_state[1], zip_code]
+
+## Add these to MockDataFactory alongside the existing const arrays and
+## generate_x()/generate_xs() pairs.
+
+
+const PLATE_LETTERS := "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+const PLATE_DIGITS := "0123456789"
+
+
+static func generate_vehicle() -> SchemaRmsVehicles:
+	var vehicle := SchemaRmsVehicles.new()
+	vehicle.plate = _generate_plate()
+	vehicle.color = VEHICLE_COLORS.pick_random()
+	vehicle.type = VEHICLE_TYPES.pick_random()
+
+	var shuffled := VEHICLE_FEATURES.duplicate()
+	shuffled.shuffle()
+	var feature_count := randi_range(0, 2)  # most vehicles have 0-2 distinguishing features
+	vehicle.features = shuffled.slice(0, feature_count)
+
+	return vehicle
+
+static func generate_vehicles(count: int) -> Array[SchemaRmsVehicles]:
+	var vehicles: Array[SchemaRmsVehicles] = []
+	for i in count:
+		vehicles.append(generate_vehicle())
+	return vehicles
