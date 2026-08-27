@@ -87,3 +87,16 @@ func find_closest_point(world_pos: Vector2) -> PathNode2D:
 			closest_dist = dist
 			closest = node
 	return closest
+
+## Returns the PathNode2D whose global_position is nearest world_pos,
+## that is a POI
+func find_closest_poi(world_pos: Vector2) -> PathNode2D:
+	var closest: PathNode2D = null
+	var closest_dist := INF
+	for node in _get_path_nodes():
+		if !node.is_in_group(&"poi"): continue
+		var dist := node.global_position.distance_squared_to(world_pos)
+		if dist < closest_dist:
+			closest_dist = dist
+			closest = node
+	return closest

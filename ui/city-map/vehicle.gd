@@ -4,6 +4,8 @@ extends CharacterBody2D
 ## markers, or how the path was computed — just follows PackedVector2Array
 ## points in order. Attach directly to the CharacterBody2D node.
 
+@export var city_map: CityMap
+@export var astar: AStarGraph2D
 @export var speed: float = 200.0
 @export var arrive_threshold: float = 8.0
 
@@ -27,19 +29,36 @@ func is_done() -> bool:
 	return path_index >= path.size()
 
 func _ready() -> void:
-	#graph
+	assert(city_map)
+	assert(astar)
+	var start_node := astar.find_closest_poi(global_position)
+	global_position = start_node.global_position
 	
-	seed(-7718)
+	#seed(-7718)
 	var vehicle = GameManager.database.rms_vehicles.pick_random()
 	plate = vehicle.plate
 	color = vehicle.color
 	type = vehicle.type
 	features = vehicle.features
 
+func get_new_path():
+	var destination = astar._get_path_nodes().pick_random()
+	var start_node := astar.find_closest_point(global_position)
+	var end_node := astar.find_closest_point(destination.global_position)
+	pass
+	var from_id := astar.get_id_for(start_node)
+	var to_id := astar.get_id_for(end_node)
+
+	var path := city_map.astar.get_point_path(from_id, to_id)
+	if path.is_empty():
+		push_warning("No path found between start_marker and end_marker.")
+	follow_path(path)
+
 func _physics_process(_delta: float) -> void:
 	if is_done():
 		velocity = Vector2.ZERO
 		move_and_slide()
+		get_new_path()
 		return
 
 	var target := path[path_index]
