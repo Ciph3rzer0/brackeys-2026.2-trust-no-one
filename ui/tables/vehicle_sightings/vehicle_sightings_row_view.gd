@@ -6,10 +6,6 @@ var source_row: SchemaVehicleSightings
 func set_source_row(_source_row: SchemaVehicleSightings) -> void:
 	source_row = _source_row
 	update()
-const MONTH_ABBR: Array[String] = [
-	"", "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-	"Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-]
 
 func update() -> void:
 	$SightingID.text = str(source_row.sighting_id)

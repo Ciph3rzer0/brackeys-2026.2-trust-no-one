@@ -7,7 +7,8 @@ func set_player(player: Player):
 	_player = player
 
 func _ready() -> void:
-	print("PLAYER IS ", _player.name)
+	if _player:
+		print("PLAYER IS ", _player.name)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:

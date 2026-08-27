@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://coyenoh4kdnlv" path="res://ui/tables/vehicle_sightings/vehicle_sightings_row_view.gd" id="1_scse7"]
 
 [node name="VehicleSightingsTableRow" type="HBoxContainer" unique_id=1285161061]
+mouse_filter = 0
+mouse_default_cursor_shape = 2
 theme = ExtResource("1_fgbac")
 script = ExtResource("1_scse7")
 
