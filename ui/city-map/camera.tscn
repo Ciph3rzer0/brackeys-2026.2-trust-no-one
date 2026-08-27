@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://rfby48jvh0km"]
+
+[ext_resource type="Script" uid="uid://dlu82841kr888" path="res://ui/city-map/camera.gd" id="1_0wb8t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_32ncx"]
+radius = 25.0
+
+[node name="Camera" type="Area2D" unique_id=1211424755]
+collision_layer = 0
+collision_mask = 16
+input_pickable = false
+script = ExtResource("1_0wb8t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1781273824]
+shape = SubResource("CircleShape2D_32ncx")
+debug_color = Color(0.9330434, 0.16589534, 0.50392324, 0.41960785)
+
+[node name="ALERT" type="Node2D" parent="." unique_id=2106135538]
+visible = false
+
+[node name="Polygon2D" type="Polygon2D" parent="ALERT" unique_id=1588523443]
+color = Color(1, 0, 0, 1)
+polygon = PackedVector2Array(-30, -32, -36, -59, -35, -63, -33, -66, -30, -67, -26, -66, -24, -63, -23, -59)
+
+[node name="Polygon2D2" type="Polygon2D" parent="ALERT" unique_id=99501170]
+color = Color(1, 0, 0, 1)
+polygon = PackedVector2Array(-31, -30, -33, -28, -34, -25, -32, -23, -30, -22, -27, -24, -26, -26, -28, -29)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
