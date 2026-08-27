@@ -11,6 +11,7 @@ extends Node2D
 @export var node_color: Color = Color.CYAN
 @export var edge_color: Color = Color(1.0, 0.9, 0.2, 0.8)
 @export var node_radius: float = 6.0
+@export var edge_width: float = 4.0
 
 ## If false, connections are one-way (A -> B only, unless B also lists A).
 ## Use false for one-way roads, true for ordinary two-way roads.
@@ -38,7 +39,7 @@ func _draw() -> void:
 		for path in node.connections:
 			var other := node.get_node_or_null(path) as PathNode2D
 			if other:
-				draw_line(node_pos, to_local(other.global_position), edge_color, 2.0)
+				draw_line(node_pos, to_local(other.global_position), edge_color, edge_width)
 
 	for node in nodes:
 		draw_circle(to_local(node.global_position), node_radius, node_color)
