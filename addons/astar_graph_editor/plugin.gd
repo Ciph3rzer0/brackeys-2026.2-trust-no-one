@@ -14,7 +14,7 @@ const PICK_RADIUS := 14.0
 
 var _graph: AStarGraph2D
 var _pending: PathNode2D
-var _last_local_mouse: Vector2
+var _last_screen_mouse: Vector2
 
 func _enter_tree() -> void:
 	get_editor_interface().get_selection().selection_changed.connect(_on_selection_changed)
@@ -46,7 +46,7 @@ func _forward_canvas_gui_input(event: InputEvent) -> bool:
 		return false
 
 	if event is InputEventMouseMotion:
-		_last_local_mouse = (_graph.make_input_local(event) as InputEventMouseMotion).position
+		_last_screen_mouse = (event as InputEventMouseMotion).position
 		if _pending:
 			update_overlays()
 		return false
@@ -54,11 +54,10 @@ func _forward_canvas_gui_input(event: InputEvent) -> bool:
 	if event is InputEventMouseButton:
 		var mb := event as InputEventMouseButton
 		if mb.pressed and mb.button_index == MOUSE_BUTTON_LEFT:
-			print("[astar_graph_editor] left click, shift=", mb.shift_pressed, " graph=", _graph)
+			print("[astar_graph_editor] left click, shift=", mb.shift_pressed, " screen_pos=", mb.position)
 			if mb.shift_pressed:
-				var local_pos: Vector2 = (_graph.make_input_local(event) as InputEventMouseButton).position
-				var clicked := _find_node_near(local_pos)
-				print("[astar_graph_editor] local_pos=", local_pos, " clicked=", clicked)
+				var clicked := _find_node_near_screen(mb.position)
+				print("[astar_graph_editor] clicked=", clicked)
 				if clicked:
 					_handle_click(clicked)
 					update_overlays()
@@ -69,22 +68,22 @@ func _forward_canvas_gui_input(event: InputEvent) -> bool:
 func _forward_canvas_draw_over_viewport(overlay: Control) -> void:
 	if not _graph or not _pending:
 		return
-	var xform := _graph.get_global_transform_with_canvas()
-	var pending_screen: Vector2 = xform * _pending.position
-	var mouse_screen: Vector2 = xform * _last_local_mouse
+	var pending_screen := _node_to_screen(_pending)
 	overlay.draw_arc(pending_screen, 10.0, 0, TAU, 24, Color.MAGENTA, 3.0)
-	overlay.draw_line(pending_screen, mouse_screen, Color.MAGENTA, 2.0)
+	overlay.draw_line(pending_screen, _last_screen_mouse, Color.MAGENTA, 2.0)
 
-func _find_node_near(local_pos: Vector2) -> PathNode2D:
+func _node_to_screen(node: PathNode2D) -> Vector2:
+	var xform := _graph.get_global_transform_with_canvas()
+	return xform * _graph.to_local(node.global_position)
+
+func _find_node_near_screen(screen_pos: Vector2) -> PathNode2D:
 	var closest: PathNode2D = null
 	var closest_dist := PICK_RADIUS
 	var candidates := _graph.find_children("*", "PathNode2D", true, false)
-	print("[astar_graph_editor] candidates=", candidates.size())
 	for node in candidates:
 		var path_node := node as PathNode2D
-		var node_local: Vector2 = _graph.to_local(path_node.global_position)
-		var dist: float = local_pos.distance_to(node_local)
-		print("[astar_graph_editor]   ", path_node.name, " at ", node_local, " dist=", dist)
+		var node_screen := _node_to_screen(path_node)
+		var dist: float = screen_pos.distance_to(node_screen)
 		if dist <= closest_dist:
 			closest = path_node
 			closest_dist = dist
