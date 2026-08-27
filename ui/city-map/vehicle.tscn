@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://b0sw7kg0mti8e"]
+
+[ext_resource type="Script" uid="uid://d2nygym3ldblc" path="res://ui/city-map/vehicle.gd" id="1_yqcag"]
+[ext_resource type="Texture2D" uid="uid://ddxvv763xd43t" path="res://icon.svg" id="2_4o2og"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uhg71"]
+radius = 15.0
+
+[node name="Vehicle" type="CharacterBody2D" unique_id=260464224]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_yqcag")
+speed = 100.0
+arrive_threshold = 1.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1527367072]
+modulate = Color(0.65882355, 0.105882354, 0.15686275, 1)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_4o2og")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=550768327]
+shape = SubResource("CircleShape2D_uhg71")
