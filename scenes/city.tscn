@@ -112,8 +112,8 @@ metadata/_edit_lock_ = true
 
 [node name="Office" parent="." unique_id=2119133953 instance=ExtResource("6_2jj31")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2601624, 35.22836, -55.920532)
-metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="MorningCoffee" parent="Office" index="0" unique_id=1402947618]
 volume_db = -25.0
@@ -417,6 +417,7 @@ transform = Transform3D(0.31999412, 0, -0.27076468, 0, 0.41917747, 0, 0.27076468
 
 [node name="ComputerScreen" type="StaticBody3D" parent="Screens" unique_id=2105178651 node_paths=PackedStringArray("computer_viewport")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.555, 37.457, -53.86)
+collision_layer = 4096
 script = ExtResource("3_obbxu")
 computer_viewport = NodePath("../../ComputerScreenRenders/ComputerMonitor")
 quad_mesh = ExtResource("15_agolw")
@@ -4252,6 +4253,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.44442, 1.1127148, 33.6692
 
 [node name="Chair Interaction" type="Area3D" parent="Gameplay" unique_id=402669167 node_paths=PackedStringArray("redirect_input") groups=["InteractiveMount"]]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 2.2714262, 35.188118, -54.854343)
+collision_layer = 0
+input_ray_pickable = false
+monitorable = false
 script = ExtResource("14_yles7")
 redirect_input = NodePath("../../ComputerScreenRenders/ComputerMonitor")
 

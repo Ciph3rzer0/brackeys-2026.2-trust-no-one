@@ -64,11 +64,24 @@ func try_mount():
 			global_rotation = mount.global_rotation
 			_mounted_object = mount
 			cam.rotation_degrees.x = 0
+			change_fov(50.0, 0.27)
 			set_mouse_free(true)
 
 func dismount():
 	_mounted_object = null
+	change_fov(75.0, 0.05)
 	set_mouse_free(false)
+
+
+var fov_tween: Tween
+func change_fov(target_fov: float, duration: float) -> void:
+	# Kill any active tween to prevent jittery, conflicting animations
+	if fov_tween and fov_tween.is_valid():
+		fov_tween.kill()
+	
+	# Create a new tween and animate the fov property
+	fov_tween = create_tween()
+	fov_tween.tween_property(cam, "fov", target_fov, duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 
 var exit_button_held_timer := 0.0
 func _process(delta: float) -> void:

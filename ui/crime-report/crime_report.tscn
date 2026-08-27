@@ -1,16 +1,91 @@
 [gd_scene format=3 uid="uid://dukf0r3kv7h3u"]
 
+[ext_resource type="Script" uid="uid://crvv5bco8yote" path="res://ui/crime-report/crime_report.gd" id="1_25t53"]
+[ext_resource type="Resource" uid="uid://mlx6hgu5bc7w" path="res://scripts/quests/first_quest.tres" id="2_eqs3u"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uhg71"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 10
+border_width_right = 10
+border_color = Color(0.8, 0.8, 0.8, 0)
+
 [node name="CrimeReport" type="PanelContainer" unique_id=1163959814]
 offset_left = 407.0
 offset_top = 58.0
 offset_right = 782.0
 offset_bottom = 522.0
+script = ExtResource("1_25t53")
+quest = ExtResource("2_eqs3u")
 
-[node name="Control" type="Control" parent="." unique_id=848733636]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1544216645]
 layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
-[node name="Label" type="Label" parent="Control" unique_id=1819332280]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 17.0
-text = "CRIIMES"
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=232240578]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Header" type="Label" parent="MarginContainer/VBoxContainer" unique_id=290499644]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Crime Report"
+horizontal_alignment = 1
+
+[node name="Divider" type="Panel" parent="MarginContainer/VBoxContainer" unique_id=1979503544]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_uhg71")
+
+[node name="IncidentTitle" type="Label" parent="MarginContainer/VBoxContainer" unique_id=990062691]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Incident:"
+horizontal_alignment = 1
+
+[node name="Incident" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1114975575]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "<burglary at Joe's Bagels>"
+horizontal_alignment = 1
+
+[node name="Divider3" type="Panel" parent="MarginContainer/VBoxContainer" unique_id=386149315]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_uhg71")
+
+[node name="DateTitle" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1597548356]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Approximate Time:"
+horizontal_alignment = 1
+
+[node name="Time" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1969729799]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "<XK3-JT*1>"
+horizontal_alignment = 1
+
+[node name="Divider2" type="Panel" parent="MarginContainer/VBoxContainer" unique_id=539637987]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_uhg71")
+
+[node name="PlateLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1859087249]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Details"
+horizontal_alignment = 1
+
+[node name="Plate" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1378861698]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "<XK3-JT*1>"
+horizontal_alignment = 1
+autowrap_mode = 2
