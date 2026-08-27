@@ -49,6 +49,7 @@
 		"HSIZE",
 		"Interactable",
 		"keypress",
+		"lerp",
 		"oldy",
 		"tscn",
 		"VSIZE"

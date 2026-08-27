@@ -19,6 +19,11 @@ config/icon="uid://c6t3oxng53jc8"
 
 buses/default_bus_layout="uid://b4iev0nsbwrb7"
 
+[autoload]
+
+GameManager="*uid://203d3e5l3pf6"
+QuestSystem="*uid://dok4pihc1g678"
+
 [display]
 
 window/size/viewport_width=1280

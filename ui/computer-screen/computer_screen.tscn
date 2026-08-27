@@ -7,6 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://dvphuceq43kt8" path="res://ui/tables/vehicle_sightings/vehicle_sightings_table_view.tscn" id="5_hkea7"]
 [ext_resource type="PackedScene" uid="uid://dukf0r3kv7h3u" path="res://ui/crime-report/crime_report.tscn" id="6_5hd8n"]
 [ext_resource type="PackedScene" uid="uid://caageh3xw4bpg" path="res://draggable-resizable-panel.tscn" id="7_8qfsr"]
+[ext_resource type="Theme" uid="uid://bd38ltbo66d6v" path="res://theme/folder_button_theme.tres" id="8_vod3n"]
+[ext_resource type="Texture2D" uid="uid://bsner80gnprhh" path="res://assets/folder.svg" id="9_5sf7k"]
+[ext_resource type="Script" uid="uid://dk0py0rtbm2f8" path="res://ui/computer-screen/quest_button.gd" id="10_5sf7k"]
+[ext_resource type="Resource" uid="uid://mlx6hgu5bc7w" path="res://scripts/quests/first_quest.tres" id="11_4dgut"]
+[ext_resource type="Resource" uid="uid://x4bm7k2h5yiq" path="res://scripts/quests/2_quest.tres" id="12_n1ots"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uhg71"]
 bg_color = Color(0, 0.18039216, 0.57254905, 1)
@@ -28,6 +33,30 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_uhg71")
+
+[node name="Button" type="Button" parent="." unique_id=1762318741]
+layout_mode = 0
+offset_left = 103.0
+offset_top = 894.0
+offset_right = 200.0
+offset_bottom = 991.0
+theme = ExtResource("8_vod3n")
+icon = ExtResource("9_5sf7k")
+expand_icon = true
+script = ExtResource("10_5sf7k")
+quest = ExtResource("11_4dgut")
+
+[node name="Button2" type="Button" parent="." unique_id=637476883]
+layout_mode = 0
+offset_left = 260.0
+offset_top = 894.0
+offset_right = 357.0
+offset_bottom = 991.0
+theme = ExtResource("8_vod3n")
+icon = ExtResource("9_5sf7k")
+expand_icon = true
+script = ExtResource("10_5sf7k")
+quest = ExtResource("12_n1ots")
 
 [node name="PlateFilter" type="TextEdit" parent="." unique_id=2046144793]
 layout_mode = 0
@@ -66,17 +95,15 @@ offset_bottom = 622.0
 [node name="CrimeReport" parent="." unique_id=1163959814 instance=ExtResource("6_5hd8n")]
 visible = false
 layout_mode = 0
-offset_left = 0.0
-offset_top = 0.0
 offset_right = 375.0
 offset_bottom = 464.0
 
 [node name="ComputerWindow" parent="." unique_id=24755338 instance=ExtResource("7_8qfsr")]
 layout_mode = 1
-offset_left = 322.0
-offset_top = 670.0
-offset_right = -475.0
-offset_bottom = -209.0
+offset_left = 746.0
+offset_top = 28.0
+offset_right = -51.0
+offset_bottom = -600.0
 content_scene_path = "uid://dukf0r3kv7h3u"
 
 [connection signal="filter_changed" from="PlateFilter" to="VehicleSightingsTableView" method="_on_plate_filter_filter_changed"]
