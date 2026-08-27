@@ -6,9 +6,9 @@ signal new_quest_assigned(quest: Quest)
 signal plate_submitted_for_quest(quest: Quest, plate: String)
 
 func assign_new_quest(quest: Quest = null):
-	if _active_quest:
-		print("Quest already active")
-		return
+	# if _active_quest:
+	# 	print("Quest already active")
+	# 	return
 	
 	if !quest:
 		print("Generating new quest")

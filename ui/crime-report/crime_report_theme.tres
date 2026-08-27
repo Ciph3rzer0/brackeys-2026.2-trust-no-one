@@ -36,8 +36,8 @@ expand_margin_right = 2.0
 expand_margin_bottom = 4.0
 
 [resource]
-TextEdit/colors/caret_background_color = Color(0.83, 0.83, 0.83, 1)
-TextEdit/colors/caret_color = Color(0, 0, 0, 0.39215687)
-TextEdit/constants/caret_width = 4
-TextEdit/styles/focus = SubResource("StyleBoxFlat_yq7lw")
-TextEdit/styles/normal = SubResource("StyleBoxFlat_yvpd2")
+LineEdit/colors/caret_background_color = Color(0.83, 0.83, 0.83, 1)
+LineEdit/colors/caret_color = Color(0, 0, 0, 0.39215687)
+LineEdit/constants/caret_width = 4
+LineEdit/styles/focus = SubResource("StyleBoxFlat_yq7lw")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_yvpd2")

@@ -112,7 +112,7 @@ theme_override_font_sizes/font_size = 20
 text = "Identify Full License Plate Number:"
 horizontal_alignment = 1
 
-[node name="PlateEntryTextEdit" type="TextEdit" parent="ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=1549156985]
+[node name="PlateEntryTextEdit" type="LineEdit" parent="ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=673827303]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(140, 40)
 custom_maximum_size = Vector2(140, -1)
@@ -121,10 +121,8 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("3_tygkb")
 theme_override_font_sizes/font_size = 22
-scroll_fit_content_height = true
-scroll_fit_content_width = true
+backspace_deletes_composite_character_enabled = true
 caret_blink = true
-caret_multiple = false
 
 [node name="Control" type="Control" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=746673933]
 custom_minimum_size = Vector2(0, 15)
@@ -138,4 +136,5 @@ size_flags_horizontal = 8
 text = "Submit"
 autowrap_trim_flags = 192
 
+[connection signal="text_submitted" from="ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PlateEntryTextEdit" to="." method="_on_plate_entry_text_edit_text_submitted"]
 [connection signal="pressed" from="ScrollContainer/MarginContainer/VBoxContainer/SubmitButton" to="." method="_on_submit_button_pressed"]

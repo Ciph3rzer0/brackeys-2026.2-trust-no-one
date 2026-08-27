@@ -22,3 +22,7 @@ func _on_submit_button_pressed() -> void:
 	var plate = %PlateEntryTextEdit.text
 	QuestSystem.submit_plate_to_quest(quest, plate)
 	print("Submitted ", plate)
+
+func _on_plate_entry_text_edit_text_submitted(_new_text: String) -> void:
+	_on_submit_button_pressed()
+	#%PlateEntryTextEdit.grab_focus()
