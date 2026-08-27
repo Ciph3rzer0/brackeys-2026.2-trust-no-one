@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://x4bm7k2h5yiq"]
+
+[ext_resource type="Script" uid="uid://dy022jdobl3k8" path="res://scripts/quests/quest.gd" id="1_ajpvw"]
+
+[resource]
+script = ExtResource("1_ajpvw")
+correct_plate = "NDO-2537"
+incident = "Plate Swapping"
+details = "We have evidience to suggest a wanted felon is swapping his license plates to other vehicles to make tracking harder.  He was last seen July 21 at 7pm"
+datetime_start = "2026-07-21T19:00:00"
+metadata/_custom_type_script = "uid://dy022jdobl3k8"

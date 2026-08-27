@@ -1,0 +1,43 @@
+[gd_resource type="Theme" format=3 uid="uid://bd3ja6q1vwt2q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yq7lw"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.8556, 0.88908005, 0.93, 1)
+draw_center = false
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.95, 0.29545003, 0.20900002, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yvpd2"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.39215687)
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 0.78431374)
+corner_detail = 1
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 4.0
+
+[resource]
+LineEdit/colors/caret_background_color = Color(0.83, 0.83, 0.83, 1)
+LineEdit/colors/caret_color = Color(0, 0, 0, 0.39215687)
+LineEdit/constants/caret_width = 4
+LineEdit/styles/focus = SubResource("StyleBoxFlat_yq7lw")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_yvpd2")
