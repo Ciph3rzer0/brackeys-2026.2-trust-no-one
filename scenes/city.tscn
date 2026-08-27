@@ -51,10 +51,6 @@ shader_parameter/frosted_noise_scale = 200.0
 shader_parameter/glass_thickness = 0.2
 shader_parameter/ior = 1.45
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uhg71"]
-radius = 1.4682617
-height = 2.9365234
-
 [sub_resource type="ViewportTexture" id="ViewportTexture_ruxf0"]
 viewport_path = NodePath("ComputerScreenRenders/ComputerMonitor")
 
@@ -97,6 +93,10 @@ size = Vector3(6, 1, 6)
 background_mode = 2
 background_color = Color(1, 1, 1, 1)
 ambient_light_color = Color(0.90408707, 0.92056644, 0.9382726, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uhg71"]
+radius = 1.4682617
+height = 2.9365234
 
 [node name="City" type="Node3D" unique_id=400190066]
 metadata/_edit_lock_ = true
@@ -412,15 +412,6 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -15.
 
 [node name="policeOfficer" parent="trucks" unique_id=2026070074 instance=ExtResource("12_hyhbb")]
 transform = Transform3D(0.31999412, 0, -0.27076468, 0, 0.41917747, 0, 0.27076468, 0, 0.31999412, 32.04847, 1.4036803, 37.339485)
-
-[node name="Chair Interaction" type="Area3D" parent="." unique_id=402669167 node_paths=PackedStringArray("redirect_input") groups=["InteractiveMount"]]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 2.2714262, 35.188118, -54.854343)
-script = ExtResource("14_yles7")
-redirect_input = NodePath("../ComputerScreenRenders/ComputerMonitor")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Chair Interaction" unique_id=1974498237]
-transform = Transform3D(1.0000002, 0, -5.9604645e-08, 0, 1, 0, 5.9604645e-08, 0, 1.0000002, 0, 0.8417969, 0)
-shape = SubResource("CapsuleShape3D_uhg71")
 
 [node name="Screens" type="Node3D" parent="." unique_id=167141141]
 
@@ -4256,5 +4247,18 @@ size = 150.0
 
 [node name="hatchback2" parent="." unique_id=819623859 instance=ExtResource("20_ibljb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.44442, 1.1127148, 33.669254)
+
+[node name="Gameplay" type="Node3D" parent="." unique_id=450888495]
+
+[node name="Chair Interaction" type="Area3D" parent="Gameplay" unique_id=402669167 node_paths=PackedStringArray("redirect_input") groups=["InteractiveMount"]]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 2.2714262, 35.188118, -54.854343)
+script = ExtResource("14_yles7")
+redirect_input = NodePath("../../ComputerScreenRenders/ComputerMonitor")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Chair Interaction" unique_id=1974498237]
+transform = Transform3D(1.0000002, 0, -5.9604645e-08, 0, 1, 0, 5.9604645e-08, 0, 1.0000002, 0, 0.8417969, 0)
+shape = SubResource("CapsuleShape3D_uhg71")
+
+[node name="SubmitQuest" type="Node3D" parent="Gameplay" unique_id=173485420]
 
 [editable path="Office"]

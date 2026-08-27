@@ -1,4 +1,5 @@
 #https://github.com/Linko-3D/Godot-Simple-First-Person-Controller/blob/main/player/player.gd
+class_name Player
 extends CharacterBody3D
 
 @export var footstep_sound : Array[AudioStream]
@@ -18,6 +19,9 @@ var footstep_distance = 2.1
 
 var is_mouse_free := false
 var _mounted_object: InteractableMount
+
+func _enter_tree() -> void:
+	GameManager.set_player(self)
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -49,7 +53,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if _mounted_object:
 		if event is InputEventKey:
-			_mounted_object.push_keypress_to_viewport(event)
+			if _mounted_object.push_keypress_to_viewport(event):
+				get_viewport().set_input_as_handled()
 
 func try_mount():
 	var mounts = get_tree().get_nodes_in_group("InteractiveMount") as Array[InteractableMount]
