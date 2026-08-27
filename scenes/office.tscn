@@ -10,14 +10,19 @@
 [ext_resource type="PackedScene" uid="uid://qxst5b3aqpoo" path="res://assets/models/office/computer.glb" id="7_in4ui"]
 [ext_resource type="PackedScene" uid="uid://d4dkrl8n2c4i7" path="res://assets/models/city/camera.glb" id="8_fmddn"]
 [ext_resource type="PackedScene" uid="uid://8y18dm0ibu5p" path="res://assets/models/office/gooseneckClamp.glb" id="10_6hbky"]
-[ext_resource type="PackedScene" uid="uid://dxlj7u4pgo3u3" path="res://scenes/crimeReport.tscn" id="11_o23kw"]
-[ext_resource type="PackedScene" uid="uid://de35ov58wu763" path="res://assets/models/office/corkboard.glb" id="12_o23kw"]
 [ext_resource type="PackedScene" uid="uid://cu5og6niixvj7" path="res://assets/models/office/door.glb" id="12_wruke"]
 [ext_resource type="PackedScene" uid="uid://bosjilrctrsn7" path="res://assets/models/office/gooseneckTablet.glb" id="13_wruke"]
+[ext_resource type="PackedScene" uid="uid://cc4ldgg13mc2w" path="res://scenes/corkboard.tscn" id="16_07d2k"]
 [ext_resource type="PackedScene" uid="uid://b085wqdb2gvpt" path="res://scenes/coffeeCup.tscn" id="16_gnmmx"]
 [ext_resource type="AudioStream" uid="uid://dssagk4uh4quc" path="res://assets/audio/sfx/rain.mp3" id="17_gnmmx"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_6hbky"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0o143"]
+size = Vector3(22.040558, 8.332581, 10.353455)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h45xw"]
+size = Vector3(0.49856567, 2.2490005, 2.8112793)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_h45xw"]
 
@@ -61,7 +66,7 @@ area_attenuation = 0.375
 area_size = Vector2(9.721287, 10.079965)
 
 [node name="room" parent="." unique_id=359625459 instance=ExtResource("1_jwaux")]
-transform = Transform3D(1.3984075, 0, 0, 0, 1.3984075, 0, 0, 0, 1.3984075, 1.166569, 0.18830088, 0.4664774)
+transform = Transform3D(1.3984075, 0, 0, 0, 1.3984075, 0, 0, 0, 1.3984075, 1.1647122, 0.1907399, 0.46430027)
 
 [node name="floorStaticBody" type="StaticBody3D" parent="room" unique_id=38122905]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.017379522, 0, 0.10347867)
@@ -74,7 +79,7 @@ shape = SubResource("WorldBoundaryShape3D_6hbky")
 transform = Transform3D(1.4062078, 0, 0, 0, 1.4062078, 0, 0, 0, 1.4062078, 4.6309047, 1.0932708, -4.9284306)
 
 [node name="FaxMachine" parent="work area" unique_id=1658198781 instance=ExtResource("4_07d2k")]
-transform = Transform3D(-5.294753e-08, 0, 1.2112983, 0, 1.2112983, 0, -1.2112983, 0, -5.294753e-08, -0.04169499, -0.5900414, 0.25055265)
+transform = Transform3D(-4.678254e-08, 0, 1.0702598, 0, 1.0702598, 0, -1.0702598, 0, -4.678254e-08, 0.11891624, -0.5900414, 0.17210045)
 
 [node name="coffeeCup" parent="work area" unique_id=2141730045 instance=ExtResource("16_gnmmx")]
 transform = Transform3D(1.1587414, 0, 0, 0, 1.1587414, 0, 0, 0, 1.1587414, 0.3076514, 0.43100306, 5.0859513)
@@ -85,16 +90,13 @@ transform = Transform3D(0.05858278, 0, -0.05417159, 0, 0.07979037, 0, 0.05417159
 [node name="desk2" parent="work area" unique_id=1129029929 instance=ExtResource("4_2knxt")]
 transform = Transform3D(0.10101469, 0, 0, 0, 0.10101469, 0, 0, 0, 0.10101469, -0.5126437, -0.6435535, 5.0412326)
 
-[node name="CrimeReport2" parent="work area" unique_id=617504038 instance=ExtResource("11_o23kw")]
-transform = Transform3D(6.3419434e-09, -0.14508675, -6.3419443e-09, 1.2683889e-08, 6.3419447e-09, -0.14508675, 0.14508675, 6.341943e-09, 1.2683889e-08, 0.74486876, 1.5840871, 4.138026)
+[node name="StaticBody3D" type="StaticBody3D" parent="work area/desk2" unique_id=1541226846]
 
-[node name="corkboard2" parent="work area" unique_id=1877018735 instance=ExtResource("12_o23kw")]
-transform = Transform3D(0.71113247, 0, 0, 0, 0.71113247, 0, 0, 0, 0.71113247, 0.7665186, 2.0331366, 3.780686)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="work area/desk2/StaticBody3D" unique_id=317183058]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6510143, 5.1853943, -0.35848904)
+shape = SubResource("BoxShape3D_0o143")
 
 [node name="computerAccessories" type="Node3D" parent="work area" unique_id=965257853]
-
-[node name="CrimeReport" parent="work area/computerAccessories" unique_id=787598383 instance=ExtResource("11_o23kw")]
-transform = Transform3D(-0.14508677, 5.5443044e-16, -1.26838895e-08, 1.26838895e-08, 6.341946e-09, -0.14508677, 0, -0.14508677, -6.341946e-09, -1.277138, 0.7866037, 5.0941887)
 
 [node name="gooseneckTablet" parent="work area/computerAccessories" unique_id=963414952 instance=ExtResource("13_wruke")]
 transform = Transform3D(0.71113247, 0, 0, 0, 0.71113247, 0, 0, 0, 0.71113247, -0.5561693, 1.2879236, 5.002644)
@@ -117,10 +119,20 @@ transform = Transform3D(0.10357852, 0, -0.48062423, 0, 0.49165857, 0, 0.48062423
 [node name="filingCabinet" parent="set dressing" unique_id=1015927099 instance=ExtResource("5_fmddn")]
 transform = Transform3D(0.14204764, 0, 0, 0, 0.14204764, 0, 0, 0, 0.14204764, -4.035739, -0.8754022, -2.5905557)
 
+[node name="StaticBody3D" type="StaticBody3D" parent="set dressing/filingCabinet" unique_id=275145910]
+transform = Transform3D(9.844637, 0, 0, 0, 9.844637, 0, 0, 0, 9.844637, -0.86616135, 0.017170668, 1.63972)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="set dressing/filingCabinet/StaticBody3D" unique_id=1866896809]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10331702, 1.2054862, -0.9056393)
+shape = SubResource("BoxShape3D_h45xw")
+
 [node name="door2" parent="set dressing" unique_id=1698441969 instance=ExtResource("12_wruke")]
 transform = Transform3D(1.6940675, 0, 0, 0, 1.6940675, 0, 0, 0, 1.6940675, -2.1305733, 0.8269119, -9.820369)
 
 [node name="Window" type="MeshInstance3D" parent="." unique_id=1725740009]
-transform = Transform3D(4.012913, -2.1290061e-08, -1.8466758e-14, 1.2463634e-21, -5.322516e-09, 2.4162483, -7.0164003e-07, -0.12176496, -1.05617545e-07, 1.3165216, 2.9495215, 3.292104)
+transform = Transform3D(4.012913, -2.1290061e-08, -1.8466758e-14, 1.2463634e-21, -5.322516e-09, 2.4162483, -7.0164003e-07, -0.12176496, -1.05617545e-07, 1.3157625, 2.9495218, 3.2883735)
 mesh = SubResource("PlaneMesh_h45xw")
 surface_material_override/0 = SubResource("StandardMaterial3D_0o143")
+
+[node name="corkboard" parent="." unique_id=1029173645 instance=ExtResource("16_07d2k")]
+transform = Transform3D(1.4151126, 0, 0, 0, 1.4151126, 0, 0, 0, 1.4151126, 5.2616143, 3.9349322, -0.60174954)
