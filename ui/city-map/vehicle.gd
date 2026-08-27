@@ -27,6 +27,8 @@ func is_done() -> bool:
 	return path_index >= path.size()
 
 func _ready() -> void:
+	#graph
+	
 	seed(-7718)
 	var vehicle = GameManager.database.rms_vehicles.pick_random()
 	plate = vehicle.plate
