@@ -17,71 +17,75 @@ offset_bottom = 522.0
 script = ExtResource("1_25t53")
 quest = ExtResource("2_eqs3u")
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1544216645]
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=49873419]
 layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer" unique_id=1544216645]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=232240578]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer" unique_id=232240578]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Header" type="Label" parent="MarginContainer/VBoxContainer" unique_id=290499644]
+[node name="Header" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=290499644]
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
 text = "Crime Report"
 horizontal_alignment = 1
 
-[node name="Divider" type="Panel" parent="MarginContainer/VBoxContainer" unique_id=1979503544]
+[node name="Divider" type="Panel" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=1979503544]
 custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_uhg71")
 
-[node name="IncidentTitle" type="Label" parent="MarginContainer/VBoxContainer" unique_id=990062691]
+[node name="IncidentTitle" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=990062691]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Incident:"
 horizontal_alignment = 1
 
-[node name="Incident" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1114975575]
+[node name="Incident" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=1114975575]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "<burglary at Joe's Bagels>"
 horizontal_alignment = 1
 
-[node name="Divider3" type="Panel" parent="MarginContainer/VBoxContainer" unique_id=386149315]
+[node name="Divider3" type="Panel" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=386149315]
 custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_uhg71")
 
-[node name="DateTitle" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1597548356]
+[node name="DateTitle" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=1597548356]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Approximate Time:"
 horizontal_alignment = 1
 
-[node name="Time" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1969729799]
+[node name="Time" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=1969729799]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "<XK3-JT*1>"
 horizontal_alignment = 1
 
-[node name="Divider2" type="Panel" parent="MarginContainer/VBoxContainer" unique_id=539637987]
+[node name="Divider2" type="Panel" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=539637987]
 custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_uhg71")
 
-[node name="PlateLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1859087249]
+[node name="PlateLabel" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=1859087249]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Details"
 horizontal_alignment = 1
 
-[node name="Plate" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1378861698]
+[node name="Plate" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=1378861698]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
