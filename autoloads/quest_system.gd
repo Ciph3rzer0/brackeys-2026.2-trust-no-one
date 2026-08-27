@@ -3,6 +3,7 @@ extends Node
 var _active_quest: Quest
 
 signal new_quest_assigned(quest: Quest)
+signal plate_submitted_for_quest(quest: Quest, plate: String)
 
 func assign_new_quest():
 	if _active_quest:
@@ -19,3 +20,12 @@ func assign_new_quest():
 	
 	_active_quest = quest
 	new_quest_assigned.emit(quest)
+
+func submit_plate_to_quest(quest: Quest, plate: String):
+	#assert(quest == _active_quest)
+	
+	if plate == quest.correct_plate:
+		print("CORRECT !!!!")
+	else:
+		print("wrong")
+	plate_submitted_for_quest.emit(quest, plate)

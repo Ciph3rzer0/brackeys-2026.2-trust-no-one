@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://crvv5bco8yote" path="res://ui/crime-report/crime_report.gd" id="1_25t53"]
 [ext_resource type="Resource" uid="uid://mlx6hgu5bc7w" path="res://scripts/quests/first_quest.tres" id="2_eqs3u"]
+[ext_resource type="Theme" uid="uid://bd3ja6q1vwt2q" path="res://ui/crime-report/crime_report_theme.tres" id="3_tygkb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uhg71"]
 bg_color = Color(0, 0, 0, 1)
@@ -10,10 +11,8 @@ border_width_right = 10
 border_color = Color(0.8, 0.8, 0.8, 0)
 
 [node name="CrimeReport" type="PanelContainer" unique_id=1163959814]
-offset_left = 407.0
-offset_top = 58.0
-offset_right = 782.0
-offset_bottom = 522.0
+offset_right = 513.0
+offset_bottom = 620.0
 script = ExtResource("1_25t53")
 quest = ExtResource("2_eqs3u")
 
@@ -93,3 +92,52 @@ theme_override_font_sizes/font_size = 22
 text = "<XK3-JT*1>"
 horizontal_alignment = 1
 autowrap_mode = 2
+
+[node name="Divider4" type="Panel" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=1833292545]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_uhg71")
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=624130938]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_top = 10
+
+[node name="HBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/MarginContainer" unique_id=1701528419]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="IdentifyPlayteLabel" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=1522656808]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 20
+text = "Identify Full License Plate Number:"
+horizontal_alignment = 1
+
+[node name="PlateEntryTextEdit" type="TextEdit" parent="ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=1549156985]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(140, 40)
+custom_maximum_size = Vector2(140, -1)
+propagate_maximum_size = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_tygkb")
+theme_override_font_sizes/font_size = 22
+scroll_fit_content_height = true
+scroll_fit_content_width = true
+caret_blink = true
+caret_multiple = false
+
+[node name="Control" type="Control" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=746673933]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+
+[node name="SubmitButton" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=345433808]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 30)
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Submit"
+autowrap_trim_flags = 192
+
+[connection signal="pressed" from="ScrollContainer/MarginContainer/VBoxContainer/SubmitButton" to="." method="_on_submit_button_pressed"]

@@ -6,11 +6,12 @@
 [node name="VehicleSightingsTableRow" type="MarginContainer" unique_id=1882960689]
 offset_right = 1116.0
 offset_bottom = 25.0
+size_flags_horizontal = 3
 mouse_default_cursor_shape = 2
 theme = ExtResource("1_fgbac")
 theme_override_constants/margin_left = 0
 theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 0
+theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 0
 script = ExtResource("1_scse7")
 
@@ -39,7 +40,7 @@ text_overrun_behavior = 5
 
 [node name="LicensePlate" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1057562029]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(110, 0)
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 text = "License Plate"
 clip_text = true
@@ -89,6 +90,7 @@ text_overrun_behavior = 5
 unique_name_in_owner = true
 custom_minimum_size = Vector2(440, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Features"
 clip_text = true
 text_overrun_behavior = 5

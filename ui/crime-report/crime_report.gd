@@ -10,3 +10,8 @@ func _ready() -> void:
 func set_quest(_quest: Quest):
 	if !_quest: return
 	quest = _quest
+
+func _on_submit_button_pressed() -> void:
+	var plate = %PlateEntryTextEdit.text
+	QuestSystem.submit_plate_to_quest(quest, plate)
+	print("Submitted ", plate)
