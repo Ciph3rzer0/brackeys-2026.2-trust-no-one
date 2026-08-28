@@ -10,9 +10,14 @@ var rms_vehicles: Array[SchemaRmsVehicles]
 var vehicle_sightings: Array[SchemaVehicleSightings]
 
 func _init():
+	# As long as the seed is the same, it will generate the vehicle list the same
 	seed(7)
-	rms_persons = MockDataFactory.generate_rows(100)
 	rms_vehicles = MockDataFactory.generate_vehicles(100)
+	
+	#rms_persons not used
+	#rms_persons = MockDataFactory.generate_rows(100)
+	
+	# Sightings not generated randomly anymore
 	#vehicle_sightings = MockDataFactory.generate_vehicle_sightings(4, rms_vehicles)
 	load_from_csv()
 	refresh()

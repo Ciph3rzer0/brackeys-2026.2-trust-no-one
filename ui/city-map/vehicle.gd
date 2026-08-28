@@ -43,11 +43,15 @@ func is_done() -> bool:
 func _ready() -> void:
 	assert(city_map)
 	assert(astar)
-	var start_node := astar.find_closest_node_of_type(global_position, PathNode2D.NodeType.Residence)
-	home = start_node
-	global_position = start_node.global_position
 	
-	#seed(-7718)
+	# If home not set, find the closest residence
+	if not home:
+		home = astar.find_closest_node_of_type(global_position, PathNode2D.NodeType.Residence)
+	
+	# Move start position to home
+	global_position = home.global_position
+	
+	# Pick a random vehicle to use
 	var vehicle = GameManager.database.rms_vehicles.pick_random()
 	plate = vehicle.plate
 	color = vehicle.color
@@ -72,7 +76,7 @@ func get_new_path():
 	if hour > 21 or hour < 6:
 		if home:
 			destination = home
-	elif hour >=8 and hour <= 4:
+	elif hour >=8 and hour <= 16:
 		if work:
 			destination = work
 	
