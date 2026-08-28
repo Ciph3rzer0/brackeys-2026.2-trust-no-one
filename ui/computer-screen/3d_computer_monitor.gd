@@ -1,18 +1,41 @@
 extends StaticBody3D
 
+const TYPING_SOUNDS: Array[AudioStream] = [
+	preload("res://assets/audio/sfx/click-1.wav"),
+	preload("res://assets/audio/sfx/click-2.wav"),
+	preload("res://assets/audio/sfx/click-3.wav"),
+]
+
 @export var computer_viewport: SubViewport
 @export var quad_mesh: QuadMesh
 
 var screen_size: Vector2
+var _typing_sound_player: AudioStreamPlayer3D
+
+
 func _ready() -> void:
 	screen_size = quad_mesh.size
+	_typing_sound_player = AudioStreamPlayer3D.new()
+	_typing_sound_player.name = "TypingSoundPlayer"
+	_typing_sound_player.bus = &"SFX"
+	_typing_sound_player.max_polyphony = 4
+	add_child(_typing_sound_player)
 
-func push_keypress_to_viewport(event: InputEventKey):
-		var key_event_copy = event.duplicate()
-		
-		# Push the input event into the computer monitor viewport
-		computer_viewport.push_input(key_event_copy, true)
-		get_viewport().set_input_as_handled()
+
+func push_keypress_to_viewport(event: InputEventKey) -> bool:
+	var key_event_copy := event.duplicate()
+
+	# Push the input event into the computer monitor viewport.
+	computer_viewport.push_input(key_event_copy, true)
+	if event.pressed:
+		_play_typing_sound()
+	get_viewport().set_input_as_handled()
+	return true
+
+
+func _play_typing_sound() -> void:
+	_typing_sound_player.stream = TYPING_SOUNDS.pick_random()
+	_typing_sound_player.play()
 
 func _input_event(_camera: Camera3D, event: InputEvent, event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if event is InputEventMouseButton or event is InputEventMouseMotion:

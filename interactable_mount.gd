@@ -2,6 +2,11 @@ class_name InteractableMount
 extends Area3D
 
 @export var redirect_input: SubViewport
+@export var interaction_text := "press e to sit down"
+
+
+func get_interaction_text(_player: Player = null) -> String:
+	return interaction_text
 
 func push_keypress_to_viewport(event: InputEventKey) -> bool:
 	if redirect_input:

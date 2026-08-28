@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bnhtdbhbnklps" path="res://assets/models/office/filingCabinet.glb" id="5_fmddn"]
 [ext_resource type="PackedScene" uid="uid://qxst5b3aqpoo" path="res://assets/models/office/computer.glb" id="7_in4ui"]
 [ext_resource type="PackedScene" uid="uid://d4dkrl8n2c4i7" path="res://assets/models/city/camera.glb" id="8_fmddn"]
-[ext_resource type="PackedScene" path="res://scenes/report_clamp.tscn" id="10_6hbky"]
+[ext_resource type="PackedScene" uid="uid://c8wp7jb7ymwmc" path="res://scenes/report_clamp.tscn" id="10_6hbky"]
 [ext_resource type="PackedScene" uid="uid://bxc4ceq66ael3" path="res://scenes/player.tscn" id="10_gnmmx"]
 [ext_resource type="PackedScene" uid="uid://cu5og6niixvj7" path="res://assets/models/office/door.glb" id="12_wruke"]
 [ext_resource type="PackedScene" uid="uid://bosjilrctrsn7" path="res://assets/models/office/gooseneckTablet.glb" id="13_wruke"]
@@ -18,6 +18,17 @@
 [ext_resource type="PackedScene" uid="uid://b085wqdb2gvpt" path="res://scenes/coffeeCup.tscn" id="16_gnmmx"]
 [ext_resource type="PackedScene" uid="uid://bdogvs8wm16nj" path="res://assets/models/office/computer-keyboard.glb" id="16_jp1e5"]
 [ext_resource type="AudioStream" uid="uid://dssagk4uh4quc" path="res://assets/audio/sfx/rain.mp3" id="17_gnmmx"]
+[ext_resource type="Script" uid="uid://bygvj22hqpl6r" path="res://scripts/light_switch.gd" id="18_light_switch"]
+[ext_resource type="AudioStream" uid="uid://qiktvc0aw5rs" path="res://assets/audio/sfx/click-4.wav" id="19_light_click"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jp1e5"]
+albedo_color = Color(0.7160182, 0.4528712, 0.41109943, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_h45xw"]
+material = SubResource("StandardMaterial3D_jp1e5")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_light_switch"]
+radius = 0.18
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_6hbky"]
 
@@ -71,6 +82,21 @@ panning_strength = 0.1
 bus = &"Music"
 attenuation_filter_cutoff_hz = 20500.0
 attenuation_filter_db = 0.0
+
+[node name="lightswitch" type="StaticBody3D" parent="." unique_id=2027954198 groups=["Interactable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.379394, 3.202806, -5.727557)
+script = ExtResource("18_light_switch")
+
+[node name="SwitchMesh" type="MeshInstance3D" parent="lightswitch" unique_id=387037093]
+transform = Transform3D(0.32175153, 0, 0, 0, 0.32175153, 0, 0, 0, 0.09760539, 0, 0, 0)
+mesh = SubResource("SphereMesh_h45xw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="lightswitch" unique_id=502700300]
+shape = SubResource("SphereShape3D_light_switch")
+
+[node name="ClickSound" type="AudioStreamPlayer3D" parent="lightswitch" unique_id=864967245]
+stream = ExtResource("19_light_click")
+bus = &"SFX"
 
 [node name="roomLight" type="AreaLight3D" parent="." unique_id=378018363]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 1.060077, 7.32155, -0.91183126)

@@ -45,7 +45,7 @@ fog_depth_begin = 15.0
 fog_depth_end = 359.9
 
 [sub_resource type="Animation" id="Animation_my70f"]
-length = 0.001
+length = 19.833334
 tracks/0/type = "position_3d"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -60,6 +60,13 @@ tracks/1/path = NodePath("pickupTruck5")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = PackedFloat32Array(0, 1, 318.00055, -0.03928113, -14.7459755)
+tracks/2/type = "position_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("hatchback2")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(-0.06666666, 1, -22.122425, 0.86255836, -115.05417, 4.3333335, 1, -22.122425, 1.1376324, -83.099915, 6.2, 1, -22.122425, 1.1376324, -83.099915, 12.3, 1, -22.122425, 1.1376324, -26.414902, 13.9, 1, -22.122425, 1.1376324, -26.414902, 19.8, 1, -22.122425, 1.1376324, 60.711037)
 
 [sub_resource type="Animation" id="Animation_h3250"]
 resource_name = "vehicles"
@@ -1113,9 +1120,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.1423, -0.03928113, -84.124
 [node name="pickupTruck13" parent="trucks" unique_id=1679967744 instance=ExtResource("9_4lp1f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.142303, -0.03928113, -84.12449)
 
-[node name="pickupTruck15" parent="trucks" unique_id=512849323 instance=ExtResource("9_4lp1f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.857697, -0.03928113, -84.12449)
-
 [node name="weiner5" parent="trucks" unique_id=4166996 instance=ExtResource("10_obbxu")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -73.117134, 1.2338295, -8.536419)
 
@@ -1128,26 +1132,35 @@ light_energy = 50.0
 transform = Transform3D(0.31999412, 0, -0.27076468, 0, 0.41917747, 0, 0.27076468, 0, 0.31999412, 207.50317, 0.21776915, -79.66364)
 
 [node name="hatchback2" parent="trucks" unique_id=819623859 instance=ExtResource("20_ibljb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.44442, 1.1127148, -27.330746)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.122425, 0.86272734, -115.03454)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="trucks/hatchback2" unique_id=60537720]
+transform = Transform3D(-1, -1.7763568e-15, -8.7422784e-08, -3.0696125e-08, 0.9363295, 0.35112274, 8.185652e-08, 0.35112274, -0.9363295, 0, 0.24520302, 3.6265564)
+light_color = Color(0.7345393, 0.551405, 0.31920853, 1)
+light_energy = 15.0
+spot_range = 5.645
+spot_attenuation = -1.8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="trucks" unique_id=1549693826]
 libraries/ = SubResource("AnimationLibrary_my70f")
-autoplay = "vehicles"
+autoplay = &"vehicles"
 
 [node name="Screens" type="Node3D" parent="." unique_id=167141141]
 
 [node name="ComputerScreen" type="StaticBody3D" parent="Screens" unique_id=2105178651 node_paths=PackedStringArray("computer_viewport")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 60.492355, 60.450195, -132.95847)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 60.492355, 60.450195, -132.9702)
 collision_layer = 4096
 script = ExtResource("3_obbxu")
 computer_viewport = NodePath("../../ComputerScreenRenders/ComputerMonitor")
 quad_mesh = ExtResource("15_agolw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Screens/ComputerScreen" unique_id=1861852960]
+transform = Transform3D(1.0555629, 0, 0, 0, 0.89296085, 0, 0, 0, 1, 0, 0.008506775, -0.019439697)
 mesh = ExtResource("15_agolw")
 surface_material_override/0 = SubResource("StandardMaterial3D_tfap4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Screens/ComputerScreen" unique_id=49235054]
+transform = Transform3D(1.0474101, 0, 0, 0, 0.9030858, 0, 0, 0, 1, 0.0031318665, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_agolw")
 
 [node name="TabletScreen" type="MeshInstance3D" parent="Screens" unique_id=728728976]
@@ -4995,6 +5008,7 @@ input_ray_pickable = false
 monitorable = false
 script = ExtResource("14_yles7")
 redirect_input = NodePath("../../ComputerScreenRenders/ComputerMonitor")
+interaction_text = "press e to sit at computer"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Chair Interaction" unique_id=1974498237]
 transform = Transform3D(0.99999976, 0, -5.9604623e-08, 0, 1, 0, 5.9604623e-08, 0, 0.99999976, 0, 0, 0)

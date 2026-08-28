@@ -69,15 +69,25 @@ func _unhandled_input(event: InputEvent) -> void:
 				get_viewport().set_input_as_handled()
 
 func try_mount():
-	var mounts = get_tree().get_nodes_in_group("InteractiveMount") as Array[InteractableMount]
-	for mount in mounts:
-		if mount.overlaps_body(self):
-			global_position = mount.global_position
-			global_rotation = mount.global_rotation
-			_mounted_object = mount
-			cam.rotation_degrees.x = 0
-			change_fov(50.0, 0.27)
-			set_mouse_free(true)
+	var mount := get_available_mount()
+	if !mount:
+		return
+
+	global_position = mount.global_position
+	global_rotation = mount.global_rotation
+	_mounted_object = mount
+	cam.rotation_degrees.x = 0
+	change_fov(50.0, 0.27)
+	set_mouse_free(true)
+
+
+func get_available_mount() -> InteractableMount:
+	var mounts := get_tree().get_nodes_in_group("InteractiveMount")
+	for node in mounts:
+		var mount := node as InteractableMount
+		if mount and mount.overlaps_body(self):
+			return mount
+	return null
 
 func dismount():
 	_mounted_object = null
@@ -98,10 +108,12 @@ func change_fov(target_fov: float, duration: float) -> void:
 var exit_button_held_timer := 0.0
 func _process(delta: float) -> void:
 	var interactable := get_faced_interactable()
-	interaction_prompt.visible = !_mounted_object and !is_mouse_free and interactable != null
+	var available_mount := get_available_mount() if !_mounted_object else null
+	var prompt_target: Node = interactable if interactable else available_mount
+	interaction_prompt.visible = !_mounted_object and !is_mouse_free and prompt_target != null
 	if interaction_prompt.visible:
-		if interactable.has_method("get_interaction_text"):
-			interaction_prompt.text = interactable.get_interaction_text(self)
+		if prompt_target.has_method("get_interaction_text"):
+			interaction_prompt.text = prompt_target.get_interaction_text(self)
 		else:
 			interaction_prompt.text = "press e to interact"
 
