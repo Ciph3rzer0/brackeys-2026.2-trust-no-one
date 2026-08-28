@@ -30,7 +30,8 @@ corner_radius_bottom_left = 3
 corner_detail = 5
 
 [node name="ComputerScreen" type="Control" unique_id=694152180]
-custom_minimum_size = Vector2(1280, 1200)
+custom_minimum_size = Vector2(1280, 960)
+custom_maximum_size = Vector2(1280, 960)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1280.0
