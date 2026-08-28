@@ -29,3 +29,4 @@ func log_car_sighting(vehicle: Vehicle):
 	sighting.vehicle_features = vehicle.features
 	GameManager.database.vehicle_sightings.append(sighting)
 	GameManager.database.refresh()
+	CSVWriter.append_to_csv(sighting)

@@ -60,9 +60,9 @@ func get_new_path():
 		WorkShift.Day:
 			time += 0
 		WorkShift.Evening:
-			time += 8 * 60*60
+			time += 4 * 60*60
 		WorkShift.Night:
-			time += 16 * 60*60
+			time += 12 * 60*60
 	
 	var hour = Time.get_datetime_dict_from_unix_time(int(time)).hour
 	

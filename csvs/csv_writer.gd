@@ -1,0 +1,72 @@
+class_name CSVWriter
+const FILE_PATH = "res://csvs/simulation.csv"
+
+const HEADER_ROW: PackedStringArray = [
+	'unix_timestamp',
+	'camera_id',
+	'vehicle_plate',
+	'vehicle_color',
+	'vehicle_type',
+	'vehicle_features',
+	]
+
+static var file_start = true
+
+static func append_to_csv(sighting: SchemaVehicleSightings) -> void:
+	if file_start:
+		start_new_csv_file()
+		file_start = false
+	
+	var row_data: PackedStringArray = [
+		sighting.unix_timestamp,
+		sighting.camera_id,
+		sighting.vehicle_plate,
+		sighting.vehicle_color,
+		sighting.vehicle_type,
+		sighting.vehicle_features,
+	]
+	
+	# 1. Open the file in READ_WRITE mode so it doesn't erase existing content
+	var file = FileAccess.open(FILE_PATH, FileAccess.READ_WRITE)
+	
+	if file == null:
+		print("Failed to open file. Error code: ", FileAccess.get_open_error())
+		return
+	
+	if file:
+		# 2. Move the file cursor to the absolute end of the file
+		file.seek_end()
+		
+		# 3. Store the array as a properly formatted CSV line
+		file.store_csv_line(row_data)
+		
+		# 4. Close the file to save changes
+		file.close()
+	else:
+		# If the file doesn't exist, create it cleanly using WRITE mode
+		var error = FileAccess.get_open_error()
+		if error == ERR_FILE_NOT_FOUND:
+			file = FileAccess.open(FILE_PATH, FileAccess.WRITE)
+			if file:
+				file.store_csv_line(row_data)
+				file.close()
+			else:
+				print("Failed to create file: ", FileAccess.get_open_error())
+		else:
+			print("Failed to open file: ", error)
+
+static func start_new_csv_file():
+	# Open the file for writing (creates or overwrites the file)
+	var file = FileAccess.open(FILE_PATH, FileAccess.WRITE)
+	
+	if file == null:
+		print("Failed to open file. Error code: ", FileAccess.get_open_error())
+		return
+		
+	# 1. Write the header row
+	# store_csv_line expects a PackedStringArray
+	file.store_csv_line(PackedStringArray(HEADER_ROW))
+	
+	# 3. Close the file to save changes safely
+	file.close()
+	print("New CSV Created: ", FILE_PATH)
