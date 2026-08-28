@@ -9,6 +9,9 @@ albedo_color = Color(0.96202856, 0.83949524, 3.85046e-07, 1)
 [sub_resource type="PlaneMesh" id="PlaneMesh_h45xw"]
 material = SubResource("StandardMaterial3D_0o143")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_h45xw"]
+size = Vector3(0.9655762, 0.5641937, 1.0805664)
+
 [node name="FaxMachine" type="Node3D" unique_id=1072937977]
 
 [node name="faxMachine" parent="." unique_id=880050772 instance=ExtResource("1_iqwb4")]
@@ -34,3 +37,10 @@ thanks,
 mngmt"
 outline_size = 0
 uppercase = true
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=1050612190]
+transform = Transform3D(1, -5.9604645e-08, 0, 5.9604645e-08, 1, 0, 0, 0, 0.99999994, 2.9802322e-08, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=1440947277]
+transform = Transform3D(1, 5.9604645e-08, 0, -5.9604645e-08, 1, 0, 0, 0, 1.0000001, -0.02892367, 1.3408052, -0.040283207)
+shape = SubResource("BoxShape3D_h45xw")
