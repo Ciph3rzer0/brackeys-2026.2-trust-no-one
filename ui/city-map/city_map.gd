@@ -20,7 +20,7 @@ var current_time: float
 
 func _physics_process(delta: float) -> void:
 	current_time += delta * time_warp_factor
-	$TimeLabel.text = DateHelper.time_12h(current_time)
+	$TimeLabel.text = DateHelper.time_12h(int(current_time))
 
 func _ready() -> void:
 	assert(astar_graph_2d)

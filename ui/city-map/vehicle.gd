@@ -64,7 +64,7 @@ func get_new_path():
 		WorkShift.Night:
 			time += 16 * 60*60
 	
-	var hour = Time.get_datetime_dict_from_unix_time(time).hour
+	var hour = Time.get_datetime_dict_from_unix_time(int(time)).hour
 	
 	# Find a destination
 	var destination: PathNode2D
@@ -85,10 +85,10 @@ func get_new_path():
 	var from_id := astar.get_id_for(start_node)
 	var to_id := astar.get_id_for(end_node)
 	
-	var path := city_map.astar.get_point_path(from_id, to_id)
-	if path.is_empty():
+	var new_path := city_map.astar.get_point_path(from_id, to_id)
+	if new_path.is_empty():
 		push_warning("No path found between start_marker and end_marker.")
-	follow_path(path)
+	follow_path(new_path)
 
 func _physics_process(_delta: float) -> void:
 	if is_done():
