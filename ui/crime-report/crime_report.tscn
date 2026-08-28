@@ -10,6 +10,8 @@ border_width_right = 10
 border_color = Color(0.8, 0.8, 0.8, 0)
 
 [node name="CrimeReport" type="PanelContainer" unique_id=1163959814]
+custom_minimum_size = Vector2(512, 600)
+custom_maximum_size = Vector2(512, 600)
 offset_right = 513.0
 offset_bottom = 620.0
 script = ExtResource("1_25t53")
