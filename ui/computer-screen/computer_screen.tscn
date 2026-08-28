@@ -77,6 +77,25 @@ theme_type_variation = &"white_text"
 theme_override_font_sizes/font_size = 15
 text = "License Plate:"
 
+[node name="CameraFilter" type="TextEdit" parent="." unique_id=1794576891]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 41.0
+offset_right = 329.0
+offset_bottom = 74.0
+script = ExtResource("2_i7m88")
+
+[node name="LabelCamera" type="Label" parent="CameraFilter" unique_id=415045348]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -25.0
+offset_right = 107.0
+offset_bottom = -2.0
+theme = ExtResource("3_ni5x2")
+theme_type_variation = &"white_text"
+theme_override_font_sizes/font_size = 15
+text = "Camera:"
+
 [node name="RmsPersonsTableView" parent="." unique_id=737813966 instance=ExtResource("4_tb1cc")]
 visible = false
 layout_mode = 0
@@ -108,3 +127,4 @@ offset_bottom = -600.0
 content_scene_path = "uid://dukf0r3kv7h3u"
 
 [connection signal="filter_changed" from="PlateFilter" to="VehicleSightingsTableView" method="_on_plate_filter_filter_changed"]
+[connection signal="filter_changed" from="CameraFilter" to="VehicleSightingsTableView" method="_on_camera_filter_filter_changed"]

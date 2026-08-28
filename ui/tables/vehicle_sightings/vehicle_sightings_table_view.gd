@@ -24,6 +24,25 @@ func clear_table_rows():
 		row.queue_free()
 	_rows.clear()
 
-func _on_plate_filter_filter_changed(text: String) -> void:
+var plate_filter := ''
+var camera_filter := ''
+
+func _filter_rows():
 	for row in _rows:
-		row.visible = !text or text.is_subsequence_ofn(row.source_row.vehicle_plate)
+		if plate_filter.length() and !plate_filter.is_subsequence_ofn(row.source_row.vehicle_plate):
+			row.visible = false
+			continue
+			
+		if camera_filter.length() and !camera_filter.is_subsequence_ofn(row.source_row.camera_id):
+			row.visible = false
+			continue
+		
+		row.visible = true
+
+func _on_plate_filter_filter_changed(text: String) -> void:
+	plate_filter = text
+	_filter_rows()
+
+func _on_camera_filter_filter_changed(text: String) -> void:
+	camera_filter = text
+	_filter_rows()
