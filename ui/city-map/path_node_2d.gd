@@ -5,11 +5,13 @@ extends Sprite2D
 const BLACK_GRADIENT_TEXTURE_2D = preload("uid://c4cdvmetoww61")
 const GREEN_GRADIENT_TEXTURE_2D = preload("uid://qlv27q81cyvk")
 const ORANGE_GRADIENT_TEXTURE_2D = preload("uid://cp6p7x7g37eh6")
+const PINK_GRADIENT_TEXTURE_2D = preload("uid://c3w7gfq11xjbp")
 
 enum NodeType {
 	Intersection,
 	POI,
 	CityExit,
+	ShadyPOI,
 }
 
 @export var connections: Array[NodePath] = []
@@ -23,3 +25,5 @@ enum NodeType {
 				texture = GREEN_GRADIENT_TEXTURE_2D
 			NodeType.CityExit:
 				texture = ORANGE_GRADIENT_TEXTURE_2D
+			NodeType.ShadyPOI:
+				texture = PINK_GRADIENT_TEXTURE_2D
