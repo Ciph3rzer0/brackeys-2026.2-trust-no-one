@@ -227,51 +227,66 @@ connections = Array[NodePath]([NodePath("../Intersection3"), NodePath("../Inters
 
 [node name="POI_Airport" type="Sprite2D" parent="AStarGraph2D" unique_id=198210292 groups=["poi"]]
 position = Vector2(607.4767, 78.5047)
-texture = ExtResource("6_vipko")
+texture = ExtResource("5_wxgfj")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection")])
+node_type = 1
 
 [node name="POI_Bank" type="Sprite2D" parent="AStarGraph2D" unique_id=194088079 groups=["poi"]]
 position = Vector2(-218.69165, 142.05609)
-texture = ExtResource("6_vipko")
+texture = ExtResource("5_wxgfj")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection13")])
+node_type = 1
 
 [node name="POI_Harbor" type="Sprite2D" parent="AStarGraph2D" unique_id=1527434384 groups=["poi"]]
 position = Vector2(-663.5514, 155.1402)
-texture = ExtResource("6_vipko")
+texture = ExtResource("5_wxgfj")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection17")])
+node_type = 1
 
 [node name="POI_Simon" type="Sprite2D" parent="AStarGraph2D" unique_id=707494836 groups=["poi"]]
 position = Vector2(-476.6355, 431.77573)
-texture = ExtResource("6_vipko")
+texture = ExtResource("5_wxgfj")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection18")])
+node_type = 1
+
+[node name="POI_Simon2" type="Sprite2D" parent="AStarGraph2D" unique_id=1172352462 groups=["poi"]]
+position = Vector2(-334.5794, 33.644897)
+texture = ExtResource("5_wxgfj")
+script = ExtResource("3_54v2r")
+connections = Array[NodePath]([NodePath("../Intersection16")])
+node_type = 1
 
 [node name="CityExit" type="Sprite2D" parent="AStarGraph2D" unique_id=689469424 groups=["city_exit"]]
 position = Vector2(332, -668)
-texture = ExtResource("5_wxgfj")
+texture = ExtResource("6_vipko")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection3")])
+node_type = 2
 
 [node name="CityExit2" type="Sprite2D" parent="AStarGraph2D" unique_id=1760566521 groups=["city_exit"]]
 position = Vector2(-279, 895)
-texture = ExtResource("5_wxgfj")
+texture = ExtResource("6_vipko")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection27")])
+node_type = 2
 
 [node name="CityExit3" type="Sprite2D" parent="AStarGraph2D" unique_id=1300780649 groups=["city_exit"]]
 position = Vector2(1200, 709)
-texture = ExtResource("5_wxgfj")
+texture = ExtResource("6_vipko")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection32")])
+node_type = 2
 
 [node name="CityExit4" type="Sprite2D" parent="AStarGraph2D" unique_id=1989954345 groups=["city_exit"]]
 position = Vector2(1357, -351)
-texture = ExtResource("5_wxgfj")
+texture = ExtResource("6_vipko")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection5")])
+node_type = 2
 
 [node name="Clicker" type="StaticBody2D" parent="." unique_id=1737867403 node_paths=PackedStringArray("astar_graph_2d")]
 visible = false

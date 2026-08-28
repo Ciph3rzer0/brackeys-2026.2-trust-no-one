@@ -4,6 +4,18 @@ extends CharacterBody2D
 ## markers, or how the path was computed — just follows PackedVector2Array
 ## points in order. Attach directly to the CharacterBody2D node.
 
+@export var home: PathNode2D
+@export var work: PathNode2D
+
+enum WorkShift {
+	Day,
+	Evening,
+	Night
+}
+@export var work_shift: WorkShift
+
+#@export var destinations: Array
+
 @export var city_map: CityMap
 @export var astar: AStarGraph2D
 @export var speed: float = 200.0
