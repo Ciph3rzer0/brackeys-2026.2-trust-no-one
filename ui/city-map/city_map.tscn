@@ -23,6 +23,7 @@ astar_graph_2d = NodePath("AStarGraph2D")
 start_marker = NodePath("Vehicles/Start")
 end_marker = NodePath("Vehicles/End")
 vehicle = NodePath("Vehicles/Vehicle")
+start_time_string = "2026-08-25T00:00:00"
 
 [node name="CityMapDraft" type="Sprite2D" parent="." unique_id=866556907]
 z_index = -1
@@ -413,14 +414,25 @@ astar = NodePath("../../AStarGraph2D")
 
 [node name="Cameras" type="Node2D" parent="." unique_id=662735754]
 
-[node name="CAM_Bookstore" parent="Cameras" unique_id=1211424755 instance=ExtResource("9_qdywh")]
+[node name="CAM_Bookstore" parent="Cameras" unique_id=1211424755 node_paths=PackedStringArray("city_map") instance=ExtResource("9_qdywh")]
 position = Vector2(209.3458, 89.71963)
+city_map = NodePath("../..")
 camera_name = "Bookstore"
 
-[node name="CAM_Office" parent="Cameras" unique_id=2041179648 instance=ExtResource("9_qdywh")]
+[node name="CAM_Office" parent="Cameras" unique_id=2041179648 node_paths=PackedStringArray("city_map") instance=ExtResource("9_qdywh")]
 position = Vector2(-216.82242, 315.88785)
+city_map = NodePath("../..")
 camera_name = "Office Back Alley"
 
-[node name="CAM_Hospital" parent="Cameras" unique_id=764927776 instance=ExtResource("9_qdywh")]
+[node name="CAM_Hospital" parent="Cameras" unique_id=764927776 node_paths=PackedStringArray("city_map") instance=ExtResource("9_qdywh")]
 position = Vector2(-325.23364, -241.1215)
+city_map = NodePath("../..")
 camera_name = "Hospital"
+
+[node name="TimeLabel" type="Label" parent="." unique_id=1248630593]
+offset_left = -657.9439
+offset_top = -420.56073
+offset_right = -617.9439
+offset_bottom = -403.56073
+theme_override_font_sizes/font_size = 60
+text = "TIME"
