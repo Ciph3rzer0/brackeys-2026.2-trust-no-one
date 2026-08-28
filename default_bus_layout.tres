@@ -1,5 +1,11 @@
 [gd_resource type="AudioBusLayout" format=3 uid="uid://b4iev0nsbwrb7"]
 
+[sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_options"]
+resource_name = "OptionsMenuLowPass"
+cutoff_hz = 1400.0
+resonance = 0.4
+db = 1
+
 [sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_j3pel"]
 resource_name = "LowPassFilter"
 cutoff_hz = 17653.0
@@ -14,6 +20,14 @@ hipass = 0.8
 wet = 0.23
 
 [resource]
+bus/0/name = &"Master"
+bus/0/solo = false
+bus/0/mute = false
+bus/0/bypass_fx = false
+bus/0/volume_db = 0.0
+bus/0/send = &""
+bus/0/effect/0/effect = SubResource("AudioEffectLowPassFilter_options")
+bus/0/effect/0/enabled = false
 bus/1/name = &"Music"
 bus/1/solo = false
 bus/1/mute = false

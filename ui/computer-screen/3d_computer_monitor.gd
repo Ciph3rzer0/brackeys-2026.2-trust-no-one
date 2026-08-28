@@ -18,6 +18,7 @@ func _ready() -> void:
 	_typing_sound_player = AudioStreamPlayer3D.new()
 	_typing_sound_player.name = "TypingSoundPlayer"
 	_typing_sound_player.bus = &"SFX"
+	_typing_sound_player.volume_db = 15.0
 	_typing_sound_player.max_polyphony = 4
 	add_child(_typing_sound_player)
 

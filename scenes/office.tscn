@@ -20,6 +20,8 @@
 [ext_resource type="AudioStream" uid="uid://dssagk4uh4quc" path="res://assets/audio/sfx/rain.mp3" id="17_gnmmx"]
 [ext_resource type="Script" uid="uid://bygvj22hqpl6r" path="res://scripts/light_switch.gd" id="18_light_switch"]
 [ext_resource type="AudioStream" uid="uid://qiktvc0aw5rs" path="res://assets/audio/sfx/click-4.wav" id="19_light_click"]
+[ext_resource type="PackedScene" path="res://ui/options_menu.tscn" id="20_options_menu"]
+[ext_resource type="Script" uid="uid://j4v13e1a4n7h" path="res://scripts/options_switch.gd" id="21_options_switch"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jp1e5"]
 albedo_color = Color(0.7160182, 0.4528712, 0.41109943, 1)
@@ -97,6 +99,23 @@ shape = SubResource("SphereShape3D_light_switch")
 [node name="ClickSound" type="AudioStreamPlayer3D" parent="lightswitch" unique_id=864967245]
 stream = ExtResource("19_light_click")
 bus = &"SFX"
+
+[node name="optionsSwitch" type="StaticBody3D" parent="." unique_id=1148509935 groups=["Interactable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.859394, 3.202806, -5.727557)
+script = ExtResource("21_options_switch")
+
+[node name="SwitchMesh" type="MeshInstance3D" parent="optionsSwitch" unique_id=994532343]
+transform = Transform3D(0.32175153, 0, 0, 0, 0.32175153, 0, 0, 0, 0.09760539, 0, 0, 0)
+mesh = SubResource("SphereMesh_h45xw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="optionsSwitch" unique_id=843513022]
+shape = SubResource("SphereShape3D_light_switch")
+
+[node name="ClickSound" type="AudioStreamPlayer3D" parent="optionsSwitch" unique_id=1396890103]
+stream = ExtResource("19_light_click")
+bus = &"SFX"
+
+[node name="AudioOptionsMenu" parent="." unique_id=1103850070 instance=ExtResource("20_options_menu")]
 
 [node name="roomLight" type="AreaLight3D" parent="." unique_id=378018363]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 1.060077, 7.32155, -0.91183126)
@@ -186,7 +205,7 @@ mesh = SubResource("PlaneMesh_h45xw")
 surface_material_override/0 = SubResource("ShaderMaterial_kviqm")
 
 [node name="corkboard" parent="." unique_id=1029173645 instance=ExtResource("16_07d2k")]
-transform = Transform3D(1.4151126, 0, 0, 0, 1.4151126, 0, 0, 0, 1.4151126, 5.2616143, 2.8853235, -1.6788815)
+transform = Transform3D(1.4151126, 0, 0, 0, 1.4151126, 0, 0, 0, 1.4151126, 5.65753, 2.8853235, -1.6788815)
 
 [node name="desk" parent="." unique_id=2107914153 instance=ExtResource("4_2knxt")]
 transform = Transform3D(1.7488817, 0, 0, 0, 1.7488817, 0, 0, 0, 1.7488817, 3.3157055, 0.6540642, 2.5794885)
