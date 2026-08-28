@@ -1,4 +1,4 @@
-class_name CSVWriter
+class_name CSVHelper
 const FILE_PATH = "res://csvs/simulation.csv"
 
 const HEADER_ROW: PackedStringArray = [
@@ -70,3 +70,50 @@ static func start_new_csv_file():
 	# 3. Close the file to save changes safely
 	file.close()
 	print("New CSV Created: ", FILE_PATH)
+
+static func load_data_from_csv() -> Array[SchemaVehicleSightings]:
+	var parsed_data: Array[SchemaVehicleSightings] = []
+	
+	# Open the file for reading
+	var file = FileAccess.open(FILE_PATH, FileAccess.READ)
+	
+	if file == null:
+		print("Failed to open file. Error code: ", FileAccess.get_open_error())
+		return parsed_data
+		
+	# 1. Read the very first line as headers
+	var headers = file.get_csv_line()
+	
+	# 2. Loop through the rest of the file until the end
+	while not file.eof_reached():
+		var row = file.get_csv_line()
+		
+		# Skip empty rows (like a blank line at the end of the file)
+		if row.size() == 0 or (row.size() == 1 and row[0] == ""):
+			continue
+			
+		# Match row values to headers into a dictionary
+		var row_dict = {}
+		for i in range(min(headers.size(), row.size())):
+			row_dict[headers[i]] = row[i]
+		
+		var sighting = SchemaVehicleSightings.new()
+		sighting.unix_timestamp = row_dict.unix_timestamp
+		sighting.camera_id = row_dict.camera_id
+		sighting.vehicle_plate = row_dict.vehicle_plate
+		sighting.vehicle_color = row_dict.vehicle_color
+		sighting.vehicle_type = row_dict.vehicle_type
+		sighting.vehicle_features = [] as Array[String]
+		
+		# Godot is seriously so stupid.  This is what I have to do to assign the
+		# parsed csv to a Array[String] variable...
+		var vehicle_features: Array = JSON.parse_string(row_dict.vehicle_features)
+		if vehicle_features is Array:
+			for item in vehicle_features:
+				# Convert each item explicitly to a string (handles both strings and numbers)
+				sighting.vehicle_features.append(str(item))
+		
+		parsed_data.append(sighting)
+		
+	file.close()
+	return parsed_data
