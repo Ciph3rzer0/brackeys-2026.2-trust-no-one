@@ -1,5 +1,6 @@
 class_name CSVHelper
 const FILE_PATH = "res://csvs/simulation.csv"
+const MANUAL_PATH = "res://csvs/manual.csv"
 
 const HEADER_ROW: PackedStringArray = [
 	'unix_timestamp',
@@ -71,11 +72,25 @@ static func start_new_csv_file():
 	file.close()
 	print("New CSV Created: ", FILE_PATH)
 
-static func load_data_from_csv() -> Array[SchemaVehicleSightings]:
+static func load_all_data() -> Array[SchemaVehicleSightings]:
+	var array = load_data_from_csv(FILE_PATH)
+	array.append_array(load_data_from_csv(MANUAL_PATH))
+	
+	# Sort by time ADC
+	array.sort_custom(func(a: SchemaVehicleSightings, b: SchemaVehicleSightings):
+		return a.unix_timestamp < b.unix_timestamp
+	)
+	
+	return array
+
+static func load_data_from_csv(file_path: String) -> Array[SchemaVehicleSightings]:
+	assert(file_path.get_extension() == 'csv')
+	assert(file_path.begins_with('res://'))
+	
 	var parsed_data: Array[SchemaVehicleSightings] = []
 	
 	# Open the file for reading
-	var file = FileAccess.open(FILE_PATH, FileAccess.READ)
+	var file = FileAccess.open(file_path, FileAccess.READ)
 	
 	if file == null:
 		print("Failed to open file. Error code: ", FileAccess.get_open_error())
@@ -98,7 +113,12 @@ static func load_data_from_csv() -> Array[SchemaVehicleSightings]:
 			row_dict[headers[i]] = row[i]
 		
 		var sighting = SchemaVehicleSightings.new()
-		sighting.unix_timestamp = row_dict.unix_timestamp
+		# print((row_dict.unix_timestamp), " --->", int(row_dict.unix_timestamp))
+		if row_dict.unix_timestamp.is_valid_int():
+			sighting.unix_timestamp = int(row_dict.unix_timestamp)
+		else:
+			# print(" Parsing ", row_dict.unix_timestamp, " --- ", Time.get_unix_time_from_datetime_string(row_dict.unix_timestamp))
+			sighting.unix_timestamp = Time.get_unix_time_from_datetime_string(row_dict.unix_timestamp)
 		sighting.camera_id = row_dict.camera_id
 		sighting.vehicle_plate = row_dict.vehicle_plate
 		sighting.vehicle_color = row_dict.vehicle_color

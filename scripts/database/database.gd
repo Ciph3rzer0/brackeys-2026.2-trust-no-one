@@ -18,5 +18,5 @@ func _init():
 	refresh()
 
 func load_from_csv():
-	var sightings = CSVHelper.load_data_from_csv()
+	var sightings = CSVHelper.load_all_data()
 	vehicle_sightings = sightings
