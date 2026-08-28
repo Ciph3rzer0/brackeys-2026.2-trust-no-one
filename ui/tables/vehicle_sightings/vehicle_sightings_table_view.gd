@@ -9,8 +9,10 @@ func _ready() -> void:
 	)
 
 func set_table_items(rows: Array[SchemaVehicleSightings]):
-	clear_table_rows()
-	for new_source_row in rows:
+	#clear_table_rows()
+	var new_count = rows.size() - _rows.size()
+	
+	for new_source_row in rows.slice(-new_count):
 		var new_table_row: VehicleSightingsRowView = %TableRow.duplicate()
 		new_table_row.set_source_row(new_source_row)
 		new_table_row.visible = true
