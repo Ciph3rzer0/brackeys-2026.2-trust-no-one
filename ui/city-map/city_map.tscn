@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c2kuixd7eqbk1"]
 
 [ext_resource type="Script" uid="uid://brujxjeo2ideh" path="res://ui/city-map/astar_graph_2d.gd" id="1_gt78b"]
-[ext_resource type="Texture2D" uid="uid://5v10mtdyygag" path="res://assets/city_map_draft.png" id="1_ygjum"]
+[ext_resource type="Texture2D" uid="uid://5v10mtdyygag" path="res://assets/images/city_map_draft.png" id="1_ygjum"]
 [ext_resource type="Texture2D" uid="uid://c4cdvmetoww61" path="res://ui/city-map/black_gradient_texture_2d.tres" id="3_1x8ky"]
 [ext_resource type="Script" uid="uid://c1srr6ekgv26i" path="res://ui/city-map/path_node_2d.gd" id="3_54v2r"]
 [ext_resource type="Script" uid="uid://dyt08uxo0fq3b" path="res://ui/city-map/clicker.gd" id="4_o1adu"]
@@ -1183,20 +1183,20 @@ astar = NodePath("../../AStarGraph2D")
 position = Vector2(1.8691597, -3.7383177)
 metadata/_edit_group_ = true
 
-[node name="CAM_Airport" parent="Cameras" unique_id=1211424755 node_paths=PackedStringArray("city_map") instance=ExtResource("9_qdywh")]
-position = Vector2(209.3458, 89.71963)
+[node name="CAM_1" parent="Cameras" unique_id=764927776 node_paths=PackedStringArray("city_map") instance=ExtResource("9_qdywh")]
+position = Vector2(-158.87854, -242.99066)
 city_map = NodePath("../..")
-camera_name = "Bookstore"
+camera_name = "Hospital"
 
-[node name="CAM_Bank" parent="Cameras" unique_id=2041179648 node_paths=PackedStringArray("city_map") instance=ExtResource("9_qdywh")]
-position = Vector2(-157.00935, 91.588776)
+[node name="CAM_2" parent="Cameras" unique_id=2041179648 node_paths=PackedStringArray("city_map") instance=ExtResource("9_qdywh")]
+position = Vector2(-157.0094, 91.588745)
 city_map = NodePath("../..")
 camera_name = "Office Back Alley"
 
-[node name="CAM_Hospital" parent="Cameras" unique_id=764927776 node_paths=PackedStringArray("city_map") instance=ExtResource("9_qdywh")]
-position = Vector2(-158.87851, -242.99066)
+[node name="CAM_3" parent="Cameras" unique_id=1211424755 node_paths=PackedStringArray("city_map") instance=ExtResource("9_qdywh")]
+position = Vector2(209.3458, 89.71963)
 city_map = NodePath("../..")
-camera_name = "Hospital"
+camera_name = "Bookstore"
 
 [node name="TimeLabel" type="Label" parent="." unique_id=1248630593]
 offset_left = -657.9439

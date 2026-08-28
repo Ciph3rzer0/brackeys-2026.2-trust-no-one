@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dukf0r3kv7h3u" path="res://ui/crime-report/crime_report.tscn" id="6_5hd8n"]
 [ext_resource type="PackedScene" uid="uid://caageh3xw4bpg" path="res://draggable-resizable-panel.tscn" id="7_8qfsr"]
 [ext_resource type="Theme" uid="uid://bd38ltbo66d6v" path="res://theme/folder_button_theme.tres" id="8_vod3n"]
-[ext_resource type="Texture2D" uid="uid://bsner80gnprhh" path="res://assets/folder.svg" id="9_5sf7k"]
+[ext_resource type="Texture2D" uid="uid://bsner80gnprhh" path="res://assets/images/folder.svg" id="9_5sf7k"]
 [ext_resource type="Script" uid="uid://laa8yh5h6os3" path="res://ui/tables/option_button_filter.gd" id="9_clvma"]
 [ext_resource type="Script" uid="uid://dk0py0rtbm2f8" path="res://ui/computer-screen/quest_button.gd" id="10_5sf7k"]
 [ext_resource type="Resource" uid="uid://mlx6hgu5bc7w" path="res://scripts/quests/first_quest.tres" id="11_4dgut"]

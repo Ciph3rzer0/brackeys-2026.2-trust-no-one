@@ -28,7 +28,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0634726, -0.44753733, 0.24
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06466091, -0.07382575, -0.2173571)
 
 [node name="memo" type="MeshInstance3D" parent="corkboard2" unique_id=1757999416]
-transform = Transform3D(-0.0025691744, -0.091785185, 0, 0.091785185, -0.0025691744, 0, 0, 0, 0.091821134, -0.0890159, 1.3224134, -0.41380957)
+transform = Transform3D(-0.0025691744, -0.091785185, 0, 0.091785185, -0.0025691744, 0, 0, 0, 0.091821134, -0.0890159, 1.303595, -0.47683355)
 mesh = SubResource("PlaneMesh_iwwb2")
 
 [node name="Label3D" type="Label3D" parent="corkboard2/memo" unique_id=512820567]

@@ -21,7 +21,14 @@
 [ext_resource type="Script" uid="uid://bygvj22hqpl6r" path="res://scripts/light_switch.gd" id="18_light_switch"]
 [ext_resource type="AudioStream" uid="uid://qiktvc0aw5rs" path="res://assets/audio/sfx/click-4.wav" id="19_light_click"]
 [ext_resource type="PackedScene" path="res://ui/options_menu.tscn" id="20_options_menu"]
+[ext_resource type="Script" uid="uid://biuonnjp64bgo" path="res://ui/computer-screen/3d_computer_monitor.gd" id="21_fw3ux"]
 [ext_resource type="Script" uid="uid://j4v13e1a4n7h" path="res://scripts/options_switch.gd" id="21_options_switch"]
+[ext_resource type="QuadMesh" uid="uid://qaplr8l4g05l" path="res://ui/computer-screen/screen_quad_mesh.tres" id="22_g1ciw"]
+[ext_resource type="Shader" uid="uid://x57eaea1vorh" path="res://scenes/mapgrid.gdshader" id="23_u5glt"]
+[ext_resource type="Script" uid="uid://d2obv1fxmvya7" path="res://scenes/grid_generator.gd" id="24_3u7yi"]
+[ext_resource type="PackedScene" uid="uid://bkmp0qtqdsq8u" path="res://ui/computer-screen/computer_screen.tscn" id="25_eet0l"]
+[ext_resource type="Script" uid="uid://g1t4orm3d6pu" path="res://interactable_mount.gd" id="26_42gc7"]
+[ext_resource type="PackedScene" uid="uid://dsj80p2uy7o80" path="res://scenes/wallmap.tscn" id="29_g1ciw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jp1e5"]
 albedo_color = Color(0.7160182, 0.4528712, 0.41109943, 1)
@@ -58,6 +65,53 @@ shader_parameter/refraction_strength = 0.05
 shader_parameter/frosted_noise_scale = 200.0
 shader_parameter/glass_thickness = 0.2
 shader_parameter/ior = 1.45
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_gf52q"]
+viewport_path = NodePath("ComputerScreenRenders/ComputerMonitor")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fsavt"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_gf52q")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_8pip0"]
+data = PackedVector3Array(0.41349998, -0.31, 0, -0.41349998, -0.31, 0, 0.41349998, 0.31, 0, -0.41349998, -0.31, 0, -0.41349998, 0.31, 0, 0.41349998, 0.31, 0)
+
+[sub_resource type="QuadMesh" id="QuadMesh_skov3"]
+size = Vector2(4.615, 2.84)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_wwlo0"]
+viewport_path = NodePath("ComputerScreenRenders/MapGrid")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m4cp1"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_wwlo0")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_32ncx"]
+render_priority = 0
+shader = ExtResource("23_u5glt")
+shader_parameter/grid_offset = Vector3(-3.67, 0, -2.99)
+shader_parameter/grid_size = 7.335
+shader_parameter/line_width = 1.0
+shader_parameter/grid_color = Color(0, 0.8, 1, 1)
+shader_parameter/base_color = Color(0.101960786, 0.101960786, 0.101960786, 0.30980393)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_sjdia"]
+material = SubResource("ShaderMaterial_32ncx")
+size = Vector2(300, 200)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0p3hi"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_bkq84"]
+size = Vector3(6, 1, 6)
+
+[sub_resource type="Environment" id="Environment_osgti"]
+background_mode = 2
+background_color = Color(1, 1, 1, 1)
+ambient_light_color = Color(0.90408707, 0.92056644, 0.9382726, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_142py"]
+radius = 1.4682617
+height = 2.9365234
 
 [node name="Office" type="Node3D" unique_id=2119133953]
 
@@ -147,12 +201,13 @@ transform = Transform3D(-4.678254e-08, 0, 1.0702598, 0, 1.0702598, 0, -1.0702598
 transform = Transform3D(0.36970007, 0, 0.6403394, 0, 0.7394002, 0, -0.6403394, 0, 0.36970007, -1.0748136, 0.63390625, 5.0525484)
 
 [node name="chair" parent="work area" unique_id=114191316 instance=ExtResource("3_qphb6")]
-transform = Transform3D(0.6086896, 0, -0.56285626, 0, 0.82904166, 0, 0.56285626, 0, 0.6086896, -0.3383709, -0.5210763, 3.8219342)
+transform = Transform3D(0.7690236, 0, -0.3096981, 0, 0.8290418, 0, 0.3096981, 0, 0.7690236, -0.3383708, -0.5210763, 3.8219342)
 
 [node name="computerAccessories" type="Node3D" parent="work area" unique_id=965257853]
 
 [node name="gooseneckTablet" parent="work area/computerAccessories" unique_id=963414952 instance=ExtResource("13_wruke")]
 transform = Transform3D(0.71113247, 0, 0, 0, 0.71113247, 0, 0, 0, 0.71113247, -0.5220237, 1.5172298, 5.100081)
+visible = false
 
 [node name="computer" parent="work area/computerAccessories" unique_id=1636787968 instance=ExtResource("7_in4ui")]
 transform = Transform3D(0.98372215, 0, 0, 0, 0.98372215, 0, 0, 0, 0.98372215, -0.6602156, 1.0361305, 5.2592254)
@@ -161,15 +216,18 @@ transform = Transform3D(0.98372215, 0, 0, 0, 0.98372215, 0, 0, 0, 0.98372215, -0
 transform = Transform3D(1.2336597, 0, 0, 0, 1.2336597, 0, 0, 0, 1.2336597, -1.131391, 1.3303235, 5.1202)
 
 [node name="computer_post-it" type="MeshInstance3D" parent="work area/computerAccessories" unique_id=1240021870]
-transform = Transform3D(1.1301334e-10, 4.037465e-09, -0.09240261, 0.09236643, -0.0025854437, 0, -0.0025854434, -0.09236642, -4.039046e-09, -0.79264164, 0.6716831, 4.9844313)
+transform = Transform3D(1.1301334e-10, 4.037465e-09, -0.09240261, 0.09236643, -0.0025854437, 0, -0.0025854434, -0.09236642, -4.039046e-09, -0.83090734, 0.7116282, 4.9844313)
 mesh = SubResource("PlaneMesh_jp1e5")
 
 [node name="Label3D" type="Label3D" parent="work area/computerAccessories/computer_post-it" unique_id=614372332]
-transform = Transform3D(1.9984014e-15, 1.0510676, 4.284084e-08, 4.594362e-08, -4.656613e-08, 1.0510678, 1.0510675, -1.110223e-16, -4.5943622e-08, 0.49662495, 0.02079773, 0)
+transform = Transform3D(2.6645353e-15, 1.3560126, 5.5879354e-08, 5.9273212e-08, -6.3329935e-08, 1.356013, 1.3560123, -2.220446e-16, -5.9273198e-08, 0.13269138, 0.024585724, 0)
 modulate = Color(0, 0, 0, 1)
 text = "memo:
+---
+use `TAB` 
+to toggle free-look
+& cursor capture
 
-TAB to toggle cursor
 ---
 thanks,
 mngmt"
@@ -205,10 +263,3887 @@ mesh = SubResource("PlaneMesh_h45xw")
 surface_material_override/0 = SubResource("ShaderMaterial_kviqm")
 
 [node name="corkboard" parent="." unique_id=1029173645 instance=ExtResource("16_07d2k")]
-transform = Transform3D(1.4151126, 0, 0, 0, 1.4151126, 0, 0, 0, 1.4151126, 5.65753, 2.8853235, -1.6788815)
+transform = Transform3D(1.4151126, 0, 0, 0, 1.4151126, 0, 0, 0, 1.4151126, 5.65753, 2.8853235, -2.163801)
+
+[node name="Screens" type="Node3D" parent="." unique_id=4465793]
+transform = Transform3D(1.4151126, 0, 0, 0, 1.4151126, 0, 0, 0, 1.4151126, 0.39982605, 0.14676666, 0.38674164)
+
+[node name="ComputerScreen" type="StaticBody3D" parent="Screens" unique_id=1699670014 node_paths=PackedStringArray("computer_viewport")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.4264321, 1.6474496, 1.2243075)
+collision_layer = 4096
+script = ExtResource("21_fw3ux")
+computer_viewport = NodePath("../../ComputerScreenRenders/ComputerMonitor")
+quad_mesh = ExtResource("22_g1ciw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Screens/ComputerScreen" unique_id=677057215]
+transform = Transform3D(0.761722, 0, 7.1054274e-15, 0, 0.761722, 0, -7.1054274e-15, 0, 0.761722, -0.008204653, 0.055556893, 0.0075121983)
+mesh = ExtResource("22_g1ciw")
+surface_material_override/0 = SubResource("StandardMaterial3D_fsavt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Screens/ComputerScreen" unique_id=68223397]
+shape = SubResource("ConcavePolygonShape3D_8pip0")
+
+[node name="TabletScreen" type="MeshInstance3D" parent="Screens" unique_id=608109503]
+transform = Transform3D(-0.10099794, 0, 0, 0, 0.10099794, 0, 0, 0, -0.10099794, 2.4122164, 2.221246, 1.2942262)
+visible = false
+mesh = SubResource("QuadMesh_skov3")
+surface_material_override/0 = SubResource("StandardMaterial3D_m4cp1")
+
+[node name="ComputerScreenRenders" type="Node3D" parent="." unique_id=812631563]
+transform = Transform3D(1.4151126, 0, 0, 0, 1.4151126, 0, 0, 0, 1.4151126, 62.79978, 404.14783, 65.128586)
+
+[node name="City Grid" type="MeshInstance3D" parent="ComputerScreenRenders" unique_id=755243262]
+visible = false
+layers = 32768
+mesh = SubResource("PlaneMesh_sjdia")
+
+[node name="GridGenerator" type="Node3D" parent="ComputerScreenRenders" unique_id=2001024324]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106.405136, 0, -62.55813)
+visible = false
+script = ExtResource("24_3u7yi")
+box_count = Vector3i(30, 1, 18)
+box_size = Vector3(6, 1, 6)
+spacing = Vector3(7.335, 7, 7.335)
+box_material = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_0_0_0" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1217950908]
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_0_0_1" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1307089552]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.335)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_0_0_2" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=798929706]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14.67)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_0_0_3" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=2126694608]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 22.005001)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_0_0_4" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=709631000]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 29.34)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_0_0_5" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=73787481]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 36.675)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_0_0_6" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1700192390]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 44.010002)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_0_0_7" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1700935986]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 51.345)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_0_0_8" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1167017799]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 58.68)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_0_0_9" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=282218970]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 66.015)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_0_0_10" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=2062830418]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 73.35)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_0_0_11" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1717086801]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 80.685)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_0_0_12" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1121999588]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 88.020004)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_0_0_13" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=779495761]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 95.355)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_0_0_14" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1262858142]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 102.69)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_0_0_15" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1295550746]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 110.025)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_0_0_16" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=902753552]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 117.36)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_0_0_17" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1242435436]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 124.695)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_1_0_0" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1573346406]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.335, 0, 0)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_1_0_1" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1559626533]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.335, 0, 7.335)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_1_0_2" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=2044054843]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.335, 0, 14.67)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_1_0_3" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=788206353]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.335, 0, 22.005001)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_1_0_4" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1880454535]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.335, 0, 29.34)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_1_0_5" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=2008922943]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.335, 0, 36.675)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_1_0_6" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=484387906]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.335, 0, 44.010002)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_1_0_7" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1578168179]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.335, 0, 51.345)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_1_0_8" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1173072716]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.335, 0, 58.68)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_1_0_9" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1364575225]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.335, 0, 66.015)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_1_0_10" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=330641565]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.335, 0, 73.35)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_1_0_11" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1614126397]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.335, 0, 80.685)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_1_0_12" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1165841988]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.335, 0, 88.020004)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_1_0_13" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1873933838]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.335, 0, 95.355)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_1_0_14" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=107927260]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.335, 0, 102.69)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_1_0_15" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=918870967]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.335, 0, 110.025)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_1_0_16" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=66604929]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.335, 0, 117.36)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_1_0_17" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1299410159]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.335, 0, 124.695)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_2_0_0" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1513527005]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.67, 0, 0)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_2_0_1" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=669443823]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.67, 0, 7.335)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_2_0_2" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=169388301]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.67, 0, 14.67)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_2_0_3" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=2139738876]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.67, 0, 22.005001)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_2_0_4" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1328576455]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.67, 0, 29.34)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_2_0_5" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=344469432]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.67, 0, 36.675)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_2_0_6" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1875779434]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.67, 0, 44.010002)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_2_0_7" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1348621772]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.67, 0, 51.345)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_2_0_8" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=627119821]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.67, 0, 58.68)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_2_0_9" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=670337857]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.67, 0, 66.015)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_2_0_10" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=483420071]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.67, 0, 73.35)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_2_0_11" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=2109470449]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.67, 0, 80.685)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_2_0_12" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1352486945]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.67, 0, 88.020004)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_2_0_13" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=706424688]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.67, 0, 95.355)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_2_0_14" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=389128289]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.67, 0, 102.69)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_2_0_15" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=24622706]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.67, 0, 110.025)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_2_0_16" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=54915710]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.67, 0, 117.36)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_2_0_17" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=263441509]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.67, 0, 124.695)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_3_0_0" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1474832605]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.005001, 0, 0)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_3_0_1" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=95224973]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.005001, 0, 7.335)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_3_0_2" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=535067062]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.005001, 0, 14.67)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_3_0_3" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=2029474480]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.005001, 0, 22.005001)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_3_0_4" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1624897491]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.005001, 0, 29.34)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_3_0_5" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1108828654]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.005001, 0, 36.675)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_3_0_6" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1179713011]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.005001, 0, 44.010002)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_3_0_7" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=180175038]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.005001, 0, 51.345)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_3_0_8" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1524349190]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.005001, 0, 58.68)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_3_0_9" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1027342066]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.005001, 0, 66.015)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_3_0_10" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1818375803]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.005001, 0, 73.35)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_3_0_11" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=722558630]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.005001, 0, 80.685)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_3_0_12" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=726351230]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.005001, 0, 88.020004)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_3_0_13" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1953820499]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.005001, 0, 95.355)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_3_0_14" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1125148281]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.005001, 0, 102.69)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_3_0_15" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1924105856]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.005001, 0, 110.025)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_3_0_16" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1791040472]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.005001, 0, 117.36)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_3_0_17" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1499429734]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.005001, 0, 124.695)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_4_0_0" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1816652120]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.34, 0, 0)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_4_0_1" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=924119541]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.34, 0, 7.335)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_4_0_2" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1302187102]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.34, 0, 14.67)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_4_0_3" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=847920220]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.34, 0, 22.005001)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_4_0_4" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=761252601]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.34, 0, 29.34)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_4_0_5" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1422219179]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.34, 0, 36.675)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_4_0_6" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1817121951]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.34, 0, 44.010002)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_4_0_7" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1116671779]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.34, 0, 51.345)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_4_0_8" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1353757180]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.34, 0, 58.68)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_4_0_9" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=602246984]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.34, 0, 66.015)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_4_0_10" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1648259413]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.34, 0, 73.35)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_4_0_11" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=246296887]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.34, 0, 80.685)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_4_0_12" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1227480891]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.34, 0, 88.020004)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_4_0_13" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=42525604]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.34, 0, 95.355)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_4_0_14" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=875917873]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.34, 0, 102.69)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_4_0_15" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1129349893]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.34, 0, 110.025)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_4_0_16" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=685306326]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.34, 0, 117.36)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_4_0_17" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=29965556]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.34, 0, 124.695)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_5_0_0" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=338305361]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.675, 0, 0)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_5_0_1" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=146627727]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.675, 0, 7.335)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_5_0_2" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=556648191]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.675, 0, 14.67)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_5_0_3" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1779286985]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.675, 0, 22.005001)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_5_0_4" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=81078836]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.675, 0, 29.34)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_5_0_5" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=430519385]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.675, 0, 36.675)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_5_0_6" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1767500840]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.675, 0, 44.010002)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_5_0_7" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=661229806]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.675, 0, 51.345)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_5_0_8" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1221152544]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.675, 0, 58.68)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_5_0_9" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=184410966]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.675, 0, 66.015)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_5_0_10" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1995262103]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.675, 0, 73.35)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_5_0_11" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1365799724]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.675, 0, 80.685)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_5_0_12" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1869458809]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.675, 0, 88.020004)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_5_0_13" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=348220102]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.675, 0, 95.355)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_5_0_14" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=704841925]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.675, 0, 102.69)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_5_0_15" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=274854322]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.675, 0, 110.025)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_5_0_16" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1842602433]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.675, 0, 117.36)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_5_0_17" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=181392123]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.675, 0, 124.695)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_6_0_0" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=383789164]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.010002, 0, 0)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_6_0_1" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=266132504]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.010002, 0, 7.335)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_6_0_2" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=829478460]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.010002, 0, 14.67)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_6_0_3" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=2021997436]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.010002, 0, 22.005001)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_6_0_4" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1833455326]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.010002, 0, 29.34)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_6_0_5" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=479904072]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.010002, 0, 36.675)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_6_0_6" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1272437003]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.010002, 0, 44.010002)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_6_0_7" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=313726231]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.010002, 0, 51.345)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_6_0_8" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=488006462]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.010002, 0, 58.68)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_6_0_9" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=100335594]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.010002, 0, 66.015)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_6_0_10" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=360843282]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.010002, 0, 73.35)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_6_0_11" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=2113287166]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.010002, 0, 80.685)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_6_0_12" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=103315102]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.010002, 0, 88.020004)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_6_0_13" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1143305269]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.010002, 0, 95.355)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_6_0_14" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1566237203]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.010002, 0, 102.69)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_6_0_15" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1628248919]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.010002, 0, 110.025)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_6_0_16" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1044121071]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.010002, 0, 117.36)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_6_0_17" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=627322590]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.010002, 0, 124.695)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_7_0_0" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=2112441410]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.345, 0, 0)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_7_0_1" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1380544622]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.345, 0, 7.335)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_7_0_2" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=374781856]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.345, 0, 14.67)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_7_0_3" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1617428150]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.345, 0, 22.005001)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_7_0_4" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1484795374]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.345, 0, 29.34)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_7_0_5" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1631579947]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.345, 0, 36.675)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_7_0_6" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=647644607]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.345, 0, 44.010002)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_7_0_7" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1021396463]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.345, 0, 51.345)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_7_0_8" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1723606248]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.345, 0, 58.68)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_7_0_9" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1896539936]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.345, 0, 66.015)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_7_0_10" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1575765833]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.345, 0, 73.35)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_7_0_11" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1267746905]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.345, 0, 80.685)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_7_0_12" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=954465462]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.345, 0, 88.020004)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_7_0_13" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=660751336]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.345, 0, 95.355)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_7_0_14" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=963788305]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.345, 0, 102.69)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_7_0_15" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=449973062]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.345, 0, 110.025)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_7_0_16" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1804575018]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.345, 0, 117.36)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_7_0_17" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1790701668]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.345, 0, 124.695)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_8_0_0" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1032234407]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.68, 0, 0)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_8_0_1" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=2063489422]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.68, 0, 7.335)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_8_0_2" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1710304119]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.68, 0, 14.67)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_8_0_3" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=2068094017]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.68, 0, 22.005001)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_8_0_4" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=738480377]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.68, 0, 29.34)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_8_0_5" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=457874649]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.68, 0, 36.675)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_8_0_6" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=517723940]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.68, 0, 44.010002)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_8_0_7" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1688872616]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.68, 0, 51.345)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_8_0_8" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=609362589]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.68, 0, 58.68)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_8_0_9" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1414639600]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.68, 0, 66.015)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_8_0_10" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=90825995]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.68, 0, 73.35)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_8_0_11" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1955394895]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.68, 0, 80.685)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_8_0_12" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=503196166]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.68, 0, 88.020004)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_8_0_13" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1292436917]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.68, 0, 95.355)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_8_0_14" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1461667130]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.68, 0, 102.69)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_8_0_15" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1131159738]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.68, 0, 110.025)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_8_0_16" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1586494232]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.68, 0, 117.36)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_8_0_17" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=388515640]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.68, 0, 124.695)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_9_0_0" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1501402345]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.015, 0, 0)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_9_0_1" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=867748424]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.015, 0, 7.335)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_9_0_2" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1597309253]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.015, 0, 14.67)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_9_0_3" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1360411556]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.015, 0, 22.005001)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_9_0_4" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=62651089]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.015, 0, 29.34)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_9_0_5" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=194106241]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.015, 0, 36.675)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_9_0_6" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1489961804]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.015, 0, 44.010002)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_9_0_7" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=179355670]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.015, 0, 51.345)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_9_0_8" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1102875902]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.015, 0, 58.68)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_9_0_9" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1434169159]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.015, 0, 66.015)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_9_0_10" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1785243536]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.015, 0, 73.35)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_9_0_11" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1438194457]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.015, 0, 80.685)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_9_0_12" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1709415327]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.015, 0, 88.020004)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_9_0_13" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=883785727]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.015, 0, 95.355)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_9_0_14" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1139680055]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.015, 0, 102.69)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_9_0_15" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1239678888]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.015, 0, 110.025)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_9_0_16" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1579970143]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.015, 0, 117.36)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_9_0_17" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=992087069]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.015, 0, 124.695)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_10_0_0" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1055910076]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.35, 0, 0)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_10_0_1" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=340830245]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.35, 0, 7.335)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_10_0_2" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1791488467]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.35, 0, 14.67)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_10_0_3" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1366865119]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.35, 0, 22.005001)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_10_0_4" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1308935837]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.35, 0, 29.34)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_10_0_5" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1837752799]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.35, 0, 36.675)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_10_0_6" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1544872660]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.35, 0, 44.010002)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_10_0_7" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1999652244]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.35, 0, 51.345)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_10_0_8" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=902320487]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.35, 0, 58.68)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_10_0_9" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1077249162]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.35, 0, 66.015)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_10_0_10" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=808327164]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.35, 0, 73.35)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_10_0_11" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=2146481882]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.35, 0, 80.685)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_10_0_12" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=385344930]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.35, 0, 88.020004)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_10_0_13" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=26148953]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.35, 0, 95.355)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_10_0_14" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=2073354011]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.35, 0, 102.69)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_10_0_15" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=6162158]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.35, 0, 110.025)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_10_0_16" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1188759827]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.35, 0, 117.36)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_10_0_17" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=334243001]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.35, 0, 124.695)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_11_0_0" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=188491557]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.685, 0, 0)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_11_0_1" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=376386428]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.685, 0, 7.335)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_11_0_2" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=597731697]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.685, 0, 14.67)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_11_0_3" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=272280314]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.685, 0, 22.005001)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_11_0_4" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1791227518]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.685, 0, 29.34)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_11_0_5" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1747016485]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.685, 0, 36.675)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_11_0_6" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1313372734]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.685, 0, 44.010002)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_11_0_7" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1060789989]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.685, 0, 51.345)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_11_0_8" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1610254000]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.685, 0, 58.68)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_11_0_9" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1440452337]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.685, 0, 66.015)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_11_0_10" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=323066937]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.685, 0, 73.35)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_11_0_11" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1352871208]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.685, 0, 80.685)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_11_0_12" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=885913047]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.685, 0, 88.020004)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_11_0_13" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=163578136]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.685, 0, 95.355)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_11_0_14" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=402661305]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.685, 0, 102.69)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_11_0_15" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=92410877]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.685, 0, 110.025)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_11_0_16" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=212343598]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.685, 0, 117.36)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_11_0_17" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=836378568]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.685, 0, 124.695)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_12_0_0" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=672574589]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.020004, 0, 0)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_12_0_1" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1082659048]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.020004, 0, 7.335)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_12_0_2" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=41086183]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.020004, 0, 14.67)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_12_0_3" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=714442227]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.020004, 0, 22.005001)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_12_0_4" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=656545768]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.020004, 0, 29.34)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_12_0_5" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1457839725]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.020004, 0, 36.675)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_12_0_6" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1678403238]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.020004, 0, 44.010002)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_12_0_7" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=920074963]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.020004, 0, 51.345)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_12_0_8" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=638350194]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.020004, 0, 58.68)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_12_0_9" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=574322233]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.020004, 0, 66.015)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_12_0_10" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1510260906]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.020004, 0, 73.35)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_12_0_11" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1176995896]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.020004, 0, 80.685)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_12_0_12" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=724513541]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.020004, 0, 88.020004)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_12_0_13" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1313363167]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.020004, 0, 95.355)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_12_0_14" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=819408043]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.020004, 0, 102.69)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_12_0_15" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=910652771]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.020004, 0, 110.025)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_12_0_16" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1616504202]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.020004, 0, 117.36)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_12_0_17" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1722914910]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.020004, 0, 124.695)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_13_0_0" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1962402889]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.355, 0, 0)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_13_0_1" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1388037666]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.355, 0, 7.335)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_13_0_2" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=182877442]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.355, 0, 14.67)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_13_0_3" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1012688180]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.355, 0, 22.005001)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_13_0_4" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=320331169]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.355, 0, 29.34)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_13_0_5" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1107628771]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.355, 0, 36.675)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_13_0_6" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=54578456]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.355, 0, 44.010002)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_13_0_7" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=539649196]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.355, 0, 51.345)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_13_0_8" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=422810186]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.355, 0, 58.68)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_13_0_9" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1844967158]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.355, 0, 66.015)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_13_0_10" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=917768072]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.355, 0, 73.35)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_13_0_11" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=175778527]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.355, 0, 80.685)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_13_0_12" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=482634174]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.355, 0, 88.020004)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_13_0_13" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=122519690]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.355, 0, 95.355)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_13_0_14" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1768498511]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.355, 0, 102.69)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_13_0_15" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=84342830]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.355, 0, 110.025)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_13_0_16" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=709745592]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.355, 0, 117.36)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_13_0_17" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=838993348]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.355, 0, 124.695)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_14_0_0" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1033036044]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102.69, 0, 0)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_14_0_1" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1880271308]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102.69, 0, 7.335)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_14_0_2" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1758918882]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102.69, 0, 14.67)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_14_0_3" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=683303542]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102.69, 0, 22.005001)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_14_0_4" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1832709563]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102.69, 0, 29.34)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_14_0_5" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1801604864]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102.69, 0, 36.675)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_14_0_6" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=933235484]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102.69, 0, 44.010002)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_14_0_7" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1968952822]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102.69, 0, 51.345)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_14_0_8" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1420683104]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102.69, 0, 58.68)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_14_0_9" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=478065325]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102.69, 0, 66.015)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_14_0_10" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1642423426]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102.69, 0, 73.35)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_14_0_11" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1873540011]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102.69, 0, 80.685)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_14_0_12" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=264046274]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102.69, 0, 88.020004)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_14_0_13" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=834102436]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102.69, 0, 95.355)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_14_0_14" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=653904136]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102.69, 0, 102.69)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_14_0_15" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=530238606]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102.69, 0, 110.025)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_14_0_16" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1310079755]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102.69, 0, 117.36)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_14_0_17" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=608428201]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102.69, 0, 124.695)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_15_0_0" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1397245475]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.025, 0, 0)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_15_0_1" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1363697986]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.025, 0, 7.335)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_15_0_2" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=222544743]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.025, 0, 14.67)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_15_0_3" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=357562998]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.025, 0, 22.005001)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_15_0_4" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1828459982]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.025, 0, 29.34)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_15_0_5" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1412968869]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.025, 0, 36.675)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_15_0_6" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=2044691240]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.025, 0, 44.010002)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_15_0_7" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1653378879]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.025, 0, 51.345)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_15_0_8" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1482849308]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.025, 0, 58.68)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_15_0_9" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1710210429]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.025, 0, 66.015)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_15_0_10" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1135259427]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.025, 0, 73.35)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_15_0_11" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=203083043]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.025, 0, 80.685)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_15_0_12" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=656135993]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.025, 0, 88.020004)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_15_0_13" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=897680117]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.025, 0, 95.355)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_15_0_14" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1258457309]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.025, 0, 102.69)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_15_0_15" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=840424460]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.025, 0, 110.025)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_15_0_16" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=666399042]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.025, 0, 117.36)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_15_0_17" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=2101189210]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.025, 0, 124.695)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_16_0_0" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=510422356]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.36, 0, 0)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_16_0_1" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=580779272]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.36, 0, 7.335)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_16_0_2" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=2070729527]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.36, 0, 14.67)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_16_0_3" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1385875388]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.36, 0, 22.005001)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_16_0_4" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=397811320]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.36, 0, 29.34)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_16_0_5" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=869242872]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.36, 0, 36.675)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_16_0_6" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=870038634]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.36, 0, 44.010002)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_16_0_7" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=672080071]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.36, 0, 51.345)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_16_0_8" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=644820039]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.36, 0, 58.68)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_16_0_9" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=464243016]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.36, 0, 66.015)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_16_0_10" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=969566743]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.36, 0, 73.35)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_16_0_11" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1073678997]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.36, 0, 80.685)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_16_0_12" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1166102191]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.36, 0, 88.020004)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_16_0_13" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=363499207]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.36, 0, 95.355)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_16_0_14" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=631473979]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.36, 0, 102.69)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_16_0_15" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1656021691]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.36, 0, 110.025)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_16_0_16" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1737184081]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.36, 0, 117.36)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_16_0_17" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=2088997980]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.36, 0, 124.695)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_17_0_0" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=892854595]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.695, 0, 0)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_17_0_1" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=2036703973]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.695, 0, 7.335)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_17_0_2" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1809771008]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.695, 0, 14.67)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_17_0_3" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1711142789]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.695, 0, 22.005001)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_17_0_4" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=481807599]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.695, 0, 29.34)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_17_0_5" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=163438409]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.695, 0, 36.675)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_17_0_6" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=999436230]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.695, 0, 44.010002)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_17_0_7" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1215523546]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.695, 0, 51.345)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_17_0_8" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=834206886]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.695, 0, 58.68)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_17_0_9" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1975288838]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.695, 0, 66.015)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_17_0_10" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1211334967]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.695, 0, 73.35)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_17_0_11" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=125740582]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.695, 0, 80.685)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_17_0_12" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1176647070]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.695, 0, 88.020004)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_17_0_13" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1739391155]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.695, 0, 95.355)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_17_0_14" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1932883143]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.695, 0, 102.69)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_17_0_15" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1449299603]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.695, 0, 110.025)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_17_0_16" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1584868595]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.695, 0, 117.36)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_17_0_17" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1854625800]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.695, 0, 124.695)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_18_0_0" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=684648074]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.03, 0, 0)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_18_0_1" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=269981047]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.03, 0, 7.335)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_18_0_2" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=231430477]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.03, 0, 14.67)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_18_0_3" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=2030817892]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.03, 0, 22.005001)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_18_0_4" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=325882811]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.03, 0, 29.34)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_18_0_5" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=66566377]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.03, 0, 36.675)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_18_0_6" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=32352783]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.03, 0, 44.010002)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_18_0_7" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=184782678]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.03, 0, 51.345)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_18_0_8" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=433718899]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.03, 0, 58.68)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_18_0_9" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1773128462]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.03, 0, 66.015)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_18_0_10" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=557690148]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.03, 0, 73.35)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_18_0_11" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1885733123]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.03, 0, 80.685)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_18_0_12" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=31890557]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.03, 0, 88.020004)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_18_0_13" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1984035301]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.03, 0, 95.355)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_18_0_14" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1845445536]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.03, 0, 102.69)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_18_0_15" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1364459524]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.03, 0, 110.025)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_18_0_16" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1353086360]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.03, 0, 117.36)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_18_0_17" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1200193994]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.03, 0, 124.695)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_19_0_0" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=431230219]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139.365, 0, 0)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_19_0_1" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1765124405]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139.365, 0, 7.335)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_19_0_2" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=684444806]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139.365, 0, 14.67)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_19_0_3" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1143187370]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139.365, 0, 22.005001)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_19_0_4" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1196511273]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139.365, 0, 29.34)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_19_0_5" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=372221633]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139.365, 0, 36.675)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_19_0_6" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=328529914]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139.365, 0, 44.010002)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_19_0_7" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=671022589]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139.365, 0, 51.345)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_19_0_8" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=58533425]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139.365, 0, 58.68)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_19_0_9" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1839358863]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139.365, 0, 66.015)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_19_0_10" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1869679979]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139.365, 0, 73.35)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_19_0_11" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=820958745]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139.365, 0, 80.685)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_19_0_12" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=876777071]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139.365, 0, 88.020004)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_19_0_13" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=397299607]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139.365, 0, 95.355)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_19_0_14" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=2035810460]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139.365, 0, 102.69)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_19_0_15" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=2099774528]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139.365, 0, 110.025)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_19_0_16" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=377468229]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139.365, 0, 117.36)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_19_0_17" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1362075896]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139.365, 0, 124.695)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_20_0_0" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=2091030867]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146.7, 0, 0)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_20_0_1" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=72307150]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146.7, 0, 7.335)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_20_0_2" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=559634400]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146.7, 0, 14.67)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_20_0_3" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1453060571]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146.7, 0, 22.005001)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_20_0_4" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1195112819]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146.7, 0, 29.34)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_20_0_5" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=270575616]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146.7, 0, 36.675)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_20_0_6" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1633449119]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146.7, 0, 44.010002)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_20_0_7" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=2103086913]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146.7, 0, 51.345)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_20_0_8" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=830475370]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146.7, 0, 58.68)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_20_0_9" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1022812109]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146.7, 0, 66.015)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_20_0_10" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1172967317]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146.7, 0, 73.35)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_20_0_11" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=428113342]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146.7, 0, 80.685)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_20_0_12" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=289180093]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146.7, 0, 88.020004)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_20_0_13" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=985208619]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146.7, 0, 95.355)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_20_0_14" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=906561243]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146.7, 0, 102.69)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_20_0_15" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=600291141]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146.7, 0, 110.025)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_20_0_16" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1238273513]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146.7, 0, 117.36)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_20_0_17" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1070733541]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146.7, 0, 124.695)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_21_0_0" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=2071420499]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 154.035, 0, 0)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_21_0_1" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=328825777]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 154.035, 0, 7.335)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_21_0_2" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=989441977]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 154.035, 0, 14.67)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_21_0_3" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1229198845]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 154.035, 0, 22.005001)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_21_0_4" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1219644199]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 154.035, 0, 29.34)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_21_0_5" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1937810966]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 154.035, 0, 36.675)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_21_0_6" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=676223139]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 154.035, 0, 44.010002)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_21_0_7" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=56740944]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 154.035, 0, 51.345)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_21_0_8" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1331610879]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 154.035, 0, 58.68)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_21_0_9" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=507124211]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 154.035, 0, 66.015)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_21_0_10" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=339854044]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 154.035, 0, 73.35)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_21_0_11" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=575214173]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 154.035, 0, 80.685)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_21_0_12" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1676772900]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 154.035, 0, 88.020004)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_21_0_13" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=52374419]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 154.035, 0, 95.355)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_21_0_14" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=906042148]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 154.035, 0, 102.69)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_21_0_15" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=31865978]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 154.035, 0, 110.025)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_21_0_16" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1590050647]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 154.035, 0, 117.36)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_21_0_17" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1163525370]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 154.035, 0, 124.695)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_22_0_0" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=477907434]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 161.37, 0, 0)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_22_0_1" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=989720890]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 161.37, 0, 7.335)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_22_0_2" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1474271583]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 161.37, 0, 14.67)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_22_0_3" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=67426449]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 161.37, 0, 22.005001)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_22_0_4" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1480471364]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 161.37, 0, 29.34)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_22_0_5" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=121427115]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 161.37, 0, 36.675)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_22_0_6" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=2142161667]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 161.37, 0, 44.010002)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_22_0_7" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1777573586]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 161.37, 0, 51.345)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_22_0_8" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1349368960]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 161.37, 0, 58.68)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_22_0_9" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=979678290]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 161.37, 0, 66.015)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_22_0_10" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=923122639]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 161.37, 0, 73.35)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_22_0_11" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1030883050]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 161.37, 0, 80.685)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_22_0_12" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1632847454]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 161.37, 0, 88.020004)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_22_0_13" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=584972046]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 161.37, 0, 95.355)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_22_0_14" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1750887870]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 161.37, 0, 102.69)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_22_0_15" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1378015783]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 161.37, 0, 110.025)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_22_0_16" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1272188724]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 161.37, 0, 117.36)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_22_0_17" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1551298732]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 161.37, 0, 124.695)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_23_0_0" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1388298360]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.705, 0, 0)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_23_0_1" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1270581389]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.705, 0, 7.335)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_23_0_2" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1247937184]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.705, 0, 14.67)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_23_0_3" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=2011308030]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.705, 0, 22.005001)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_23_0_4" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=2069774803]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.705, 0, 29.34)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_23_0_5" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1525752206]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.705, 0, 36.675)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_23_0_6" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=2070024034]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.705, 0, 44.010002)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_23_0_7" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=575550779]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.705, 0, 51.345)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_23_0_8" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=128650327]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.705, 0, 58.68)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_23_0_9" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1960514313]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.705, 0, 66.015)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_23_0_10" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1194586971]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.705, 0, 73.35)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_23_0_11" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=879811505]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.705, 0, 80.685)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_23_0_12" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1696036882]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.705, 0, 88.020004)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_23_0_13" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1452964089]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.705, 0, 95.355)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_23_0_14" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1207025419]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.705, 0, 102.69)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_23_0_15" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1903975717]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.705, 0, 110.025)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_23_0_16" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=318373301]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.705, 0, 117.36)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_23_0_17" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=789391091]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.705, 0, 124.695)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_24_0_0" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1508986139]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.04001, 0, 0)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_24_0_1" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=354505782]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.04001, 0, 7.335)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_24_0_2" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1451442162]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.04001, 0, 14.67)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_24_0_3" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1350244819]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.04001, 0, 22.005001)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_24_0_4" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=743131335]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.04001, 0, 29.34)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_24_0_5" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=104810432]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.04001, 0, 36.675)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_24_0_6" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=125428106]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.04001, 0, 44.010002)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_24_0_7" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1811517242]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.04001, 0, 51.345)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_24_0_8" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=2141208940]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.04001, 0, 58.68)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_24_0_9" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1861037667]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.04001, 0, 66.015)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_24_0_10" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=603256516]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.04001, 0, 73.35)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_24_0_11" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=2080231789]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.04001, 0, 80.685)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_24_0_12" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=824148243]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.04001, 0, 88.020004)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_24_0_13" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1714129753]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.04001, 0, 95.355)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_24_0_14" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1955826749]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.04001, 0, 102.69)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_24_0_15" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=958623277]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.04001, 0, 110.025)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_24_0_16" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=840367557]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.04001, 0, 117.36)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_24_0_17" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=347493685]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.04001, 0, 124.695)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_25_0_0" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=243364015]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 183.375, 0, 0)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_25_0_1" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1960032455]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 183.375, 0, 7.335)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_25_0_2" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=733476450]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 183.375, 0, 14.67)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_25_0_3" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=520865308]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 183.375, 0, 22.005001)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_25_0_4" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=680148719]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 183.375, 0, 29.34)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_25_0_5" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1549435448]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 183.375, 0, 36.675)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_25_0_6" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1776821500]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 183.375, 0, 44.010002)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_25_0_7" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1196593191]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 183.375, 0, 51.345)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_25_0_8" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=2121331246]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 183.375, 0, 58.68)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_25_0_9" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=32245209]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 183.375, 0, 66.015)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_25_0_10" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=477520846]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 183.375, 0, 73.35)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_25_0_11" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=62233850]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 183.375, 0, 80.685)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_25_0_12" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1421334182]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 183.375, 0, 88.020004)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_25_0_13" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1814282365]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 183.375, 0, 95.355)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_25_0_14" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=727421473]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 183.375, 0, 102.69)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_25_0_15" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=402754820]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 183.375, 0, 110.025)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_25_0_16" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=252766782]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 183.375, 0, 117.36)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_25_0_17" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=298786565]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 183.375, 0, 124.695)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_26_0_0" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=699004935]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 190.71, 0, 0)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_26_0_1" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=184475573]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 190.71, 0, 7.335)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_26_0_2" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=762307221]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 190.71, 0, 14.67)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_26_0_3" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=107588594]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 190.71, 0, 22.005001)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_26_0_4" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=817950797]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 190.71, 0, 29.34)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_26_0_5" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=2033641058]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 190.71, 0, 36.675)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_26_0_6" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=2119800012]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 190.71, 0, 44.010002)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_26_0_7" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1257257687]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 190.71, 0, 51.345)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_26_0_8" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=552789234]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 190.71, 0, 58.68)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_26_0_9" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=211577384]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 190.71, 0, 66.015)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_26_0_10" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=2071294204]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 190.71, 0, 73.35)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_26_0_11" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=943353210]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 190.71, 0, 80.685)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_26_0_12" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=139329325]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 190.71, 0, 88.020004)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_26_0_13" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1553498212]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 190.71, 0, 95.355)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_26_0_14" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=512899663]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 190.71, 0, 102.69)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_26_0_15" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1282393950]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 190.71, 0, 110.025)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_26_0_16" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=480234449]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 190.71, 0, 117.36)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_26_0_17" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1543541547]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 190.71, 0, 124.695)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_27_0_0" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1692701318]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 198.045, 0, 0)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_27_0_1" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=322497059]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 198.045, 0, 7.335)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_27_0_2" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=74859975]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 198.045, 0, 14.67)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_27_0_3" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1529989815]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 198.045, 0, 22.005001)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_27_0_4" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1331073127]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 198.045, 0, 29.34)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_27_0_5" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1798154441]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 198.045, 0, 36.675)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_27_0_6" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1701157427]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 198.045, 0, 44.010002)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_27_0_7" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1298386672]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 198.045, 0, 51.345)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_27_0_8" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=772772092]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 198.045, 0, 58.68)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_27_0_9" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=864480515]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 198.045, 0, 66.015)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_27_0_10" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=246054610]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 198.045, 0, 73.35)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_27_0_11" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=517091465]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 198.045, 0, 80.685)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_27_0_12" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=101844387]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 198.045, 0, 88.020004)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_27_0_13" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=507307208]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 198.045, 0, 95.355)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_27_0_14" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=133713983]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 198.045, 0, 102.69)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_27_0_15" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=680904705]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 198.045, 0, 110.025)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_27_0_16" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=140727421]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 198.045, 0, 117.36)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_27_0_17" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=255118944]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 198.045, 0, 124.695)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_28_0_0" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=324039963]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 205.38, 0, 0)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_28_0_1" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=886106052]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 205.38, 0, 7.335)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_28_0_2" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1691437053]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 205.38, 0, 14.67)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_28_0_3" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1773222315]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 205.38, 0, 22.005001)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_28_0_4" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=131613192]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 205.38, 0, 29.34)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_28_0_5" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1902462402]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 205.38, 0, 36.675)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_28_0_6" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1128515250]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 205.38, 0, 44.010002)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_28_0_7" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=2080865437]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 205.38, 0, 51.345)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_28_0_8" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1402318785]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 205.38, 0, 58.68)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_28_0_9" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1802066328]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 205.38, 0, 66.015)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_28_0_10" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=378310437]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 205.38, 0, 73.35)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_28_0_11" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=94998736]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 205.38, 0, 80.685)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_28_0_12" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=964437961]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 205.38, 0, 88.020004)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_28_0_13" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1119081462]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 205.38, 0, 95.355)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_28_0_14" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1245179128]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 205.38, 0, 102.69)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_28_0_15" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1825407447]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 205.38, 0, 110.025)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_28_0_16" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=941828319]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 205.38, 0, 117.36)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_28_0_17" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1724631528]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 205.38, 0, 124.695)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_29_0_0" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=414288886]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 212.715, 0, 0)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_29_0_1" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1530031059]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 212.715, 0, 7.335)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_29_0_2" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=647755891]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 212.715, 0, 14.67)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_29_0_3" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=681581750]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 212.715, 0, 22.005001)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_29_0_4" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1453782937]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 212.715, 0, 29.34)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_29_0_5" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=586635029]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 212.715, 0, 36.675)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_29_0_6" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=767044870]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 212.715, 0, 44.010002)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_29_0_7" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=282687830]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 212.715, 0, 51.345)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_29_0_8" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1349206675]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 212.715, 0, 58.68)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_29_0_9" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=122018157]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 212.715, 0, 66.015)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_29_0_10" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=2118548558]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 212.715, 0, 73.35)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_29_0_11" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=766099568]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 212.715, 0, 80.685)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_29_0_12" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1009551290]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 212.715, 0, 88.020004)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_29_0_13" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1085303852]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 212.715, 0, 95.355)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_29_0_14" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1907124106]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 212.715, 0, 102.69)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_29_0_15" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1235801005]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 212.715, 0, 110.025)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_29_0_16" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=275961656]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 212.715, 0, 117.36)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="Box_29_0_17" type="MeshInstance3D" parent="ComputerScreenRenders/GridGenerator" unique_id=1449326002]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 212.715, 0, 124.695)
+layers = 32768
+cast_shadow = 0
+mesh = SubResource("BoxMesh_bkq84")
+surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
+
+[node name="ComputerMonitor" type="SubViewport" parent="ComputerScreenRenders" unique_id=1986216645]
+physics_object_picking = true
+physics_object_picking_sort = true
+physics_object_picking_first_only = true
+size = Vector2i(1280, 960)
+
+[node name="ComputerScreenUI" parent="ComputerScreenRenders/ComputerMonitor" unique_id=694152180 instance=ExtResource("25_eet0l")]
+
+[node name="MapGrid" type="SubViewport" parent="ComputerScreenRenders" unique_id=1310840569]
+size = Vector2i(1170, 720)
+
+[node name="Camera3D" type="Camera3D" parent="ComputerScreenRenders/MapGrid" unique_id=1651358438]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 40.38, 1000, 47.21)
+visible = false
+cull_mask = 1015808
+environment = SubResource("Environment_osgti")
+projection = 1
+size = 150.0
+
+[node name="Camera3D3" type="Camera3D" parent="ComputerScreenRenders/MapGrid" unique_id=890954275]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 40.38, 1000, -11.537247)
+visible = false
+cull_mask = 1015808
+environment = SubResource("Environment_osgti")
+projection = 1
+size = 150.0
+
+[node name="Camera3D2" type="Camera3D" parent="ComputerScreenRenders/MapGrid" unique_id=1657380930]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 215.83472, 1000, 47.21)
+visible = false
+cull_mask = 1015808
+environment = SubResource("Environment_osgti")
+projection = 1
+size = 150.0
+
+[node name="Gameplay" type="Node3D" parent="." unique_id=1667574802]
+transform = Transform3D(1.4151126, 0, 0, 0, 1.4151126, 0, 0, 0, 1.4151126, 0.5436454, 2.1912403, -1.4963394)
+
+[node name="Chair Interaction" type="Area3D" parent="Gameplay" unique_id=292098836 node_paths=PackedStringArray("redirect_input") groups=["InteractiveMount"]]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 2.046382, -1.7767938, 1.6193392)
+collision_layer = 0
+input_ray_pickable = false
+monitorable = false
+script = ExtResource("26_42gc7")
+redirect_input = NodePath("../../ComputerScreenRenders/ComputerMonitor")
+interaction_text = "press e to sit at computer"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Chair Interaction" unique_id=1177674249]
+transform = Transform3D(0.99999976, 0, -5.9604623e-08, 0, 1, 0, 5.9604623e-08, 0, 0.99999976, -0.0895776, 0.41479844, -5.3392397e-09)
+shape = SubResource("CapsuleShape3D_142py")
+
+[node name="SubmitQuest" type="Node3D" parent="Gameplay" unique_id=1509242997]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.37737, 56.985577, -139.55121)
 
 [node name="desk" parent="." unique_id=2107914153 instance=ExtResource("4_2knxt")]
 transform = Transform3D(1.7488817, 0, 0, 0, 1.7488817, 0, 0, 0, 1.7488817, 3.3157055, 0.6540642, 2.5794885)
 
 [node name="computer-keyboard2" parent="." unique_id=1110257665 instance=ExtResource("16_jp1e5")]
 transform = Transform3D(1.3806835, 0, 0, 0, 1.3806835, 0, 0, 0, 1.3806835, 3.7945335, 1.7878904, 1.9366279)
+
+[node name="Node3D" parent="." unique_id=874970357 instance=ExtResource("29_g1ciw")]
+transform = Transform3D(0, -1, 4.371139e-08, -4.371139e-08, -4.3711385e-08, -1, 1, 0, -4.371139e-08, 5.6501093, 2.7866902, 1.55321)

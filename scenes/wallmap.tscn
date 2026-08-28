@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dsj80p2uy7o80"]
+
+[ext_resource type="Texture2D" uid="uid://dablioe4bhnlr" path="res://assets/images/wall-map.png" id="1_glnav"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dbcyq"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_h45xw"]
+material = SubResource("StandardMaterial3D_dbcyq")
+size = Vector3(2.5466309, 0.028747559, 2.1699219)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q16ka"]
+albedo_texture = ExtResource("1_glnav")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_h45xw"]
+
+[node name="Node3D" type="Node3D" unique_id=874970357]
+
+[node name="backpanel" type="MeshInstance3D" parent="." unique_id=404783856]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.018780231, 0)
+mesh = SubResource("BoxMesh_h45xw")
+
+[node name="map" type="MeshInstance3D" parent="backpanel" unique_id=1726883707]
+transform = Transform3D(1.168749, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.038036466, 0)
+material_override = SubResource("StandardMaterial3D_q16ka")
+mesh = SubResource("PlaneMesh_h45xw")
