@@ -1,11 +1,38 @@
-#AI
 @tool
 class_name PathNode2D
-extends Node2D
-## A single vertex in an A* road graph. Position it with the normal 2D
-## move gizmo; drag other PathNode2D nodes from the Scene tree into
-## `connections` below to link them.
+extends Sprite2D
 
-## Other PathNode2D nodes this one connects to. Direction matters if
-## AStarGraph2D.bidirectional is false (see that node for one-way roads).
+const BLACK_GRADIENT_TEXTURE_2D = preload("uid://c4cdvmetoww61")
+const GREEN_GRADIENT_TEXTURE_2D = preload("uid://qlv27q81cyvk")
+const ORANGE_GRADIENT_TEXTURE_2D = preload("uid://cp6p7x7g37eh6")
+const PINK_GRADIENT_TEXTURE_2D = preload("uid://c3w7gfq11xjbp")
+const HOME_GRADIENT_TEXTURE_2D = preload("uid://y08x8cseub27")
+const WORK_GRADIENT_TEXTURE_2D = preload("uid://cmlv71m2o7jy4")
+
+enum NodeType {
+	NULL = 0,
+	Intersection,
+	POI,
+	CityExit,
+	ShadyPOI,
+	Residence,
+	Work,
+}
+
 @export var connections: Array[NodePath] = []
+@export var node_type: NodeType:
+	set(val):
+		node_type = val
+		match node_type:
+			NodeType.Intersection:
+				texture = BLACK_GRADIENT_TEXTURE_2D
+			NodeType.POI:
+				texture = GREEN_GRADIENT_TEXTURE_2D
+			NodeType.CityExit:
+				texture = ORANGE_GRADIENT_TEXTURE_2D
+			NodeType.ShadyPOI:
+				texture = PINK_GRADIENT_TEXTURE_2D
+			NodeType.Residence:
+				texture = HOME_GRADIENT_TEXTURE_2D
+			NodeType.Work:
+				texture = WORK_GRADIENT_TEXTURE_2D

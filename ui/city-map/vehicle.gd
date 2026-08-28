@@ -4,6 +4,18 @@ extends CharacterBody2D
 ## markers, or how the path was computed — just follows PackedVector2Array
 ## points in order. Attach directly to the CharacterBody2D node.
 
+@export var home: PathNode2D
+@export var work: PathNode2D
+
+enum WorkShift {
+	Day,
+	Evening,
+	Night
+}
+@export var work_shift: WorkShift
+
+#@export var destinations: Array
+
 @export var city_map: CityMap
 @export var astar: AStarGraph2D
 @export var speed: float = 200.0
@@ -31,7 +43,7 @@ func is_done() -> bool:
 func _ready() -> void:
 	assert(city_map)
 	assert(astar)
-	var start_node := astar.find_closest_poi(global_position)
+	var start_node := astar.find_closest_node_of_type(global_position, PathNode2D.NodeType.POI)
 	global_position = start_node.global_position
 	
 	#seed(-7718)
@@ -42,13 +54,36 @@ func _ready() -> void:
 	features = vehicle.features
 
 func get_new_path():
-	var destination = astar._get_path_nodes().pick_random()
+	var time := city_map.current_time
+	match work_shift:
+		WorkShift.Day:
+			time += 0
+		WorkShift.Evening:
+			time += 8 * 60*60
+		WorkShift.Night:
+			time += 16 * 60*60
+	
+	var hour = Time.get_datetime_dict_from_unix_time(time).hour
+	
+	# Find a destination
+	var destination: PathNode2D
+	
+	if hour > 21 or hour < 6:
+		if home:
+			destination = home
+	elif hour >=8 and hour <= 4:
+		if work:
+			destination = work
+	
+	if !destination:
+		destination = astar._get_path_nodes(PathNode2D.NodeType.POI).pick_random()
+	
 	var start_node := astar.find_closest_point(global_position)
 	var end_node := astar.find_closest_point(destination.global_position)
-	pass
+	
 	var from_id := astar.get_id_for(start_node)
 	var to_id := astar.get_id_for(end_node)
-
+	
 	var path := city_map.astar.get_point_path(from_id, to_id)
 	if path.is_empty():
 		push_warning("No path found between start_marker and end_marker.")
@@ -58,7 +93,12 @@ func _physics_process(_delta: float) -> void:
 	if is_done():
 		velocity = Vector2.ZERO
 		move_and_slide()
+		
+		var random_wait = randf() * 4
+		set_physics_process(false)
+		await get_tree().create_timer(random_wait).timeout 
 		get_new_path()
+		set_physics_process(true)
 		return
 
 	var target := path[path_index]

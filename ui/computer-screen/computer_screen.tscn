@@ -109,6 +109,6 @@ content_scene_path = "uid://dukf0r3kv7h3u"
 
 [node name="CityMap" parent="." unique_id=84354765 instance=ExtResource("13_clvma")]
 z_index = 10
-position = Vector2(662.00006, 417)
+position = Vector2(690.00006, 725)
 
 [connection signal="filter_changed" from="PlateFilter" to="VehicleSightingsTableView" method="_on_plate_filter_filter_changed"]
