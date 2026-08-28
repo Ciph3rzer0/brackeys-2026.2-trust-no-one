@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://cp6p7x7g37eh6" path="res://ui/city-map/orange_gradient_texture_2d.tres" id="6_vipko"]
 [ext_resource type="Script" uid="uid://dyjgb3gbwv6my" path="res://ui/city-map/city_map.gd" id="7_4hhcj"]
 [ext_resource type="Texture2D" uid="uid://y08x8cseub27" path="res://ui/city-map/home_gradient_texture_2d.tres" id="7_kh8b0"]
-[ext_resource type="Texture2D" uid="uid://ddxvv763xd43t" path="res://icon.svg" id="7_wgu0n"]
 [ext_resource type="Texture2D" uid="uid://cmlv71m2o7jy4" path="res://ui/city-map/work_gradient_texture_2d.tres" id="8_3lkr5"]
 [ext_resource type="PackedScene" uid="uid://rfby48jvh0km" path="res://ui/city-map/camera.tscn" id="9_qdywh"]
 [ext_resource type="PackedScene" uid="uid://b0sw7kg0mti8e" path="res://ui/city-map/vehicle.tscn" id="9_tbcoo"]
@@ -17,14 +16,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uhg71"]
 size = Vector2(1451, 956.5)
 
-[node name="CityMap" type="Node2D" unique_id=84354765 node_paths=PackedStringArray("astar_graph_2d", "start_marker", "end_marker", "vehicle")]
+[node name="CityMap" type="Node2D" unique_id=84354765 node_paths=PackedStringArray("astar_graph_2d")]
 position = Vector2(625, 396)
 scale = Vector2(0.535, 0.535)
 script = ExtResource("7_4hhcj")
 astar_graph_2d = NodePath("AStarGraph2D")
-start_marker = NodePath("Vehicles/Start")
-end_marker = NodePath("Vehicles/End")
-vehicle = NodePath("Vehicles/Vehicle")
 start_time_string = "2026-08-25T00:00:00"
 
 [node name="CityMapDraft" type="Sprite2D" parent="." unique_id=866556907]
@@ -529,18 +525,6 @@ shape = SubResource("RectangleShape2D_uhg71")
 
 [node name="Vehicles" type="Node2D" parent="." unique_id=731682705]
 position = Vector2(-156, 794)
-
-[node name="Start" type="Sprite2D" parent="Vehicles" unique_id=1476672309]
-unique_name_in_owner = true
-position = Vector2(-250, -58)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("7_wgu0n")
-
-[node name="End" type="Sprite2D" parent="Vehicles" unique_id=1426661668]
-unique_name_in_owner = true
-position = Vector2(1682.0001, -1266.0001)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("7_wgu0n")
 
 [node name="Vehicle" parent="Vehicles" unique_id=260464224 node_paths=PackedStringArray("work", "city_map", "astar") instance=ExtResource("9_tbcoo")]
 position = Vector2(-118.76628, -876.243)
