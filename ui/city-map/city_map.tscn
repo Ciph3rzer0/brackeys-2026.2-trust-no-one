@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://qlv27q81cyvk" path="res://ui/city-map/green_gradient_texture_2d.tres" id="5_wxgfj"]
 [ext_resource type="Texture2D" uid="uid://c3w7gfq11xjbp" path="res://ui/city-map/pink_gradient_texture_2d.tres" id="6_kh8b0"]
 [ext_resource type="Texture2D" uid="uid://cp6p7x7g37eh6" path="res://ui/city-map/orange_gradient_texture_2d.tres" id="6_vipko"]
-[ext_resource type="Script" uid="uid://dyjgb3gbwv6my" path="res://ui/city-map/city_map2.gd" id="7_4hhcj"]
+[ext_resource type="Script" uid="uid://dyjgb3gbwv6my" path="res://ui/city-map/city_map.gd" id="7_4hhcj"]
 [ext_resource type="Texture2D" uid="uid://ddxvv763xd43t" path="res://icon.svg" id="7_wgu0n"]
 [ext_resource type="PackedScene" uid="uid://rfby48jvh0km" path="res://ui/city-map/camera.tscn" id="9_qdywh"]
 [ext_resource type="PackedScene" uid="uid://b0sw7kg0mti8e" path="res://ui/city-map/vehicle.tscn" id="9_tbcoo"]
