@@ -9,12 +9,25 @@
 [ext_resource type="PackedScene" uid="uid://caageh3xw4bpg" path="res://draggable-resizable-panel.tscn" id="7_8qfsr"]
 [ext_resource type="Theme" uid="uid://bd38ltbo66d6v" path="res://theme/folder_button_theme.tres" id="8_vod3n"]
 [ext_resource type="Texture2D" uid="uid://bsner80gnprhh" path="res://assets/folder.svg" id="9_5sf7k"]
+[ext_resource type="Script" uid="uid://laa8yh5h6os3" path="res://ui/tables/option_button_filter.gd" id="9_clvma"]
 [ext_resource type="Script" uid="uid://dk0py0rtbm2f8" path="res://ui/computer-screen/quest_button.gd" id="10_5sf7k"]
 [ext_resource type="Resource" uid="uid://mlx6hgu5bc7w" path="res://scripts/quests/first_quest.tres" id="11_4dgut"]
 [ext_resource type="Resource" uid="uid://x4bm7k2h5yiq" path="res://scripts/quests/2_quest.tres" id="12_n1ots"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uhg71"]
 bg_color = Color(0, 0.18039216, 0.57254905, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_clvma"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
 
 [node name="ComputerScreen" type="Control" unique_id=694152180]
 custom_minimum_size = Vector2(1280, 1200)
@@ -59,6 +72,7 @@ script = ExtResource("10_5sf7k")
 quest = ExtResource("12_n1ots")
 
 [node name="PlateFilter" type="TextEdit" parent="." unique_id=2046144793]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 16.0
 offset_top = 41.0
@@ -78,6 +92,7 @@ theme_override_font_sizes/font_size = 15
 text = "License Plate:"
 
 [node name="CameraFilter" type="TextEdit" parent="." unique_id=1794576891]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 184.0
 offset_top = 41.0
@@ -95,6 +110,74 @@ theme = ExtResource("3_ni5x2")
 theme_type_variation = &"white_text"
 theme_override_font_sizes/font_size = 15
 text = "Camera:"
+
+[node name="TEMPVISIBILITYBACKGROUNDPanel" type="Panel" parent="." unique_id=188545669]
+layout_mode = 0
+offset_left = 335.0
+offset_top = 38.0
+offset_right = 1278.0
+offset_bottom = 73.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_clvma")
+
+[node name="ColorFilter" type="OptionButton" parent="." unique_id=1377963714]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 752.0
+offset_top = 41.0
+offset_right = 897.0
+offset_bottom = 74.0
+script = ExtResource("9_clvma")
+
+[node name="LabelColor" type="Label" parent="ColorFilter" unique_id=1871928094]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -25.0
+offset_right = 107.0
+offset_bottom = -2.0
+theme = ExtResource("3_ni5x2")
+theme_type_variation = &"white_text"
+theme_override_font_sizes/font_size = 15
+text = "Color"
+
+[node name="TypeFilter" type="OptionButton" parent="." unique_id=1467428637]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 920.0
+offset_top = 41.0
+offset_right = 1065.0
+offset_bottom = 74.0
+script = ExtResource("9_clvma")
+
+[node name="LabelType" type="Label" parent="TypeFilter" unique_id=311373947]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -25.0
+offset_right = 107.0
+offset_bottom = -2.0
+theme = ExtResource("3_ni5x2")
+theme_type_variation = &"white_text"
+theme_override_font_sizes/font_size = 15
+text = "Type"
+
+[node name="FeaturesFilter" type="OptionButton" parent="." unique_id=1437918686]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1088.0
+offset_top = 41.0
+offset_right = 1233.0
+offset_bottom = 74.0
+script = ExtResource("9_clvma")
+
+[node name="LabelFeatures" type="Label" parent="FeaturesFilter" unique_id=113921603]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -25.0
+offset_right = 107.0
+offset_bottom = -2.0
+theme = ExtResource("3_ni5x2")
+theme_type_variation = &"white_text"
+theme_override_font_sizes/font_size = 15
+text = "Features"
 
 [node name="RmsPersonsTableView" parent="." unique_id=737813966 instance=ExtResource("4_tb1cc")]
 visible = false
@@ -128,3 +211,6 @@ content_scene_path = "uid://dukf0r3kv7h3u"
 
 [connection signal="filter_changed" from="PlateFilter" to="VehicleSightingsTableView" method="_on_plate_filter_filter_changed"]
 [connection signal="filter_changed" from="CameraFilter" to="VehicleSightingsTableView" method="_on_camera_filter_filter_changed"]
+[connection signal="filter_changed" from="ColorFilter" to="VehicleSightingsTableView" method="_on_color_filter_filter_changed"]
+[connection signal="filter_changed" from="TypeFilter" to="VehicleSightingsTableView" method="_on_type_filter_filter_changed"]
+[connection signal="filter_changed" from="FeaturesFilter" to="VehicleSightingsTableView" method="_on_features_filter_filter_changed"]
