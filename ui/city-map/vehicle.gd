@@ -99,7 +99,7 @@ func _physics_process(_delta: float) -> void:
 		velocity = Vector2.ZERO
 		move_and_slide()
 		
-		var random_wait = randf() * 4
+		var random_wait = randf() # * 4 #AK 8/28
 		set_physics_process(false)
 		await get_tree().create_timer(random_wait).timeout 
 		get_new_path()

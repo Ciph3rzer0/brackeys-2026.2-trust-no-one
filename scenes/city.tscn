@@ -113,7 +113,7 @@ viewport_path = NodePath("ComputerScreenRenders/MapGrid")
 resource_local_to_scene = true
 albedo_texture = SubResource("ViewportTexture_q8eg3")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_32ncx"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h3250"]
 render_priority = 0
 shader = ExtResource("10_4lp1f")
 shader_parameter/grid_offset = Vector3(-3.67, 0, -2.99)
@@ -123,7 +123,7 @@ shader_parameter/grid_color = Color(0, 0.8, 1, 1)
 shader_parameter/base_color = Color(0.101960786, 0.101960786, 0.101960786, 0.30980393)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_uhg71"]
-material = SubResource("ShaderMaterial_32ncx")
+material = SubResource("ShaderMaterial_h3250")
 size = Vector2(300, 200)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_07bxp"]

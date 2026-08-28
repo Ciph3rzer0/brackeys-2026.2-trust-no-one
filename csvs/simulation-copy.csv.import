@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://dseti5dtfid1x"
+
+[deps]
+
+files=["res://csvs/simulation-copy.camera.translation", "res://csvs/simulation-copy.vehicle.translation", "res://csvs/simulation-copy.vehicle.translation", "res://csvs/simulation-copy.vehicle.translation", "res://csvs/simulation-copy.vehicle.translation"]
+
+source_file="res://csvs/simulation-copy.csv"
+dest_files=["res://csvs/simulation-copy.camera.translation", "res://csvs/simulation-copy.vehicle.translation", "res://csvs/simulation-copy.vehicle.translation", "res://csvs/simulation-copy.vehicle.translation", "res://csvs/simulation-copy.vehicle.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true
