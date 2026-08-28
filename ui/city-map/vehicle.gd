@@ -43,7 +43,8 @@ func is_done() -> bool:
 func _ready() -> void:
 	assert(city_map)
 	assert(astar)
-	var start_node := astar.find_closest_node_of_type(global_position, PathNode2D.NodeType.POI)
+	var start_node := astar.find_closest_node_of_type(global_position, PathNode2D.NodeType.Residence)
+	home = start_node
 	global_position = start_node.global_position
 	
 	#seed(-7718)

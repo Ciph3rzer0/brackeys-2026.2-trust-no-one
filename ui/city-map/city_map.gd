@@ -41,7 +41,7 @@ func _ready() -> void:
 	if path.is_empty():
 		push_warning("No path found between start_marker and end_marker.")
 	
-	vehicle.follow_path(path)
+	#vehicle.follow_path(path)
 	
 	start_time = Time.get_unix_time_from_datetime_string(start_time_string)
 	assert(start_time > 0)
