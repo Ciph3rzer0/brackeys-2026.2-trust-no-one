@@ -10,27 +10,39 @@
 [ext_resource type="PackedScene" uid="uid://qxst5b3aqpoo" path="res://assets/models/office/computer.glb" id="7_in4ui"]
 [ext_resource type="PackedScene" uid="uid://d4dkrl8n2c4i7" path="res://assets/models/city/camera.glb" id="8_fmddn"]
 [ext_resource type="PackedScene" uid="uid://8y18dm0ibu5p" path="res://assets/models/office/gooseneckClamp.glb" id="10_6hbky"]
+[ext_resource type="PackedScene" uid="uid://bxc4ceq66ael3" path="res://scenes/player.tscn" id="10_gnmmx"]
 [ext_resource type="PackedScene" uid="uid://cu5og6niixvj7" path="res://assets/models/office/door.glb" id="12_wruke"]
 [ext_resource type="PackedScene" uid="uid://bosjilrctrsn7" path="res://assets/models/office/gooseneckTablet.glb" id="13_wruke"]
+[ext_resource type="Shader" uid="uid://clgq4liepl864" path="res://assets/shaders/city.gdshader" id="15_jp1e5"]
 [ext_resource type="PackedScene" uid="uid://cc4ldgg13mc2w" path="res://scenes/corkboard.tscn" id="16_07d2k"]
 [ext_resource type="PackedScene" uid="uid://b085wqdb2gvpt" path="res://scenes/coffeeCup.tscn" id="16_gnmmx"]
+[ext_resource type="PackedScene" uid="uid://bdogvs8wm16nj" path="res://assets/models/office/computer-keyboard.glb" id="16_jp1e5"]
 [ext_resource type="AudioStream" uid="uid://dssagk4uh4quc" path="res://assets/audio/sfx/rain.mp3" id="17_gnmmx"]
+[ext_resource type="PackedScene" uid="uid://ftwf4e85c8id" path="res://scenes/crime_report_3d.tscn" id="19_kviqm"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_6hbky"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_0o143"]
-size = Vector3(22.040558, 8.332581, 10.353455)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_h45xw"]
-size = Vector3(0.49856567, 2.2490005, 2.8112793)
+size = Vector3(0.060930252, 0.20995808, 0.25897217)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_h45xw"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0o143"]
-transparency = 1
-albedo_color = Color(0.40589744, 0.5937938, 0.5406829, 0.050980393)
-refraction_enabled = true
-refraction_scale = 0.1
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kviqm"]
+render_priority = 0
+shader = ExtResource("15_jp1e5")
+shader_parameter/rain_amount = 0.3
+shader_parameter/speed = 0.4
+shader_parameter/blur_amount = 2.0
+shader_parameter/uv_scale = Vector2(4, -2)
+shader_parameter/frosted_blur = 0.5
+shader_parameter/distance_blur_scale = 0.1
+shader_parameter/refraction_strength = 0.05
+shader_parameter/frosted_noise_scale = 200.0
+shader_parameter/glass_thickness = 0.2
+shader_parameter/ior = 1.45
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_kviqm"]
+viewport_path = NodePath("SubViewport")
 
 [node name="Office" type="Node3D" unique_id=2119133953]
 
@@ -58,7 +70,7 @@ attenuation_filter_db = 0.0
 [node name="roomLight" type="AreaLight3D" parent="." unique_id=378018363]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 1.060077, 7.32155, -0.91183126)
 light_color = Color(0.9999996, 0.8725206, 0.8106262, 1)
-light_energy = 15.67
+light_energy = 10.0
 light_size = 0.123
 light_bake_mode = 1
 area_range = 8.418
@@ -82,30 +94,24 @@ transform = Transform3D(1.4062078, 0, 0, 0, 1.4062078, 0, 0, 0, 1.4062078, 4.630
 transform = Transform3D(-4.678254e-08, 0, 1.0702598, 0, 1.0702598, 0, -1.0702598, 0, -4.678254e-08, 0.11891624, -0.5900414, 0.17210045)
 
 [node name="coffeeCup" parent="work area" unique_id=2141730045 instance=ExtResource("16_gnmmx")]
-transform = Transform3D(1.1587414, 0, 0, 0, 1.1587414, 0, 0, 0, 1.1587414, 0.3076514, 0.43100306, 5.0859513)
+transform = Transform3D(0.36970007, 0, 0.6403394, 0, 0.7394002, 0, -0.6403394, 0, 0.36970007, -1.0748136, 0.63390625, 5.0525484)
 
 [node name="chair" parent="work area" unique_id=114191316 instance=ExtResource("3_qphb6")]
-transform = Transform3D(0.05858278, 0, -0.05417159, 0, 0.07979037, 0, 0.05417159, 0, 0.05858278, -0.36422777, -0.64325285, 3.533385)
-
-[node name="desk2" parent="work area" unique_id=1129029929 instance=ExtResource("4_2knxt")]
-transform = Transform3D(0.10101469, 0, 0, 0, 0.10101469, 0, 0, 0, 0.10101469, -0.5126437, -0.6435535, 5.0412326)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="work area/desk2" unique_id=1541226846]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="work area/desk2/StaticBody3D" unique_id=317183058]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6510143, 5.1853943, -0.35848904)
-shape = SubResource("BoxShape3D_0o143")
+transform = Transform3D(0.6086896, 0, -0.56285626, 0, 0.82904166, 0, 0.56285626, 0, 0.6086896, -0.3383709, -0.5210763, 3.8219342)
 
 [node name="computerAccessories" type="Node3D" parent="work area" unique_id=965257853]
 
 [node name="gooseneckTablet" parent="work area/computerAccessories" unique_id=963414952 instance=ExtResource("13_wruke")]
-transform = Transform3D(0.71113247, 0, 0, 0, 0.71113247, 0, 0, 0, 0.71113247, -0.5561693, 1.2879236, 5.002644)
+transform = Transform3D(0.71113247, 0, 0, 0, 0.71113247, 0, 0, 0, 0.71113247, -0.5220237, 1.5172298, 5.100081)
 
 [node name="computer" parent="work area/computerAccessories" unique_id=1636787968 instance=ExtResource("7_in4ui")]
-transform = Transform3D(0.98372215, 0, 0, 0, 0.98372215, 0, 0, 0, 0.98372215, -0.56820464, 0.52027416, 5.204692)
+transform = Transform3D(0.98372215, 0, 0, 0, 0.98372215, 0, 0, 0, 0.98372215, -0.6602156, 1.0361305, 5.2592254)
 
 [node name="gooseneckClamp" parent="work area/computerAccessories" unique_id=555761378 instance=ExtResource("10_6hbky")]
-transform = Transform3D(1.2336597, 0, 0, 0, 1.2336597, 0, 0, 0, 1.2336597, -1.0982318, 1.0353769, 5.1202)
+transform = Transform3D(1.2336597, 0, 0, 0, 1.2336597, 0, 0, 0, 1.2336597, -1.131391, 1.3303235, 5.1202)
+
+[node name="Player" parent="work area/computerAccessories" unique_id=1865119778 instance=ExtResource("10_gnmmx")]
+transform = Transform3D(1.1129352, 0, 1.0358067, 0, 1.5203685, 0, -1.0358067, 0, 1.1129352, -3.9542222, -0.6013951, 0.40568948)
 
 [node name="set dressing" type="Node3D" parent="." unique_id=33801651]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1283921, 1.0637031, 4.1342545)
@@ -117,22 +123,37 @@ transform = Transform3D(0.12016827, 0, 0.07574378, 0, 0.14204764, 0, -0.07574378
 transform = Transform3D(0.10357852, 0, -0.48062423, 0, 0.49165857, 0, 0.48062423, 0, 0.10357852, -1.3442268, 8.353163, -2.3799124)
 
 [node name="filingCabinet" parent="set dressing" unique_id=1015927099 instance=ExtResource("5_fmddn")]
-transform = Transform3D(0.14204764, 0, 0, 0, 0.14204764, 0, 0, 0, 0.14204764, -4.035739, -0.8754022, -2.5905557)
+transform = Transform3D(1.4558113, 0, 0, 0, 1.4558113, 0, 0, 0, 1.4558113, -3.5562453, -0.544013, -3.3106241)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="set dressing/filingCabinet" unique_id=275145910]
 transform = Transform3D(9.844637, 0, 0, 0, 9.844637, 0, 0, 0, 9.844637, -0.86616135, 0.017170668, 1.63972)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="set dressing/filingCabinet/StaticBody3D" unique_id=1866896809]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10331702, 1.2054862, -0.9056393)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08312477, 0.09221206, -0.2242928)
 shape = SubResource("BoxShape3D_h45xw")
 
 [node name="door2" parent="set dressing" unique_id=1698441969 instance=ExtResource("12_wruke")]
 transform = Transform3D(1.6940675, 0, 0, 0, 1.6940675, 0, 0, 0, 1.6940675, -2.1305733, 0.8269119, -9.820369)
 
 [node name="Window" type="MeshInstance3D" parent="." unique_id=1725740009]
-transform = Transform3D(4.012913, -2.1290061e-08, -1.8466758e-14, 1.2463634e-21, -5.322516e-09, 2.4162483, -7.0164003e-07, -0.12176496, -1.05617545e-07, 1.3157625, 2.9495218, 3.2883735)
+transform = Transform3D(-4.012913, 2.1290061e-08, -2.1123512e-07, 3.5082005e-07, 5.3225153e-09, -2.4162486, -7.016401e-07, -0.12176497, -1.05617566e-07, 1.169388, 2.9495218, 3.2883735)
 mesh = SubResource("PlaneMesh_h45xw")
-surface_material_override/0 = SubResource("StandardMaterial3D_0o143")
+surface_material_override/0 = SubResource("ShaderMaterial_kviqm")
 
 [node name="corkboard" parent="." unique_id=1029173645 instance=ExtResource("16_07d2k")]
 transform = Transform3D(1.4151126, 0, 0, 0, 1.4151126, 0, 0, 0, 1.4151126, 5.2616143, 3.9349322, -0.60174954)
+
+[node name="desk" parent="." unique_id=2107914153 instance=ExtResource("4_2knxt")]
+transform = Transform3D(1.7488817, 0, 0, 0, 1.7488817, 0, 0, 0, 1.7488817, 3.3157055, 0.6540642, 2.5794885)
+
+[node name="computer-keyboard2" parent="." unique_id=1110257665 instance=ExtResource("16_jp1e5")]
+transform = Transform3D(1.3806835, 0, 0, 0, 1.3806835, 0, 0, 0, 1.3806835, 3.7945335, 1.7878904, 1.9366279)
+
+[node name="CrimeReport3D" parent="." unique_id=890512404 instance=ExtResource("19_kviqm")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 5.6564837, 4.8967805, -2.4588385)
+
+[node name="Sprite3D" parent="CrimeReport3D" index="0" unique_id=277536913]
+transform = Transform3D(0.112, 0, 0, 0, 0.112, 0, 0, 0, 0.112, 0, 0, -0.040061474)
+texture = SubResource("ViewportTexture_kviqm")
+
+[editable path="CrimeReport3D"]

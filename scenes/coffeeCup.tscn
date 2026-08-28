@@ -18,10 +18,10 @@ orientation = 2
 [node name="Node3D" type="Node3D" unique_id=2141730045]
 
 [node name="coffeeCup" parent="." unique_id=1135056873 instance=ExtResource("1_tocv1")]
-transform = Transform3D(1.746973, 0, 0, 0, 1.5768865, 0, 0, 0, 2.077766, 0.008461773, 1.1920929e-07, 0.014012113)
+transform = Transform3D(1.746973, 0, 0, 0, 1.5768865, 0, 0, 0, 2.077766, 0.048794597, 1.1920929e-07, 0.014012113)
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="coffeeCup" unique_id=1292693204]
-transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.9999999, 0.016518615, 0.060122993, -0.012613237)
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.9999999, -0.008083174, 0.05622894, -0.009303894)
 amount = 16
 lifetime = 0.5
 speed_scale = 0.1

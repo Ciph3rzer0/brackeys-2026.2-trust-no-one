@@ -14,7 +14,7 @@ material = SubResource("StandardMaterial3D_0o143")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3125913, 0, -0.66402435)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="corkboard2" unique_id=1757999416]
-transform = Transform3D(-0.0025691744, -0.091785185, 0, 0.091785185, -0.0025691744, 0, 0, 0, 0.091821134, -0.05588633, -1.2910987, 0.68320125)
+transform = Transform3D(-0.0025691744, -0.091785185, 0, 0.091785185, -0.0025691744, 0, 0, 0, 0.091821134, -0.05588633, -1.0927783, 0.74815756)
 mesh = SubResource("PlaneMesh_iwwb2")
 
 [node name="Label3D" type="Label3D" parent="corkboard2/MeshInstance3D" unique_id=512820567]
@@ -34,19 +34,19 @@ uppercase = true
 [node name="pin locations" type="Node3D" parent="." unique_id=1551329889]
 
 [node name="pin1" type="Node3D" parent="pin locations" unique_id=1139482963]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26296616, 0.4569115, -1.4314252)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26296616, 0.67181295, -1.3201233)
 
 [node name="pin2" type="Node3D" parent="pin locations" unique_id=936660789]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26296616, 0.4569115, -0.79659563)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26296616, 0.67181295, -0.6852937)
 
 [node name="pin3" type="Node3D" parent="pin locations" unique_id=360610949]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26296616, 0.4569115, -0.16508108)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26296616, 0.67181295, -0.053779125)
 
 [node name="pin4" type="Node3D" parent="pin locations" unique_id=934723502]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26296616, -0.38013536, -1.4330828)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26296616, -0.16523391, -1.3217808)
 
 [node name="pin5" type="Node3D" parent="pin locations" unique_id=215824434]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26296616, -0.38013536, -0.7982531)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26296616, -0.16523391, -0.68695116)
 
 [node name="pin6" type="Node3D" parent="pin locations" unique_id=607216583]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26296616, -0.38013536, -0.16673881)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26296616, -0.16523391, -0.05543685)

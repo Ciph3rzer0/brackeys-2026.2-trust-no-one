@@ -20,7 +20,7 @@ script = ExtResource("3_fax_script")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09218013, 1.1391083, 0)
 
 [node name="faxTable" parent="." unique_id=739480162 instance=ExtResource("2_6rukd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07513714, 0.60387325, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0717133, 0.21519029, 0.09357917)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=123083281]
 transform = Transform3D(0.08799273, -0.026237383, 0, 0.026237383, 0.08799273, 0, 0, 0, 0.09182114, -0.014278889, 1.2457428, 0.37750444)

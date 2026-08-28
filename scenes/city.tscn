@@ -3,13 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://dtumtpbx6j36y" path="res://assets/models/city/blocks/block.glb" id="1_2jj31"]
 [ext_resource type="PackedScene" uid="uid://b3p4jengkbkto" path="res://assets/models/city/street/intersection.glb" id="2_drx7m"]
 [ext_resource type="PackedScene" uid="uid://3dfura4rgfja" path="res://assets/models/city/street/stoplight.glb" id="3_8uhr2"]
-[ext_resource type="Shader" uid="uid://clgq4liepl864" path="res://assets/shaders/city.gdshader" id="3_f7b0s"]
 [ext_resource type="Script" uid="uid://biuonnjp64bgo" path="res://ui/computer-screen/3d_computer_monitor.gd" id="3_obbxu"]
 [ext_resource type="PackedScene" uid="uid://c47weug7t0pts" path="res://assets/models/city/street/straight.glb" id="4_3br4m"]
 [ext_resource type="PackedScene" uid="uid://cq2venx0jtr4r" path="res://assets/models/city/vehicles/van.glb" id="5_3br4m"]
 [ext_resource type="PackedScene" uid="uid://p050pxfklvog" path="res://assets/models/city/street/stopSign.glb" id="5_4lp1f"]
 [ext_resource type="PackedScene" uid="uid://ddl1mvjku5iq" path="res://scenes/office.tscn" id="6_2jj31"]
-[ext_resource type="PackedScene" uid="uid://bxc4ceq66ael3" path="res://scenes/player.tscn" id="7_drx7m"]
 [ext_resource type="PackedScene" uid="uid://ch2uobl5nvuys" path="res://assets/models/city/blocks/apartmentBuilding.glb" id="8_k0m58"]
 [ext_resource type="PackedScene" uid="uid://dbuqwgxlut1q" path="res://assets/models/city/blocks/supermarket.glb" id="8_kg0fi"]
 [ext_resource type="PackedScene" uid="uid://caxrs5g8ulost" path="res://assets/models/city/vehicles/pickupTruck.glb" id="9_4lp1f"]
@@ -29,7 +27,6 @@
 [ext_resource type="PackedScene" uid="uid://du16kmshvbjc4" path="res://assets/models/city/blocks/warehouse.glb" id="22_7tlau"]
 [ext_resource type="PackedScene" uid="uid://c4d58q5fisj3k" path="res://assets/models/city/blocks/parkinggarage.glb" id="27_h3250"]
 [ext_resource type="PackedScene" uid="uid://b1ne8ii0gy8fm" path="res://assets/models/city/blocks/movietheater.glb" id="28_my70f"]
-[ext_resource type="PackedScene" uid="uid://ftwf4e85c8id" path="res://scenes/crime_report_3d.tscn" id="30_nmpot"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_80iay"]
 sky_top_color = Color(0.17573944, 0.48172218, 0.64240384, 1)
@@ -46,20 +43,6 @@ fog_density = 1.0
 fog_depth_curve = 0.11662935
 fog_depth_begin = 15.0
 fog_depth_end = 359.9
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_f7b0s"]
-render_priority = 0
-shader = ExtResource("3_f7b0s")
-shader_parameter/rain_amount = 0.5
-shader_parameter/speed = 1.0
-shader_parameter/blur_amount = 2.0
-shader_parameter/uv_scale = Vector2(2, -1)
-shader_parameter/frosted_blur = 0.5
-shader_parameter/distance_blur_scale = 0.1
-shader_parameter/refraction_strength = 0.05
-shader_parameter/frosted_noise_scale = 200.0
-shader_parameter/glass_thickness = 0.2
-shader_parameter/ior = 1.45
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ruxf0"]
 viewport_path = NodePath("ComputerScreenRenders/ComputerMonitor")
@@ -115,70 +98,13 @@ albedo_color = Color(0, 0.32344732, 0.1239327, 1)
 material = SubResource("StandardMaterial3D_0o143")
 size = Vector2(700, 500)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_gi457"]
-viewport_path = NodePath("SubViewport")
-
 [node name="City" type="Node3D" unique_id=400190066]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1347518304]
 environment = SubResource("Environment_h45xw")
 
-[node name="Player" parent="." unique_id=1743660579 instance=ExtResource("7_drx7m")]
-transform = Transform3D(1.3734243, 0, 1.045566, 0, 1.7261236, 0, -1.045566, 0, 1.3734243, 63.107162, 55.467793, -137.39375)
-
 [node name="Office" parent="." unique_id=2119133953 instance=ExtResource("6_2jj31")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2601624, 35.22836, -55.920532)
-
-[node name="Rain" parent="Office" index="0" unique_id=105857967]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.69209, 20.917446, -72.075584)
-
-[node name="MorningCoffeeLoop" parent="Office" index="1" unique_id=446624946]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.703224, 20.893116, -78.20505)
-
-[node name="roomLight" parent="Office" index="2" unique_id=378018363]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 65.62378, 27.851734, -79.38411)
-light_energy = 15.29
-
-[node name="room" parent="Office" index="3" unique_id=359625459]
-transform = Transform3D(1.3984075, 0, 0, 0, 1.3984075, 0, 0, 0, 1.3984075, 65.730225, 20.042046, -78.003586)
-
-[node name="FaxMachine" parent="Office/work area" parent_id_path=PackedInt32Array(2119133953, 2052434724) index="0" unique_id=1658198781]
-transform = Transform3D(-4.5104535e-08, 0, 1.0318716, 0, 1.0318716, 0, -1.0318716, 0, -4.5104535e-08, 45.987183, 13.495462, -55.62251)
-script = null
-
-[node name="coffeeCup" parent="Office/work area" parent_id_path=PackedInt32Array(2119133953, 2052434724) index="1" unique_id=2141730045]
-transform = Transform3D(1.1587414, 0, 0, 0, 1.1587414, 0, 0, 0, 1.1587414, 46.220993, 14.549643, -50.718243)
-
-[node name="chair" parent="Office/work area" parent_id_path=PackedInt32Array(2119133953, 2052434724) index="2" unique_id=114191316]
-transform = Transform3D(0.04772356, 0, -0.044130053, 0, 0.065, 0, 0.044130053, 0, 0.04772356, 45.54911, 13.475393, -52.2708)
-
-[node name="desk2" parent="Office/work area" parent_id_path=PackedInt32Array(2119133953, 2052434724) index="3" unique_id=1129029929]
-transform = Transform3D(0.10101469, 0, 0, 0, 0.10101469, 0, 0, 0, 0.10101469, 45.400696, 13.475092, -50.762966)
-
-[node name="gooseneckTablet" parent="Office/work area/computerAccessories" parent_id_path=PackedInt32Array(2119133953, 965257853) index="0" unique_id=963414952]
-transform = Transform3D(0.71113247, 0, 0, 0, 0.71113247, 0, 0, 0, 0.71113247, 45.357174, 15.406569, -50.80154)
-
-[node name="computer" parent="Office/work area/computerAccessories" parent_id_path=PackedInt32Array(2119133953, 965257853) index="1" unique_id=1636787968]
-transform = Transform3D(0.98372215, 0, 0, 0, 0.98372215, 0, 0, 0, 0.98372215, 45.345135, 14.638914, -50.599506)
-
-[node name="gooseneckClamp" parent="Office/work area/computerAccessories" parent_id_path=PackedInt32Array(2119133953, 965257853) index="2" unique_id=555761378]
-transform = Transform3D(1.2336597, 0, 0, 0, 1.2336597, 0, 0, 0, 1.2336597, 44.81511, 15.154024, -50.683994)
-
-[node name="pottedPlant" parent="Office/set dressing" parent_id_path=PackedInt32Array(2119133953, 33801651) index="0" unique_id=671362458]
-transform = Transform3D(0.12016827, 0, 0.07574378, 0, 0.14204764, 0, -0.07574378, 0, 0.12016827, 60.78628, 18.937057, -83.5575)
-
-[node name="filingCabinet" parent="Office/set dressing" parent_id_path=PackedInt32Array(2119133953, 33801651) index="1" unique_id=1015927099]
-transform = Transform3D(0.14204764, 0, 0, 0, 0.14204764, 0, 0, 0, 0.14204764, 60.527958, 18.978344, -81.06284)
-
-[node name="door2" parent="Office/set dressing" parent_id_path=PackedInt32Array(2119133953, 33801651) index="2" unique_id=1698441969]
-transform = Transform3D(1.6940675, 0, 0, 0, 1.6940675, 0, 0, 0, 1.6940675, 62.433125, 20.680656, -88.292656)
-
-[node name="Window" parent="Office" index="6" unique_id=1725740009]
-transform = Transform3D(-4.012913, 2.1290061e-08, -2.1123512e-07, 3.5082005e-07, 5.3225153e-09, -2.4162486, -7.016401e-07, -0.12176497, -1.05617566e-07, 65.88022, 22.803265, -75.180176)
-surface_material_override/0 = SubResource("ShaderMaterial_f7b0s")
-
-[node name="corkboard" parent="Office" index="7" unique_id=1029173645]
-transform = Transform3D(1.4151126, 0, 0, 0, 1.4151126, 0, 0, 0, 1.4151126, 69.76125, 23.97715, -79.404236)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.644634, 57.9028, -135.04489)
 
 [node name="roadside props" type="Node3D" parent="." unique_id=695615125]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2601624, 35.22836, -55.920532)
@@ -1072,10 +998,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.41864, 1.5800991, -101.07
 [node name="policeOfficer4" parent="trucks" unique_id=1999956081 instance=ExtResource("12_hyhbb")]
 transform = Transform3D(0.31999412, 0, -0.27076468, 0, 0.41917747, 0, 0.27076468, 0, 0.31999412, 207.50317, 0.21776915, -79.66364)
 
+[node name="hatchback2" parent="trucks" unique_id=819623859 instance=ExtResource("20_ibljb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.44442, 1.1127148, -27.330746)
+
 [node name="Screens" type="Node3D" parent="." unique_id=167141141]
 
 [node name="ComputerScreen" type="StaticBody3D" parent="Screens" unique_id=2105178651 node_paths=PackedStringArray("computer_viewport")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 67.1187, 57.310745, -132.3323)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 60.492355, 60.450195, -132.95847)
 collision_layer = 4096
 script = ExtResource("3_obbxu")
 computer_viewport = NodePath("../../ComputerScreenRenders/ComputerMonitor")
@@ -4924,13 +4853,10 @@ environment = SubResource("Environment_q8eg3")
 projection = 1
 size = 150.0
 
-[node name="hatchback2" parent="." unique_id=819623859 instance=ExtResource("20_ibljb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.44442, 1.1127148, -27.330746)
-
 [node name="Gameplay" type="Node3D" parent="." unique_id=450888495]
 
 [node name="Chair Interaction" type="Area3D" parent="Gameplay" unique_id=402669167 node_paths=PackedStringArray("redirect_input") groups=["InteractiveMount"]]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 66.80487, 55.05782, -133.50659)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 60.126293, 57.563633, -134.269)
 collision_layer = 0
 input_ray_pickable = false
 monitorable = false
@@ -4947,12 +4873,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.37737, 56.985577, -139.551
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1914358757]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.73678, -0.42648315, 54.593002)
 mesh = SubResource("PlaneMesh_h45xw")
-
-[node name="CrimeReport3D" parent="." unique_id=1714841704 instance=ExtResource("30_nmpot")]
-transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 66.15747, 57.56132, -132.1534)
-
-[node name="Sprite3D" parent="CrimeReport3D" index="0" unique_id=277536913]
-texture = SubResource("ViewportTexture_gi457")
-
-[editable path="Office"]
-[editable path="CrimeReport3D"]
