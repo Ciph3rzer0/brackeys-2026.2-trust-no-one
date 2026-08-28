@@ -7,6 +7,13 @@ func set_player(_player: Player):
 	assert(!player)
 	player = _player
 
+func spawn_crime_report(quest: Quest = null) -> CrimeReport3D:
+	var corkboard := get_tree().get_first_node_in_group("CrimeReportCorkboard") as Corkboard
+	if !corkboard:
+		push_warning("Cannot spawn a crime report: no corkboard is in the current scene.")
+		return null
+	return corkboard.spawn_report(quest)
+
 func _ready() -> void:
 	database = Database.new()
 	

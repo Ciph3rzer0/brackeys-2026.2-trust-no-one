@@ -8,6 +8,7 @@ extends CharacterBody3D
 
 @onready var interaction_ray: RayCast3D = $Camera3D/InteractionRay
 @onready var interaction_prompt: Label = $InteractionUI/InteractionPrompt
+@onready var held_report_anchor: Node3D = $Camera3D/HeldReportAnchor
 
 var run_speed = 5.5
 var speed = run_speed
@@ -22,6 +23,7 @@ var footstep_distance = 2.1
 
 var is_mouse_free := false
 var _mounted_object: InteractableMount
+var held_report: CrimeReport3D
 
 func _enter_tree() -> void:
 	GameManager.set_player(self)
@@ -51,7 +53,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pc_interact") and !_mounted_object and !is_mouse_free:
 		var interactable := get_faced_interactable()
 		if interactable:
-			interactable.interact()
+			interactable.interact(self)
 			get_viewport().set_input_as_handled()
 			return
 
@@ -95,11 +97,13 @@ func change_fov(target_fov: float, duration: float) -> void:
 
 var exit_button_held_timer := 0.0
 func _process(delta: float) -> void:
-	interaction_prompt.visible = (
-		!_mounted_object
-		and !is_mouse_free
-		and get_faced_interactable() != null
-	)
+	var interactable := get_faced_interactable()
+	interaction_prompt.visible = !_mounted_object and !is_mouse_free and interactable != null
+	if interaction_prompt.visible:
+		if interactable.has_method("get_interaction_text"):
+			interaction_prompt.text = interactable.get_interaction_text(self)
+		else:
+			interaction_prompt.text = "press e to interact"
 
 	if Input.is_action_pressed("ui_exit_game"):
 		exit_button_held_timer += delta
@@ -115,10 +119,48 @@ func get_faced_interactable() -> Node:
 	var node := interaction_ray.get_collider() as Node
 	while node:
 		if node.is_in_group("Interactable") and node.has_method("interact"):
-			return node
+			if !node.has_method("can_interact") or node.can_interact(self):
+				return node
 		node = node.get_parent()
 
 	return null
+
+func has_held_report() -> bool:
+	return held_report != null
+
+func pick_up_report(report: CrimeReport3D) -> bool:
+	if held_report or !report:
+		return false
+
+	if report.current_holder:
+		report.current_holder.remove_report(report)
+
+	held_report = report
+	report.reparent(held_report_anchor, false)
+	report.global_transform = held_report_anchor.global_transform.orthonormalized()
+	report.set_held(true)
+	return true
+
+func place_held_report(holder: ReportHolder3D) -> bool:
+	if !held_report or !holder:
+		return false
+
+	var report := held_report
+	if !holder.place_report(report):
+		return false
+
+	held_report = null
+	return true
+
+func fax_held_report() -> bool:
+	if !held_report:
+		return false
+
+	var report := held_report
+	held_report = null
+	print("report faxed: ", report.get_report_title())
+	report.queue_free()
+	return true
 		
 func _physics_process(delta: float) -> void:
 	var input_dir = Input.get_vector( "pc_right", "pc_left", "pc_back" ,"pc_forward")

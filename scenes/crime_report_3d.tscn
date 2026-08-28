@@ -2,20 +2,18 @@
 
 [ext_resource type="PackedScene" uid="uid://dukf0r3kv7h3u" path="res://ui/crime-report/crime_report.tscn" id="1_4sj6u"]
 [ext_resource type="Resource" uid="uid://mlx6hgu5bc7w" path="res://scripts/quests/first_quest.tres" id="2_m6e72"]
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_uhg71"]
-viewport_path = NodePath("SubViewport")
+[ext_resource type="Script" uid="uid://bh4i2x034phf8" path="res://scripts/crime_report_3d.gd" id="3_report_script"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uhg71"]
 size = Vector3(0.5628418, 0.6633545, 0.02)
 
-[node name="CrimeReport3D" type="RigidBody3D" unique_id=890512404]
-gravity_scale = 0.0
+[node name="CrimeReport3D" type="StaticBody3D" unique_id=890512404 groups=["Interactable"]]
+script = ExtResource("3_report_script")
+quest = ExtResource("2_m6e72")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=277536913]
 transform = Transform3D(0.112, 0, 0, 0, 0.112, 0, 0, 0, 0.112, 0, 0, 0)
 offset = Vector2(0, -300)
-texture = SubResource("ViewportTexture_uhg71")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1345316213]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.335315, 0)
@@ -26,4 +24,4 @@ size = Vector2i(512, 600)
 
 [node name="CrimeReport" parent="SubViewport" unique_id=1163959814 instance=ExtResource("1_4sj6u")]
 propagate_maximum_size = false
-quest = ExtResource("2_m6e72")
+follow_assigned_quests = false

@@ -1,20 +1,27 @@
 [gd_scene format=3 uid="uid://cc4ldgg13mc2w"]
 
 [ext_resource type="PackedScene" uid="uid://de35ov58wu763" path="res://assets/models/office/corkboard.glb" id="1_iwwb2"]
+[ext_resource type="Script" uid="uid://jeh6fsxmg62n" path="res://scripts/corkboard.gd" id="2_corkboard_script"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0o143"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fgrfp"]
 albedo_color = Color(0.96202856, 0.83949524, 3.85046e-07, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_iwwb2"]
-material = SubResource("StandardMaterial3D_0o143")
+material = SubResource("StandardMaterial3D_fgrfp")
 
-[node name="Node3D" type="Node3D" unique_id=1029173645]
+[sub_resource type="BoxShape3D" id="BoxShape3D_corkboard"]
+size = Vector3(0.1344448, 1.9926147, 1.9927429)
+
+[node name="Corkboard" type="StaticBody3D" unique_id=1029173645 groups=["CrimeReportCorkboard", "Interactable"]]
+script = ExtResource("2_corkboard_script")
+holder_label = "corkboard"
+slot_container_path = NodePath("corkboard2/pin locations")
 
 [node name="corkboard2" parent="." unique_id=118271081 instance=ExtResource("1_iwwb2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3125913, 0, -0.66402435)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3125913, -0.45032766, 0.24119872)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="corkboard2" unique_id=1757999416]
-transform = Transform3D(-0.0025691744, -0.091785185, 0, 0.091785185, -0.0025691744, 0, 0, 0, 0.091821134, -0.05588633, -1.0927783, 0.74815756)
+transform = Transform3D(-0.0025691744, -0.091785185, 0, 0.091785185, -0.0025691744, 0, 0, 0, 0.091821134, -0.0890159, 1.3537176, -0.2995723)
 mesh = SubResource("PlaneMesh_iwwb2")
 
 [node name="Label3D" type="Label3D" parent="corkboard2/MeshInstance3D" unique_id=512820567]
@@ -31,22 +38,27 @@ mngmt"
 outline_size = 0
 uppercase = true
 
-[node name="pin locations" type="Node3D" parent="." unique_id=1551329889]
+[node name="pin locations" type="Node3D" parent="corkboard2" unique_id=1551329889]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3125913, 0.61609024, 0.7090531)
 
-[node name="pin1" type="Node3D" parent="pin locations" unique_id=1139482963]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26296616, 0.67181295, -1.3201233)
+[node name="pin1" type="Node3D" parent="corkboard2/pin locations" unique_id=1139482963]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 0.26296616, 0.4805324, -1.5355896)
 
-[node name="pin2" type="Node3D" parent="pin locations" unique_id=936660789]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26296616, 0.67181295, -0.6852937)
+[node name="pin2" type="Node3D" parent="corkboard2/pin locations" unique_id=936660789]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 0.26296616, 0.4805324, -0.90076)
 
-[node name="pin3" type="Node3D" parent="pin locations" unique_id=360610949]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26296616, 0.67181295, -0.053779125)
+[node name="pin3" type="Node3D" parent="corkboard2/pin locations" unique_id=360610949]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 0.26296616, 0.4805324, -0.26924545)
 
-[node name="pin4" type="Node3D" parent="pin locations" unique_id=934723502]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26296616, -0.16523391, -1.3217808)
+[node name="pin4" type="Node3D" parent="corkboard2/pin locations" unique_id=934723502]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 0.26296616, -0.35651442, -1.5372471)
 
-[node name="pin5" type="Node3D" parent="pin locations" unique_id=215824434]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26296616, -0.16523391, -0.68695116)
+[node name="pin5" type="Node3D" parent="corkboard2/pin locations" unique_id=215824434]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 0.26296616, -0.35651442, -0.9024175)
 
-[node name="pin6" type="Node3D" parent="pin locations" unique_id=607216583]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26296616, -0.16523391, -0.05543685)
+[node name="pin6" type="Node3D" parent="corkboard2/pin locations" unique_id=607216583]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 0.26296616, -0.35651442, -0.27090317)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="corkboard2" unique_id=647715495]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03376472, 0.41659683, -0.19755757)
+shape = SubResource("BoxShape3D_corkboard")

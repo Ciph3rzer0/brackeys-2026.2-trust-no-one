@@ -1,10 +1,12 @@
 extends Control
 
 @export var quest: Quest: set = set_quest
+@export var follow_assigned_quests := true
 
 func _ready() -> void:
 	set_quest(quest)
-	QuestSystem.new_quest_assigned.connect(_on_new_quest_assigned)
+	if follow_assigned_quests:
+		QuestSystem.new_quest_assigned.connect(_on_new_quest_assigned)
 
 func _on_new_quest_assigned(quest: Quest):
 	set_quest(quest)

@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://c8wp7jb7ymwmc"]
+
+[ext_resource type="PackedScene" uid="uid://8y18dm0ibu5p" path="res://assets/models/office/gooseneckClamp.glb" id="1_clamp_model"]
+[ext_resource type="Script" uid="uid://nhtco6w1q2lw" path="res://scripts/report_holder_3d.gd" id="2_holder_script"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_clamp"]
+size = Vector3(0.42, 0.32, 0.12)
+
+[node name="ReportClamp" type="StaticBody3D" unique_id=374785967 groups=["Interactable"]]
+script = ExtResource("2_holder_script")
+holder_label = "clamp"
+
+[node name="gooseneckClamp" parent="." unique_id=576201592 instance=ExtResource("1_clamp_model")]
+
+[node name="Slots" type="Node3D" parent="." unique_id=331374992]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14324117, -0.13566402, 0.027425833)
+
+[node name="ReportSlot" type="Node3D" parent="Slots" unique_id=1344195639]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.1, -0.05)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1990760561]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0.04, 0)
+shape = SubResource("BoxShape3D_clamp")

@@ -42,6 +42,7 @@ enabled=PackedStringArray("res://addons/astar_graph_editor/plugin.cfg")
 
 InteractiveMount="Objects the player can sit on"
 Interactable="Objects the player can interact with"
+CrimeReportCorkboard="Corkboards that can receive spawned crime reports"
 
 [gui]
 
