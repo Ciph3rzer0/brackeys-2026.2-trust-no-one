@@ -29,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://du16kmshvbjc4" path="res://assets/models/city/blocks/warehouse.glb" id="22_7tlau"]
 [ext_resource type="PackedScene" uid="uid://c4d58q5fisj3k" path="res://assets/models/city/blocks/parkinggarage.glb" id="27_h3250"]
 [ext_resource type="PackedScene" uid="uid://b1ne8ii0gy8fm" path="res://assets/models/city/blocks/movietheater.glb" id="28_my70f"]
+[ext_resource type="PackedScene" uid="uid://ftwf4e85c8id" path="res://scenes/crime_report_3d.tscn" id="30_nmpot"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_80iay"]
 sky_top_color = Color(0.17573944, 0.48172218, 0.64240384, 1)
@@ -113,6 +114,9 @@ albedo_color = Color(0, 0.32344732, 0.1239327, 1)
 [sub_resource type="PlaneMesh" id="PlaneMesh_h45xw"]
 material = SubResource("StandardMaterial3D_0o143")
 size = Vector2(700, 500)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_gi457"]
+viewport_path = NodePath("SubViewport")
 
 [node name="City" type="Node3D" unique_id=400190066]
 
@@ -4944,4 +4948,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.37737, 56.985577, -139.551
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.73678, -0.42648315, 54.593002)
 mesh = SubResource("PlaneMesh_h45xw")
 
+[node name="CrimeReport3D" parent="." unique_id=1714841704 instance=ExtResource("30_nmpot")]
+transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 66.15747, 57.56132, -132.1534)
+
+[node name="Sprite3D" parent="CrimeReport3D" index="0" unique_id=277536913]
+texture = SubResource("ViewportTexture_gi457")
+
 [editable path="Office"]
+[editable path="CrimeReport3D"]

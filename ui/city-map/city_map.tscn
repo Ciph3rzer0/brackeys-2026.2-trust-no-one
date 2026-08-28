@@ -301,11 +301,115 @@ position = Vector2(1682, -1266)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("7_wgu0n")
 
-[node name="Vehicle" parent="Vehicles" unique_id=260464224 instance=ExtResource("9_tbcoo")]
+[node name="Vehicle" parent="Vehicles" unique_id=260464224 node_paths=PackedStringArray("city_map", "astar") instance=ExtResource("9_tbcoo")]
 position = Vector2(87, -808)
+city_map = NodePath("../..")
+astar = NodePath("../../AStarGraph2D")
 
-[node name="Vehicle2" parent="Vehicles" unique_id=1252510925 instance=ExtResource("9_tbcoo")]
+[node name="Vehicle2" parent="Vehicles" unique_id=1252510925 node_paths=PackedStringArray("city_map", "astar") instance=ExtResource("9_tbcoo")]
 position = Vector2(87, -808)
+city_map = NodePath("../..")
+astar = NodePath("../../AStarGraph2D")
+
+[node name="Vehicle3" parent="Vehicles" unique_id=1585936267 node_paths=PackedStringArray("city_map", "astar") instance=ExtResource("9_tbcoo")]
+position = Vector2(87, -808)
+city_map = NodePath("../..")
+astar = NodePath("../../AStarGraph2D")
+
+[node name="Vehicle4" parent="Vehicles" unique_id=1853314087 node_paths=PackedStringArray("city_map", "astar") instance=ExtResource("9_tbcoo")]
+position = Vector2(-298.20554, -1377.1776)
+city_map = NodePath("../..")
+astar = NodePath("../../AStarGraph2D")
+
+[node name="Vehicle5" parent="Vehicles" unique_id=2049011944 node_paths=PackedStringArray("city_map", "astar") instance=ExtResource("9_tbcoo")]
+position = Vector2(-298.20554, -1377.1776)
+city_map = NodePath("../..")
+astar = NodePath("../../AStarGraph2D")
+
+[node name="Vehicle6" parent="Vehicles" unique_id=1219458490 node_paths=PackedStringArray("city_map", "astar") instance=ExtResource("9_tbcoo")]
+position = Vector2(-419.70087, -1031.3832)
+city_map = NodePath("../..")
+astar = NodePath("../../AStarGraph2D")
+
+[node name="Vehicle7" parent="Vehicles" unique_id=1629774772 node_paths=PackedStringArray("city_map", "astar") instance=ExtResource("9_tbcoo")]
+position = Vector2(-298.20554, -1377.1776)
+city_map = NodePath("../..")
+astar = NodePath("../../AStarGraph2D")
+
+[node name="Vehicle8" parent="Vehicles" unique_id=1880236186 node_paths=PackedStringArray("city_map", "astar") instance=ExtResource("9_tbcoo")]
+position = Vector2(-298.20554, -1377.1776)
+city_map = NodePath("../..")
+astar = NodePath("../../AStarGraph2D")
+
+[node name="Vehicle9" parent="Vehicles" unique_id=805123898 node_paths=PackedStringArray("city_map", "astar") instance=ExtResource("9_tbcoo")]
+position = Vector2(87, -808)
+city_map = NodePath("../..")
+astar = NodePath("../../AStarGraph2D")
+
+[node name="Vehicle10" parent="Vehicles" unique_id=1649206010 node_paths=PackedStringArray("city_map", "astar") instance=ExtResource("9_tbcoo")]
+position = Vector2(-774.84106, -1003.3458)
+city_map = NodePath("../..")
+astar = NodePath("../../AStarGraph2D")
+
+[node name="Vehicle11" parent="Vehicles" unique_id=1651479987 node_paths=PackedStringArray("city_map", "astar") instance=ExtResource("9_tbcoo")]
+position = Vector2(-774.84106, -1003.3458)
+city_map = NodePath("../..")
+astar = NodePath("../../AStarGraph2D")
+
+[node name="Vehicle12" parent="Vehicles" unique_id=1421899058 node_paths=PackedStringArray("city_map", "astar") instance=ExtResource("9_tbcoo")]
+position = Vector2(-774.84106, -1003.3458)
+city_map = NodePath("../..")
+astar = NodePath("../../AStarGraph2D")
+
+[node name="Vehicle13" parent="Vehicles" unique_id=603656764 node_paths=PackedStringArray("city_map", "astar") instance=ExtResource("9_tbcoo")]
+position = Vector2(2.5701904, -966.91595)
+city_map = NodePath("../..")
+astar = NodePath("../../AStarGraph2D")
+
+[node name="Vehicle14" parent="Vehicles" unique_id=1209998672 node_paths=PackedStringArray("city_map", "astar") instance=ExtResource("9_tbcoo")]
+position = Vector2(2.5701904, -966.91595)
+city_map = NodePath("../..")
+astar = NodePath("../../AStarGraph2D")
+
+[node name="Vehicle15" parent="Vehicles" unique_id=353390030 node_paths=PackedStringArray("city_map", "astar") instance=ExtResource("9_tbcoo")]
+position = Vector2(2.5701904, -966.91595)
+city_map = NodePath("../..")
+astar = NodePath("../../AStarGraph2D")
+
+[node name="Vehicle16" parent="Vehicles" unique_id=1790113629 node_paths=PackedStringArray("city_map", "astar") instance=ExtResource("9_tbcoo")]
+position = Vector2(2.5701904, -966.91595)
+city_map = NodePath("../..")
+astar = NodePath("../../AStarGraph2D")
+
+[node name="Vehicle17" parent="Vehicles" unique_id=514821754 node_paths=PackedStringArray("city_map", "astar") instance=ExtResource("9_tbcoo")]
+position = Vector2(2.5701904, -966.91595)
+city_map = NodePath("../..")
+astar = NodePath("../../AStarGraph2D")
+
+[node name="Vehicle18" parent="Vehicles" unique_id=922491594 node_paths=PackedStringArray("city_map", "astar") instance=ExtResource("9_tbcoo")]
+position = Vector2(1206.3086, -310.8412)
+city_map = NodePath("../..")
+astar = NodePath("../../AStarGraph2D")
+
+[node name="Vehicle19" parent="Vehicles" unique_id=39253163 node_paths=PackedStringArray("city_map", "astar") instance=ExtResource("9_tbcoo")]
+position = Vector2(1206.3086, -310.8412)
+city_map = NodePath("../..")
+astar = NodePath("../../AStarGraph2D")
+
+[node name="Vehicle20" parent="Vehicles" unique_id=1959699715 node_paths=PackedStringArray("city_map", "astar") instance=ExtResource("9_tbcoo")]
+position = Vector2(428.89728, -347.27106)
+city_map = NodePath("../..")
+astar = NodePath("../../AStarGraph2D")
+
+[node name="Vehicle21" parent="Vehicles" unique_id=1080569491 node_paths=PackedStringArray("city_map", "astar") instance=ExtResource("9_tbcoo")]
+position = Vector2(428.89728, -347.27106)
+city_map = NodePath("../..")
+astar = NodePath("../../AStarGraph2D")
+
+[node name="Vehicle22" parent="Vehicles" unique_id=1431898659 node_paths=PackedStringArray("city_map", "astar") instance=ExtResource("9_tbcoo")]
+position = Vector2(87, -808)
+city_map = NodePath("../..")
+astar = NodePath("../../AStarGraph2D")
 
 [node name="Cameras" type="Node2D" parent="." unique_id=662735754]
 

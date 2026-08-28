@@ -26,4 +26,4 @@ func log_car_sighting(vehicle: Vehicle):
 	sighting.vehicle_type = vehicle.type
 	sighting.vehicle_features = vehicle.features
 	GameManager.database.vehicle_sightings.append(sighting)
-	GameManager.database.refresh()
+	#GameManager.database.refresh()

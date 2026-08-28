@@ -1,3 +1,4 @@
+class_name CityMap
 extends Node2D
 ## Resolves start/end markers to graph nodes, computes a route, and hands
 ## it to the Car to actually drive. All routing/pathfinding setup lives
@@ -10,13 +11,15 @@ extends Node2D
 @export var end_marker: Node2D
 @export var vehicle: Vehicle
 
+var astar: AStar2D
+
 func _ready() -> void:
 	assert(astar_graph_2d)
 	assert(vehicle)
 	assert(start_marker)
 	assert(end_marker)
 
-	var astar := astar_graph_2d.build_astar()
+	astar = astar_graph_2d.build_astar()
 
 	var start_node := astar_graph_2d.find_closest_point(start_marker.global_position)
 	var end_node := astar_graph_2d.find_closest_point(end_marker.global_position)
