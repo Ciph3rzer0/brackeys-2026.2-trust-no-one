@@ -115,6 +115,9 @@ albedo_color = Color(0, 0.32344732, 0.1239327, 1)
 material = SubResource("StandardMaterial3D_0o143")
 size = Vector2(700, 500)
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_gi457"]
+viewport_path = NodePath("SubViewport")
+
 [node name="City" type="Node3D" unique_id=400190066]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1347518304]
@@ -4947,4 +4950,8 @@ mesh = SubResource("PlaneMesh_h45xw")
 [node name="CrimeReport3D" parent="." unique_id=1714841704 instance=ExtResource("30_nmpot")]
 transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 66.15747, 57.56132, -132.1534)
 
+[node name="Sprite3D" parent="CrimeReport3D" index="0" unique_id=277536913]
+texture = SubResource("ViewportTexture_gi457")
+
 [editable path="Office"]
+[editable path="CrimeReport3D"]
