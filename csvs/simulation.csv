@@ -1,0 +1,6 @@
+unix_timestamp,camera_id,vehicle_plate,vehicle_color,vehicle_type,vehicle_features
+1787642130,Bookstore,TNT-2746,Gold,SUV,"[""Custom rims"", ""Missing hubcap""]"
+1787647380,Bookstore,TNT-2746,Gold,SUV,"[""Custom rims"", ""Missing hubcap""]"
+1787660370,Hospital,PIZ-3554,Black,Coupe,"[""Tinted windows"", ""Spoiler""]"
+1787661150,Bookstore,TNT-2746,Gold,SUV,"[""Custom rims"", ""Missing hubcap""]"
+1787664180,Hospital,PIZ-3554,Black,Coupe,"[""Tinted windows"", ""Spoiler""]"
