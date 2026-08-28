@@ -34,10 +34,6 @@ window/size/window_height_override=1440
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/astar_graph_editor/plugin.cfg")
-
 [global_group]
 
 InteractiveMount="Objects the player can sit on"
