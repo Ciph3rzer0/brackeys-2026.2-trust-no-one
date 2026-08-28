@@ -6,6 +6,9 @@ extends CharacterBody3D
 
 @export var cam : Camera3D
 
+@onready var interaction_ray: RayCast3D = $Camera3D/InteractionRay
+@onready var interaction_prompt: Label = $InteractionUI/InteractionPrompt
+
 var run_speed = 5.5
 var speed = run_speed
 var walk_speed = 3
@@ -45,6 +48,13 @@ func _input(event: InputEvent) -> void:
 		cam.rotation_degrees.x = clamp(cam.rotation_degrees.x, -90, 90)
 
 func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("pc_interact") and !_mounted_object and !is_mouse_free:
+		var interactable := get_faced_interactable()
+		if interactable:
+			interactable.interact()
+			get_viewport().set_input_as_handled()
+			return
+
 	if (!_mounted_object or !is_mouse_free) and event.is_action_pressed("pc_interact"):
 		if _mounted_object:
 			dismount()
@@ -85,12 +95,30 @@ func change_fov(target_fov: float, duration: float) -> void:
 
 var exit_button_held_timer := 0.0
 func _process(delta: float) -> void:
+	interaction_prompt.visible = (
+		!_mounted_object
+		and !is_mouse_free
+		and get_faced_interactable() != null
+	)
+
 	if Input.is_action_pressed("ui_exit_game"):
 		exit_button_held_timer += delta
 		if (exit_button_held_timer) > 0.5:
 			get_tree().quit()
 	else:
 		exit_button_held_timer = 0
+
+func get_faced_interactable() -> Node:
+	if !interaction_ray.is_colliding():
+		return null
+
+	var node := interaction_ray.get_collider() as Node
+	while node:
+		if node.is_in_group("Interactable") and node.has_method("interact"):
+			return node
+		node = node.get_parent()
+
+	return null
 		
 func _physics_process(delta: float) -> void:
 	var input_dir = Input.get_vector( "pc_right", "pc_left", "pc_back" ,"pc_forward")

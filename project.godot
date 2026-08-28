@@ -41,6 +41,7 @@ enabled=PackedStringArray("res://addons/astar_graph_editor/plugin.cfg")
 [global_group]
 
 InteractiveMount="Objects the player can sit on"
+Interactable="Objects the player can interact with"
 
 [gui]
 

@@ -140,6 +140,7 @@ transform = Transform3D(1.3984075, 0, 0, 0, 1.3984075, 0, 0, 0, 1.3984075, 65.73
 
 [node name="FaxMachine" parent="Office/work area" parent_id_path=PackedInt32Array(2119133953, 2052434724) index="0" unique_id=1658198781]
 transform = Transform3D(-4.5104535e-08, 0, 1.0318716, 0, 1.0318716, 0, -1.0318716, 0, -4.5104535e-08, 45.987183, 13.495462, -55.62251)
+script = null
 
 [node name="coffeeCup" parent="Office/work area" parent_id_path=PackedInt32Array(2119133953, 2052434724) index="1" unique_id=2141730045]
 transform = Transform3D(1.1587414, 0, 0, 0, 1.1587414, 0, 0, 0, 1.1587414, 46.220993, 14.549643, -50.718243)
@@ -173,7 +174,7 @@ transform = Transform3D(-4.012913, 2.1290061e-08, -2.1123512e-07, 3.5082005e-07,
 surface_material_override/0 = SubResource("ShaderMaterial_f7b0s")
 
 [node name="corkboard" parent="Office" index="7" unique_id=1029173645]
-transform = Transform3D(1.4151126, 0, 0, 0, 1.4151126, 0, 0, 0, 1.4151126, 69.77783, 23.97715, -79.404236)
+transform = Transform3D(1.4151126, 0, 0, 0, 1.4151126, 0, 0, 0, 1.4151126, 69.76125, 23.97715, -79.404236)
 
 [node name="roadside props" type="Node3D" parent="." unique_id=695615125]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2601624, 35.22836, -55.920532)

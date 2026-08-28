@@ -2,6 +2,10 @@
 
 [ext_resource type="Script" uid="uid://b38bjfcu3wwbu" path="res://scripts/player.gd" id="1_3vyb7"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_e7sg5"]
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0o143"]
 radius = 0.25
 
@@ -20,6 +24,33 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9875141, 0)
 [node name="Camera3D" type="Camera3D" parent="." unique_id=849469399]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.3650273, 0)
 cull_mask = 32767
+
+[node name="InteractionRay" type="RayCast3D" parent="Camera3D" unique_id=1399246955]
+target_position = Vector3(0, 0, -2.5)
+
+[node name="InteractionUI" type="CanvasLayer" parent="." unique_id=402336998]
+
+[node name="InteractionPrompt" type="Label" parent="InteractionUI" unique_id=554926074]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -96.0
+offset_right = 160.0
+offset_bottom = -56.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 24
+text = "press e to interact"
+label_settings = SubResource("LabelSettings_e7sg5")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
 
 [node name="CapsuleBody" type="MeshInstance3D" parent="." unique_id=311267293]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
