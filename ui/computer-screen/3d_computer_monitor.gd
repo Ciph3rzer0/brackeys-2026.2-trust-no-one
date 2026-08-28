@@ -54,7 +54,7 @@ func _input_event(_camera: Camera3D, event: InputEvent, event_position: Vector3,
 		var translated_input_event = event.duplicate()
 		
 		# Translate the input into the viewport screen space
-		translated_input_event.position = Vector2(uv.x * 1280, uv.y * 1200)
+		translated_input_event.position = Vector2(uv.x * computer_viewport.size.x, uv.y * computer_viewport.size.y)
 		
 		# Push the translated input event into the computer monitor viewport
 		computer_viewport.push_input(translated_input_event, true)

@@ -100,8 +100,8 @@ viewport_path = NodePath("ComputerScreenRenders/ComputerMonitor")
 resource_local_to_scene = true
 albedo_texture = SubResource("ViewportTexture_ruxf0")
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_agolw"]
-data = PackedVector3Array(0.41349998, -0.36499998, 0, -0.41349998, -0.36499998, 0, 0.41349998, 0.36499998, 0, -0.41349998, -0.36499998, 0, -0.41349998, 0.36499998, 0, 0.41349998, 0.36499998, 0)
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_h3250"]
+data = PackedVector3Array(0.41349998, -0.31, 0, -0.41349998, -0.31, 0, 0.41349998, 0.31, 0, -0.41349998, -0.31, 0, -0.41349998, 0.31, 0, 0.41349998, 0.31, 0)
 
 [sub_resource type="QuadMesh" id="QuadMesh_obbxu"]
 size = Vector2(4.615, 2.84)
@@ -1148,20 +1148,18 @@ autoplay = &"vehicles"
 [node name="Screens" type="Node3D" parent="." unique_id=167141141]
 
 [node name="ComputerScreen" type="StaticBody3D" parent="Screens" unique_id=2105178651 node_paths=PackedStringArray("computer_viewport")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 60.492355, 60.450195, -132.9702)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 60.487576, 60.45616, -132.9702)
 collision_layer = 4096
 script = ExtResource("3_obbxu")
 computer_viewport = NodePath("../../ComputerScreenRenders/ComputerMonitor")
 quad_mesh = ExtResource("15_agolw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Screens/ComputerScreen" unique_id=1861852960]
-transform = Transform3D(1.0555629, 0, 0, 0, 0.89296085, 0, 0, 0, 1, 0, 0.008506775, -0.019439697)
 mesh = ExtResource("15_agolw")
 surface_material_override/0 = SubResource("StandardMaterial3D_tfap4")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Screens/ComputerScreen" unique_id=49235054]
-transform = Transform3D(1.0474101, 0, 0, 0, 0.9030858, 0, 0, 0, 1, 0.0031318665, 0, 0)
-shape = SubResource("ConcavePolygonShape3D_agolw")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Screens/ComputerScreen" unique_id=1532902486]
+shape = SubResource("ConcavePolygonShape3D_h3250")
 
 [node name="TabletScreen" type="MeshInstance3D" parent="Screens" unique_id=728728976]
 transform = Transform3D(-0.14204764, 0, 0, 0, 0.14204764, 0, 0, 0, -0.14204764, 67.06677, 58.049576, -132.30505)
@@ -4968,7 +4966,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_07bxp")
 physics_object_picking = true
 physics_object_picking_sort = true
 physics_object_picking_first_only = true
-size = Vector2i(1280, 1200)
+size = Vector2i(1280, 960)
 
 [node name="ComputerScreenUI" parent="ComputerScreenRenders/ComputerMonitor" unique_id=694152180 instance=ExtResource("12_q8eg3")]
 
