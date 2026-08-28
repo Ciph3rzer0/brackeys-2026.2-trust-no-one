@@ -930,6 +930,62 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 190.
 [node name="officebuilding3" parent="blocks" unique_id=630453847 instance=ExtResource("13_0orsp")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 14.9218235, 5.2172213, 16.520794)
 
+[node name="AreaLight3D" type="AreaLight3D" parent="blocks/officebuilding3" unique_id=1844543347]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17.40473, 37.399178, -2.0065432)
+light_energy = 4.831
+light_size = 0.391
+area_range = 1.724
+area_attenuation = 2.304
+area_size = Vector2(3.59, 1.956)
+
+[node name="AreaLight3D2" type="AreaLight3D" parent="blocks/officebuilding3" unique_id=131708406]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17.404728, 37.399178, 9.233199)
+light_energy = 4.831
+light_size = 0.391
+area_range = 1.724
+area_attenuation = 2.304
+area_size = Vector2(3.59, 1.956)
+
+[node name="AreaLight3D3" type="AreaLight3D" parent="blocks/officebuilding3" unique_id=1350036167]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17.404726, 43.256523, 9.233199)
+light_energy = 4.831
+light_size = 0.391
+area_range = 1.724
+area_attenuation = 2.304
+area_size = Vector2(3.59, 1.956)
+
+[node name="AreaLight3D4" type="AreaLight3D" parent="blocks/officebuilding3" unique_id=1095381648]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17.404724, 31.609047, 3.631837)
+light_energy = 15.0
+light_size = 0.391
+area_range = 1.724
+area_attenuation = 2.304
+area_size = Vector2(3.59, 1.956)
+
+[node name="AreaLight3D5" type="AreaLight3D" parent="blocks/officebuilding3" unique_id=262276462]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17.404726, 26.176773, 9.233199)
+light_energy = 4.831
+light_size = 0.391
+area_range = 1.724
+area_attenuation = 2.304
+area_size = Vector2(3.59, 1.956)
+
+[node name="AreaLight3D6" type="AreaLight3D" parent="blocks/officebuilding3" unique_id=408959230]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17.404724, 20.386642, -1.8727865)
+light_energy = 15.0
+light_size = 0.391
+area_range = 1.724
+area_attenuation = 2.304
+area_size = Vector2(3.59, 1.956)
+
+[node name="AreaLight3D7" type="AreaLight3D" parent="blocks/officebuilding3" unique_id=1656701649]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17.404724, 42.848785, -1.8727865)
+light_energy = 15.0
+light_size = 0.391
+area_range = 1.724
+area_attenuation = 2.304
+area_size = Vector2(3.59, 1.956)
+
 [node name="paintstore" parent="blocks" unique_id=1604482868 instance=ExtResource("14_86b61")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.592724, 6.536131, -33.66974)
 
