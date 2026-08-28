@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://c1srr6ekgv26i" path="res://ui/city-map/path_node_2d.gd" id="3_54v2r"]
 [ext_resource type="Script" uid="uid://dyt08uxo0fq3b" path="res://ui/city-map/clicker.gd" id="4_o1adu"]
 [ext_resource type="Texture2D" uid="uid://qlv27q81cyvk" path="res://ui/city-map/green_gradient_texture_2d.tres" id="5_wxgfj"]
-[ext_resource type="Texture2D" uid="uid://c3w7gfq11xjbp" path="res://ui/city-map/pink_gradient_texture_2d.tres" id="6_kh8b0"]
 [ext_resource type="Texture2D" uid="uid://cp6p7x7g37eh6" path="res://ui/city-map/orange_gradient_texture_2d.tres" id="6_vipko"]
 [ext_resource type="Script" uid="uid://dyjgb3gbwv6my" path="res://ui/city-map/city_map.gd" id="7_4hhcj"]
 [ext_resource type="Texture2D" uid="uid://ddxvv763xd43t" path="res://icon.svg" id="7_wgu0n"]
@@ -44,304 +43,348 @@ metadata/_edit_lock_ = true
 position = Vector2(508, 90)
 texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
+node_type = 1
 
 [node name="Intersection3" type="Sprite2D" parent="AStarGraph2D" unique_id=1680682786 groups=["intersection"]]
 position = Vector2(209, -351)
 texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection4")])
+node_type = 1
 
 [node name="Intersection4" type="Sprite2D" parent="AStarGraph2D" unique_id=1439947389 groups=["intersection"]]
 position = Vector2(334, -351)
 texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
+node_type = 1
 
 [node name="Intersection5" type="Sprite2D" parent="AStarGraph2D" unique_id=2109170261 groups=["intersection"]]
 position = Vector2(593, -351)
 texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection4")])
+node_type = 1
 
 [node name="Intersection6" type="Sprite2D" parent="AStarGraph2D" unique_id=700321665 groups=["intersection"]]
 position = Vector2(-159, -351)
 texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection8")])
+node_type = 1
 
 [node name="Intersection9" type="Sprite2D" parent="AStarGraph2D" unique_id=41931278 groups=["intersection"]]
 position = Vector2(78.50467, -351.40186)
 texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection3"), NodePath("../Intersection6")])
+node_type = 1
 
 [node name="Intersection8" type="Sprite2D" parent="AStarGraph2D" unique_id=807434087 groups=["intersection"]]
 position = Vector2(-159, -241)
 texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection10")])
+node_type = 1
 
 [node name="Intersection10" type="Sprite2D" parent="AStarGraph2D" unique_id=211758626 groups=["intersection"]]
 position = Vector2(-159, -23)
 texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
+node_type = 1
 
 [node name="Intersection11" type="Sprite2D" parent="AStarGraph2D" unique_id=1035826148 groups=["intersection"]]
 position = Vector2(-39, -23)
 texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection10"), NodePath("../Intersection14")])
+node_type = 1
 
 [node name="Intersection12" type="Sprite2D" parent="AStarGraph2D" unique_id=1005609931 groups=["intersection"]]
 position = Vector2(-276, -23)
 texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection10")])
+node_type = 1
 
 [node name="Intersection13" type="Sprite2D" parent="AStarGraph2D" unique_id=752325748 groups=["intersection"]]
 position = Vector2(-159, 90)
 texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection10"), NodePath("../Intersection15"), NodePath("../Intersection20"), NodePath("../Intersection14")])
+node_type = 1
 
 [node name="Intersection14" type="Sprite2D" parent="AStarGraph2D" unique_id=1454672724 groups=["intersection"]]
 position = Vector2(-39, 90)
 texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
+node_type = 1
 
 [node name="Intersection19" type="Sprite2D" parent="AStarGraph2D" unique_id=1992245243 groups=["intersection"]]
 position = Vector2(84, 90)
 texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection14")])
+node_type = 1
 
 [node name="Intersection15" type="Sprite2D" parent="AStarGraph2D" unique_id=1178902924 groups=["intersection"]]
 position = Vector2(-276, 90)
 texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
+node_type = 1
 
 [node name="Intersection20" type="Sprite2D" parent="AStarGraph2D" unique_id=2052854936 groups=["intersection"]]
 position = Vector2(-159, 197)
 texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
+node_type = 1
 
 [node name="Intersection21" type="Sprite2D" parent="AStarGraph2D" unique_id=626715128 groups=["intersection"]]
 position = Vector2(-39, 197)
 texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection20"), NodePath("../Intersection14"), NodePath("../Intersection22"), NodePath("../Intersection25")])
+node_type = 1
 
 [node name="Intersection22" type="Sprite2D" parent="AStarGraph2D" unique_id=1492644815 groups=["intersection"]]
 position = Vector2(84, 197)
 texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection26")])
+node_type = 1
 
 [node name="Intersection23" type="Sprite2D" parent="AStarGraph2D" unique_id=1349191247 groups=["intersection"]]
 position = Vector2(-276, 197)
 texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection20")])
+node_type = 1
 
 [node name="Intersection24" type="Sprite2D" parent="AStarGraph2D" unique_id=1208113597 groups=["intersection"]]
 position = Vector2(-159, 306)
 texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection20"), NodePath("../Intersection25")])
+node_type = 1
 
 [node name="Intersection25" type="Sprite2D" parent="AStarGraph2D" unique_id=2101834279 groups=["intersection"]]
 position = Vector2(-39, 306)
 texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection26"), NodePath("../Intersection29")])
+node_type = 1
 
 [node name="Intersection26" type="Sprite2D" parent="AStarGraph2D" unique_id=1798421211 groups=["intersection"]]
 position = Vector2(84, 306)
 texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection32")])
+node_type = 1
 
 [node name="Intersection32" type="Sprite2D" parent="AStarGraph2D" unique_id=1776038961 groups=["intersection"]]
 position = Vector2(560, 306)
 texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
+node_type = 1
 
 [node name="Intersection27" type="Sprite2D" parent="AStarGraph2D" unique_id=1953136134 groups=["intersection"]]
 position = Vector2(-276, 306)
 texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection24")])
+node_type = 1
 
 [node name="Intersection29" type="Sprite2D" parent="AStarGraph2D" unique_id=2070483785 groups=["intersection"]]
 position = Vector2(-39, 428)
-texture = ExtResource("6_kh8b0")
+texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
-node_type = 3
+node_type = 1
 
 [node name="Intersection16" type="Sprite2D" parent="AStarGraph2D" unique_id=264830865 groups=["intersection"]]
 position = Vector2(-395, 90)
 texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection15"), NodePath("../Intersection18"), NodePath("../Intersection17")])
+node_type = 1
 
 [node name="Intersection18" type="Sprite2D" parent="AStarGraph2D" unique_id=107943513 groups=["intersection"]]
 position = Vector2(-395, 348)
 texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
+node_type = 1
 
 [node name="Intersection17" type="Sprite2D" parent="AStarGraph2D" unique_id=972841153 groups=["intersection"]]
 position = Vector2(-598, 90)
 texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
+node_type = 1
 
 [node name="Intersection7" type="Sprite2D" parent="AStarGraph2D" unique_id=1297667220 groups=["intersection"]]
 position = Vector2(-272, -351)
 texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection6")])
+node_type = 1
 
 [node name="Intersection2" type="Sprite2D" parent="AStarGraph2D" unique_id=190291521 groups=["intersection"]]
 position = Vector2(209, 90)
 texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection"), NodePath("../Intersection19")])
+node_type = 1
 
 [node name="Intersection33" type="Sprite2D" parent="AStarGraph2D" unique_id=1400842595 groups=["intersection"]]
 position = Vector2(209, -23)
 texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection2")])
+node_type = 1
 
 [node name="Intersection34" type="Sprite2D" parent="AStarGraph2D" unique_id=1854887510 groups=["intersection"]]
 position = Vector2(209, -241)
 texture = ExtResource("3_1x8ky")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection3"), NodePath("../Intersection33")])
+node_type = 1
 
 [node name="POI_Supermarket 1" type="Sprite2D" parent="AStarGraph2D" unique_id=1748684511 groups=["intersection"]]
 position = Vector2(11.439331, -296.97195)
 texture = ExtResource("5_wxgfj")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection9")])
-node_type = 1
+node_type = 2
 
 [node name="POI_Supermarket 2" type="Sprite2D" parent="AStarGraph2D" unique_id=245806980 groups=["intersection"]]
 position = Vector2(78.729004, -296.97195)
 texture = ExtResource("5_wxgfj")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection9")])
-node_type = 1
+node_type = 2
 
 [node name="POI_Supermarket 3" type="Sprite2D" parent="AStarGraph2D" unique_id=1140534198 groups=["intersection"]]
 position = Vector2(147.88794, -296.97195)
 texture = ExtResource("5_wxgfj")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection9")])
-node_type = 1
+node_type = 2
 
 [node name="POI_Hospital" type="Sprite2D" parent="AStarGraph2D" unique_id=1745524581 groups=["intersection"]]
 position = Vector2(-459.99988, -240.99997)
 texture = ExtResource("5_wxgfj")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection8")])
-node_type = 1
+node_type = 2
 
 [node name="POI_Airport" type="Sprite2D" parent="AStarGraph2D" unique_id=198210292 groups=["poi"]]
 position = Vector2(607.4767, 78.5047)
 texture = ExtResource("5_wxgfj")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection")])
-node_type = 1
+node_type = 2
 
 [node name="POI_Bank" type="Sprite2D" parent="AStarGraph2D" unique_id=194088079 groups=["poi"]]
 position = Vector2(-218.69165, 142.05609)
 texture = ExtResource("5_wxgfj")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection13")])
-node_type = 1
+node_type = 2
 
 [node name="POI_Gas Station" type="Sprite2D" parent="AStarGraph2D" unique_id=71632918 groups=["poi"]]
 position = Vector2(-100.934586, 142.05609)
 texture = ExtResource("5_wxgfj")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection13")])
-node_type = 1
+node_type = 2
 
 [node name="POI_Bar Olivia" type="Sprite2D" parent="AStarGraph2D" unique_id=1038385928 groups=["poi"]]
 position = Vector2(-102.80374, 33.644875)
 texture = ExtResource("5_wxgfj")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection13")])
-node_type = 1
+node_type = 2
+
+[node name="POI_Bar Olivia2" type="Sprite2D" parent="AStarGraph2D" unique_id=1688171156 groups=["poi"]]
+position = Vector2(18.691582, 33.644875)
+texture = ExtResource("5_wxgfj")
+script = ExtResource("3_54v2r")
+connections = Array[NodePath]([NodePath("../Intersection14")])
+node_type = 2
+
+[node name="POI_Bar Olivia3" type="Sprite2D" parent="AStarGraph2D" unique_id=1221712086 groups=["poi"]]
+position = Vector2(142.05606, 33.644875)
+texture = ExtResource("5_wxgfj")
+script = ExtResource("3_54v2r")
+connections = Array[NodePath]([NodePath("../Intersection2")])
+node_type = 2
 
 [node name="POI_Office 1" type="Sprite2D" parent="AStarGraph2D" unique_id=2080662582 groups=["poi"]]
 position = Vector2(-220.56067, 252.33649)
 texture = ExtResource("5_wxgfj")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection24")])
-node_type = 1
+node_type = 2
 
 [node name="POI_Office 2" type="Sprite2D" parent="AStarGraph2D" unique_id=1739535364 groups=["poi"]]
 position = Vector2(-100.934586, 254.20563)
 texture = ExtResource("5_wxgfj")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection24")])
-node_type = 1
+node_type = 2
 
 [node name="POI_Office 3" type="Sprite2D" parent="AStarGraph2D" unique_id=320518366 groups=["poi"]]
 position = Vector2(-97.196266, 357.00937)
 texture = ExtResource("5_wxgfj")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection24")])
-node_type = 1
+node_type = 2
 
 [node name="POI_Harbor" type="Sprite2D" parent="AStarGraph2D" unique_id=1527434384 groups=["poi"]]
 position = Vector2(-663.5514, 155.1402)
 texture = ExtResource("5_wxgfj")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection17")])
-node_type = 1
+node_type = 2
 
 [node name="POI_Simon" type="Sprite2D" parent="AStarGraph2D" unique_id=707494836 groups=["poi"]]
 position = Vector2(-476.6355, 431.77573)
 texture = ExtResource("5_wxgfj")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection18")])
-node_type = 1
+node_type = 2
 
 [node name="POI_Construction" type="Sprite2D" parent="AStarGraph2D" unique_id=1172352462 groups=["poi"]]
 position = Vector2(-334.5794, 33.644897)
 texture = ExtResource("5_wxgfj")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection16")])
-node_type = 1
+node_type = 2
 
 [node name="CityExit" type="Sprite2D" parent="AStarGraph2D" unique_id=689469424 groups=["city_exit"]]
 position = Vector2(332, -668)
 texture = ExtResource("6_vipko")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection3")])
-node_type = 2
+node_type = 3
 
 [node name="CityExit2" type="Sprite2D" parent="AStarGraph2D" unique_id=1760566521 groups=["city_exit"]]
 position = Vector2(-279, 895)
 texture = ExtResource("6_vipko")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection27")])
-node_type = 2
+node_type = 3
 
 [node name="CityExit3" type="Sprite2D" parent="AStarGraph2D" unique_id=1300780649 groups=["city_exit"]]
 position = Vector2(1200, 709)
 texture = ExtResource("6_vipko")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection32")])
-node_type = 2
+node_type = 3
 
 [node name="CityExit4" type="Sprite2D" parent="AStarGraph2D" unique_id=1989954345 groups=["city_exit"]]
 position = Vector2(1357, -351)
 texture = ExtResource("6_vipko")
 script = ExtResource("3_54v2r")
 connections = Array[NodePath]([NodePath("../Intersection5")])
-node_type = 2
+node_type = 3
 
 [node name="Clicker" type="StaticBody2D" parent="." unique_id=1737867403 node_paths=PackedStringArray("astar_graph_2d")]
 visible = false
@@ -483,6 +526,8 @@ city_map = NodePath("../..")
 astar = NodePath("../../AStarGraph2D")
 
 [node name="Cameras" type="Node2D" parent="." unique_id=662735754]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="CAM_Bookstore" parent="Cameras" unique_id=1211424755 node_paths=PackedStringArray("city_map") instance=ExtResource("9_qdywh")]
 position = Vector2(209.3458, 89.71963)

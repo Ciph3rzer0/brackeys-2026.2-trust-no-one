@@ -44,10 +44,11 @@ func _draw() -> void:
 	for node in nodes:
 		draw_circle(to_local(node.global_position), node_radius, node_color)
 
-func _get_path_nodes() -> Array[PathNode2D]:
+func _get_path_nodes(type: PathNode2D.NodeType = PathNode2D.NodeType.NULL) -> Array[PathNode2D]:
 	var result: Array[PathNode2D] = []
 	for node in find_children("*", "PathNode2D", true, false):
-		result.append(node as PathNode2D)
+		if !type or node.node_type ==type:
+			result.append(node as PathNode2D)
 	return result
 
 ## Bakes the current node/edge layout into a real AStar2D. Call this once
@@ -90,11 +91,12 @@ func find_closest_point(world_pos: Vector2) -> PathNode2D:
 
 ## Returns the PathNode2D whose global_position is nearest world_pos,
 ## that is a POI
-func find_closest_poi(world_pos: Vector2) -> PathNode2D:
+func find_closest_node_of_type(world_pos: Vector2, type: PathNode2D.NodeType) -> PathNode2D:
 	var closest: PathNode2D = null
 	var closest_dist := INF
 	for node in _get_path_nodes():
-		if !node.is_in_group(&"poi"): continue
+		# Only look for matching node types
+		if !node.node_type == type: continue
 		var dist := node.global_position.distance_squared_to(world_pos)
 		if dist < closest_dist:
 			closest_dist = dist

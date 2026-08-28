@@ -8,6 +8,7 @@ const ORANGE_GRADIENT_TEXTURE_2D = preload("uid://cp6p7x7g37eh6")
 const PINK_GRADIENT_TEXTURE_2D = preload("uid://c3w7gfq11xjbp")
 
 enum NodeType {
+	NULL = 0,
 	Intersection,
 	POI,
 	CityExit,
