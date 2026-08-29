@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ftwf4e85c8id"]
 
 [ext_resource type="PackedScene" uid="uid://dukf0r3kv7h3u" path="res://ui/crime-report/crime_report.tscn" id="1_4sj6u"]
-[ext_resource type="Resource" uid="uid://mlx6hgu5bc7w" path="res://scripts/quests/first_quest.tres" id="2_m6e72"]
+[ext_resource type="Resource" uid="uid://mlx6hgu5bc7w" path="res://scripts/quests/haircut-robbery.tres" id="2_m6e72"]
 [ext_resource type="Script" uid="uid://bh4i2x034phf8" path="res://scripts/crime_report_3d.gd" id="3_report_script"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_eqs3u"]

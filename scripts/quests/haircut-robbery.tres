@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://mlx6hgu5bc7w"]
+
+[ext_resource type="Script" uid="uid://dy022jdobl3k8" path="res://scripts/quests/quest.gd" id="1_tj4ed"]
+
+[resource]
+script = ExtResource("1_tj4ed")
+correct_plate = "AHL-3577"
+incident = "Haircut Robbery"
+details = "The salon was robbed this week—in a most cowardly act—sometime during the town's midday siesta.   The getaway car scraped the neighboring vehicles while navigating its release from a tight parallel park"
+metadata/_custom_type_script = "uid://dy022jdobl3k8"

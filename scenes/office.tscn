@@ -29,6 +29,8 @@
 [ext_resource type="PackedScene" uid="uid://bkmp0qtqdsq8u" path="res://ui/computer-screen/computer_screen.tscn" id="25_eet0l"]
 [ext_resource type="Script" uid="uid://g1t4orm3d6pu" path="res://interactable_mount.gd" id="26_42gc7"]
 [ext_resource type="PackedScene" uid="uid://dsj80p2uy7o80" path="res://scenes/wallmap.tscn" id="29_g1ciw"]
+[ext_resource type="PackedScene" path="res://ui/town_rules_menu.tscn" id="32_rules_menu"]
+[ext_resource type="Script" path="res://scripts/rules_switch.gd" id="33_rules_switch"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jp1e5"]
 albedo_color = Color(0.22503361, 0.600545, 0.5632237, 1)
@@ -48,6 +50,15 @@ roughness = 0.24
 
 [sub_resource type="SphereMesh" id="SphereMesh_u5glt"]
 material = SubResource("StandardMaterial3D_g1ciw")
+radial_segments = 16
+rings = 16
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rules"]
+albedo_color = Color(0.42, 0.32, 0.58, 1)
+roughness = 0.24
+
+[sub_resource type="SphereMesh" id="SphereMesh_rules"]
+material = SubResource("StandardMaterial3D_rules")
 radial_segments = 16
 rings = 16
 
@@ -182,7 +193,24 @@ shape = SubResource("BoxShape3D_1k86j")
 stream = ExtResource("19_light_click")
 bus = &"SFX"
 
+[node name="rulesSwitch" type="StaticBody3D" parent="." groups=["Interactable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.846706, 3.202806, -5.727557)
+script = ExtResource("33_rules_switch")
+
+[node name="SwitchMesh" type="MeshInstance3D" parent="rulesSwitch"]
+transform = Transform3D(0.32175153, 0, 0, 0, 0.32175153, 0, 0, 0, 0.09760539, 0, 0, 0)
+mesh = SubResource("SphereMesh_rules")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="rulesSwitch"]
+shape = SubResource("BoxShape3D_1k86j")
+
+[node name="ClickSound" type="AudioStreamPlayer3D" parent="rulesSwitch"]
+stream = ExtResource("19_light_click")
+bus = &"SFX"
+
 [node name="AudioOptionsMenu" parent="." unique_id=1103850070 instance=ExtResource("20_options_menu")]
+
+[node name="TownRulesMenu" parent="." instance=ExtResource("32_rules_menu")]
 
 [node name="roomLight" type="AreaLight3D" parent="." unique_id=378018363]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 1.060077, 7.32155, -0.91183126)
@@ -4107,6 +4135,7 @@ gui_embed_subwindows = true
 size = Vector2i(1280, 960)
 
 [node name="ComputerScreenUI" parent="ComputerScreenRenders/ComputerMonitor" unique_id=694152180 instance=ExtResource("25_eet0l")]
+theme = null
 
 [node name="MapGrid" type="SubViewport" parent="ComputerScreenRenders" unique_id=1310840569]
 size = Vector2i(1170, 720)

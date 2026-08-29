@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://b0dix3mnrks8u"]
+
+[ext_resource type="Script" uid="uid://dy022jdobl3k8" path="res://scripts/quests/quest.gd" id="1_5vfow"]
+
+[resource]
+script = ExtResource("1_5vfow")
+correct_plate = "ZPZ-9918"
+incident = "Airport Camper"
+details = "Witnesses report someone spending the whole night of August 24th at the airport, in violation of the city curfew"
+metadata/_custom_type_script = "uid://dy022jdobl3k8"

@@ -4,29 +4,29 @@
 
 # A1: Salon robbed during town's midday siesta with a getaway car escape; only one LP by the Salon at that time
 
-"2026-08-25T12:16:05",3,LPA1,Blue,CHEVY BOLT,"[""Scratched bumper""]"
-"2026-08-25T12:24:51",5,LPA1,Blue,CHEVY BOLT,"[""Scratched bumper""]"
-"2026-08-25T12:24:59",2,LPA1,Blue,CHEVY BOLT,"[""Scratched bumper""]"
+"2026-08-25T12:16:05",3,AHL-3577,Blue,CHEVY BOLT,"[""Scratched bumper""]"
+"2026-08-25T12:24:51",5,AHL-3577,Blue,CHEVY BOLT,"[""Scratched bumper""]"
+"2026-08-25T12:24:59",2,AHL-3577,Blue,CHEVY BOLT,"[""Scratched bumper""]"
 
 # A2: out after curfew
 
-"2026-08-25T03:11:50",1,LPA2,White,STATION WAGON,"[""Dinged hood""]"
-"2026-08-25T03:12:15",3,LPA2,White,STATION WAGON,"[""Dinged hood""]"
+"2026-08-25T03:11:50",1,FCT-7517,White,STATION WAGON,"[""Dinged hood""]"
+"2026-08-25T03:12:15",3,FCT-7517,White,STATION WAGON,"[""Dinged hood""]"
 
 + travel noise:
 
-"2026-08-25T07:12:55",1,LPA2,White,STATION WAGON,"[""Dinged hood""]"
-"2026-08-25T018:15:51",1,LPA2,White,STATION WAGON,"[""Dinged hood""]"
-"2026-08-26T07:53:35",1,LPA2,White,STATION WAGON,"[""Dinged hood""]"
-"2026-08-26T018:28:57",1,LPA2,White,STATION WAGON,"[""Dinged hood""]"
-"2026-08-27T07:53:20",1,LPA2,White,STATION WAGON,"[""Dinged hood""]"
-"2026-08-27T018:28:06",1,LPA2,White,STATION WAGON,"[""Dinged hood""]"
+"2026-08-25T07:12:55",1,FCT-7517,White,STATION WAGON,"[""Dinged hood""]"
+"2026-08-25T018:15:51",1,FCT-7517,White,STATION WAGON,"[""Dinged hood""]"
+"2026-08-26T07:53:35",1,FCT-7517,White,STATION WAGON,"[""Dinged hood""]"
+"2026-08-26T018:28:57",1,FCT-7517,White,STATION WAGON,"[""Dinged hood""]"
+"2026-08-27T07:53:20",1,FCT-7517,White,STATION WAGON,"[""Dinged hood""]"
+"2026-08-27T018:28:06",1,FCT-7517,White,STATION WAGON,"[""Dinged hood""]"
 
 # A3: sleeping at the airport
 
-"2026-08-25T00:10:35",2,LPA3,Gray,VAN,"[""Jesus fish""]"
-"2026-08-25T00:11:50",5,LPA3,Gray,VAN,"[""Jesus fish""]"
-"2026-08-25T11:25:02",5,LPA3,Gray,VAN,"[""Jesus fish""]"
+"2026-08-25T00:10:35",2,ZPZ-9918,Gray,VAN,"[""Jesus fish""]"
+"2026-08-25T00:11:50",5,ZPZ-9918,Gray,VAN,"[""Jesus fish""]"
+"2026-08-25T11:25:02",5,ZPZ-9918,Gray,VAN,"[""Jesus fish""]"
 
 + travel noise?
 
@@ -35,6 +35,7 @@
 + culprit = any random existing LP (AIT-2702)
 + innocent 1 = copy any random existing LP with the middle day erased (BTZ-5167)
 + innocent 2 = copy any random existing LP with the middle day erased (OGN-4489)
++ GIVE INNOCENTS A LEAVE AND ARRIVAL LOCATION OF HIGHWAY OR AIRPORT
 
 # A5: casing gas station before robbery (circled it each past morning)
 

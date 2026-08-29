@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://bbpiit06a5yua"]
+
+[ext_resource type="Script" uid="uid://dy022jdobl3k8" path="res://scripts/quests/quest.gd" id="1_nkhlk"]
+
+[resource]
+script = ExtResource("1_nkhlk")
+correct_plate = "HTR-2444"
+incident = "Hospital Egging"
+details = "Some wise guy pulled up to the hospital just to toss an egg and then peel away twice on the morning of August 25th"
+metadata/_custom_type_script = "uid://dy022jdobl3k8"
