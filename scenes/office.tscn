@@ -31,13 +31,25 @@
 [ext_resource type="PackedScene" uid="uid://dsj80p2uy7o80" path="res://scenes/wallmap.tscn" id="29_g1ciw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jp1e5"]
-albedo_color = Color(0.7160182, 0.4528712, 0.41109943, 1)
+albedo_color = Color(0.22503361, 0.600545, 0.5632237, 1)
+roughness = 0.24
 
 [sub_resource type="SphereMesh" id="SphereMesh_h45xw"]
 material = SubResource("StandardMaterial3D_jp1e5")
+radial_segments = 16
+rings = 16
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_light_switch"]
 radius = 0.18
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g1ciw"]
+albedo_color = Color(0.60159683, 0.52670956, 0.27528396, 1)
+roughness = 0.24
+
+[sub_resource type="SphereMesh" id="SphereMesh_u5glt"]
+material = SubResource("StandardMaterial3D_g1ciw")
+radial_segments = 16
+rings = 16
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_6hbky"]
 
@@ -110,8 +122,8 @@ background_color = Color(1, 1, 1, 1)
 ambient_light_color = Color(0.90408707, 0.92056644, 0.9382726, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_142py"]
-radius = 1.4682617
-height = 2.9365234
+radius = 1.1865234
+height = 2.3730469
 
 [node name="Office" type="Node3D" unique_id=2119133953]
 
@@ -155,12 +167,12 @@ stream = ExtResource("19_light_click")
 bus = &"SFX"
 
 [node name="optionsSwitch" type="StaticBody3D" parent="." unique_id=1148509935 groups=["Interactable"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.859394, 3.202806, -5.727557)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.11305, 3.202806, -5.727557)
 script = ExtResource("21_options_switch")
 
 [node name="SwitchMesh" type="MeshInstance3D" parent="optionsSwitch" unique_id=994532343]
 transform = Transform3D(0.32175153, 0, 0, 0, 0.32175153, 0, 0, 0, 0.09760539, 0, 0, 0)
-mesh = SubResource("SphereMesh_h45xw")
+mesh = SubResource("SphereMesh_u5glt")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="optionsSwitch" unique_id=843513022]
 shape = SubResource("SphereShape3D_light_switch")
@@ -4133,7 +4145,7 @@ redirect_input = NodePath("../../ComputerScreenRenders/ComputerMonitor")
 interaction_text = "press e to sit at computer"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Chair Interaction" unique_id=1177674249]
-transform = Transform3D(0.99999976, 0, -5.9604623e-08, 0, 1, 0, 5.9604623e-08, 0, 0.99999976, -0.0895776, 0.41479844, -5.3392397e-09)
+transform = Transform3D(1.0000001, 0, -5.9604627e-08, 0, 1.0000159, 0, 5.9604627e-08, 0, 1.0000001, 0.72741795, 0.96093524, 0.43940043)
 shape = SubResource("CapsuleShape3D_142py")
 
 [node name="SubmitQuest" type="Node3D" parent="Gameplay" unique_id=1509242997]

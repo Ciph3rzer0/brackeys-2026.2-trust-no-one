@@ -110,7 +110,6 @@ value = 100.0
 layout_mode = 2
 theme_override_colors/font_color = Color(0.72, 0.75, 0.82, 1)
 theme_override_font_sizes/font_size = 14
-text = "PRESS E OR ESCAPE TO RETURN"
 horizontal_alignment = 1
 
 [node name="CloseButton" type="Button" parent="Dimmer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]

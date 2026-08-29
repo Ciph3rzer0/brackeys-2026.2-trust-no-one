@@ -16,7 +16,7 @@ func assign_new_quest(quest: Quest = null):
 		quest.incident = ""
 		quest.datetime_start = "2026-07-08T13:00:00"
 		quest.datetime_end = "2026-07-08T16:00:00"
-		quest.plate = "XK3-JT_1"
+		quest.details = "The suspect vehicle's plate was reported as XK3-JT_1."
 		quest.correct_plate = "XK3-JT01"
 	
 	_active_quest = quest
