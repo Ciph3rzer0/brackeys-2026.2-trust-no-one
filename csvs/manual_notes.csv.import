@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://dp0lg1b24hhrr"
+
+[deps]
+
+files=["res://csvs/manual_notes.camera.translation", "res://csvs/manual_notes.vehicle.translation", "res://csvs/manual_notes.vehicle.translation", "res://csvs/manual_notes.vehicle.translation", "res://csvs/manual_notes.vehicle.translation"]
+
+source_file="res://csvs/manual_notes.csv"
+dest_files=["res://csvs/manual_notes.camera.translation", "res://csvs/manual_notes.vehicle.translation", "res://csvs/manual_notes.vehicle.translation", "res://csvs/manual_notes.vehicle.translation", "res://csvs/manual_notes.vehicle.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

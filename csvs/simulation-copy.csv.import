@@ -6,10 +6,7 @@ uid="uid://dseti5dtfid1x"
 
 [deps]
 
-files=["res://csvs/simulation-copy.camera.translation", "res://csvs/simulation-copy.vehicle.translation", "res://csvs/simulation-copy.vehicle.translation", "res://csvs/simulation-copy.vehicle.translation", "res://csvs/simulation-copy.vehicle.translation"]
-
 source_file="res://csvs/simulation-copy.csv"
-dest_files=["res://csvs/simulation-copy.camera.translation", "res://csvs/simulation-copy.vehicle.translation", "res://csvs/simulation-copy.vehicle.translation", "res://csvs/simulation-copy.vehicle.translation", "res://csvs/simulation-copy.vehicle.translation"]
 
 [params]
 
