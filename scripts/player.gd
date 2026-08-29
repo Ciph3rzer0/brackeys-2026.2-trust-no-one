@@ -64,8 +64,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			try_mount()
 	
 	if _mounted_object:
-		if event is InputEventKey:
-			if _mounted_object.push_keypress_to_viewport(event):
+		if event is InputEventKey or event is InputEventPanGesture:
+			if _mounted_object.push_event_to_viewport(event):
 				get_viewport().set_input_as_handled()
 
 func try_mount():

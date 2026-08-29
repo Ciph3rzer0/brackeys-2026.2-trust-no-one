@@ -8,7 +8,7 @@ extends Area3D
 func get_interaction_text(_player: Player = null) -> String:
 	return interaction_text
 
-func push_keypress_to_viewport(event: InputEventKey) -> bool:
+func push_event_to_viewport(event: InputEvent) -> bool:
 	if redirect_input:
 		# Push the input event into the redirect viewport
 		redirect_input.push_input(event, true)
