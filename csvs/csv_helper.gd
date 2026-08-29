@@ -98,13 +98,21 @@ static func load_data_from_csv(file_path: String) -> Array[SchemaVehicleSighting
 		
 	# 1. Read the very first line as headers
 	var headers = file.get_csv_line()
+	var csv_row_number := 1
 	
 	# 2. Loop through the rest of the file until the end
 	while not file.eof_reached():
 		var row = file.get_csv_line()
+		csv_row_number += 1
 		
 		# Skip empty rows (like a blank line at the end of the file)
 		if row.size() == 0 or (row.size() == 1 and row[0] == ""):
+			continue
+		if row.size() != headers.size():
+			push_error(
+				"Skipping malformed CSV row %d in %s: expected %d columns, found %d."
+				% [csv_row_number, file_path, headers.size(), row.size()]
+			)
 			continue
 			
 		# Match row values to headers into a dictionary
@@ -125,13 +133,17 @@ static func load_data_from_csv(file_path: String) -> Array[SchemaVehicleSighting
 		sighting.vehicle_type = row_dict.vehicle_type
 		sighting.vehicle_features = [] as Array[String]
 		
-		# Godot is seriously so stupid.  This is what I have to do to assign the
-		# parsed csv to a Array[String] variable...
-		var vehicle_features: Array = JSON.parse_string(row_dict.vehicle_features)
-		if vehicle_features is Array:
-			for item in vehicle_features:
-				# Convert each item explicitly to a string (handles both strings and numbers)
-				sighting.vehicle_features.append(str(item))
+		var features_json := JSON.new()
+		var features_error := features_json.parse(row_dict.vehicle_features)
+		if features_error != OK or not features_json.data is Array:
+			push_error(
+				"Skipping malformed vehicle features at row %d in %s: %s"
+				% [csv_row_number, file_path, features_json.get_error_message()]
+			)
+			continue
+		for item in features_json.data:
+			# Convert each item explicitly to a string (handles both strings and numbers)
+			sighting.vehicle_features.append(str(item))
 		
 		parsed_data.append(sighting)
 		
