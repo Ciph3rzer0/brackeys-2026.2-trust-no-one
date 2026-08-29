@@ -281,14 +281,15 @@ transform = Transform3D(1.4151126, 0, 0, 0, 1.4151126, 0, 0, 0, 1.4151126, 5.657
 transform = Transform3D(1.4151126, 0, 0, 0, 1.4151126, 0, 0, 0, 1.4151126, 0.39982605, 0.14676666, 0.38674164)
 
 [node name="ComputerScreen" type="StaticBody3D" parent="Screens" unique_id=1699670014 node_paths=PackedStringArray("computer_viewport")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.4264321, 1.6474496, 1.2243075)
+transform = Transform3D(-1.0000001, 0, -8.7422784e-08, 0, 1.0000001, 0, 8.7422784e-08, 0, -1.0000001, 2.4352121, 1.7018765, 1.2243075)
 collision_layer = 4096
 script = ExtResource("21_fw3ux")
 computer_viewport = NodePath("../../ComputerScreenRenders/ComputerMonitor")
 quad_mesh = ExtResource("22_g1ciw")
+metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Screens/ComputerScreen" unique_id=677057215]
-transform = Transform3D(0.761722, 0, 7.1054274e-15, 0, 0.761722, 0, -7.1054274e-15, 0, 0.761722, -0.008204653, 0.055556893, 0.0075121983)
+transform = Transform3D(1, 0, 9.32811e-15, 0, 1, 0, -9.32811e-15, 0, 1, 0, 0, 0)
 mesh = ExtResource("22_g1ciw")
 surface_material_override/0 = SubResource("StandardMaterial3D_fsavt")
 
