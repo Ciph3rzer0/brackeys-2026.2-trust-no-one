@@ -5,6 +5,7 @@ extends CharacterBody3D
 @export var footstep_sound : Array[AudioStream]
 
 @export var cam : Camera3D
+@export var viewports: Array[SubViewport]
 
 @onready var interaction_ray: RayCast3D = $Camera3D/InteractionRay
 @onready var interaction_prompt: Label = $InteractionUI/InteractionPrompt
@@ -63,10 +64,24 @@ func _unhandled_input(event: InputEvent) -> void:
 		else:
 			try_mount()
 	
-	if _mounted_object:
+	# if _mounted_object:
+	# 	if event is InputEventKey or event is InputEventPanGesture:
+	# 		if _mounted_object.push_event_to_viewport(event):
+	# 			get_viewport().set_input_as_handled()
+
+	if !is_mouse_free: return
+
+	var viewport = find_focused_viewport()
+	if viewport:
 		if event is InputEventKey or event is InputEventPanGesture:
-			if _mounted_object.push_event_to_viewport(event):
-				get_viewport().set_input_as_handled()
+			viewport.push_input(event, true)
+			get_viewport().set_input_as_handled()
+
+func find_focused_viewport() -> SubViewport:
+	for vp in viewports:
+		if vp.gui_get_focus_owner():
+			return vp
+	return null
 
 func try_mount():
 	var mount := get_available_mount()

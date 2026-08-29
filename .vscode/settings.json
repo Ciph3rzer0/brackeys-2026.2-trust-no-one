@@ -45,18 +45,19 @@
 		]
 	},
 	"cSpell.words": [
-		"astar",
-		"FDIAGSIZE",
-		"HSIZE",
-		"Interactable",
-		"keypress",
-		"lerp",
-		"oldy",
-		"pathfinding",
-		"randf",
-		"tscn",
-		"VSIZE"
-	],
+    "astar",
+    "FDIAGSIZE",
+    "HSIZE",
+    "Interactable",
+    "keypress",
+    "lerp",
+    "oldy",
+    "pathfinding",
+    "randf",
+    "tscn",
+    "viewports",
+    "VSIZE"
+  ],
 	"files.exclude": {
 		"**/*.uid": true,
 		".godot": true,

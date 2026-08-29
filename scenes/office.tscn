@@ -127,8 +127,9 @@ height = 2.3730469
 
 [node name="Office" type="Node3D" unique_id=2119133953]
 
-[node name="Player" parent="." unique_id=1865119778 instance=ExtResource("10_gnmmx")]
+[node name="Player" parent="." unique_id=1865119778 node_paths=PackedStringArray("viewports") instance=ExtResource("10_gnmmx")]
 transform = Transform3D(1.5650182, 0, 1.4565594, 0, 2.137954, 0, -1.4565594, 0, 1.5650182, -0.9295535, 0.24758434, -4.357947)
+viewports = [NodePath("../ComputerScreenRenders/ComputerMonitor"), NodePath("../ComputerScreenRenders/MapGrid")]
 
 [node name="Rain" type="AudioStreamPlayer3D" parent="." unique_id=105857967]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1283921, 1.0637031, 6.396698)

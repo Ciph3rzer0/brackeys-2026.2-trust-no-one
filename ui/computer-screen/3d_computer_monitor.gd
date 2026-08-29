@@ -42,9 +42,7 @@ func _input_event(_camera: Node, event: InputEvent, event_position: Vector3, _no
 	# push_input() updates the SubViewport's own GUI hover state, but nothing
 	# propagates that to the real OS cursor automatically — only the actual
 	# window-owning viewport gets that for free. Drive it manually.
-	print("event ", event)
 	if event is InputEventMouseMotion:
-		print("hi")
 		var hovered := computer_viewport.gui_get_hovered_control()
 		if hovered:
 			# Control.CursorShape and Input.CursorShape are distinct enum
