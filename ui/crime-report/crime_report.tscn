@@ -5,8 +5,6 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uhg71"]
 bg_color = Color(0, 0, 0, 1)
-border_width_left = 10
-border_width_right = 10
 border_color = Color(0.8, 0.8, 0.8, 0)
 
 [node name="CrimeReport" type="PanelContainer" unique_id=1163959814]
@@ -14,14 +12,18 @@ custom_minimum_size = Vector2(512, 600)
 custom_maximum_size = Vector2(512, 600)
 offset_right = 513.0
 offset_bottom = 620.0
+theme = ExtResource("3_tygkb")
 script = ExtResource("1_25t53")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=49873419]
 layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="ScrollContainer" unique_id=1544216645]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
@@ -38,87 +40,104 @@ text = "Crime Report"
 horizontal_alignment = 1
 
 [node name="Divider" type="Panel" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=1979503544]
-custom_minimum_size = Vector2(0, 4)
+custom_minimum_size = Vector2(0, 2)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_uhg71")
 
-[node name="IncidentTitle" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=990062691]
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=166734087]
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "Incident:"
-horizontal_alignment = 1
 
-[node name="Incident" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=1114975575]
+[node name="IncidentTitle" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=990062691]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 0
+text = "Incident:"
+
+[node name="Incident" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1114975575]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "<burglary at Joe's Bagels>"
-horizontal_alignment = 1
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Burglary at Joe's Bagels"
 
 [node name="Divider3" type="Panel" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=386149315]
-custom_minimum_size = Vector2(0, 4)
+custom_minimum_size = Vector2(0, 2)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_uhg71")
 
-[node name="DateTitle" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=1597548356]
+[node name="HBoxContainer2" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=379033272]
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "Approximate Time:"
-horizontal_alignment = 1
 
-[node name="Time" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=1969729799]
+[node name="TimeTitle" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=2011935832]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Approx
+Time:"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=2043514158]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Time" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=1969729799]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "<XK3-JT*1>"
-horizontal_alignment = 1
+text = "some time"
+
+[node name="TimeEnd" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=734202601]
+unique_name_in_owner = true
+layout_mode = 2
+text = "some end time"
 
 [node name="Divider2" type="Panel" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=539637987]
-custom_minimum_size = Vector2(0, 4)
+custom_minimum_size = Vector2(0, 2)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_uhg71")
 
-[node name="PlateLabel" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=1859087249]
+[node name="HBoxContainer3" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=1974762460]
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "Details"
-horizontal_alignment = 1
 
-[node name="Plate" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=1378861698]
+[node name="DetailsLabel" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=1859087249]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 0
+text = "Details:"
+
+[node name="Details" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=1378861698]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "<XK3-JT*1>"
-horizontal_alignment = 1
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "multiline text
+sdgasg
+
+asg"
 autowrap_mode = 2
 
 [node name="Divider4" type="Panel" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=1833292545]
-custom_minimum_size = Vector2(0, 4)
+custom_minimum_size = Vector2(0, 2)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_uhg71")
 
 [node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=624130938]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_vertical = 3
 theme_override_constants/margin_top = 10
 
-[node name="HBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/MarginContainer" unique_id=1701528419]
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/MarginContainer" unique_id=1058722132]
 layout_mode = 2
+size_flags_vertical = 8
 theme_override_constants/separation = 20
 
 [node name="IdentifyPlayteLabel" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=1522656808]
 layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 20
-text = "Identify Full License Plate Number:"
-horizontal_alignment = 1
+size_flags_horizontal = 3
+text = "Identify Suspect's
+License Plate Number:"
 
 [node name="PlateEntryTextEdit" type="LineEdit" parent="ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=673827303]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(140, 40)
-custom_maximum_size = Vector2(140, -1)
-propagate_maximum_size = true
+custom_minimum_size = Vector2(240, 40)
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("3_tygkb")
@@ -126,17 +145,4 @@ theme_override_font_sizes/font_size = 22
 backspace_deletes_composite_character_enabled = true
 caret_blink = true
 
-[node name="Control" type="Control" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=746673933]
-custom_minimum_size = Vector2(0, 15)
-layout_mode = 2
-
-[node name="SubmitButton" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=345433808]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(120, 30)
-layout_mode = 2
-size_flags_horizontal = 8
-text = "Submit"
-autowrap_trim_flags = 192
-
 [connection signal="text_submitted" from="ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PlateEntryTextEdit" to="." method="_on_plate_entry_text_edit_text_submitted"]
-[connection signal="pressed" from="ScrollContainer/MarginContainer/VBoxContainer/SubmitButton" to="." method="_on_submit_button_pressed"]
