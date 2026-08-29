@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene format=3 uid="uid://dvbbpxsp3djeq"]
 
-[ext_resource type="Script" path="res://ui/options_menu.gd" id="1_options"]
+[ext_resource type="Script" uid="uid://btpojnud58lmu" path="res://ui/options_menu.gd" id="1_options"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
 bg_color = Color(0.075, 0.085, 0.105, 0.97)
@@ -14,12 +14,12 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[node name="AudioOptionsMenu" type="CanvasLayer"]
-visible = false
+[node name="AudioOptionsMenu" type="CanvasLayer" unique_id=581451942]
 layer = 20
+visible = false
 script = ExtResource("1_options")
 
-[node name="Dimmer" type="ColorRect" parent="."]
+[node name="Dimmer" type="ColorRect" parent="." unique_id=799184348]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -27,7 +27,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.58)
 
-[node name="CenterContainer" type="CenterContainer" parent="Dimmer"]
+[node name="CenterContainer" type="CenterContainer" parent="Dimmer" unique_id=965743504]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -35,85 +35,85 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="Dimmer/CenterContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="Dimmer/CenterContainer" unique_id=484206342]
 custom_minimum_size = Vector2(480, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
 
-[node name="MarginContainer" type="MarginContainer" parent="Dimmer/CenterContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Dimmer/CenterContainer/PanelContainer" unique_id=1057022257]
 layout_mode = 2
 theme_override_constants/margin_left = 30
 theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 24
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Dimmer/CenterContainer/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Dimmer/CenterContainer/PanelContainer/MarginContainer" unique_id=1768371789]
 layout_mode = 2
 theme_override_constants/separation = 18
 
-[node name="Title" type="Label" parent="Dimmer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="Dimmer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=793491641]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.8235294, 0.8235294, 0.8235294, 1)
 theme_override_font_sizes/font_size = 30
 text = "Audio Options"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="Separator" type="HSeparator" parent="Dimmer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Separator" type="HSeparator" parent="Dimmer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=487686639]
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="Dimmer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="GridContainer" type="GridContainer" parent="Dimmer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=926511731]
 layout_mode = 2
 theme_override_constants/h_separation = 24
 theme_override_constants/v_separation = 14
 columns = 2
 
-[node name="MasterLabel" type="Label" parent="Dimmer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+[node name="MasterLabel" type="Label" parent="Dimmer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=1706981859]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.8226427, 0.8226427, 0.8226427, 1)
 text = "Master"
 
-[node name="MasterSlider" type="HSlider" parent="Dimmer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+[node name="MasterSlider" type="HSlider" parent="Dimmer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=1639496398]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(290, 36)
 layout_mode = 2
 size_flags_horizontal = 3
-max_value = 100.0
-step = 1.0
 value = 100.0
 
-[node name="MusicLabel" type="Label" parent="Dimmer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+[node name="MusicLabel" type="Label" parent="Dimmer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=681041608]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.8235294, 0.8235294, 0.8235294, 1)
 text = "Music"
 
-[node name="MusicSlider" type="HSlider" parent="Dimmer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+[node name="MusicSlider" type="HSlider" parent="Dimmer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=574005939]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(290, 36)
 layout_mode = 2
 size_flags_horizontal = 3
-max_value = 100.0
-step = 1.0
 value = 100.0
 
-[node name="SFXLabel" type="Label" parent="Dimmer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+[node name="SFXLabel" type="Label" parent="Dimmer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=1801006441]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.8235294, 0.8235294, 0.8235294, 1)
 text = "SFX"
 
-[node name="SFXSlider" type="HSlider" parent="Dimmer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+[node name="SFXSlider" type="HSlider" parent="Dimmer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=1598528084]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(290, 36)
 layout_mode = 2
 size_flags_horizontal = 3
-max_value = 100.0
-step = 1.0
 value = 100.0
 
-[node name="Hint" type="Label" parent="Dimmer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Hint" type="Label" parent="Dimmer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1937984059]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.72, 0.75, 0.82, 1)
 theme_override_font_sizes/font_size = 14
 horizontal_alignment = 1
 
-[node name="CloseButton" type="Button" parent="Dimmer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="CloseButton" type="Button" parent="Dimmer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1797188692]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 42)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.86036915, 0.8603692, 0.8603692, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 text = "CLOSE"

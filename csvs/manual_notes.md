@@ -1,18 +1,43 @@
-unix_timestamp,camera_id,vehicle_plate,vehicle_color,vehicle_type,vehicle_features
+# Range
+
+{Aug 25, 6:21 am - Aug 28, 1:08 am}
+
+# A1: Salon robbed during town's midday siesta with a getaway car escape; only one LP by the Salon at that time
+
 "2026-08-25T12:16:05",3,LPA1,Blue,CHEVY BOLT,"[""Scratched bumper""]"
 "2026-08-25T12:24:51",5,LPA1,Blue,CHEVY BOLT,"[""Scratched bumper""]"
 "2026-08-25T12:24:59",2,LPA1,Blue,CHEVY BOLT,"[""Scratched bumper""]"
+
+# A2: out after curfew
+
 "2026-08-25T03:11:50",1,LPA2,White,STATION WAGON,"[""Dinged hood""]"
 "2026-08-25T03:12:15",3,LPA2,White,STATION WAGON,"[""Dinged hood""]"
+
++ travel noise:
+
 "2026-08-25T07:12:55",1,LPA2,White,STATION WAGON,"[""Dinged hood""]"
 "2026-08-25T018:15:51",1,LPA2,White,STATION WAGON,"[""Dinged hood""]"
 "2026-08-26T07:53:35",1,LPA2,White,STATION WAGON,"[""Dinged hood""]"
 "2026-08-26T018:28:57",1,LPA2,White,STATION WAGON,"[""Dinged hood""]"
 "2026-08-27T07:53:20",1,LPA2,White,STATION WAGON,"[""Dinged hood""]"
 "2026-08-27T018:28:06",1,LPA2,White,STATION WAGON,"[""Dinged hood""]"
+
+# A3: sleeping at the airport
+
 "2026-08-25T00:10:35",2,LPA3,Gray,VAN,"[""Jesus fish""]"
 "2026-08-25T00:11:50",5,LPA3,Gray,VAN,"[""Jesus fish""]"
 "2026-08-25T11:25:02",5,LPA3,Gray,VAN,"[""Jesus fish""]"
+
++ travel noise?
+
+# A4: 3 license plates with an out-of-town alibi
+
++ culprit = any random existing LP (AIT-2702)
++ innocent 1 = copy any random existing LP with the middle day erased (BTZ-5167)
++ innocent 2 = copy any random existing LP with the middle day erased (OGN-4489)
+
+# A5: casing gas station before robbery (circled it each past morning)
+
 "2026-08-25T06:31:00",3,LPA1,Red,WEINERMOBILE,"[""Mustard stains""]"
 "2026-08-25T06:32:11",4,LPA1,Red,WEINERMOBILE,"[""Mustard stains""]"
 "2026-08-25T06:33:12",3,LPA1,Red,WEINERMOBILE,"[""Mustard stains""]"
@@ -25,85 +50,36 @@ unix_timestamp,camera_id,vehicle_plate,vehicle_color,vehicle_type,vehicle_featur
 "2026-08-26T06:34:55",4,LPA1,Red,WEINERMOBILE,"[""Mustard stains""]"
 "2026-08-26T06:35:11",3,LPA1,Red,WEINERMOBILE,"[""Mustard stains""]"
 "2026-08-26T06:36:32",4,LPA1,Red,WEINERMOBILE,"[""Mustard stains""]"
++travel noise?
+
+# B1: keeps throwing a brick at the hospital and speeding away
+
 "2026-08-25T07:16:00",1,LPB1,White,KIA OPTIMA,"[""Honor student bumper sticker""]"
 "2026-08-25T07:16:15",1,LPB1,White,KIA OPTIMA,"[""Honor student bumper sticker""]"
 "2026-09-25T11:50:10",1,LPB1,White,KIA OPTIMA,"[""Honor student bumper sticker""]"
 "2026-09-25T11:50:25",1,LPB1,White,KIA OPTIMA,"[""Honor student bumper sticker""]"
-1787638470,1,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787640060,3,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787640840,1,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787640870,3,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787642430,3,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787642700,5,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787643720,5,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787643930,3,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787645280,2,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787646240,3,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787647350,4,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787649180,2,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787679030,5,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787680800,3,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787681040,4,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787682780,5,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787683290,3,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787685090,5,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787685240,5,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787686140,5,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787686800,2,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787687880,3,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787688930,3,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787690670,5,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787691270,1,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787692770,5,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787692860,3,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787696370,3,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787696700,5,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787697990,1,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787698260,2,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787724360,1,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787725950,3,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787727270,1,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787727750,5,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787728860,3,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787729790,5,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787731110,3,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787731350,2,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787733300,3,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787734350,4,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787734560,2,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787764680,5,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787767470,4,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787768160,3,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787769210,5,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787769780,1,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787774220,5,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787778630,5,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787779170,1,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787780250,2,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787780760,3,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787782290,3,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787783910,1,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787811810,1,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787813400,3,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787815020,3,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787818650,5,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787819670,1,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787820030,5,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787821260,3,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787822340,4,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787852160,5,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787854890,4,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787856420,3,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787856630,5,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787858880,3,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787860620,5,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787860680,5,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787862300,2,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787862780,5,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787864340,2,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787868480,2,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787870490,2,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
-1787873310,1,KDL-2846,Green,Sedan,"[""Roof rack"", ""Tinted windows""]"
++ travel noise?
+
+# B2: stalking
+
++culprit = copy existing person (HQY-7996) but add 30 seconds to each time (KDL-2846)
+
+# B3: using the main road for high speed racing during the evening home commute
+
+"2026-08-26T00:05:01",3,LPB3,White,FORMULA 1,"[""Flame decals"", ""Aluminum spoiler""]"
+"2026-08-26T00:05:05",5,LPB3,White,FORMULA 1,"[""Flame decals"", ""Aluminum spoiler""]"
+"2026-08-26T00:05:09",3,LPB3,White,FORMULA 1,"[""Flame decals"", ""Aluminum spoiler""]"
+"2026-08-26T00:05:13",5,LPB3,White,FORMULA 1,"[""Flame decals"", ""Aluminum spoiler""]"
+"2026-08-26T00:05:17",3,LPB3,White,FORMULA 1,"[""Flame decals"", ""Aluminum spoiler""]"
+"2026-08-26T00:05:21",5,LPB3,White,FORMULA 1,"[""Flame decals"", ""Aluminum spoiler""]"
+"2026-08-26T00:05:25",3,LPB3,White,FORMULA 1,"[""Flame decals"", ""Aluminum spoiler""]"
++travel noise?
+
+# B4: British fugitive disappeared, believed to be evading police by swapping out license plate
+
+"2026-08-26T00:05:01",1,LU6789,Gray,ASTON MARTIN,"[""Truck nuts"", ""Yosemite Sam mud flap""]"
++travel noise before this sighting:
+
 "2026-08-25T06:14:30",1,LU6789,Gray,ASTON MARTIN,"[""Truck nuts"", ""Yosemite Sam mud flap""]"
 "2026-08-25T07:08:00",3,LU6789,Gray,ASTON MARTIN,"[""Truck nuts"", ""Yosemite Sam mud flap""]"
 "2026-08-25T08:21:30",4,LU6789,Gray,ASTON MARTIN,"[""Truck nuts"", ""Yosemite Sam mud flap""]"
@@ -114,6 +90,10 @@ unix_timestamp,camera_id,vehicle_plate,vehicle_color,vehicle_type,vehicle_featur
 "2026-08-25T20:02:00",5,LU6789,Gray,ASTON MARTIN,"[""Truck nuts"", ""Yosemite Sam mud flap""]"
 "2026-08-25T21:27:30",4,LU6789,Gray,ASTON MARTIN,"[""Truck nuts"", ""Yosemite Sam mud flap""]"
 "2026-08-25T23:43:00",2,LU6789,Gray,ASTON MARTIN,"[""Truck nuts"", ""Yosemite Sam mud flap""]"
+
+"2026-08-26T00:05:15",2,BMT216A,Gray,ASTON MARTIN,"[""Truck nuts"", ""Yosemite Sam mud flap""]"
++travel noise after this sighting:
+
 "2026-08-26T06:18:30",2,BMT216A,Gray,ASTON MARTIN,"[""Truck nuts"", ""Yosemite Sam mud flap""]"
 "2026-08-26T07:11:00",4,BMT216A,Gray,ASTON MARTIN,"[""Truck nuts"", ""Yosemite Sam mud flap""]"
 "2026-08-26T08:26:30",1,BMT216A,Gray,ASTON MARTIN,"[""Truck nuts"", ""Yosemite Sam mud flap""]"
@@ -124,15 +104,16 @@ unix_timestamp,camera_id,vehicle_plate,vehicle_color,vehicle_type,vehicle_featur
 "2026-08-26T20:06:00",1,BMT216A,Gray,ASTON MARTIN,"[""Truck nuts"", ""Yosemite Sam mud flap""]"
 "2026-08-26T21:31:30",3,BMT216A,Gray,ASTON MARTIN,"[""Truck nuts"", ""Yosemite Sam mud flap""]"
 "2026-08-26T23:46:00",5,BMT216A,Gray,ASTON MARTIN,"[""Truck nuts"", ""Yosemite Sam mud flap""]"
-"2026-08-26T00:05:01",3,LPB3,White,FORMULA 1,"[""Flame decals"", ""Aluminum spoiler""]"
-"2026-08-26T00:05:05",5,LPB3,White,FORMULA 1,"[""Flame decals"", ""Aluminum spoiler""]"
-"2026-08-26T00:05:09",3,LPB3,White,FORMULA 1,"[""Flame decals"", ""Aluminum spoiler""]"
-"2026-08-26T00:05:13",5,LPB3,White,FORMULA 1,"[""Flame decals"", ""Aluminum spoiler""]"
-"2026-08-26T00:05:17",3,LPB3,White,FORMULA 1,"[""Flame decals"", ""Aluminum spoiler""]"
-"2026-08-26T00:05:21",5,LPB3,White,FORMULA 1,"[""Flame decals"", ""Aluminum spoiler""]"
-"2026-08-26T00:05:25",3,LPB3,White,FORMULA 1,"[""Flame decals"", ""Aluminum spoiler""]"
+
+# B5: reports of out-of-town car camping out by the Capitol building
+
 "2026-08-26T00:07:01",5,B5,Beige,STATION WAGON,"[""Political bumper sticker""]"
++NO TRAVEL NOISE before or after this sighting
+
+# C1: Crashed car into paint store
 "2026-08-27T08:15:59",3,LPC1,White,FORD F-150,"[""Banana in tailpipe""]"
++travel noise before this sighting:
+
 "2026-08-27T06:09:30",1,LPC1,White,FORD F-150,"[""Banana in tailpipe""]"
 "2026-08-27T06:34:00",3,LPC1,White,FORD F-150,"[""Banana in tailpipe""]"
 "2026-08-27T06:58:30",5,LPC1,White,FORD F-150,"[""Banana in tailpipe""]"
@@ -143,7 +124,10 @@ unix_timestamp,camera_id,vehicle_plate,vehicle_color,vehicle_type,vehicle_featur
 "2026-08-27T08:03:00",5,LPC1,White,FORD F-150,"[""Banana in tailpipe""]"
 "2026-08-27T08:09:30",2,LPC1,White,FORD F-150,"[""Banana in tailpipe""]"
 "2026-08-27T08:15:30",4,LPC1,White,FORD F-150,"[""Banana in tailpipe""]"
+
 "2026-08-27T08:16:05",5,LPC1,Rainbow,FORD F-150,"[""Banana in tailpipe""]"
++travel noise before this sighting:
+
 "2026-08-27T08:16:30",2,LPC1,Rainbow,FORD F-150,"[""Banana in tailpipe""]"
 "2026-08-27T08:34:00",4,LPC1,Rainbow,FORD F-150,"[""Banana in tailpipe""]"
 "2026-08-27T09:02:00",1,LPC1,Rainbow,FORD F-150,"[""Banana in tailpipe""]"
@@ -154,18 +138,36 @@ unix_timestamp,camera_id,vehicle_plate,vehicle_color,vehicle_type,vehicle_featur
 "2026-08-27T20:13:30",1,LPC1,Rainbow,FORD F-150,"[""Banana in tailpipe""]"
 "2026-08-27T21:48:00",3,LPC1,Rainbow,FORD F-150,"[""Banana in tailpipe""]"
 "2026-08-27T23:32:00",5,LPC1,Rainbow,FORD F-150,"[""Banana in tailpipe""]"
+
+# C2: Drove through the park
 "2026-08-27T08:15:59",2,LPC2,Green,VAN,"[""]"
++travel noise before this sighting?
+
 "2026-08-27T08:17:01",3,LPC2,Green,VAN,"[""]"
-"2026-08-27T08:17:25",5,LPC2,Green,VAN,"[""]"
++travel noise after this sighting?
+
+# R1: Old man came out of nowhere, seen speeding by the airport at nearly 90 MPH, leaving flaming skid marks
 "2026-08-28T05:59:50",5,OUTATIME,Silver,DELOREAN,"[""Exposed wires"", ""Heavy modifications"", ""Bullet holes""]"
++travel noise before this sighting
+
+# R2: Shot a clerk (WORKSHOP MORE)
 "2026-08-26T09:09:05",3,MEA201,Mint Green,BUICK SKYLARK,"[""Uneven tire marks""]"
-"2026-08-27T06:31:30",1,DLR,Tan,SIERRA,"[""Empty license plate holder"", ""Paper tag on window""]"
++travel noise after (not before)
+
+# R3: stole car from a car dealer out of town and deleted the inventory records to hide the trail; reported heading this way morning of the 27th
+"2026-08-27T06:31:30",1,DLR,Tan,SIERRA,"["Empty license plate holder"", ""Paper tag on window""]"
++travel noise after (not before)
+
+# R4: out of towner taking reserved parking at the hospital pretending to be a proctologist with fake license plates
 "2026-08-25T06:31:28",1,ASSMAN,Green,SEDAN,"[""]"
 "2026-08-25T017:35:00",1,ASSMAN,Green,SEDAN,"[""]"
 "2026-08-26T06:32:22",1,ASSMAN,Green,SEDAN,"[""]"
 "2026-08-26T017:34:11",1,ASSMAN,Green,SEDAN,"[""]"
 "2026-08-27T06:29:20",1,ASSMAN,Green,SEDAN,"[""]"
 "2026-08-27T017:34:15",1,ASSMAN,Green,SEDAN,"[""]"
++NO ADDITIONAL TRAVEL NOISE
+
+# R5: APB for a male suspect driving a car of some sort heading in the direction of that place that sells chili.  Suspect is hatless. (WORKSHOP MORE)
 "2026-08-25T19:31:28",4,EX-CON,Blue,MUSCLE CAR,"[""]"
 "2026-08-25T19:35:20",5,EX-CON,Blue,MUSCLE CAR,"[""]"
 "2026-08-25T19:36:15",2,EX-CON,Blue,MUSCLE CAR,"[""]"

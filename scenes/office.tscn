@@ -20,7 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://dssagk4uh4quc" path="res://assets/audio/sfx/rain.mp3" id="17_gnmmx"]
 [ext_resource type="Script" uid="uid://bygvj22hqpl6r" path="res://scripts/light_switch.gd" id="18_light_switch"]
 [ext_resource type="AudioStream" uid="uid://qiktvc0aw5rs" path="res://assets/audio/sfx/click-4.wav" id="19_light_click"]
-[ext_resource type="PackedScene" path="res://ui/options_menu.tscn" id="20_options_menu"]
+[ext_resource type="PackedScene" uid="uid://dvbbpxsp3djeq" path="res://ui/options_menu.tscn" id="20_options_menu"]
 [ext_resource type="Script" uid="uid://biuonnjp64bgo" path="res://ui/computer-screen/3d_computer_monitor.gd" id="21_fw3ux"]
 [ext_resource type="Script" uid="uid://j4v13e1a4n7h" path="res://scripts/options_switch.gd" id="21_options_switch"]
 [ext_resource type="QuadMesh" uid="uid://qaplr8l4g05l" path="res://ui/computer-screen/screen_quad_mesh.tres" id="22_g1ciw"]
@@ -4158,7 +4158,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.37737, 56.985577, -139.551
 transform = Transform3D(1.7488817, 0, 0, 0, 1.7488817, 0, 0, 0, 1.7488817, 3.3157055, 0.6540642, 2.5794885)
 
 [node name="computer-keyboard2" parent="." unique_id=1110257665 instance=ExtResource("16_jp1e5")]
-transform = Transform3D(1.3806835, 0, 0, 0, 1.3806835, 0, 0, 0, 1.3806835, 3.7945335, 1.7878904, 1.9366279)
+transform = Transform3D(1.3806835, 0, 0, 0, 1.3806835, 0, 0, 0, 1.3806835, 3.927921, 1.7878904, 1.90239)
 
 [node name="Node3D" parent="." unique_id=874970357 instance=ExtResource("29_g1ciw")]
 transform = Transform3D(0, -1, 4.371139e-08, -4.371139e-08, -4.3711385e-08, -1, 1, 0, -4.371139e-08, 5.6501093, 2.7866902, 1.55321)

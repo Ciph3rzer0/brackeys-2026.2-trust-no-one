@@ -46,24 +46,24 @@ outline_size = 0
 uppercase = true
 
 [node name="pin locations" type="Node3D" parent="corkboard2" unique_id=1551329889]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3125913, 0.61609024, 0.68265116)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23908529, 0.61609024, 0.68265116)
 
 [node name="pin1" type="Node3D" parent="corkboard2/pin locations" unique_id=1139482963]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 0.26296616, 0.4805324, -1.5355896)
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 0.26296616, 0.48053238, -1.5283463)
 
 [node name="pin2" type="Node3D" parent="corkboard2/pin locations" unique_id=936660789]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 0.26296616, 0.4805324, -0.90076)
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 0.26296616, 0.48053238, -0.8935167)
 
 [node name="pin3" type="Node3D" parent="corkboard2/pin locations" unique_id=360610949]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 0.26296616, 0.4805324, -0.26924545)
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 0.26296616, 0.48053238, -0.26200217)
 
 [node name="pin4" type="Node3D" parent="corkboard2/pin locations" unique_id=934723502]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 0.26296616, -0.35651442, -1.5372471)
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 0.26296616, -0.35651442, -1.5300038)
 
 [node name="pin5" type="Node3D" parent="corkboard2/pin locations" unique_id=215824434]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 0.26296616, -0.35651442, -0.9024175)
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 0.26296616, -0.35651442, -0.8951742)
 
 [node name="pin6" type="Node3D" parent="corkboard2/pin locations" unique_id=607216583]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 0.26296616, -0.35651442, -0.27090317)
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 0.26296616, -0.35651442, -0.2636599)
 
 [editable path="corkboard2"]
