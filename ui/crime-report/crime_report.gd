@@ -34,3 +34,6 @@ func _on_submit_button_pressed() -> void:
 func _on_plate_entry_text_edit_text_submitted(_new_text: String) -> void:
 	_on_submit_button_pressed()
 	#%PlateEntryTextEdit.grab_focus()
+
+func get_plate_entry() -> String:
+	return %PlateEntryTextEdit.text
