@@ -30,7 +30,7 @@ func _enter_tree() -> void:
 	GameManager.set_player(self)
 
 func _ready() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	set_mouse_free(false)
 
 func set_mouse_free(val: bool):
 	is_mouse_free = val
@@ -186,7 +186,12 @@ func fax_held_report() -> bool:
 	var report := held_report
 	held_report = null
 	print("report faxed: ", report.get_report_title())
+	
 	report.queue_free()
+	
+	QuestSystem.submit_plate_to_quest(report.quest, report.get_plate_entry())
+	print("report ", report)
+
 	return true
 		
 func _physics_process(delta: float) -> void:

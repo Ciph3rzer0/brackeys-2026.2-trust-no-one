@@ -39,8 +39,8 @@ material = SubResource("StandardMaterial3D_jp1e5")
 radial_segments = 16
 rings = 16
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_light_switch"]
-radius = 0.18
+[sub_resource type="BoxShape3D" id="BoxShape3D_1k86j"]
+size = Vector3(0.73, 2, 0.1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g1ciw"]
 albedo_color = Color(0.60159683, 0.52670956, 0.27528396, 1)
@@ -161,7 +161,7 @@ transform = Transform3D(0.32175153, 0, 0, 0, 0.32175153, 0, 0, 0, 0.09760539, 0,
 mesh = SubResource("SphereMesh_h45xw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="lightswitch" unique_id=502700300]
-shape = SubResource("SphereShape3D_light_switch")
+shape = SubResource("BoxShape3D_1k86j")
 
 [node name="ClickSound" type="AudioStreamPlayer3D" parent="lightswitch" unique_id=864967245]
 stream = ExtResource("19_light_click")
@@ -176,7 +176,7 @@ transform = Transform3D(0.32175153, 0, 0, 0, 0.32175153, 0, 0, 0, 0.09760539, 0,
 mesh = SubResource("SphereMesh_u5glt")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="optionsSwitch" unique_id=843513022]
-shape = SubResource("SphereShape3D_light_switch")
+shape = SubResource("BoxShape3D_1k86j")
 
 [node name="ClickSound" type="AudioStreamPlayer3D" parent="optionsSwitch" unique_id=1396890103]
 stream = ExtResource("19_light_click")

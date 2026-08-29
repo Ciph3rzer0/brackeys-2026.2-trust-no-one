@@ -43,6 +43,9 @@ func get_report_title() -> String:
 		return quest.incident
 	return name
 
+func get_plate_entry() -> String:
+	return $SubViewport/CrimeReport.get_plate_entry()
+
 
 @export var crime_report_viewport: SubViewport
 @export var quad_mesh: QuadMesh
