@@ -57,11 +57,12 @@ offset_bottom = 73.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_clvma")
 
 [node name="Button" type="Button" parent="." unique_id=1762318741]
+visible = false
 layout_mode = 0
 offset_left = 103.0
-offset_top = 894.0
+offset_top = 1078.0
 offset_right = 200.0
-offset_bottom = 991.0
+offset_bottom = 1175.0
 theme = ExtResource("8_vod3n")
 icon = ExtResource("9_5sf7k")
 expand_icon = true
@@ -69,11 +70,12 @@ script = ExtResource("10_5sf7k")
 quest = ExtResource("11_4dgut")
 
 [node name="Button2" type="Button" parent="." unique_id=637476883]
+visible = false
 layout_mode = 0
 offset_left = 260.0
-offset_top = 894.0
+offset_top = 1078.0
 offset_right = 357.0
-offset_bottom = 991.0
+offset_bottom = 1175.0
 theme = ExtResource("8_vod3n")
 icon = ExtResource("9_5sf7k")
 expand_icon = true
@@ -253,7 +255,7 @@ layout_mode = 0
 offset_left = 15.0
 offset_top = 78.0
 offset_right = 1259.0
-offset_bottom = 622.0
+offset_bottom = 920.0
 
 [node name="CrimeReport" parent="." unique_id=1163959814 instance=ExtResource("6_5hd8n")]
 visible = false
