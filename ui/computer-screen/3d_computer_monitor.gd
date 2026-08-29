@@ -38,7 +38,19 @@ func _play_typing_sound() -> void:
 	_typing_sound_player.stream = TYPING_SOUNDS.pick_random()
 	_typing_sound_player.play()
 
-func _input_event(_camera: Camera3D, event: InputEvent, event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
+func _input_event(_camera: Node, event: InputEvent, event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
+	# push_input() updates the SubViewport's own GUI hover state, but nothing
+	# propagates that to the real OS cursor automatically — only the actual
+	# window-owning viewport gets that for free. Drive it manually.
+	if event is InputEventMouseMotion:
+		var hovered := computer_viewport.gui_get_hovered_control()
+		if hovered:
+			# Control.CursorShape and Input.CursorShape are distinct enum
+			# types to GDScript despite matching values — int() bridges them.
+			Input.set_default_cursor_shape(int(hovered.get_cursor_shape(hovered.get_local_mouse_position())))
+		else:
+			Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+	
 	if event is InputEventMouseButton or event is InputEventMouseMotion:
 		# transform 3D click local to this object.
 		var local := to_local(event_position)
@@ -54,7 +66,8 @@ func _input_event(_camera: Camera3D, event: InputEvent, event_position: Vector3,
 		var translated_input_event = event.duplicate()
 		
 		# Translate the input into the viewport screen space
-		translated_input_event.position = Vector2(uv.x * computer_viewport.size.x, uv.y * computer_viewport.size.y)
+		var vp_pos := uv * Vector2(computer_viewport.size)
+		translated_input_event.position = Vector2(vp_pos)
 		
 		# Push the translated input event into the computer monitor viewport
 		computer_viewport.push_input(translated_input_event, true)

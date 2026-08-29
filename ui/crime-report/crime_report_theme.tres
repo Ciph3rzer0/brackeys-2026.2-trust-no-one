@@ -36,6 +36,7 @@ expand_margin_right = 2.0
 expand_margin_bottom = 4.0
 
 [resource]
+Label/font_sizes/font_size = 18
 LineEdit/colors/caret_background_color = Color(0.83, 0.83, 0.83, 1)
 LineEdit/colors/caret_color = Color(0, 0, 0, 0.39215687)
 LineEdit/constants/caret_width = 4

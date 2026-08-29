@@ -16,9 +16,15 @@ func set_quest(_quest: Quest):
 	quest = _quest
 	
 	if is_node_ready():
-		%Time.text = Time.get_datetime_string_from_unix_time(quest.datetime_start_unix)
+		%Time.text = DateHelper.month_day_time(quest.datetime_start_unix)
+		if quest.datetime_start_unix > 0:
+			%TimeEnd.visible = true
+			%TimeEnd.text = DateHelper.month_day_time(quest.datetime_end_unix)
+		else:
+			%TimeEnd.visible = false
+		
 		%Incident.text = quest.incident
-		%Plate.text = quest.details
+		%Details.text = quest.details
 
 func _on_submit_button_pressed() -> void:
 	var plate = %PlateEntryTextEdit.text

@@ -127,8 +127,9 @@ height = 2.3730469
 
 [node name="Office" type="Node3D" unique_id=2119133953]
 
-[node name="Player" parent="." unique_id=1865119778 instance=ExtResource("10_gnmmx")]
+[node name="Player" parent="." unique_id=1865119778 node_paths=PackedStringArray("viewports") instance=ExtResource("10_gnmmx")]
 transform = Transform3D(1.5650182, 0, 1.4565594, 0, 2.137954, 0, -1.4565594, 0, 1.5650182, -0.9295535, 0.24758434, -4.357947)
+viewports = [NodePath("../ComputerScreenRenders/ComputerMonitor"), NodePath("../ComputerScreenRenders/MapGrid")]
 
 [node name="Rain" type="AudioStreamPlayer3D" parent="." unique_id=105857967]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1283921, 1.0637031, 6.396698)
@@ -281,14 +282,15 @@ transform = Transform3D(1.4151126, 0, 0, 0, 1.4151126, 0, 0, 0, 1.4151126, 5.657
 transform = Transform3D(1.4151126, 0, 0, 0, 1.4151126, 0, 0, 0, 1.4151126, 0.39982605, 0.14676666, 0.38674164)
 
 [node name="ComputerScreen" type="StaticBody3D" parent="Screens" unique_id=1699670014 node_paths=PackedStringArray("computer_viewport")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.4264321, 1.6474496, 1.2243075)
+transform = Transform3D(-1.0000001, 0, -8.7422784e-08, 0, 1.0000001, 0, 8.7422784e-08, 0, -1.0000001, 2.4352121, 1.7018765, 1.2243075)
 collision_layer = 4096
 script = ExtResource("21_fw3ux")
 computer_viewport = NodePath("../../ComputerScreenRenders/ComputerMonitor")
 quad_mesh = ExtResource("22_g1ciw")
+metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Screens/ComputerScreen" unique_id=677057215]
-transform = Transform3D(0.761722, 0, 7.1054274e-15, 0, 0.761722, 0, -7.1054274e-15, 0, 0.761722, -0.008204653, 0.055556893, 0.0075121983)
+transform = Transform3D(1, 0, 9.32811e-15, 0, 1, 0, -9.32811e-15, 0, 1, 0, 0, 0)
 mesh = ExtResource("22_g1ciw")
 surface_material_override/0 = SubResource("StandardMaterial3D_fsavt")
 
@@ -4101,6 +4103,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_0p3hi")
 physics_object_picking = true
 physics_object_picking_sort = true
 physics_object_picking_first_only = true
+gui_embed_subwindows = true
 size = Vector2i(1280, 960)
 
 [node name="ComputerScreenUI" parent="ComputerScreenRenders/ComputerMonitor" unique_id=694152180 instance=ExtResource("25_eet0l")]
@@ -4136,7 +4139,7 @@ size = 150.0
 transform = Transform3D(1.4151126, 0, 0, 0, 1.4151126, 0, 0, 0, 1.4151126, 0.5436454, 2.1912403, -1.4963394)
 
 [node name="Chair Interaction" type="Area3D" parent="Gameplay" unique_id=292098836 node_paths=PackedStringArray("redirect_input") groups=["InteractiveMount"]]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 2.046382, -1.7767938, 1.6193392)
+transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 2.046382, -1.8649222, 1.7275102)
 collision_layer = 0
 input_ray_pickable = false
 monitorable = false
