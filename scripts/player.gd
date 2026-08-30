@@ -224,7 +224,7 @@ func fax_held_report() -> bool:
 	var submitted_plate := report.get_plate_entry().strip_edges().to_upper()
 	held_report = null
 	print("report faxed: ", report.get_report_title())
-	QuestSystem.submit_plate_to_quest(quest, submitted_plate)
+	QuestSystem.submit_faxed_report(quest, submitted_plate)
 	print("report ", report)
 	report.queue_free()
 
