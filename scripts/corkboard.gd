@@ -9,12 +9,12 @@ extends ReportHolder3D
 	preload("res://scripts/quests/airport-camper.tres"),
 	preload("res://scripts/quests/speed-racer.tres"),
 	preload("res://scripts/quests/stalker.tres"),
-	preload("res://scripts/quests/hospital-egging.tres"),
-	preload("res://scripts/quests/park-drive.tres"),
-	preload("res://scripts/quests/painted-lady.tres"),
-	preload("res://scripts/quests/plate-swapper.tres"),
-	preload("res://scripts/quests/a-case-of-gas.tres"),
-	preload("res://scripts/quests/another-speedster.tres")	
+	# preload("res://scripts/quests/hospital-egging.tres"),
+	# preload("res://scripts/quests/park-drive.tres"),
+	# preload("res://scripts/quests/painted-lady.tres"),
+	# preload("res://scripts/quests/plate-swapper.tres"),
+	# preload("res://scripts/quests/a-case-of-gas.tres"),
+	# preload("res://scripts/quests/another-speedster.tres")	
 	]
 
 func _ready() -> void:
