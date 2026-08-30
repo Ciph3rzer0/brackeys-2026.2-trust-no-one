@@ -25,3 +25,15 @@ func _init():
 func load_from_csv():
 	var sightings = CSVHelper.load_all_data()
 	vehicle_sightings = sightings
+
+
+func has_vehicle_plate(plate: String) -> bool:
+	var normalized_plate := plate.strip_edges().to_upper()
+	if normalized_plate.is_empty():
+		return false
+
+	for sighting in vehicle_sightings:
+		if sighting.vehicle_plate.strip_edges().to_upper() == normalized_plate:
+			return true
+
+	return false

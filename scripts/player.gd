@@ -170,6 +170,22 @@ func get_faced_interactable() -> Node:
 func has_held_report() -> bool:
 	return held_report != null
 
+
+func get_fax_rejection_reason() -> String:
+	if !held_report:
+		return "no report is ready to fax"
+
+	var submitted_plate := held_report.get_plate_entry().strip_edges().to_upper()
+	if submitted_plate.is_empty():
+		return "enter a license plate on the report before faxing"
+	if GameManager.database == null:
+		return "the vehicle database is unavailable"
+	if !GameManager.database.has_vehicle_plate(submitted_plate):
+		return "license plate not found in the database"
+
+	return ""
+
+
 func pick_up_report(report: CrimeReport3D) -> bool:
 	if held_report or !report:
 		return false
@@ -198,9 +214,14 @@ func fax_held_report() -> bool:
 	if !held_report:
 		return false
 
+	var rejection_reason := get_fax_rejection_reason()
+	if !rejection_reason.is_empty():
+		print("fax rejected: ", rejection_reason)
+		return false
+
 	var report := held_report
 	var quest := report.quest
-	var submitted_plate := report.get_plate_entry()
+	var submitted_plate := report.get_plate_entry().strip_edges().to_upper()
 	held_report = null
 	print("report faxed: ", report.get_report_title())
 	QuestSystem.submit_plate_to_quest(quest, submitted_plate)

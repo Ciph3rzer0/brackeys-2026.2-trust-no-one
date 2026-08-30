@@ -31,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://dsj80p2uy7o80" path="res://scenes/wallmap.tscn" id="29_g1ciw"]
 [ext_resource type="PackedScene" uid="uid://h7j1mnigu56t" path="res://ui/town_rules_menu.tscn" id="32_rules_menu"]
 [ext_resource type="Script" uid="uid://djv3qbfbp73ge" path="res://scripts/rules_switch.gd" id="33_rules_switch"]
+[ext_resource type="PackedScene" path="res://scenes/report_trash_bin.tscn" id="34_report_bin"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jp1e5"]
 albedo_color = Color(0.22503361, 0.600545, 0.5632237, 1)
@@ -235,6 +236,9 @@ transform = Transform3D(1.4062078, 0, 0, 0, 1.4062078, 0, 0, 0, 1.4062078, 4.630
 
 [node name="FaxMachine" parent="work area" unique_id=1658198781 instance=ExtResource("4_07d2k")]
 transform = Transform3D(-4.678254e-08, 0, 1.0702598, 0, 1.0702598, 0, -1.0702598, 0, -4.678254e-08, 0.11891624, -0.5900414, 0.17210045)
+
+[node name="ReportTrashBin" parent="work area" instance=ExtResource("34_report_bin")]
+position = Vector3(1.05, -0.5, 0.2)
 
 [node name="coffeeCup" parent="work area" unique_id=2141730045 instance=ExtResource("16_gnmmx")]
 transform = Transform3D(0.36970007, 0, 0.6403394, 0, 0.7394002, 0, -0.6403394, 0, 0.36970007, -1.0748136, 0.63390625, 5.0525484)
