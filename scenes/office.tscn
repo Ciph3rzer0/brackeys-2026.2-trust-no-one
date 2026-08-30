@@ -33,8 +33,8 @@
 [ext_resource type="PackedScene" uid="uid://bd5vomef1fioj" path="res://scenes/report_trash_bin.tscn" id="34_report_bin"]
 [ext_resource type="PackedScene" uid="uid://0c1s8aps4srg" path="res://scenes/case_stats_display_3d.tscn" id="35_case_stats"]
 [ext_resource type="PackedScene" uid="uid://cmw4dul4kfecv" path="res://ui/end_screen.tscn" id="36_end_screen"]
-[ext_resource type="AudioStream" path="res://assets/audio/sfx/click-3.wav" id="37_rules_click"]
-[ext_resource type="AudioStream" path="res://assets/audio/sfx/computerAction-4.wav" id="38_computer_mount"]
+[ext_resource type="AudioStream" uid="uid://bd37vqweal4bb" path="res://assets/audio/sfx/click-3.wav" id="37_rules_click"]
+[ext_resource type="AudioStream" uid="uid://mu3tu47oyqh" path="res://assets/audio/sfx/computerAction-4.wav" id="38_computer_mount"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jp1e5"]
 albedo_color = Color(0.22503361, 0.600545, 0.5632237, 1)
@@ -140,7 +140,7 @@ background_color = Color(1, 1, 1, 1)
 ambient_light_color = Color(0.90408707, 0.92056644, 0.9382726, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_chair_interaction"]
-size = Vector3(0.55, 1.4, 1.4)
+size = Vector3(0.6295105, 0.9106811, 2.0118499)
 
 [node name="Office" type="Node3D" unique_id=2119133953]
 
@@ -271,7 +271,7 @@ transform = Transform3D(1.4062078, 0, 0, 0, 1.4062078, 0, 0, 0, 1.4062078, 4.630
 transform = Transform3D(-4.678254e-08, 0, 1.0702598, 0, 1.0702598, 0, -1.0702598, 0, -4.678254e-08, 0.11891624, -0.5900414, 0.17210045)
 
 [node name="ReportTrashBin" parent="work area" unique_id=2052586230 instance=ExtResource("34_report_bin")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2435572, -0.5, 0.19999981)
+transform = Transform3D(1, 0, 0, 0, 1.213446, 0, 0, 0, 1, -1.2435572, -0.5, 0.19999981)
 
 [node name="coffeeCup" parent="work area" unique_id=2141730045 instance=ExtResource("16_gnmmx")]
 transform = Transform3D(0.36970007, 0, 0.6403394, 0, 0.7394002, 0, -0.6403394, 0, 0.36970007, -1.0748136, 0.63390625, 5.0525484)
@@ -4207,12 +4207,12 @@ script = ExtResource("26_42gc7")
 redirect_input = NodePath("../../ComputerScreenRenders/ComputerMonitor")
 interaction_text = "press e to sit at computer"
 
-[node name="MountSound" type="AudioStreamPlayer3D" parent="Gameplay/Chair Interaction"]
+[node name="MountSound" type="AudioStreamPlayer3D" parent="Gameplay/Chair Interaction" unique_id=543076116]
 stream = ExtResource("38_computer_mount")
 bus = &"SFX"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Chair Interaction" unique_id=1177674249]
-transform = Transform3D(1.0000001, 0, -5.9604623e-08, 0, 1.0000159, 0, 5.9604623e-08, 0, 1.0000001, 0.72741795, 0.91308296, 0.25)
+transform = Transform3D(1.0000001, 0, -5.9604623e-08, 0, 1.0000159, 0, 5.9604623e-08, 0, 1.0000001, 0.3413446, 1.9777787, 0.5003223)
 shape = SubResource("BoxShape3D_chair_interaction")
 
 [node name="SubmitQuest" type="Node3D" parent="Gameplay" unique_id=1509242997]
