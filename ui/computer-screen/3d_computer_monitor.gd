@@ -52,6 +52,13 @@ func _input_event(_camera: Node, event: InputEvent, event_position: Vector3, _no
 			Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 	
 	if event is InputEventMouseButton or event is InputEventMouseMotion:
+		if (
+			event is InputEventMouseButton
+			and event.pressed
+			and is_instance_valid(GameManager.player)
+		):
+			GameManager.player.set_active_input_viewport(computer_viewport)
+
 		# transform 3D click local to this object.
 		var local := to_local(event_position)
 		#spawn_sphere_3d(local)

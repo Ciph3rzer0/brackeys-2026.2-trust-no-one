@@ -25,9 +25,15 @@ var footstep_distance = 2.1
 var is_mouse_free := false
 var _mounted_object: InteractableMount
 var held_report: CrimeReport3D
+var _active_input_viewport: SubViewport
 
 func _enter_tree() -> void:
 	GameManager.set_player(self)
+
+
+func _exit_tree() -> void:
+	GameManager.clear_player(self)
+
 
 func _ready() -> void:
 	set_mouse_free(false)
@@ -78,6 +84,12 @@ func _unhandled_input(event: InputEvent) -> void:
 			get_viewport().set_input_as_handled()
 
 func find_focused_viewport() -> SubViewport:
+	if is_instance_valid(_active_input_viewport):
+		if _active_input_viewport.gui_get_focus_owner():
+			return _active_input_viewport
+	else:
+		_active_input_viewport = null
+
 	var index := 0
 	while index < viewports.size():
 		var vp := viewports[index]
@@ -95,8 +107,23 @@ func register_input_viewport(viewport: SubViewport) -> void:
 		viewports.append(viewport)
 
 
+func set_active_input_viewport(viewport: SubViewport) -> void:
+	if !is_instance_valid(viewport):
+		return
+	register_input_viewport(viewport)
+	_active_input_viewport = viewport
+
+	# SubViewports keep focus independently. Release stale focus so a control
+	# on an older screen cannot steal keys from the screen just clicked.
+	for other_viewport in viewports:
+		if is_instance_valid(other_viewport) and other_viewport != viewport:
+			other_viewport.gui_release_focus()
+
+
 func unregister_input_viewport(viewport: SubViewport) -> void:
 	viewports.erase(viewport)
+	if _active_input_viewport == viewport:
+		_active_input_viewport = null
 
 func try_mount():
 	var mount := get_available_mount()
@@ -224,7 +251,7 @@ func fax_held_report() -> bool:
 	var submitted_plate := report.get_plate_entry().strip_edges().to_upper()
 	held_report = null
 	print("report faxed: ", report.get_report_title())
-	QuestSystem.submit_faxed_report(quest, submitted_plate)
+	QuestSystem.submit_faxed_report(report, quest, submitted_plate)
 	print("report ", report)
 	report.queue_free()
 

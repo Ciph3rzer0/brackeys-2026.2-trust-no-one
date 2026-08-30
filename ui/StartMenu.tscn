@@ -3,17 +3,85 @@
 [ext_resource type="Script" uid="uid://dyism05q6lpu7" path="res://ui/start_menu.gd" id="1_xrvln"]
 [ext_resource type="Texture2D" uid="uid://c6t3oxng53jc8" path="res://thumbnail.png" id="2_g1ph5"]
 
-[sub_resource type="Gradient" id="Gradient_rmr83"]
-offsets = PackedFloat32Array(0, 0.99858755)
-colors = PackedColorArray(0.1254902, 0.21568628, 0.39607844, 0.47058824, 0, 0, 0, 0.7607843)
+[sub_resource type="Gradient" id="Gradient_background"]
+offsets = PackedFloat32Array(0, 0.55, 1)
+colors = PackedColorArray(0.035, 0.045, 0.07, 1, 0.08, 0.105, 0.15, 1, 0.18, 0.095, 0.09, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_h45xw"]
-gradient = SubResource("Gradient_rmr83")
-fill_from = Vector2(0.13139932, 1)
-fill_to = Vector2(0.78327644, 0)
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_background"]
+gradient = SubResource("Gradient_background")
+width = 1280
+height = 720
+fill_to = Vector2(1, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_80iay"]
-font_size = 94
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.035, 0.045, 0.065, 0.94)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.34, 0.4, 0.5, 0.9)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.4)
+shadow_size = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_title"]
+font_size = 54
+font_color = Color(0.91, 0.92, 0.95, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_subtitle"]
+font_size = 17
+font_color = Color(0.62, 0.68, 0.78, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button"]
+bg_color = Color(0.09, 0.125, 0.18, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.3, 0.38, 0.5, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_pressed"]
+bg_color = Color(0.055, 0.08, 0.12, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.36, 0.46, 0.61, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_hover"]
+bg_color = Color(0.15, 0.205, 0.29, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.48, 0.6, 0.78, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_disabled"]
+bg_color = Color(0.045, 0.055, 0.075, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.16, 0.19, 0.25, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 
 [node name="StartMenu" type="Control" unique_id=668045221]
 layout_mode = 3
@@ -24,26 +92,29 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xrvln")
 
-[node name="Background2" type="TextureRect" parent="." unique_id=1627181151]
+[node name="Background" type="ColorRect" parent="." unique_id=310277134]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_g1ph5")
+mouse_filter = 2
+color = Color(0.025, 0.03, 0.045, 1)
 
-[node name="Background" type="TextureRect" parent="." unique_id=2052596641]
-visible = false
+[node name="BackgroundGradient" type="TextureRect" parent="." unique_id=91155543]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture2D_h45xw")
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_background")
+expand_mode = 1
+stretch_mode = 6
 
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1115787601]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1821035329]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -51,41 +122,89 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MenuPanel" type="PanelContainer" parent="CenterContainer" unique_id=97168499]
-custom_minimum_size = Vector2(500, 570)
+[node name="MenuPanel" type="PanelContainer" parent="CenterContainer" unique_id=1020096785]
+custom_minimum_size = Vector2(520, 550)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/MenuPanel" unique_id=1388476239]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/MenuPanel" unique_id=2065546855]
 layout_mode = 2
 theme_override_constants/margin_left = 54
-theme_override_constants/margin_top = 26
+theme_override_constants/margin_top = 34
 theme_override_constants/margin_right = 54
-theme_override_constants/margin_bottom = 26
+theme_override_constants/margin_bottom = 34
 
-[node name="Content" type="BoxContainer" parent="CenterContainer/MenuPanel/MarginContainer" unique_id=1681026255]
+[node name="Content" type="VBoxContainer" parent="CenterContainer/MenuPanel/MarginContainer" unique_id=2078373068]
 layout_mode = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 16
 alignment = 1
 
-[node name="Title" type="Label" parent="CenterContainer/MenuPanel/MarginContainer/Content" unique_id=116672986]
+[node name="CameraMark" type="TextureRect" parent="CenterContainer/MenuPanel/MarginContainer/Content" unique_id=1689254674]
+texture_filter = 1
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
-text = "Camera Co"
-label_settings = SubResource("LabelSettings_80iay")
+size_flags_horizontal = 4
+texture = ExtResource("2_g1ph5")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Title" type="Label" parent="CenterContainer/MenuPanel/MarginContainer/Content" unique_id=1852577455]
+layout_mode = 2
+text = "CAMERA CO."
+label_settings = SubResource("LabelSettings_title")
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="CenterContainer/MenuPanel/MarginContainer/Content" unique_id=2116047318]
-custom_minimum_size = Vector2(0, 3)
+[node name="Subtitle" type="Label" parent="CenterContainer/MenuPanel/MarginContainer/Content" unique_id=217915545]
+layout_mode = 2
+text = "A Squirrel Team Production"
+label_settings = SubResource("LabelSettings_subtitle")
+horizontal_alignment = 1
+
+[node name="Separator" type="HSeparator" parent="CenterContainer/MenuPanel/MarginContainer/Content" unique_id=2041255290]
 layout_mode = 2
 
-[node name="StartButton" type="Button" parent="CenterContainer/MenuPanel/MarginContainer/Content" unique_id=1269322790]
+[node name="StatusLabel" type="Label" parent="CenterContainer/MenuPanel/MarginContainer/Content"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
-mouse_default_cursor_shape = 2
-text = "Start"
+theme_override_colors/font_color = Color(0.66, 0.72, 0.82, 1)
+theme_override_font_sizes/font_size = 16
+text = "Loading database..."
+horizontal_alignment = 1
 
-[node name="QuitButton" type="Button" parent="CenterContainer/MenuPanel/MarginContainer/Content" unique_id=191947077]
+[node name="StartButton" type="Button" parent="CenterContainer/MenuPanel/MarginContainer/Content" unique_id=948517983]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 54)
 layout_mode = 2
 mouse_default_cursor_shape = 2
-text = "Quit"
+theme_override_colors/font_color = Color(0.9, 0.92, 0.96, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.82, 0.87, 0.95, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.4, 0.44, 0.51, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_button_disabled")
+theme_override_styles/focus = SubResource("StyleBoxFlat_button_hover")
+disabled = true
+text = "START"
+
+[node name="QuitButton" type="Button" parent="CenterContainer/MenuPanel/MarginContainer/Content" unique_id=329508022]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.9, 0.92, 0.96, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.82, 0.87, 0.95, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/focus = SubResource("StyleBoxFlat_button_hover")
+text = "QUIT"
 
 [connection signal="pressed" from="CenterContainer/MenuPanel/MarginContainer/Content/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="CenterContainer/MenuPanel/MarginContainer/Content/QuitButton" to="." method="_on_quit_button_pressed"]

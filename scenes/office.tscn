@@ -31,8 +31,9 @@
 [ext_resource type="PackedScene" uid="uid://dsj80p2uy7o80" path="res://scenes/wallmap.tscn" id="29_g1ciw"]
 [ext_resource type="PackedScene" uid="uid://h7j1mnigu56t" path="res://ui/town_rules_menu.tscn" id="32_rules_menu"]
 [ext_resource type="Script" uid="uid://djv3qbfbp73ge" path="res://scripts/rules_switch.gd" id="33_rules_switch"]
-[ext_resource type="PackedScene" path="res://scenes/report_trash_bin.tscn" id="34_report_bin"]
+[ext_resource type="PackedScene" uid="uid://bd5vomef1fioj" path="res://scenes/report_trash_bin.tscn" id="34_report_bin"]
 [ext_resource type="PackedScene" path="res://scenes/case_stats_display_3d.tscn" id="35_case_stats"]
+[ext_resource type="PackedScene" path="res://ui/end_screen.tscn" id="36_end_screen"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jp1e5"]
 albedo_color = Color(0.22503361, 0.600545, 0.5632237, 1)
@@ -141,8 +142,8 @@ height = 2.3730469
 transform = Transform3D(1.5650182, 0, 1.4565594, 0, 2.137954, 0, -1.4565594, 0, 1.5650182, -0.9295535, 0.24758434, -4.357947)
 viewports = [NodePath("../ComputerScreenRenders/ComputerMonitor"), NodePath("../ComputerScreenRenders/MapGrid")]
 
-[node name="CaseStatsDisplay3D" parent="." instance=ExtResource("35_case_stats")]
-position = Vector3(0, 4.6, -5.68)
+[node name="CaseStatsDisplay3D" parent="." unique_id=1890288023 instance=ExtResource("35_case_stats")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.6, -5.68)
 
 [node name="Rain" type="AudioStreamPlayer3D" parent="." unique_id=105857967]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1283921, 1.0637031, 6.396698)
@@ -215,6 +216,8 @@ bus = &"SFX"
 
 [node name="TownRulesMenu" parent="." unique_id=83520681 instance=ExtResource("32_rules_menu")]
 
+[node name="EndScreen" parent="." instance=ExtResource("36_end_screen")]
+
 [node name="roomLight" type="AreaLight3D" parent="." unique_id=378018363]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 1.060077, 7.32155, -0.91183126)
 light_color = Color(0.9999996, 0.8725206, 0.8106262, 1)
@@ -241,8 +244,8 @@ transform = Transform3D(1.4062078, 0, 0, 0, 1.4062078, 0, 0, 0, 1.4062078, 4.630
 [node name="FaxMachine" parent="work area" unique_id=1658198781 instance=ExtResource("4_07d2k")]
 transform = Transform3D(-4.678254e-08, 0, 1.0702598, 0, 1.0702598, 0, -1.0702598, 0, -4.678254e-08, 0.11891624, -0.5900414, 0.17210045)
 
-[node name="ReportTrashBin" parent="work area" instance=ExtResource("34_report_bin")]
-position = Vector3(1.05, -0.5, 0.2)
+[node name="ReportTrashBin" parent="work area" unique_id=2052586230 instance=ExtResource("34_report_bin")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2435572, -0.5, 0.19999981)
 
 [node name="coffeeCup" parent="work area" unique_id=2141730045 instance=ExtResource("16_gnmmx")]
 transform = Transform3D(0.36970007, 0, 0.6403394, 0, 0.7394002, 0, -0.6403394, 0, 0.36970007, -1.0748136, 0.63390625, 5.0525484)

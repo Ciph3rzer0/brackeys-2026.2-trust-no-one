@@ -40,4 +40,5 @@ func spawn_report(quest_override: Quest = null, scene_override: PackedScene = nu
 		report.queue_free()
 		return null
 
+	QuestSystem.register_report(report)
 	return report

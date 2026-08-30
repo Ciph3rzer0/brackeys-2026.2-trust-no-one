@@ -1,18 +1,36 @@
 class_name VehicleSightingsTableView
 extends PanelContainer
 
-var _rows: Array[VehicleSightingsRowView]
+var _rows: Array[VehicleSightingsRowView] = []
 
 func _ready() -> void:
-	GameManager.database.data_refreshed.connect( func():
-		set_table_items(GameManager.database.vehicle_sightings)
-	)
+	if GameManager.database:
+		_connect_to_database()
+		_on_database_refreshed()
+	else:
+		GameManager.database_loaded.connect(_on_database_loaded, CONNECT_ONE_SHOT)
+
+
+func _on_database_loaded() -> void:
+	_connect_to_database()
+	_on_database_refreshed()
+
+
+func _connect_to_database() -> void:
+	if !GameManager.database.data_refreshed.is_connected(_on_database_refreshed):
+		GameManager.database.data_refreshed.connect(_on_database_refreshed)
+
+
+func _on_database_refreshed() -> void:
+	set_table_items(GameManager.database.vehicle_sightings)
 
 func set_table_items(rows: Array[SchemaVehicleSightings]):
-	#clear_table_rows()
-	var new_count = rows.size() - _rows.size()
-	
-	for new_source_row in rows.slice(-new_count):
+	if rows.size() < _rows.size():
+		clear_table_rows()
+	if rows.size() == _rows.size():
+		return
+
+	for new_source_row in rows.slice(_rows.size()):
 		var new_table_row: VehicleSightingsRowView = %TableRow.duplicate()
 		new_table_row.set_source_row(new_source_row)
 		new_table_row.visible = true

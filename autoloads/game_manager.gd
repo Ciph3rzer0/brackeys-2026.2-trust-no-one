@@ -1,11 +1,19 @@
 extends Node
 
+signal database_loaded
+
 var player: Player
 var database: Database
+var is_database_ready := false
 
 func set_player(_player: Player):
-	assert(!player)
+	assert(!is_instance_valid(player) or player == _player)
 	player = _player
+
+
+func clear_player(_player: Player) -> void:
+	if player == _player:
+		player = null
 
 func spawn_crime_report(quest: Quest = null) -> CrimeReport3D:
 	var corkboard := get_tree().get_first_node_in_group("CrimeReportCorkboard") as Corkboard
@@ -16,13 +24,14 @@ func spawn_crime_report(quest: Quest = null) -> CrimeReport3D:
 
 func _ready() -> void:
 	database = Database.new()
-	
-	#assert(database != null)
-	#$RmsPersonsTableView.set_table_items(database.rms_persons)
-	#$VehicleSightingsTableView.set_table_items(database.vehicle_sightings)
+	_load_database_after_first_draw()
 
-	if player:
-		print("PLAYER IS ", player.name)
-	
+
+func _load_database_after_first_draw() -> void:
+	# Let the start menu reach the screen before doing any CSV parsing.
 	await get_tree().process_frame
-	database.refresh()
+	if DisplayServer.get_name() != "headless":
+		await RenderingServer.frame_post_draw
+	await database.load_from_csv_async(get_tree())
+	is_database_ready = true
+	database_loaded.emit()

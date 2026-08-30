@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://du16kmshvbjc4" path="res://assets/models/city/blocks/warehouse.glb" id="22_7tlau"]
 [ext_resource type="PackedScene" uid="uid://c4d58q5fisj3k" path="res://assets/models/city/blocks/parkinggarage.glb" id="27_h3250"]
 [ext_resource type="PackedScene" uid="uid://b1ne8ii0gy8fm" path="res://assets/models/city/blocks/movietheater.glb" id="28_my70f"]
+[ext_resource type="Script" uid="uid://xndke3fp2hka" path="res://scripts/random_building_lights.gd" id="30_random_lights"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_80iay"]
 sky_top_color = Color(0.17573944, 0.48172218, 0.64240384, 1)
@@ -925,6 +926,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 190.
 
 [node name="officebuilding3" parent="blocks" unique_id=630453847 instance=ExtResource("13_0orsp")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 14.9218235, 5.2172213, 16.520794)
+script = ExtResource("30_random_lights")
 
 [node name="AreaLight3D" type="AreaLight3D" parent="blocks/officebuilding3" unique_id=1844543347]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17.40473, 37.399178, -2.0065432)

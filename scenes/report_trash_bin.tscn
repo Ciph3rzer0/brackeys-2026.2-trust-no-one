@@ -1,6 +1,6 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene format=3 uid="uid://bd5vomef1fioj"]
 
-[ext_resource type="Script" path="res://scripts/report_trash_bin.gd" id="1_bin_script"]
+[ext_resource type="Script" uid="uid://c840l7dahwy5i" path="res://scripts/report_trash_bin.gd" id="1_bin_script"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cardboard"]
 albedo_color = Color(0.38, 0.245, 0.12, 1)
@@ -27,103 +27,92 @@ size = Vector3(0.08, 0.65, 1.1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_end"]
 size = Vector3(0.82, 0.65, 0.08)
 
-[node name="ReportTrashBin" type="StaticBody3D" groups=["Interactable", "ReportTrashBin"]]
+[node name="ReportTrashBin" type="StaticBody3D" unique_id=536759489 groups=["Interactable", "ReportTrashBin"]]
 script = ExtResource("1_bin_script")
 holder_label = "trash bin"
 
-[node name="Bottom" type="MeshInstance3D" parent="."]
-position = Vector3(0, 0.04, 0)
+[node name="Bottom" type="MeshInstance3D" parent="." unique_id=593015463]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
 mesh = SubResource("BoxMesh_bottom")
 
-[node name="LeftWall" type="MeshInstance3D" parent="."]
-position = Vector3(-0.41, 0.325, 0)
+[node name="LeftWall" type="MeshInstance3D" parent="." unique_id=305220879]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.41, 0.325, 0)
 mesh = SubResource("BoxMesh_side")
 
-[node name="RightWall" type="MeshInstance3D" parent="."]
-position = Vector3(0.41, 0.325, 0)
+[node name="RightWall" type="MeshInstance3D" parent="." unique_id=1425870775]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.41, 0.325, 0)
 mesh = SubResource("BoxMesh_side")
 
-[node name="FrontWall" type="MeshInstance3D" parent="."]
-position = Vector3(0, 0.325, 0.51)
+[node name="FrontWall" type="MeshInstance3D" parent="." unique_id=1515672929]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.325, 0.51)
 mesh = SubResource("BoxMesh_end")
 
-[node name="BackWall" type="MeshInstance3D" parent="."]
-position = Vector3(0, 0.325, -0.51)
+[node name="BackWall" type="MeshInstance3D" parent="." unique_id=1977180758]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.325, -0.51)
 mesh = SubResource("BoxMesh_end")
 
-[node name="BottomCollision" type="CollisionShape3D" parent="."]
-position = Vector3(0, 0.04, 0)
+[node name="BottomCollision" type="CollisionShape3D" parent="." unique_id=648354509]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
 shape = SubResource("BoxShape3D_bottom")
 
-[node name="LeftWallCollision" type="CollisionShape3D" parent="."]
-position = Vector3(-0.41, 0.325, 0)
+[node name="LeftWallCollision" type="CollisionShape3D" parent="." unique_id=775591439]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.41, 0.325, 0)
 shape = SubResource("BoxShape3D_side")
 
-[node name="RightWallCollision" type="CollisionShape3D" parent="."]
-position = Vector3(0.41, 0.325, 0)
+[node name="RightWallCollision" type="CollisionShape3D" parent="." unique_id=1378553634]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.41, 0.325, 0)
 shape = SubResource("BoxShape3D_side")
 
-[node name="FrontWallCollision" type="CollisionShape3D" parent="."]
-position = Vector3(0, 0.325, 0.51)
+[node name="FrontWallCollision" type="CollisionShape3D" parent="." unique_id=890380947]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.325, 0.51)
 shape = SubResource("BoxShape3D_end")
 
-[node name="BackWallCollision" type="CollisionShape3D" parent="."]
-position = Vector3(0, 0.325, -0.51)
+[node name="BackWallCollision" type="CollisionShape3D" parent="." unique_id=277459718]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.325, -0.51)
 shape = SubResource("BoxShape3D_end")
 
-[node name="Label3D" type="Label3D" parent="."]
-position = Vector3(0, 0.36, 0.555)
-modulate = Color(0.08, 0.055, 0.025, 1)
-text = "REPORT BIN"
-font_size = 48
+[node name="Label3D" type="Label3D" parent="." unique_id=1507883431]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.36, 0.555)
+modulate = Color(0.82084614, 0.43754703, 0.34158728, 1)
+text = "REPORT
+STORAGE"
+font_size = 24
 outline_size = 0
 
-[node name="Slots" type="Node3D" parent="."]
+[node name="Slots" type="Node3D" parent="." unique_id=1720831936]
 
-[node name="ReportSlot01" type="Node3D" parent="Slots"]
-position = Vector3(0, 0.12, 0)
-rotation = Vector3(-1.5707963, 0, 0)
+[node name="ReportSlot01" type="Node3D" parent="Slots" unique_id=637093146]
+transform = Transform3D(1, 0, 0, 0, 7.54979e-08, 1, 0, -1, 7.54979e-08, 0, 0.12, 0)
 
-[node name="ReportSlot02" type="Node3D" parent="Slots"]
-position = Vector3(0, 0.143, 0)
-rotation = Vector3(-1.5707963, 0, 0)
+[node name="ReportSlot02" type="Node3D" parent="Slots" unique_id=2062629334]
+transform = Transform3D(1, 0, 0, 0, 7.54979e-08, 1, 0, -1, 7.54979e-08, 0, 0.143, 0)
 
-[node name="ReportSlot03" type="Node3D" parent="Slots"]
-position = Vector3(0, 0.166, 0)
-rotation = Vector3(-1.5707963, 0, 0)
+[node name="ReportSlot03" type="Node3D" parent="Slots" unique_id=881293961]
+transform = Transform3D(1, 0, 0, 0, 7.54979e-08, 1, 0, -1, 7.54979e-08, 0, 0.166, 0)
 
-[node name="ReportSlot04" type="Node3D" parent="Slots"]
-position = Vector3(0, 0.189, 0)
-rotation = Vector3(-1.5707963, 0, 0)
+[node name="ReportSlot04" type="Node3D" parent="Slots" unique_id=739830083]
+transform = Transform3D(1, 0, 0, 0, 7.54979e-08, 1, 0, -1, 7.54979e-08, 0, 0.189, 0)
 
-[node name="ReportSlot05" type="Node3D" parent="Slots"]
-position = Vector3(0, 0.212, 0)
-rotation = Vector3(-1.5707963, 0, 0)
+[node name="ReportSlot05" type="Node3D" parent="Slots" unique_id=2031298565]
+transform = Transform3D(1, 0, 0, 0, 7.54979e-08, 1, 0, -1, 7.54979e-08, 0, 0.212, 0)
 
-[node name="ReportSlot06" type="Node3D" parent="Slots"]
-position = Vector3(0, 0.235, 0)
-rotation = Vector3(-1.5707963, 0, 0)
+[node name="ReportSlot06" type="Node3D" parent="Slots" unique_id=569151814]
+transform = Transform3D(1, 0, 0, 0, 7.54979e-08, 1, 0, -1, 7.54979e-08, 0, 0.235, 0)
 
-[node name="ReportSlot07" type="Node3D" parent="Slots"]
-position = Vector3(0, 0.258, 0)
-rotation = Vector3(-1.5707963, 0, 0)
+[node name="ReportSlot07" type="Node3D" parent="Slots" unique_id=1107480280]
+transform = Transform3D(1, 0, 0, 0, 7.54979e-08, 1, 0, -1, 7.54979e-08, 0, 0.258, 0)
 
-[node name="ReportSlot08" type="Node3D" parent="Slots"]
-position = Vector3(0, 0.281, 0)
-rotation = Vector3(-1.5707963, 0, 0)
+[node name="ReportSlot08" type="Node3D" parent="Slots" unique_id=1017531130]
+transform = Transform3D(1, 0, 0, 0, 7.54979e-08, 1, 0, -1, 7.54979e-08, 0, 0.281, 0)
 
-[node name="ReportSlot09" type="Node3D" parent="Slots"]
-position = Vector3(0, 0.304, 0)
-rotation = Vector3(-1.5707963, 0, 0)
+[node name="ReportSlot09" type="Node3D" parent="Slots" unique_id=1132351800]
+transform = Transform3D(1, 0, 0, 0, 7.54979e-08, 1, 0, -1, 7.54979e-08, 0, 0.304, 0)
 
-[node name="ReportSlot10" type="Node3D" parent="Slots"]
-position = Vector3(0, 0.327, 0)
-rotation = Vector3(-1.5707963, 0, 0)
+[node name="ReportSlot10" type="Node3D" parent="Slots" unique_id=1374196989]
+transform = Transform3D(1, 0, 0, 0, 7.54979e-08, 1, 0, -1, 7.54979e-08, 0, 0.327, 0)
 
-[node name="ReportSlot11" type="Node3D" parent="Slots"]
-position = Vector3(0, 0.35, 0)
-rotation = Vector3(-1.5707963, 0, 0)
+[node name="ReportSlot11" type="Node3D" parent="Slots" unique_id=2106488803]
+transform = Transform3D(1, 0, 0, 0, 7.54979e-08, 1, 0, -1, 7.54979e-08, 0, 0.35, 0)
 
-[node name="ReportSlot12" type="Node3D" parent="Slots"]
-position = Vector3(0, 0.373, 0)
-rotation = Vector3(-1.5707963, 0, 0)
+[node name="ReportSlot12" type="Node3D" parent="Slots" unique_id=1706708454]
+transform = Transform3D(1, 0, 0, 0, 7.54979e-08, 1, 0, -1, 7.54979e-08, 0, 0.373, 0)
