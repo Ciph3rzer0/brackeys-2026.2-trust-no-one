@@ -103,13 +103,23 @@ func submit_plate_to_quest(quest: Quest, plate: String) -> bool:
 		push_warning("Cannot submit a license plate without an associated quest.")
 		return false
 
-	var is_correct := plate.strip_edges().to_upper() == quest.correct_plate.strip_edges().to_upper()
+	var is_correct := compare_alphanumeric_only(plate, quest.correct_plate)
 	if is_correct:
 		print("CORRECT !!!!")
 	else:
 		print("wrong")
 	plate_submitted_for_quest.emit(quest, plate)
 	return is_correct
+
+
+func compare_alphanumeric_only(first: String, second: String) -> bool:
+	return get_alphanumeric_only(first) == get_alphanumeric_only(second)
+
+
+func get_alphanumeric_only(input: String) -> String:
+	var regex := RegEx.new()
+	regex.compile(r"[^a-zA-Z0-9]")
+	return regex.sub(input, "", true).to_lower()
 
 
 func submit_faxed_report(report: CrimeReport3D, quest: Quest, plate: String) -> bool:

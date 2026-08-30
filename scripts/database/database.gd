@@ -26,12 +26,18 @@ func load_from_csv_async(scene_tree: SceneTree) -> void:
 
 
 func has_vehicle_plate(plate: String) -> bool:
-	var normalized_plate := plate.strip_edges().to_upper()
+	var normalized_plate := _get_alphanumeric_only(plate)
 	if normalized_plate.is_empty():
 		return false
 
 	for sighting in vehicle_sightings:
-		if sighting.vehicle_plate.strip_edges().to_upper() == normalized_plate:
+		if _get_alphanumeric_only(sighting.vehicle_plate) == normalized_plate:
 			return true
 
 	return false
+
+
+func _get_alphanumeric_only(input: String) -> String:
+	var regex := RegEx.new()
+	regex.compile(r"[^a-zA-Z0-9]")
+	return regex.sub(input, "", true).to_lower()
