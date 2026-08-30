@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dyism05q6lpu7" path="res://ui/start_menu.gd" id="1_xrvln"]
 [ext_resource type="Texture2D" uid="uid://c6t3oxng53jc8" path="res://thumbnail.png" id="2_g1ph5"]
+[ext_resource type="AudioStream" uid="uid://cymfvndcry54f" path="res://assets/audio/music/lost-the-scent.mp3" id="3_start_music"]
 
 [sub_resource type="Gradient" id="Gradient_background"]
 offsets = PackedFloat32Array(0, 0.55, 1)
@@ -91,6 +92,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xrvln")
+
+[node name="StartMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_start_music")
+volume_db = -20.0
+autoplay = true
+bus = &"Music"
 
 [node name="Background" type="ColorRect" parent="." unique_id=310277134]
 layout_mode = 1

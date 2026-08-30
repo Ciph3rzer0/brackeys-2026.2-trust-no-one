@@ -1,15 +1,26 @@
 extends CanvasLayer
 
+@export var looping_music_path := NodePath("../MorningCoffeeLoop")
+
 @onready var overlay: Control = %Overlay
 @onready var result_label: Label = %ResultLabel
 @onready var score_label: Label = %ScoreLabel
 @onready var message_label: Label = %MessageLabel
 @onready var play_again_button: Button = %PlayAgainButton
+@onready var ending_music: AudioStreamPlayer = $EndingMusic
 
 var _is_displayed := false
 
 
 func _ready() -> void:
+	# This source file has had different import-loop settings during development.
+	# Keep the ending cue reliably one-shot regardless of its imported resource.
+	var ending_stream := ending_music.stream as AudioStreamWAV
+	if ending_stream:
+		ending_stream = ending_stream.duplicate() as AudioStreamWAV
+		ending_stream.loop_mode = AudioStreamWAV.LOOP_DISABLED
+		ending_music.stream = ending_stream
+
 	# Keep the overlay visible in the 2D editor for layout work, but hidden
 	# during gameplay until every case has been completed.
 	overlay.hide()
@@ -64,10 +75,18 @@ func _on_all_cases_completed(
 			+ "my way to Tobago... Gloria will explain the details."
 		)
 
+	_switch_to_ending_music()
 	overlay.show()
 	get_tree().paused = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	play_again_button.grab_focus()
+
+
+func _switch_to_ending_music() -> void:
+	var looping_music := get_node_or_null(looping_music_path) as AudioStreamPlayer3D
+	if looping_music:
+		looping_music.stop()
+	ending_music.play()
 
 
 func _on_play_again_button_pressed() -> void:

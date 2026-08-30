@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cmw4dul4kfecv"]
 
 [ext_resource type="Script" uid="uid://b1ii4uyla2ew" path="res://ui/end_screen.gd" id="1_end_screen"]
+[ext_resource type="AudioStream" uid="uid://wp6coykaawrh" path="res://assets/audio/music/morning-coffee.wav" id="2_ending_music"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
 bg_color = Color(0.035, 0.045, 0.065, 0.98)
@@ -77,6 +78,11 @@ corner_radius_bottom_left = 6
 process_mode = 3
 layer = 100
 script = ExtResource("1_end_screen")
+
+[node name="EndingMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ending_music")
+volume_db = -20.0
+bus = &"Music"
 
 [node name="Overlay" type="Control" parent="." unique_id=443743660]
 unique_name_in_owner = true
