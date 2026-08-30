@@ -6,6 +6,6 @@
 script = ExtResource("1_u3hcy")
 correct_plate = "EEL-1976"
 incident = "Speed Racer"
-details = "Someone has been burnin' rubber on main street.  Reports of a real speed demon racing back and forth early in the morning.  Perhaps worst of all, he's breaking our rule about not performing U-turns!  Maniac!"
+details = "Someone has been burnin' rubber on main street.  Reports of a real speed demon racing back and forth early in the mornings, scaring the Salon owner half-to-death.  Perhaps worst of all, he's breaking our rule about not performing U-turns!  Maniac!"
 datetime_start = "2026-08-26T00:05:00"
 metadata/_custom_type_script = "uid://dy022jdobl3k8"

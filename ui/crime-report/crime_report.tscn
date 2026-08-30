@@ -148,3 +148,4 @@ backspace_deletes_composite_character_enabled = true
 caret_blink = true
 
 [connection signal="text_submitted" from="ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PlateEntryTextEdit" to="." method="_on_plate_entry_text_edit_text_submitted"]
+[connection signal="text_changed" from="ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PlateEntryTextEdit" to="." method="_on_plate_entry_text_changed"]

@@ -233,7 +233,7 @@ uppercase = true
 [node name="Label3D3" type="Label3D" parent="rulesSwitch" unique_id=235724635]
 transform = Transform3D(-0.28350106, 2.8511504e-10, 2.4473826e-08, -1.8606883e-10, 0.16585258, -0.0046424028, -4.946514e-08, -0.016499527, -0.5894558, -0.006795168, -0.026447892, -0.050442696)
 modulate = Color(0, 0, 0, 1)
-text = "(press e to interact)"
+text = "(press e to read)"
 font_size = 15
 outline_size = 0
 
