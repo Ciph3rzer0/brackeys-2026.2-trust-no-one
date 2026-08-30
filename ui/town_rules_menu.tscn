@@ -1,6 +1,6 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://h7j1mnigu56t"]
 
-[ext_resource type="Script" path="res://ui/town_rules_menu.gd" id="1_rules"]
+[ext_resource type="Script" uid="uid://py1stpw2l7km" path="res://ui/town_rules_menu.gd" id="1_rules"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
 bg_color = Color(0.075, 0.085, 0.105, 0.97)
@@ -14,12 +14,11 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[node name="TownRulesMenu" type="CanvasLayer"]
+[node name="TownRulesMenu" type="CanvasLayer" unique_id=1529346113]
 layer = 20
-visible = false
 script = ExtResource("1_rules")
 
-[node name="Dimmer" type="ColorRect" parent="."]
+[node name="Dimmer" type="ColorRect" parent="." unique_id=1745583391]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -27,7 +26,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.58)
 
-[node name="CenterContainer" type="CenterContainer" parent="Dimmer"]
+[node name="CenterContainer" type="CenterContainer" parent="Dimmer" unique_id=1916413427]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -35,46 +34,70 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="Dimmer/CenterContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="Dimmer/CenterContainer" unique_id=57726155]
 custom_minimum_size = Vector2(580, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
 
-[node name="MarginContainer" type="MarginContainer" parent="Dimmer/CenterContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Dimmer/CenterContainer/PanelContainer" unique_id=2083151191]
 layout_mode = 2
 theme_override_constants/margin_left = 34
 theme_override_constants/margin_top = 26
 theme_override_constants/margin_right = 34
 theme_override_constants/margin_bottom = 26
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Dimmer/CenterContainer/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Dimmer/CenterContainer/PanelContainer/MarginContainer" unique_id=132524304]
 layout_mode = 2
 theme_override_constants/separation = 18
 
-[node name="Title" type="Label" parent="Dimmer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="Dimmer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1204236384]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.8235294, 0.8235294, 0.8235294, 1)
 theme_override_font_sizes/font_size = 30
-text = "Town Rules"
+text = "First day Notes"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="Separator" type="HSeparator" parent="Dimmer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Separator" type="HSeparator" parent="Dimmer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=518697683]
 layout_mode = 2
 
-[node name="Rules" type="Label" parent="Dimmer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="RulesScroll" type="ScrollContainer" parent="Dimmer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=457555259]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 430)
 layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="Rules" type="Label" parent="Dimmer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RulesScroll" unique_id=172109862]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
 theme_override_colors/font_color = Color(0.86, 0.87, 0.9, 1)
 theme_override_constants/line_spacing = 10
 theme_override_font_sizes/font_size = 21
-text = "1. Strict curfew from 2:00 AM to 6:00 AM.
+text = "Welcome to your first day working at Camera Co!  The company has only been operating for three days now and is already mired in various controversies, so try to make us look good.  You have your work cut out for you.
 
-2. No overnight parking in town outside of residences.
+Anyway...we've set up several ALPRs (automatic license plate readers) throughout the town.  Our contract with the local authorities allows them access to that data to assist in their crime-solving efforts.  We told them we would assign our brightest investigator to demonstrate how this system can handle some recent cases.  They didn't ask to see credentials, and we didn't offer.  That's where you come in.
 
-3. No U-turns."
+This can all be a bit tedious, so if you need a reminder on any of this...well, I'll be in the Bahamas for a few weeks, so I'll have the secretary make a brief note and leave it on your work table.
+
+Gloria!  Write this all down!  Well, not all of it.  Just the rules.  Are you listening to me?
+
+Whatever...our lawyers have highlighted some of the relevant legislation in this town which should make your \"investigations\" a little easier:
+
+1) strict 2:00 AM curfew lasting to 6:00 AM, during which all residents must be at home
+2) no overnight parking in town outside of residences
+3) no U-turns
+
+The cops in this town are a bit dim, so some of the reports they submit won't take a genius to resolve.  Just use the computer over there to access our database, and use the city map next to it to deduce a suspect.  Feel free to take police reports off the board on the wall in any order you'd like and clip them to the computer while you work.  Gloria can come in to pin more reports if you start running low.  When you find a poor sap to accuse, just write down their license plate number on the report and fax it back to the police.
+
+We are, of course, not financially liable for how they act on that information. And you are also free to fax the reports back without a guess to kill the case when you just don't like it.  But, like I alluded to earlier, I don't know that our image can tolerate the weight of *too* many more blemishes.
+
+Impress me and we'll talk about your career prospects going forward."
 autowrap_mode = 2
 
-[node name="CloseButton" type="Button" parent="Dimmer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="CloseButton" type="Button" parent="Dimmer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1303329150]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 42)
 layout_mode = 2

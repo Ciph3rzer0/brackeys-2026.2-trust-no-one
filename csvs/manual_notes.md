@@ -144,10 +144,10 @@
 +maybe move banana in the tailpipe to a random other person?
 
 # C2: Drove through the park
-"2026-08-27T08:15:59",2,LPC2,Green,VAN,"[""]"
+"2026-08-27T08:15:59",2,VOM-7998,Green,VAN,"[""]"
 +travel noise before this sighting?
 
-"2026-08-27T08:17:01",3,LPC2,Green,VAN,"[""]"
+"2026-08-27T08:17:01",3,VOM-7998,Green,VAN,"[""]"
 +travel noise after this sighting?
 
 # R1: Old man came out of nowhere, seen speeding by the airport at nearly 90 MPH, leaving flaming skid marks

@@ -46,7 +46,7 @@ outline_size = 0
 uppercase = true
 
 [node name="pin locations" type="Node3D" parent="corkboard2" unique_id=1551329889]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23908529, 0.61609024, 0.68265116)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23908529, 0.63654333, 0.68265116)
 
 [node name="pin1" type="Node3D" parent="corkboard2/pin locations" unique_id=1139482963]
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 0.26296616, 0.48053238, -1.5283463)

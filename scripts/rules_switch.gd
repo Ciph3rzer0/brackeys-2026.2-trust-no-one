@@ -12,8 +12,8 @@ func can_interact(_player: Player) -> bool:
 func get_interaction_text(_player: Player) -> String:
 	var rules_menu := _get_rules_menu()
 	if rules_menu and rules_menu.visible:
-		return "press e to close town rules"
-	return "press e to review town rules"
+		return "press e to close notes"
+	return "press e to review first day notes"
 
 
 func interact(player: Player = null) -> void:

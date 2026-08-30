@@ -16,7 +16,13 @@ var current_holder: ReportHolder3D
 func _ready() -> void:
 	report_sprite.texture = report_viewport.get_texture()
 	_apply_quest()
-	GameManager.player.viewports.append(report_viewport)
+	if is_instance_valid(GameManager.player):
+		GameManager.player.register_input_viewport(report_viewport)
+
+
+func _exit_tree() -> void:
+	if is_instance_valid(GameManager.player):
+		GameManager.player.unregister_input_viewport(report_viewport)
 
 func _apply_quest() -> void:
 	if quest and report_ui.has_method("set_quest"):

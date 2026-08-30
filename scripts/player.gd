@@ -78,10 +78,25 @@ func _unhandled_input(event: InputEvent) -> void:
 			get_viewport().set_input_as_handled()
 
 func find_focused_viewport() -> SubViewport:
-	for vp in viewports:
+	var index := 0
+	while index < viewports.size():
+		var vp := viewports[index]
+		if !is_instance_valid(vp):
+			viewports.remove_at(index)
+			continue
 		if vp.gui_get_focus_owner():
 			return vp
+		index += 1
 	return null
+
+
+func register_input_viewport(viewport: SubViewport) -> void:
+	if is_instance_valid(viewport) and !viewports.has(viewport):
+		viewports.append(viewport)
+
+
+func unregister_input_viewport(viewport: SubViewport) -> void:
+	viewports.erase(viewport)
 
 func try_mount():
 	var mount := get_available_mount()
@@ -184,13 +199,13 @@ func fax_held_report() -> bool:
 		return false
 
 	var report := held_report
+	var quest := report.quest
+	var submitted_plate := report.get_plate_entry()
 	held_report = null
 	print("report faxed: ", report.get_report_title())
-	
-	report.queue_free()
-	
-	QuestSystem.submit_plate_to_quest(report.quest, report.get_plate_entry())
+	QuestSystem.submit_plate_to_quest(quest, submitted_plate)
 	print("report ", report)
+	report.queue_free()
 
 	return true
 		

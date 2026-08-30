@@ -66,6 +66,7 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_uhg71")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=379033272]
+visible = false
 layout_mode = 2
 
 [node name="TimeTitle" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=2011935832]
@@ -89,6 +90,7 @@ layout_mode = 2
 text = "some end time"
 
 [node name="Divider2" type="Panel" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=539637987]
+visible = false
 custom_minimum_size = Vector2(0, 2)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_uhg71")
