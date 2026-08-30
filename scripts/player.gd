@@ -79,7 +79,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func find_focused_viewport() -> SubViewport:
 	for vp in viewports:
-		if vp.gui_get_focus_owner():
+		if is_instance_valid(vp) and vp.gui_get_focus_owner():
 			return vp
 	return null
 
