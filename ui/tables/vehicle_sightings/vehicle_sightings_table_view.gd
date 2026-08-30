@@ -58,6 +58,8 @@ var to_time_filter := ''
 func _filter_rows():
 	var start_timestamp := -1
 	var end_timestamp := -1
+	var start_time_of_day := -1
+	var end_time_of_day := -1
 	var normalized_day := day_filter.strip_edges()
 	var normalized_from := from_time_filter.strip_edges()
 	var normalized_to := to_time_filter.strip_edges()
@@ -87,6 +89,13 @@ func _filter_rows():
 		end_timestamp = Time.get_unix_time_from_datetime_string(
 			"%sT%s:59" % [date, effective_to]
 		)
+	elif (
+		normalized_day.is_empty()
+		and time_order_is_valid
+		and (!normalized_from.is_empty() or !normalized_to.is_empty())
+	):
+		start_time_of_day = _time_to_minutes(effective_from) * 60
+		end_time_of_day = _time_to_minutes(effective_to) * 60 + 59
 		
 	#remaining filters
 	for row in _rows:
@@ -96,6 +105,13 @@ func _filter_rows():
 		if end_timestamp >= 0 and row.source_row.unix_timestamp > end_timestamp:
 			row.visible = false
 			continue
+		if start_time_of_day >= 0:
+			var row_time_of_day := _timestamp_to_seconds_since_midnight(
+				row.source_row.unix_timestamp
+			)
+			if row_time_of_day < start_time_of_day or row_time_of_day > end_time_of_day:
+				row.visible = false
+				continue
 		
 		if plate_filter.length() and !plate_filter.is_subsequence_ofn(row.source_row.vehicle_plate):
 			row.visible = false
@@ -127,6 +143,15 @@ func _filter_rows():
 
 func _time_to_minutes(time_text: String) -> int:
 	return time_text.substr(0, 2).to_int() * 60 + time_text.substr(3, 2).to_int()
+
+
+func _timestamp_to_seconds_since_midnight(timestamp: int) -> int:
+	var datetime := Time.get_datetime_dict_from_unix_time(timestamp)
+	return (
+		int(datetime.get("hour", 0)) * 60 * 60
+		+ int(datetime.get("minute", 0)) * 60
+		+ int(datetime.get("second", 0))
+	)
 
 
 func _update_time_order_validation(to_precedes_from: bool) -> void:
