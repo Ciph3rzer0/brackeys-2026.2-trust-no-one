@@ -25,8 +25,20 @@ func assign_new_quest(quest: Quest = null):
 func submit_plate_to_quest(quest: Quest, plate: String):
 	#assert(quest == _active_quest)
 	
-	if plate == quest.correct_plate:
+	if compare_alphanumeric_only(plate, quest.correct_plate):
 		print("CORRECT !!!!")
 	else:
 		print("wrong")
 	plate_submitted_for_quest.emit(quest, plate)
+
+func compare_alphanumeric_only(str1: String, str2: String) -> bool:
+	var clean1 = get_alphanumeric_only(str1)
+	var clean2 = get_alphanumeric_only(str2)
+	return clean1 == clean2
+
+func get_alphanumeric_only(input: String) -> String:
+	var regex = RegEx.new()
+	regex.compile(r"[^a-zA-Z0-9]")
+	# Remove everything that is NOT a letter or number, then convert to lowercase
+	var stripped = regex.sub(input, "", true)
+	return stripped.to_lower()
