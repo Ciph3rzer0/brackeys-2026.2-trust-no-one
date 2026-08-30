@@ -23,5 +23,40 @@ func _init():
 	refresh()
 
 func load_from_csv():
-	var sightings = CSVHelper.load_all_data()
+	var sightings := CSVHelper.load_all_data()
 	vehicle_sightings = sightings
+	
+	# var unique_objects := {}
+	
+	#var features = flatten_shallow(sightings.map(func(s): return s.vehicle_features))
+	#
+	#for feat in features:
+		#unique_objects[feat] = true
+	#
+	#print(unique_objects.keys())
+	
+	#var colors = sightings.map(func(s): return s.vehicle_color)
+	#unique_objects = {}
+	#
+	#for color in colors:
+		#unique_objects[color] = true
+	#
+	#print(unique_objects.keys())
+	#
+	#var types = sightings.map(func(s): return s.vehicle_type)
+	#unique_objects = {}
+	#
+	#for type in types:
+		#unique_objects[type] = true
+	#
+	#print(unique_objects.keys())
+
+## Flattens exactly one level of nested arrays
+func flatten_shallow(nested_array: Array) -> Array:
+	var flat_array = []
+	for item in nested_array:
+		if item is Array:
+			flat_array.append_array(item)
+		else:
+			flat_array.push_back(item)
+	return flat_array
