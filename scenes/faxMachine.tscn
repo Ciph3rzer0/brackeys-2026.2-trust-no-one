@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://clm0ltpnrt7du" path="res://assets/models/office/faxMachine.glb" id="1_iqwb4"]
 [ext_resource type="PackedScene" uid="uid://bo0akjnab2yy2" path="res://assets/models/office/faxTable.glb" id="2_6rukd"]
 [ext_resource type="Script" uid="uid://vdqp0s77ayxg" path="res://scripts/fax_machine.gd" id="3_fax_script"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/computerAction-5.wav" id="4_fax_sound"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0o143"]
 albedo_color = Color(0.96202856, 0.83949524, 3.85046e-07, 1)
@@ -15,6 +16,10 @@ size = Vector3(0.9655762, 0.5641937, 1.0805664)
 
 [node name="FaxMachine" type="Node3D" unique_id=1072937977 groups=["Interactable"]]
 script = ExtResource("3_fax_script")
+
+[node name="FaxSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_fax_sound")
+bus = &"SFX"
 
 [node name="faxMachine" parent="." unique_id=880050772 instance=ExtResource("1_iqwb4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09218013, 1.1391083, 0)

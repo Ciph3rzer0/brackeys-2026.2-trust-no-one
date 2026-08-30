@@ -1,5 +1,8 @@
 extends ReportHolder3D
 
+@onready var pin_sound: AudioStreamPlayer3D = $PinSound
+@onready var unpin_sound: AudioStreamPlayer3D = $UnpinSound
+
 var _report_stack: Array[CrimeReport3D] = []
 
 
@@ -38,6 +41,7 @@ func interact(player: Player = null) -> void:
 
 
 func _on_report_placed(report: CrimeReport3D, _slot: Node3D) -> void:
+	pin_sound.play()
 	_report_stack.erase(report)
 	_report_stack.append(report)
 	# Let the bin receive the interaction ray instead of buried reports.
@@ -47,6 +51,7 @@ func _on_report_placed(report: CrimeReport3D, _slot: Node3D) -> void:
 
 
 func _on_report_removed(report: CrimeReport3D) -> void:
+	unpin_sound.play()
 	_report_stack.erase(report)
 	QuestSystem.mark_report_removed_from_bin(report)
 

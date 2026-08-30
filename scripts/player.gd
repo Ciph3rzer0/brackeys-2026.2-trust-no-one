@@ -136,6 +136,7 @@ func try_mount():
 	cam.rotation_degrees.x = 0
 	change_fov(50.0, 0.27)
 	set_mouse_free(true)
+	mount.play_mount_sound()
 
 
 func get_available_mount() -> InteractableMount:

@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://bd5vomef1fioj"]
 
 [ext_resource type="Script" uid="uid://c840l7dahwy5i" path="res://scripts/report_trash_bin.gd" id="1_bin_script"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/pin.wav" id="2_pin_sound"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/unpin.wav" id="3_unpin_sound"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cardboard"]
 albedo_color = Color(0.38, 0.245, 0.12, 1)
@@ -30,6 +32,14 @@ size = Vector3(0.82, 0.65, 0.08)
 [node name="ReportTrashBin" type="StaticBody3D" unique_id=536759489 groups=["Interactable", "ReportTrashBin"]]
 script = ExtResource("1_bin_script")
 holder_label = "trash bin"
+
+[node name="PinSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_pin_sound")
+bus = &"SFX"
+
+[node name="UnpinSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_unpin_sound")
+bus = &"SFX"
 
 [node name="Bottom" type="MeshInstance3D" parent="." unique_id=593015463]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
