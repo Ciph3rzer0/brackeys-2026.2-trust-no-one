@@ -7,6 +7,12 @@ extends StaticBody3D
 		if is_node_ready():
 			_apply_quest()
 
+@export var report_number := 0:
+	set(value):
+		report_number = value
+		if is_node_ready():
+			_apply_report_number()
+
 var current_holder: ReportHolder3D
 
 @onready var report_sprite: Sprite3D = $Sprite3D
@@ -16,6 +22,7 @@ var current_holder: ReportHolder3D
 func _ready() -> void:
 	report_sprite.texture = report_viewport.get_texture()
 	_apply_quest()
+	_apply_report_number()
 	if is_instance_valid(GameManager.player):
 		GameManager.player.register_input_viewport(report_viewport)
 
@@ -27,6 +34,11 @@ func _exit_tree() -> void:
 func _apply_quest() -> void:
 	if quest and report_ui.has_method("set_quest"):
 		report_ui.set_quest(quest)
+
+
+func _apply_report_number() -> void:
+	if report_ui.has_method("set_report_number"):
+		report_ui.set_report_number(report_number)
 
 func can_interact(player: Player) -> bool:
 	return player != null and !player.has_held_report()

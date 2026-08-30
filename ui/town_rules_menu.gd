@@ -13,6 +13,13 @@ func _ready() -> void:
 	# 2D editor. Always begin closed when the game actually runs.
 	visible = false
 	close_button.pressed.connect(close_menu)
+	if GameManager.consume_first_day_notes_request():
+		_open_requested_notes.call_deferred()
+
+
+func _open_requested_notes() -> void:
+	var player := GameManager.player if is_instance_valid(GameManager.player) else null
+	open_menu(player)
 
 
 func _process(_delta: float) -> void:

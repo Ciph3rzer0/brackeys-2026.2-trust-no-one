@@ -20,6 +20,7 @@ extends ReportHolder3D
 
 var _queued_reports: Array[Dictionary] = []
 var _slot_refill_generations := {}
+var _next_report_number := 1
 
 
 func _ready() -> void:
@@ -34,17 +35,20 @@ func spawn_report(quest_override: Quest = null, scene_override: PackedScene = nu
 	if !scene_to_spawn:
 		push_warning("Cannot pin a crime report: no report scene is configured.")
 		return null
+	var report_number := _next_report_number
+	_next_report_number += 1
 
 	var open_slot := get_first_open_slot()
 	if !open_slot:
-		_queue_report(quest_override, scene_to_spawn)
+		_queue_report(quest_override, scene_to_spawn, report_number)
 		return null
 
 	return _spawn_report_in_slot(
 		quest_override,
 		scene_to_spawn,
 		open_slot,
-		true
+		true,
+		report_number
 	)
 
 
@@ -52,8 +56,12 @@ func get_queued_report_count() -> int:
 	return _queued_reports.size()
 
 
-func _queue_report(quest: Quest, scene: PackedScene) -> void:
-	_queued_reports.append({"quest": quest, "scene": scene})
+func _queue_report(quest: Quest, scene: PackedScene, report_number: int) -> void:
+	_queued_reports.append({
+		"quest": quest,
+		"scene": scene,
+		"report_number": report_number,
+	})
 	QuestSystem.reserve_cases(1)
 
 
@@ -61,7 +69,8 @@ func _spawn_report_in_slot(
 	quest_override: Quest,
 	scene_to_spawn: PackedScene,
 	slot: Node3D,
-	count_as_new_case: bool
+	count_as_new_case: bool,
+	report_number: int
 ) -> CrimeReport3D:
 	var report := scene_to_spawn.instantiate() as CrimeReport3D
 	if !report:
@@ -70,6 +79,7 @@ func _spawn_report_in_slot(
 
 	if quest_override:
 		report.quest = quest_override
+	report.report_number = report_number
 	add_child(report)
 
 	if !place_report_in_slot(report, slot):
@@ -116,7 +126,8 @@ func _refill_slot_after_delay(slot: Node3D, generation: int) -> void:
 		queued_report.get("quest") as Quest,
 		queued_report.get("scene") as PackedScene,
 		slot,
-		false
+		false,
+		int(queued_report.get("report_number", 0))
 	)
 	if !spawned_report:
 		_queued_reports.push_front(queued_report)

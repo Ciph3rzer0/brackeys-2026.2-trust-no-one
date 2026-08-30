@@ -34,6 +34,7 @@ layout_mode = 2
 theme_override_constants/separation = 10
 
 [node name="Header" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=290499644]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
 text = "Crime Report"

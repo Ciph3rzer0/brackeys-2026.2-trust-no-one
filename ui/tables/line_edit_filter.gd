@@ -66,7 +66,7 @@ func _get_local_validation_error() -> String:
 				return "Enter a day from 1 to 31."
 		ValidationMode.TIME:
 			if !is_valid_time_text(value):
-				return "Enter a 24-hour time in HH:MM format."
+				return "Enter a 24-hour time in H:MM or HH:MM format."
 	return ""
 
 
@@ -82,7 +82,7 @@ static func is_valid_day_text(value: String) -> bool:
 
 
 static func is_valid_time_text(value: String) -> bool:
-	var normalized := value.strip_edges()
+	var normalized := normalize_time_text(value)
 	if normalized.length() != 5 or normalized.substr(2, 1) != ":":
 		return false
 
@@ -96,3 +96,10 @@ static func is_valid_time_text(value: String) -> bool:
 		and minute_text.to_int() >= 0
 		and minute_text.to_int() <= 59
 	)
+
+
+static func normalize_time_text(value: String) -> String:
+	var normalized := value.strip_edges()
+	if normalized.length() == 4 and normalized.substr(1, 1) == ":":
+		return "0" + normalized
+	return normalized

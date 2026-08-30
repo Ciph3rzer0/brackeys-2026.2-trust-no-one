@@ -40,6 +40,7 @@ func _on_start_button_pressed() -> void:
 	start_button.disabled = true
 	_set_status("Starting shift...")
 	QuestSystem.reset_run()
+	GameManager.request_first_day_notes()
 	get_tree().change_scene_to_file(GAME_SCENE)
 
 func _on_quit_button_pressed() -> void:

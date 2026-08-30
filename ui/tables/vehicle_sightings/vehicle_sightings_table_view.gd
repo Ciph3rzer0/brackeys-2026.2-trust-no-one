@@ -142,8 +142,8 @@ func _filter_rows():
 	var start_time_of_day := -1
 	var end_time_of_day := -1
 	var normalized_day := day_filter.strip_edges()
-	var normalized_from := from_time_filter.strip_edges()
-	var normalized_to := to_time_filter.strip_edges()
+	var normalized_from := LineEditFilter.normalize_time_text(from_time_filter)
+	var normalized_to := LineEditFilter.normalize_time_text(to_time_filter)
 	var effective_from := normalized_from if !normalized_from.is_empty() else DEFAULT_FROM_TIME
 	var effective_to := normalized_to if !normalized_to.is_empty() else DEFAULT_TO_TIME
 
@@ -213,7 +213,8 @@ func _filter_rows():
 
 
 func _time_to_minutes(time_text: String) -> int:
-	return time_text.substr(0, 2).to_int() * 60 + time_text.substr(3, 2).to_int()
+	var normalized := LineEditFilter.normalize_time_text(time_text)
+	return normalized.substr(0, 2).to_int() * 60 + normalized.substr(3, 2).to_int()
 
 
 func _timestamp_to_seconds_since_midnight(timestamp: int) -> int:

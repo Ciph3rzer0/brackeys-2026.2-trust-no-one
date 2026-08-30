@@ -147,7 +147,7 @@ max_length = 5
 select_all_on_focus = true
 script = ExtResource("2_line_filter")
 validation_mode = 1
-validation_hint = "Start time in 24-hour HH:MM format. Defaults to 00:00."
+validation_hint = "Start time in 24-hour H:MM or HH:MM format. Defaults to 00:00."
 
 [node name="Label" type="Label" parent="FromTimeFilter" unique_id=1355078998]
 layout_mode = 0
@@ -174,7 +174,7 @@ max_length = 5
 select_all_on_focus = true
 script = ExtResource("2_line_filter")
 validation_mode = 1
-validation_hint = "End time in 24-hour HH:MM format. Defaults to 23:59."
+validation_hint = "End time in 24-hour H:MM or HH:MM format. Defaults to 23:59."
 
 [node name="Label" type="Label" parent="ToTimeFilter" unique_id=499115972]
 layout_mode = 0

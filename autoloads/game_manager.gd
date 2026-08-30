@@ -5,6 +5,17 @@ signal database_loaded
 var player: Player
 var database: Database
 var is_database_ready := false
+var _first_day_notes_requested := false
+
+
+func request_first_day_notes() -> void:
+	_first_day_notes_requested = true
+
+
+func consume_first_day_notes_request() -> bool:
+	var was_requested := _first_day_notes_requested
+	_first_day_notes_requested = false
+	return was_requested
 
 func set_player(_player: Player):
 	assert(!is_instance_valid(player) or player == _player)

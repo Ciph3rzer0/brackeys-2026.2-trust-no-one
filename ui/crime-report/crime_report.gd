@@ -32,6 +32,10 @@ func set_quest(_quest: Quest):
 		%Incident.text = quest.incident
 		%Details.text = quest.details
 
+
+func set_report_number(report_number: int) -> void:
+	%Header.text = "Crime Report #%d" % report_number if report_number > 0 else "Crime Report"
+
 func _on_submit_button_pressed() -> void:
 	var plate := get_plate_entry()
 	QuestSystem.submit_plate_to_quest(quest, plate)
