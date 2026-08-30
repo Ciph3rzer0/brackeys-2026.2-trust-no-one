@@ -27,17 +27,21 @@ mesh = SubResource("PlaneMesh_h45xw")
 
 [node name="Label3D" type="Label3D" parent="backpanel/map" unique_id=1225283718]
 transform = Transform3D(0.27175555, 0, 0, 0, -1.38833505e-08, 0.31761402, 0, -0.31761402, -1.38833505e-08, -0.7907339, 0.0020822603, -0.83724344)
+shaded = true
 text = "N
 "
 
 [node name="Label3D4" type="Label3D" parent="backpanel/map" unique_id=456813770]
 transform = Transform3D(0.27175555, 0, 0, 0, -1.38833505e-08, 0.31761402, 0, -0.31761402, -1.38833505e-08, -0.7907339, 0.002082264, -0.7229536)
+shaded = true
 text = "S"
 
 [node name="Label3D2" type="Label3D" parent="backpanel/map" unique_id=1958129158]
 transform = Transform3D(0.27175555, 0, 0, 0, -1.38833505e-08, 0.31761402, 0, -0.31761402, -1.38833505e-08, -0.7417224, 0.0020822622, -0.7747533)
+shaded = true
 text = "E"
 
 [node name="Label3D3" type="Label3D" parent="backpanel/map" unique_id=1748036624]
 transform = Transform3D(0.27175555, 0, 0, 0, -1.38833505e-08, 0.31761402, 0, -0.31761402, -1.38833505e-08, -0.8417423, 0.0020822622, -0.7747533)
+shaded = true
 text = "W"

@@ -9,6 +9,7 @@ extends CharacterBody3D
 
 @onready var interaction_ray: RayCast3D = $Camera3D/InteractionRay
 @onready var interaction_prompt: Label = $InteractionUI/InteractionPrompt
+@onready var crosshair_dot: Control = $InteractionUI/CrosshairDot
 @onready var held_report_anchor: Node3D = $Camera3D/HeldReportAnchor
 
 var run_speed = 5.5
@@ -40,6 +41,7 @@ func _ready() -> void:
 
 func set_mouse_free(val: bool):
 	is_mouse_free = val
+	crosshair_dot.visible = !val
 	if val:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	else:
@@ -165,6 +167,13 @@ func change_fov(target_fov: float, duration: float) -> void:
 
 var exit_button_held_timer := 0.0
 func _process(delta: float) -> void:
+	var mouse_mode := Input.get_mouse_mode()
+	crosshair_dot.visible = (
+		mouse_mode == Input.MOUSE_MODE_HIDDEN
+		or mouse_mode == Input.MOUSE_MODE_CAPTURED
+		or mouse_mode == Input.MOUSE_MODE_CONFINED_HIDDEN
+	)
+
 	var interactable := get_faced_interactable()
 	var available_mount := get_available_mount() if !_mounted_object else null
 	var prompt_target: Node = interactable if interactable else available_mount
