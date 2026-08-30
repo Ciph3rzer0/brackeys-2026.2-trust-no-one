@@ -50,7 +50,10 @@ func set_mouse_free(val: bool):
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		set_mouse_free(!is_mouse_free)
+		if _mounted_object and !is_mouse_free:
+			_release_input_viewport_focus()
 		get_viewport().set_input_as_handled()
+		return
 	
 	if is_mouse_free: return
 	if event is InputEventMouseMotion:
@@ -104,6 +107,14 @@ func find_focused_viewport() -> SubViewport:
 	return null
 
 
+func _has_focused_text_input() -> bool:
+	var focused_viewport := find_focused_viewport()
+	if !focused_viewport:
+		return false
+	var focused_control := focused_viewport.gui_get_focus_owner()
+	return focused_control is LineEdit or focused_control is TextEdit
+
+
 func register_input_viewport(viewport: SubViewport) -> void:
 	if is_instance_valid(viewport) and !viewports.has(viewport):
 		viewports.append(viewport)
@@ -153,10 +164,18 @@ func get_available_mount() -> InteractableMount:
 func dismount():
 	var previous_mount := _mounted_object
 	_mounted_object = null
+	_release_input_viewport_focus()
 	change_fov(75.0, 0.05)
 	set_mouse_free(false)
 	if previous_mount:
 		previous_mount.notify_dismounted()
+
+
+func _release_input_viewport_focus() -> void:
+	for viewport in viewports:
+		if is_instance_valid(viewport):
+			viewport.gui_release_focus()
+	_active_input_viewport = null
 
 
 var fov_tween: Tween
@@ -181,8 +200,15 @@ func _process(delta: float) -> void:
 	var interactable := get_faced_interactable()
 	var available_mount := get_available_mount() if !_mounted_object else null
 	var prompt_target: Node = interactable if interactable else available_mount
-	interaction_prompt.visible = !_mounted_object and !is_mouse_free and prompt_target != null
-	if interaction_prompt.visible:
+	if _mounted_object:
+		interaction_prompt.visible = true
+		if is_mouse_free:
+			interaction_prompt.text = "tab — free look"
+		else:
+			interaction_prompt.text = "wasd — stand up    tab — use cursor"
+	else:
+		interaction_prompt.visible = !is_mouse_free and prompt_target != null
+	if interaction_prompt.visible and !_mounted_object:
 		if prompt_target.has_method("get_interaction_text"):
 			interaction_prompt.text = prompt_target.get_interaction_text(self)
 		else:
@@ -274,8 +300,9 @@ func fax_held_report() -> bool:
 func _physics_process(delta: float) -> void:
 	var input_dir = Input.get_vector( "pc_right", "pc_left", "pc_back" ,"pc_forward")
 	
-	# If the player moves while camera is locked (look mode), dismount
-	if !is_mouse_free and !input_dir.is_zero_approx():
+	# Preserve movement letters while a text field is active. Once text entry
+	# finishes, the same movement press stands the player up and moves them.
+	if _mounted_object and !input_dir.is_zero_approx() and !_has_focused_text_input():
 		dismount()
 	
 	# No player movement while mounted

@@ -90,11 +90,11 @@ Whatever...our lawyers have highlighted some of the relevant legislation in this
 2) no overnight parking in town outside of residences
 3) no U-turns
 
-The cops in this town are a bit dim, so some of the reports they submit won't take a genius to resolve.  Just use the computer over there to access our database, and use the city map next to it to deduce a suspect.  Feel free to take police reports off the board on the wall in any order you'd like and clip them to the computer while you work.  Gloria can come in to pin more reports if you start running low.  When you find a poor sap to accuse, just write down their license plate number on the report and fax it back to the police.
+It's not hard to use our system.  Take a police report off the board in any order you'd like and clip it to the computer while you work. Then sit at the computer to access the database.  Check out the city map on the wall it to deduce a suspect based on clues in the report and the database.  When you find a poor sap to accuse, just write down their license plate number on the report and fax it back to the police.  Gloria can come in to pin more reports if you start running low.
 
-We are, of course, not financially liable for how they act on that information. And you are also free to store reports in the trash box on the floor when you are stumped.  But, like I alluded to earlier, I don't know that our image can tolerate the weight of *too* many more blemishes.
+We are, of course, not financially liable for how the police act on your accusations, and you are also free to store reports you don't like in the trash box on the floor.  But, like I alluded to earlier, I don't know that our image can tolerate the weight of *too* many more lawsuits from the misuse of our system.
 
-Impress me and we'll talk about your career prospects going forward."
+Complete all the forms (either faxed or trashed) and we'll talk about your career prospects going forward."
 autowrap_mode = 2
 
 [node name="CloseButton" type="Button" parent="Dimmer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1303329150]

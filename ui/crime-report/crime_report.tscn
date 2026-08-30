@@ -148,5 +148,15 @@ theme_override_font_sizes/font_size = 22
 backspace_deletes_composite_character_enabled = true
 caret_blink = true
 
+[node name="PlateEntryStatus" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=145833196]
+visible = false
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.18, 0.42, 0.2, 1)
+theme_override_font_sizes/font_size = 16
+text = "Plate entry complete — use WASD to stand."
+horizontal_alignment = 2
+autowrap_mode = 2
+
 [connection signal="text_submitted" from="ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PlateEntryTextEdit" to="." method="_on_plate_entry_text_edit_text_submitted"]
 [connection signal="text_changed" from="ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PlateEntryTextEdit" to="." method="_on_plate_entry_text_changed"]

@@ -5,7 +5,7 @@ signal database_loaded
 var player: Player
 var database: Database
 var is_database_ready := false
-var _first_day_notes_requested := false
+var _first_day_notes_requested := true
 
 
 func request_first_day_notes() -> void:
@@ -39,7 +39,7 @@ func _ready() -> void:
 
 
 func _load_database_after_first_draw() -> void:
-	# Let the start menu reach the screen before doing any CSV parsing.
+	# Let the initial scene reach the screen before doing any CSV parsing.
 	await get_tree().process_frame
 	if DisplayServer.get_name() != "headless":
 		await RenderingServer.frame_post_draw

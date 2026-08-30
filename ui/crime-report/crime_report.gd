@@ -38,8 +38,18 @@ func set_report_number(report_number: int) -> void:
 
 func _on_submit_button_pressed() -> void:
 	var plate := get_plate_entry()
+	if plate.strip_edges().is_empty():
+		%PlateEntryStatus.add_theme_color_override("font_color", Color(0.7, 0.04, 0.04))
+		%PlateEntryStatus.text = "Enter a license plate before finishing."
+		%PlateEntryStatus.show()
+		return
+
 	QuestSystem.submit_plate_to_quest(quest, plate)
 	print("Submitted ", plate)
+	plate_entry.release_focus()
+	%PlateEntryStatus.add_theme_color_override("font_color", Color(0.18, 0.42, 0.2))
+	%PlateEntryStatus.text = "Plate entry complete — use WASD to stand."
+	%PlateEntryStatus.show()
 
 func _on_plate_entry_text_edit_text_submitted(_new_text: String) -> void:
 	_on_submit_button_pressed()
@@ -47,6 +57,7 @@ func _on_plate_entry_text_edit_text_submitted(_new_text: String) -> void:
 
 
 func _on_plate_entry_text_changed(new_text: String) -> void:
+	%PlateEntryStatus.hide()
 	_normalize_plate_entry(new_text)
 
 
