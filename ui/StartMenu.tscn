@@ -163,8 +163,9 @@ horizontal_alignment = 1
 [node name="Separator" type="HSeparator" parent="CenterContainer/MenuPanel/MarginContainer/Content" unique_id=2041255290]
 layout_mode = 2
 
-[node name="StatusLabel" type="Label" parent="CenterContainer/MenuPanel/MarginContainer/Content"]
+[node name="StatusLabel" type="Label" parent="CenterContainer/MenuPanel/MarginContainer/Content" unique_id=1489842202]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.66, 0.72, 0.82, 1)

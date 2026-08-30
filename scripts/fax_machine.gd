@@ -6,7 +6,7 @@ func get_interaction_text(player: Player) -> String:
 		if !rejection_reason.is_empty():
 			return rejection_reason
 		return "press e to fax report"
-	return "fax completed reports here"
+	return ""
 
 func interact(player: Player = null) -> void:
 	if !player:

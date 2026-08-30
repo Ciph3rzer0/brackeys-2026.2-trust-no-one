@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene format=3 uid="uid://0c1s8aps4srg"]
 
-[ext_resource type="Script" path="res://scripts/case_stats_display_3d.gd" id="1_stats_script"]
+[ext_resource type="Script" uid="uid://by77s0uuom12c" path="res://scripts/case_stats_display_3d.gd" id="1_stats_script"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_card"]
 shading_mode = 0
@@ -10,21 +10,21 @@ albedo_color = Color(0.82, 0.79, 0.68, 1)
 material = SubResource("StandardMaterial3D_card")
 size = Vector2(2.3, 1.15)
 
-[node name="CaseStatsDisplay3D" type="Node3D"]
+[node name="CaseStatsDisplay3D" type="Node3D" unique_id=2049659646]
 script = ExtResource("1_stats_script")
 
-[node name="Plane" type="MeshInstance3D" parent="."]
+[node name="Plane" type="MeshInstance3D" parent="." unique_id=1495769447]
 mesh = SubResource("QuadMesh_card")
 
-[node name="StatsLabel" type="Label3D" parent="."]
-position = Vector3(0, 0, 0.006)
+[node name="StatsLabel" type="Label3D" parent="." unique_id=521055477]
+transform = Transform3D(1.6942799, 0, 0, 0, 1.6942799, 0, 0, 0, 1.6942799, -0.841431, 0, 0.006)
+pixel_size = 0.0025
 modulate = Color(0.06, 0.055, 0.045, 1)
 text = "Resolved cases: 0
 Unresolved cases: 0
 Trash bin cases: 0
 Cases resulting in lawsuits: 0"
-pixel_size = 0.0025
 font_size = 30
 outline_size = 0
-width = 820.0
 horizontal_alignment = 0
+width = 820.0

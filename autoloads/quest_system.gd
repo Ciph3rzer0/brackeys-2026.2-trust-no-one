@@ -37,7 +37,11 @@ func reset_run() -> void:
 	case_statistics_changed.emit(resolved_cases, lawsuit_cases)
 
 
-func register_report(report: CrimeReport3D) -> void:
+func reserve_cases(amount: int) -> void:
+	total_cases += maxi(0, amount)
+
+
+func register_report(report: CrimeReport3D, count_as_new_case := true) -> void:
 	if !is_instance_valid(report):
 		return
 
@@ -46,7 +50,8 @@ func register_report(report: CrimeReport3D) -> void:
 		return
 
 	_report_states[report_id] = REPORT_OPEN
-	total_cases += 1
+	if count_as_new_case:
+		total_cases += 1
 
 
 func mark_report_binned(report: CrimeReport3D) -> void:

@@ -10,6 +10,9 @@ var _is_displayed := false
 
 
 func _ready() -> void:
+	# Keep the overlay visible in the 2D editor for layout work, but hidden
+	# during gameplay until every case has been completed.
+	overlay.hide()
 	QuestSystem.all_cases_completed.connect(_on_all_cases_completed)
 
 

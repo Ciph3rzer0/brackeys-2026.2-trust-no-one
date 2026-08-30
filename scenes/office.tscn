@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://c8wp7jb7ymwmc" path="res://scenes/report_clamp.tscn" id="10_6hbky"]
 [ext_resource type="PackedScene" uid="uid://bxc4ceq66ael3" path="res://scenes/player.tscn" id="10_gnmmx"]
 [ext_resource type="PackedScene" uid="uid://cu5og6niixvj7" path="res://assets/models/office/door.glb" id="12_wruke"]
-[ext_resource type="PackedScene" uid="uid://bosjilrctrsn7" path="res://assets/models/office/gooseneckTablet.glb" id="13_wruke"]
 [ext_resource type="Shader" uid="uid://clgq4liepl864" path="res://assets/shaders/city.gdshader" id="15_jp1e5"]
 [ext_resource type="PackedScene" uid="uid://cc4ldgg13mc2w" path="res://scenes/corkboard.tscn" id="16_07d2k"]
 [ext_resource type="PackedScene" uid="uid://b085wqdb2gvpt" path="res://scenes/coffeeCup.tscn" id="16_gnmmx"]
@@ -32,8 +31,8 @@
 [ext_resource type="PackedScene" uid="uid://h7j1mnigu56t" path="res://ui/town_rules_menu.tscn" id="32_rules_menu"]
 [ext_resource type="Script" uid="uid://djv3qbfbp73ge" path="res://scripts/rules_switch.gd" id="33_rules_switch"]
 [ext_resource type="PackedScene" uid="uid://bd5vomef1fioj" path="res://scenes/report_trash_bin.tscn" id="34_report_bin"]
-[ext_resource type="PackedScene" path="res://scenes/case_stats_display_3d.tscn" id="35_case_stats"]
-[ext_resource type="PackedScene" path="res://ui/end_screen.tscn" id="36_end_screen"]
+[ext_resource type="PackedScene" uid="uid://0c1s8aps4srg" path="res://scenes/case_stats_display_3d.tscn" id="35_case_stats"]
+[ext_resource type="PackedScene" uid="uid://cmw4dul4kfecv" path="res://ui/end_screen.tscn" id="36_end_screen"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jp1e5"]
 albedo_color = Color(0.22503361, 0.600545, 0.5632237, 1)
@@ -61,6 +60,12 @@ albedo_color = Color(0.52285063, 0.50685763, 0.16510546, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_3u7yi"]
 material = SubResource("StandardMaterial3D_eet0l")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_42gc7"]
+albedo_color = Color(0.260093, 0.1424042, 0.038405187, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gf52q"]
+material = SubResource("StandardMaterial3D_42gc7")
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_6hbky"]
 
@@ -133,8 +138,8 @@ background_color = Color(1, 1, 1, 1)
 ambient_light_color = Color(0.90408707, 0.92056644, 0.9382726, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_142py"]
-radius = 1.1865234
-height = 2.3730469
+radius = 1.1386719
+height = 2.2773438
 
 [node name="Office" type="Node3D" unique_id=2119133953]
 
@@ -143,7 +148,7 @@ transform = Transform3D(1.5650182, 0, 1.4565594, 0, 2.137954, 0, -1.4565594, 0, 
 viewports = [NodePath("../ComputerScreenRenders/ComputerMonitor"), NodePath("../ComputerScreenRenders/MapGrid")]
 
 [node name="CaseStatsDisplay3D" parent="." unique_id=1890288023 instance=ExtResource("35_case_stats")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.6, -5.68)
+transform = Transform3D(0.99999994, 0, 5.9604645e-08, 0, 1, 0, -5.9604645e-08, 0, 0.99999994, -0.8286164, 6.424229, -5.718283)
 
 [node name="Rain" type="AudioStreamPlayer3D" parent="." unique_id=105857967]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1283921, 1.0637031, 6.396698)
@@ -197,12 +202,16 @@ stream = ExtResource("19_light_click")
 bus = &"SFX"
 
 [node name="rulesSwitch" type="StaticBody3D" parent="." unique_id=13043266 groups=["Interactable"]]
-transform = Transform3D(1, 0, 0, 0, -7.46891e-08, -0.48076597, 0, 1.7086873, -2.1014946e-08, 2.5252595, 1.9391849, 2.2375653)
+transform = Transform3D(0.99570346, -0.15822184, 1.9459496e-09, -4.5741717e-16, -7.468908e-08, -0.48076594, 0.0925985, 1.7013456, -2.092465e-08, 2.442842, 1.9391851, 2.652288)
 script = ExtResource("33_rules_switch")
 
 [node name="SwitchMesh" type="MeshInstance3D" parent="rulesSwitch" unique_id=704972217]
 transform = Transform3D(0.32175153, 0, 0, 0, 0.32175153, 0, 0, 0, 0.09760539, 0, 0, 0)
 mesh = SubResource("BoxMesh_3u7yi")
+
+[node name="SwitchMesh2" type="MeshInstance3D" parent="rulesSwitch" unique_id=208329805]
+transform = Transform3D(0.32175153, 0, 0, 0, 0.027694345, -1.2212453e-15, 0, -4.8849813e-15, 0.09760529, 0, 0.1723988, 0)
+mesh = SubResource("BoxMesh_gf52q")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="rulesSwitch" unique_id=1139067553]
 transform = Transform3D(1, 0, 0, 0, 1, -7.1054274e-15, 0, -4.8174797e-12, 0.9999992, -0.00013542175, 0.00164783, -9.536743e-07)
@@ -212,11 +221,26 @@ shape = SubResource("BoxShape3D_1k86j")
 stream = ExtResource("19_light_click")
 bus = &"SFX"
 
+[node name="Label3D2" type="Label3D" parent="rulesSwitch" unique_id=2143828840]
+transform = Transform3D(-0.28350106, 2.8511504e-10, 2.4473824e-08, -1.8606883e-10, 0.16585258, -0.0046424028, -4.946514e-08, -0.016499527, -0.5894558, -0.006795168, 0.110640526, -0.050442696)
+modulate = Color(0, 0, 0, 1)
+text = "FIRST DAY NOTES"
+font_size = 20
+outline_size = 0
+uppercase = true
+
+[node name="Label3D3" type="Label3D" parent="rulesSwitch" unique_id=235724635]
+transform = Transform3D(-0.28350106, 2.8511504e-10, 2.4473826e-08, -1.8606883e-10, 0.16585258, -0.0046424028, -4.946514e-08, -0.016499527, -0.5894558, -0.006795168, -0.026447892, -0.050442696)
+modulate = Color(0, 0, 0, 1)
+text = "(press e to interact)"
+font_size = 15
+outline_size = 0
+
 [node name="AudioOptionsMenu" parent="." unique_id=1103850070 instance=ExtResource("20_options_menu")]
 
 [node name="TownRulesMenu" parent="." unique_id=83520681 instance=ExtResource("32_rules_menu")]
 
-[node name="EndScreen" parent="." instance=ExtResource("36_end_screen")]
+[node name="EndScreen" parent="." unique_id=1812083484 instance=ExtResource("36_end_screen")]
 
 [node name="roomLight" type="AreaLight3D" parent="." unique_id=378018363]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 1.060077, 7.32155, -0.91183126)
@@ -254,10 +278,6 @@ transform = Transform3D(0.36970007, 0, 0.6403394, 0, 0.7394002, 0, -0.6403394, 0
 transform = Transform3D(0.7690236, 0, -0.3096981, 0, 0.8290418, 0, 0.3096981, 0, 0.7690236, -0.3383708, -0.5210763, 3.8219342)
 
 [node name="computerAccessories" type="Node3D" parent="work area" unique_id=965257853]
-
-[node name="gooseneckTablet" parent="work area/computerAccessories" unique_id=963414952 instance=ExtResource("13_wruke")]
-transform = Transform3D(0.71113247, 0, 0, 0, 0.71113247, 0, 0, 0, 0.71113247, -0.5220237, 1.5172298, 5.100081)
-visible = false
 
 [node name="computer" parent="work area/computerAccessories" unique_id=1636787968 instance=ExtResource("7_in4ui")]
 transform = Transform3D(0.98372215, 0, 0, 0, 0.98372215, 0, 0, 0, 0.98372215, -0.6602156, 1.0361305, 5.2592254)
@@ -4186,7 +4206,7 @@ redirect_input = NodePath("../../ComputerScreenRenders/ComputerMonitor")
 interaction_text = "press e to sit at computer"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Chair Interaction" unique_id=1177674249]
-transform = Transform3D(1.0000001, 0, -5.9604627e-08, 0, 1.0000159, 0, 5.9604627e-08, 0, 1.0000001, 0.72741795, 0.96093524, 0.43940043)
+transform = Transform3D(1.0000001, 0, -5.9604623e-08, 0, 1.0000159, 0, 5.9604623e-08, 0, 1.0000001, 0.72741795, 0.91308296, 0.43940037)
 shape = SubResource("CapsuleShape3D_142py")
 
 [node name="SubmitQuest" type="Node3D" parent="Gameplay" unique_id=1509242997]

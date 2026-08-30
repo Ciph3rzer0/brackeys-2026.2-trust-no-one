@@ -19,6 +19,22 @@ shadow_size = 16
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_separator"]
 bg_color = Color(0.3, 0.36, 0.46, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_credits"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.055, 0.07, 0.1, 0.9)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.24, 0.3, 0.4, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button"]
 bg_color = Color(0.09, 0.125, 0.18, 1)
 border_width_left = 1
@@ -64,7 +80,6 @@ script = ExtResource("1_end_screen")
 
 [node name="Overlay" type="Control" parent="." unique_id=443743660]
 unique_name_in_owner = true
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -106,6 +121,7 @@ layout_mode = 2
 theme_override_constants/separation = 18
 
 [node name="Eyebrow" type="Label" parent="Overlay/CenterContainer/Panel/Margin/Content" unique_id=1443918394]
+visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0.62, 0.68, 0.78, 1)
 theme_override_font_sizes/font_size = 17
@@ -115,6 +131,7 @@ horizontal_alignment = 1
 [node name="ResultLabel" type="Label" parent="Overlay/CenterContainer/Panel/Margin/Content" unique_id=439206416]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_colors/font_color = Color(0.34821007, 0.69639695, 0.773794, 1)
 theme_override_font_sizes/font_size = 48
 text = "Great job!"
 horizontal_alignment = 1
@@ -144,6 +161,20 @@ text = "You get to keep your job! I'll see you in the next town (at the next gam
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="CreditsBox" type="PanelContainer" parent="Overlay/CenterContainer/Panel/Margin/Content" unique_id=1403594258]
+custom_minimum_size = Vector2(0, 72)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_credits")
+
+[node name="CreditsText" type="Label" parent="Overlay/CenterContainer/Panel/Margin/Content/CreditsBox" unique_id=2136885042]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.68, 0.73, 0.82, 1)
+theme_override_font_sizes/font_size = 16
+text = "CREATED BY
+Ciph3rzer0    •    akatona"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="PlayAgainButton" type="Button" parent="Overlay/CenterContainer/Panel/Margin/Content" unique_id=179481719]
 unique_name_in_owner = true
