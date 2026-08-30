@@ -19,7 +19,7 @@ unix_timestamp,camera_id,vehicle_plate,vehicle_color,vehicle_type,vehicle_featur
 1787639850,3,EUA-8367,Gold,Motorcycle,"[""Ladder rack""]"
 1787640030,3,HQY-7996,Maroon,Motorcycle,[]
 1787640480,2,UHR-2612,White,Pickup Truck,[]
-1787640480,2,RRT-3341,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
+1787640480,2,TEM-0422,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
 1787640690,3,OGN-4489,Black,Pickup Truck,"[""Aftermarket exhaust"", ""Custom rims""]"
 1787640750,1,IRY-6538,Gold,Coupe,"[""Sunroof"", ""Custom rims""]"
 1787640810,1,HQY-7996,Maroon,Motorcycle,[]
@@ -38,7 +38,7 @@ unix_timestamp,camera_id,vehicle_plate,vehicle_color,vehicle_type,vehicle_featur
 1787641770,4,BLF-4771,Gray,Sedan,[]
 1787641770,4,EQL-6876,Green,Bus,"[""Cracked windshield""]"
 1787642070,5,UHR-2612,White,Pickup Truck,[]
-1787642070,5,RRT-3341,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
+1787642070,5,TEM-0422,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
 1787642070,2,ZFD-3277,Green,Hatchback,"[""Bumper sticker"", ""Missing hubcap""]"
 1787642190,1,EYH-6407,Black,Bus,"[""Custom rims"", ""Tinted windows""]"
 1787642250,5,VJM-7944,Beige,Sedan,[]
@@ -81,7 +81,7 @@ unix_timestamp,camera_id,vehicle_plate,vehicle_color,vehicle_type,vehicle_featur
 1787644560,1,BTZ-5167,Silver,Coupe,[]
 1787644560,5,UHR-2612,White,Pickup Truck,[]
 1787644590,4,HYS-9092,Gray,Coupe,"[""Roof rack"", ""Dented rear bumper""]"
-1787644620,5,RRT-3341,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
+1787644620,5,TEM-0422,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
 1787644710,3,AIT-2702,Blue,Pickup Truck,"[""Dented rear bumper"", ""Tow hitch""]"
 1787644710,5,FCH-7617,Maroon,Sedan,[]
 1787644740,5,BLF-4771,Gray,Sedan,[]
@@ -104,7 +104,7 @@ unix_timestamp,camera_id,vehicle_plate,vehicle_color,vehicle_type,vehicle_featur
 1787646120,2,UHR-2612,White,Pickup Truck,[]
 1787646150,3,VJM-7944,Beige,Sedan,[]
 1787646150,3,BTZ-5167,Silver,Coupe,[]
-1787646180,2,RRT-3341,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
+1787646180,2,TEM-0422,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
 1787646210,5,LHA-6933,Gray,Bus,"[""Missing hubcap""]"
 1787646210,3,HQY-7996,Maroon,Motorcycle,[]
 1787646330,5,HYS-9092,Gray,Coupe,"[""Roof rack"", ""Dented rear bumper""]"
@@ -151,7 +151,7 @@ unix_timestamp,camera_id,vehicle_plate,vehicle_color,vehicle_type,vehicle_featur
 1787649540,5,BLF-4771,Gray,Sedan,[]
 1787649810,3,OYU-1228,Maroon,Bus,[]
 1787650170,3,BLF-4771,Gray,Sedan,[]
-1787650440,1,RRT-3341,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
+1787650440,1,TEM-0422,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
 1787650440,5,DOP-3475,Silver,SUV,[]
 1787650620,2,EYH-6407,Black,Bus,"[""Custom rims"", ""Tinted windows""]"
 1787650740,2,ZFD-3277,Green,Hatchback,"[""Bumper sticker"", ""Missing hubcap""]"
@@ -161,14 +161,14 @@ unix_timestamp,camera_id,vehicle_plate,vehicle_color,vehicle_type,vehicle_featur
 1787651160,2,BLF-4771,Gray,Sedan,[]
 1787651250,5,OYU-1228,Maroon,Bus,[]
 1787651310,3,OYU-1228,Maroon,Bus,[]
-1787652030,3,RRT-3341,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
+1787652030,3,TEM-0422,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
 1787652150,4,BLF-4771,Gray,Sedan,[]
 1787652180,3,DOP-3475,Silver,SUV,[]
 1787652360,4,IRY-6538,Gold,Coupe,"[""Sunroof"", ""Custom rims""]"
 1787652750,2,VQJ-3851,Beige,Hatchback,[]
 1787652750,5,OYU-1228,Maroon,Bus,[]
 1787652960,1,OYU-1228,Maroon,Bus,[]
-1787653110,4,RRT-3341,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
+1787653110,4,TEM-0422,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
 1787653200,1,TQP-8061,Silver,Hatchback,"[""Tinted windows""]"
 1787653350,2,EWE-8741,Blue,Bus,"[""Custom rims""]"
 1787654220,1,HYS-9092,Gray,Coupe,"[""Roof rack"", ""Dented rear bumper""]"
@@ -191,7 +191,7 @@ unix_timestamp,camera_id,vehicle_plate,vehicle_color,vehicle_type,vehicle_featur
 1787678430,3,DOP-3475,Silver,SUV,[]
 1787678490,2,EUA-8367,Gold,Motorcycle,"[""Ladder rack""]"
 1787678640,2,OYU-1228,Maroon,Bus,[]
-1787678760,4,RRT-3341,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
+1787678760,4,TEM-0422,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
 1787678790,2,FYR-2853,Gold,SUV,"[""Missing hubcap"", ""Aftermarket exhaust""]"
 1787678850,5,LHA-6933,Gray,Bus,"[""Missing hubcap""]"
 1787679000,5,HQY-7996,Maroon,Motorcycle,[]
@@ -209,7 +209,7 @@ unix_timestamp,camera_id,vehicle_plate,vehicle_color,vehicle_type,vehicle_featur
 1787679690,3,FCH-7617,Maroon,Sedan,[]
 1787679780,2,EQL-6876,Green,Bus,"[""Cracked windshield""]"
 1787679840,3,HYS-9092,Gray,Coupe,"[""Roof rack"", ""Dented rear bumper""]"
-1787679840,3,RRT-3341,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
+1787679840,3,TEM-0422,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
 1787679900,1,FHL-3560,Silver,Van,[]
 1787679960,3,ZFD-3277,Green,Hatchback,"[""Bumper sticker"", ""Missing hubcap""]"
 1787679960,1,DYT-5541,Maroon,Hatchback,[]
@@ -234,7 +234,7 @@ unix_timestamp,camera_id,vehicle_plate,vehicle_color,vehicle_type,vehicle_featur
 1787681070,5,LHA-6933,Gray,Bus,"[""Missing hubcap""]"
 1787681100,4,OGN-4489,Black,Pickup Truck,"[""Aftermarket exhaust"", ""Custom rims""]"
 1787681220,3,DYT-5541,Maroon,Hatchback,[]
-1787681460,1,RRT-3341,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
+1787681460,1,TEM-0422,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
 1787681490,1,KES-9323,Maroon,Bus,"[""Spoiler"", ""Missing hubcap""]"
 1787681490,4,IRY-6538,Gold,Coupe,"[""Sunroof"", ""Custom rims""]"
 1787681490,3,FHL-3560,Silver,Van,[]
@@ -296,7 +296,7 @@ unix_timestamp,camera_id,vehicle_plate,vehicle_color,vehicle_type,vehicle_featur
 1787684730,5,VJM-7944,Beige,Sedan,[]
 1787684760,2,RRC-4766,Blue,Coupe,"[""Tinted windows"", ""Tow hitch""]"
 1787684790,2,BLF-4771,Gray,Sedan,[]
-1787684850,2,RRT-3341,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
+1787684850,2,TEM-0422,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
 1787685060,5,HQY-7996,Maroon,Motorcycle,[]
 1787685180,1,OYU-1228,Maroon,Bus,[]
 1787685210,5,HQY-7996,Maroon,Motorcycle,[]
@@ -317,7 +317,7 @@ unix_timestamp,camera_id,vehicle_plate,vehicle_color,vehicle_type,vehicle_featur
 1787686380,5,BLF-4771,Gray,Sedan,[]
 1787686440,2,RQA-7745,Red,Motorcycle,"[""Sunroof""]"
 1787686440,3,DOP-3475,Silver,SUV,[]
-1787686440,5,RRT-3341,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
+1787686440,5,TEM-0422,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
 1787686500,5,RBG-4071,Blue,Bus,"[""Bumper sticker"", ""Ladder rack""]"
 1787686530,2,EYH-6407,Black,Bus,"[""Custom rims"", ""Tinted windows""]"
 1787686770,3,OYU-1228,Maroon,Bus,[]
@@ -328,7 +328,7 @@ unix_timestamp,camera_id,vehicle_plate,vehicle_color,vehicle_type,vehicle_featur
 1787687250,1,UHR-2612,White,Pickup Truck,[]
 1787687250,5,YJG-1440,Black,Sedan,"[""Tinted windows"", ""Bumper sticker""]"
 1787687310,1,LHA-6933,Gray,Bus,"[""Missing hubcap""]"
-1787687370,5,RRT-3341,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
+1787687370,5,TEM-0422,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
 1787687430,5,OGN-4489,Black,Pickup Truck,"[""Aftermarket exhaust"", ""Custom rims""]"
 1787687550,5,BLF-4771,Gray,Sedan,[]
 1787687550,5,VJM-7944,Beige,Sedan,[]
@@ -354,7 +354,7 @@ unix_timestamp,camera_id,vehicle_plate,vehicle_color,vehicle_type,vehicle_featur
 1787688990,2,FYR-2853,Gold,SUV,"[""Missing hubcap"", ""Aftermarket exhaust""]"
 1787688990,5,BPU-4332,White,Motorcycle,[]
 1787689020,5,BLF-4771,Gray,Sedan,[]
-1787689110,3,RRT-3341,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
+1787689110,3,TEM-0422,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
 1787689170,2,VJM-7944,Beige,Sedan,[]
 1787689170,3,OGN-4489,Black,Pickup Truck,"[""Aftermarket exhaust"", ""Custom rims""]"
 1787689290,2,FHL-3560,Silver,Van,[]
@@ -379,7 +379,7 @@ unix_timestamp,camera_id,vehicle_plate,vehicle_color,vehicle_type,vehicle_featur
 1787690460,3,DOP-3475,Silver,SUV,[]
 1787690490,3,UHR-2612,White,Pickup Truck,[]
 1787690640,5,HQY-7996,Maroon,Motorcycle,[]
-1787690640,3,RRT-3341,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
+1787690640,3,TEM-0422,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
 1787690700,5,OGN-4489,Black,Pickup Truck,"[""Aftermarket exhaust"", ""Custom rims""]"
 1787690790,5,BLF-4771,Gray,Sedan,[]
 1787690850,2,EYH-6407,Black,Bus,"[""Custom rims"", ""Tinted windows""]"
@@ -409,7 +409,7 @@ unix_timestamp,camera_id,vehicle_plate,vehicle_color,vehicle_type,vehicle_featur
 1787692290,5,UHR-2612,White,Pickup Truck,[]
 1787692350,2,BLF-4771,Gray,Sedan,[]
 1787692380,5,EQL-6876,Green,Bus,"[""Cracked windshield""]"
-1787692440,5,RRT-3341,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
+1787692440,5,TEM-0422,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
 1787692440,5,EYH-6407,Black,Bus,"[""Custom rims"", ""Tinted windows""]"
 1787692530,3,AIT-2702,Blue,Pickup Truck,"[""Dented rear bumper"", ""Tow hitch""]"
 1787692710,1,RQA-7745,Red,Motorcycle,"[""Sunroof""]"
@@ -444,7 +444,7 @@ unix_timestamp,camera_id,vehicle_plate,vehicle_color,vehicle_type,vehicle_featur
 1787694930,3,OYU-1228,Maroon,Bus,[]
 1787694990,3,RRC-4766,Blue,Coupe,"[""Tinted windows"", ""Tow hitch""]"
 1787695050,1,BLF-4771,Gray,Sedan,[]
-1787695050,2,RRT-3341,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
+1787695050,2,TEM-0422,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
 1787695110,5,DOP-3475,Silver,SUV,[]
 1787695290,3,KES-9323,Maroon,Bus,"[""Spoiler"", ""Missing hubcap""]"
 1787695380,3,OYU-1228,Maroon,Bus,[]
@@ -595,7 +595,7 @@ unix_timestamp,camera_id,vehicle_plate,vehicle_color,vehicle_type,vehicle_featur
 1787730240,1,EYH-6407,Black,Bus,"[""Custom rims"", ""Tinted windows""]"
 1787730300,2,VJM-7944,Beige,Sedan,[]
 1787730390,3,EUA-8367,Gold,Motorcycle,"[""Ladder rack""]"
-1787730390,2,RRT-3341,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
+1787730390,2,TEM-0422,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
 1787730420,1,DYT-5541,Maroon,Hatchback,[]
 1787730420,5,KES-9323,Maroon,Bus,"[""Spoiler"", ""Missing hubcap""]"
 1787730420,3,BLF-4771,Gray,Sedan,[]
@@ -637,7 +637,7 @@ unix_timestamp,camera_id,vehicle_plate,vehicle_color,vehicle_type,vehicle_featur
 1787732790,5,OGN-4489,Black,Pickup Truck,"[""Aftermarket exhaust"", ""Custom rims""]"
 1787732820,3,EUA-8367,Gold,Motorcycle,"[""Ladder rack""]"
 1787732940,4,VQJ-3851,Beige,Hatchback,[]
-1787733000,5,RRT-3341,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
+1787733000,5,TEM-0422,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
 1787733000,3,RBG-4071,Blue,Bus,"[""Bumper sticker"", ""Ladder rack""]"
 1787733060,3,OYU-1228,Maroon,Bus,[]
 1787733150,5,OYU-1228,Maroon,Bus,[]
@@ -664,7 +664,7 @@ unix_timestamp,camera_id,vehicle_plate,vehicle_color,vehicle_type,vehicle_featur
 1787734560,3,VJM-7944,Beige,Sedan,[]
 1787734560,5,EUA-8367,Gold,Motorcycle,"[""Ladder rack""]"
 1787734590,1,VJM-7944,Beige,Sedan,[]
-1787734680,4,RRT-3341,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
+1787734680,4,TEM-0422,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
 1787734980,3,IRY-6538,Gold,Coupe,"[""Sunroof"", ""Custom rims""]"
 1787735430,1,OGN-4489,Black,Pickup Truck,"[""Aftermarket exhaust"", ""Custom rims""]"
 1787735460,2,EWE-8741,Blue,Bus,"[""Custom rims""]"
@@ -707,7 +707,7 @@ unix_timestamp,camera_id,vehicle_plate,vehicle_color,vehicle_type,vehicle_featur
 1787765250,5,DYT-5541,Maroon,Hatchback,[]
 1787765400,5,UHR-2612,White,Pickup Truck,[]
 1787765460,3,BTZ-5167,Silver,Coupe,[]
-1787765490,4,RRT-3341,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
+1787765490,4,TEM-0422,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
 1787765520,4,VQJ-3851,Beige,Hatchback,[]
 1787765520,2,EUA-8367,Gold,Motorcycle,"[""Ladder rack""]"
 1787765610,3,HYS-9092,Gray,Coupe,"[""Roof rack"", ""Dented rear bumper""]"
@@ -733,7 +733,7 @@ unix_timestamp,camera_id,vehicle_plate,vehicle_color,vehicle_type,vehicle_featur
 1787767200,3,RRC-4766,Blue,Coupe,"[""Tinted windows"", ""Tow hitch""]"
 1787767200,3,UHR-2612,White,Pickup Truck,[]
 1787767200,5,EYH-6407,Black,Bus,"[""Custom rims"", ""Tinted windows""]"
-1787767230,5,RRT-3341,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
+1787767230,5,TEM-0422,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
 1787767260,2,AIT-2702,Blue,Pickup Truck,"[""Dented rear bumper"", ""Tow hitch""]"
 1787767320,3,IRY-6538,Gold,Coupe,"[""Sunroof"", ""Custom rims""]"
 1787767380,2,OGN-4489,Black,Pickup Truck,"[""Aftermarket exhaust"", ""Custom rims""]"
@@ -797,7 +797,7 @@ unix_timestamp,camera_id,vehicle_plate,vehicle_color,vehicle_type,vehicle_featur
 1787771130,3,UHR-2612,White,Pickup Truck,[]
 1787771190,3,RQA-7745,Red,Motorcycle,"[""Sunroof""]"
 1787771280,3,EQL-6876,Green,Bus,"[""Cracked windshield""]"
-1787771280,5,RRT-3341,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
+1787771280,5,TEM-0422,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
 1787771400,3,OGN-4489,Black,Pickup Truck,"[""Aftermarket exhaust"", ""Custom rims""]"
 1787771460,5,EWE-8741,Blue,Bus,"[""Custom rims""]"
 1787771490,1,DOP-3475,Silver,SUV,[]
@@ -823,7 +823,7 @@ unix_timestamp,camera_id,vehicle_plate,vehicle_color,vehicle_type,vehicle_featur
 1787772930,2,LHA-6933,Gray,Bus,"[""Missing hubcap""]"
 1787773020,5,RQA-7745,Red,Motorcycle,"[""Sunroof""]"
 1787773080,3,DOP-3475,Silver,SUV,[]
-1787773080,3,RRT-3341,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
+1787773080,3,TEM-0422,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
 1787773080,5,EQL-6876,Green,Bus,"[""Cracked windshield""]"
 1787773200,3,EYH-6407,Black,Bus,"[""Custom rims"", ""Tinted windows""]"
 1787773200,3,OGN-4489,Black,Pickup Truck,"[""Aftermarket exhaust"", ""Custom rims""]"
@@ -844,7 +844,7 @@ unix_timestamp,camera_id,vehicle_plate,vehicle_color,vehicle_type,vehicle_featur
 1787774160,5,FHL-3560,Silver,Van,[]
 1787774190,3,OYU-1228,Maroon,Bus,[]
 1787774190,5,HQY-7996,Maroon,Motorcycle,[]
-1787774340,3,RRT-3341,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
+1787774340,3,TEM-0422,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
 1787774460,1,IRY-6538,Gold,Coupe,"[""Sunroof"", ""Custom rims""]"
 1787774490,3,FYR-2853,Gold,SUV,"[""Missing hubcap"", ""Aftermarket exhaust""]"
 1787774610,1,EUA-8367,Gold,Motorcycle,"[""Ladder rack""]"
@@ -869,7 +869,7 @@ unix_timestamp,camera_id,vehicle_plate,vehicle_color,vehicle_type,vehicle_featur
 1787776020,3,DYT-5541,Maroon,Hatchback,[]
 1787776080,1,FYR-2853,Gold,SUV,"[""Missing hubcap"", ""Aftermarket exhaust""]"
 1787776110,5,ZFD-3277,Green,Hatchback,"[""Bumper sticker"", ""Missing hubcap""]"
-1787776140,5,RRT-3341,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
+1787776140,5,TEM-0422,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
 1787776200,3,EUA-8367,Gold,Motorcycle,"[""Ladder rack""]"
 1787776260,3,VJM-7944,Beige,Sedan,[]
 1787776260,2,BPU-4332,White,Motorcycle,[]
@@ -921,7 +921,7 @@ unix_timestamp,camera_id,vehicle_plate,vehicle_color,vehicle_type,vehicle_featur
 1787779830,5,TQP-8061,Silver,Hatchback,"[""Tinted windows""]"
 1787779980,5,RRC-4766,Blue,Coupe,"[""Tinted windows"", ""Tow hitch""]"
 1787779980,3,ZFD-3277,Green,Hatchback,"[""Bumper sticker"", ""Missing hubcap""]"
-1787780010,5,RRT-3341,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
+1787780010,5,TEM-0422,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
 1787780070,1,DOP-3475,Silver,SUV,[]
 1787780220,2,HQY-7996,Maroon,Motorcycle,[]
 1787780220,1,DYT-5541,Maroon,Hatchback,[]
@@ -946,7 +946,7 @@ unix_timestamp,camera_id,vehicle_plate,vehicle_color,vehicle_type,vehicle_featur
 1787781510,1,BPU-4332,White,Motorcycle,[]
 1787781540,2,RRC-4766,Blue,Coupe,"[""Tinted windows"", ""Tow hitch""]"
 1787781570,3,TQP-8061,Silver,Hatchback,"[""Tinted windows""]"
-1787781630,2,RRT-3341,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
+1787781630,2,TEM-0422,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
 1787781630,3,OYU-1228,Maroon,Bus,[]
 1787781690,3,EHW-3879,Maroon,Coupe,[]
 1787781780,5,YJG-1440,Black,Sedan,"[""Tinted windows"", ""Bumper sticker""]"
@@ -1061,7 +1061,7 @@ unix_timestamp,camera_id,vehicle_plate,vehicle_color,vehicle_type,vehicle_featur
 1787813670,1,IRY-6538,Gold,Coupe,"[""Sunroof"", ""Custom rims""]"
 1787813850,5,ZFD-3277,Green,Hatchback,"[""Bumper sticker"", ""Missing hubcap""]"
 1787813910,1,AIT-2702,Blue,Pickup Truck,"[""Dented rear bumper"", ""Tow hitch""]"
-1787813910,2,RRT-3341,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
+1787813910,2,TEM-0422,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
 1787813970,5,RRC-4766,Blue,Coupe,"[""Tinted windows"", ""Tow hitch""]"
 1787814180,2,BLF-4771,Gray,Sedan,[]
 1787814210,2,EUA-8367,Gold,Motorcycle,"[""Ladder rack""]"
@@ -1085,7 +1085,7 @@ unix_timestamp,camera_id,vehicle_plate,vehicle_color,vehicle_type,vehicle_featur
 1787815440,4,EHW-3879,Maroon,Coupe,[]
 1787815500,3,AIT-2702,Blue,Pickup Truck,"[""Dented rear bumper"", ""Tow hitch""]"
 1787815500,1,RQA-7745,Red,Motorcycle,"[""Sunroof""]"
-1787815500,5,RRT-3341,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
+1787815500,5,TEM-0422,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
 1787815680,5,RRC-4766,Blue,Coupe,"[""Tinted windows"", ""Tow hitch""]"
 1787815890,5,OYU-1228,Maroon,Bus,[]
 1787815890,2,VJM-7944,Beige,Sedan,[]
@@ -1137,7 +1137,7 @@ unix_timestamp,camera_id,vehicle_plate,vehicle_color,vehicle_type,vehicle_featur
 1787819010,3,DYT-5541,Maroon,Hatchback,[]
 1787819070,5,BLF-4771,Gray,Sedan,[]
 1787819100,2,OYU-1228,Maroon,Bus,[]
-1787819130,4,RRT-3341,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
+1787819130,4,TEM-0422,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
 1787819130,3,FHL-3560,Silver,Van,[]
 1787819190,5,BPU-4332,White,Motorcycle,[]
 1787819280,5,EWE-8741,Blue,Bus,"[""Custom rims""]"
@@ -1205,7 +1205,7 @@ unix_timestamp,camera_id,vehicle_plate,vehicle_color,vehicle_type,vehicle_featur
 1787851290,1,OYU-1228,Maroon,Bus,[]
 1787851350,2,OYU-1228,Maroon,Bus,[]
 1787851500,5,EYH-6407,Black,Bus,"[""Custom rims"", ""Tinted windows""]"
-1787851740,4,RRT-3341,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
+1787851740,4,TEM-0422,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
 1787851770,5,FYR-2853,Gold,SUV,"[""Missing hubcap"", ""Aftermarket exhaust""]"
 1787851800,5,FCH-7617,Maroon,Sedan,[]
 1787851920,5,ZFD-3277,Green,Hatchback,"[""Bumper sticker"", ""Missing hubcap""]"
@@ -1232,7 +1232,7 @@ unix_timestamp,camera_id,vehicle_plate,vehicle_color,vehicle_type,vehicle_featur
 1787853270,2,BLF-4771,Gray,Sedan,[]
 1787853300,4,VQJ-3851,Beige,Hatchback,[]
 1787853390,3,TQP-8061,Silver,Hatchback,"[""Tinted windows""]"
-1787853480,5,RRT-3341,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
+1787853480,5,TEM-0422,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
 1787853540,3,FCH-7617,Maroon,Sedan,[]
 1787853570,5,DYT-5541,Maroon,Hatchback,[]
 1787853690,1,DOP-3475,Silver,SUV,[]
@@ -1260,7 +1260,7 @@ unix_timestamp,camera_id,vehicle_plate,vehicle_color,vehicle_type,vehicle_featur
 1787855610,3,RBG-4071,Blue,Bus,"[""Bumper sticker"", ""Ladder rack""]"
 1787855670,3,FHL-3560,Silver,Van,[]
 1787855670,3,FCH-7617,Maroon,Sedan,[]
-1787855760,5,RRT-3341,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
+1787855760,5,TEM-0422,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
 1787855790,3,LHA-6933,Gray,Bus,"[""Missing hubcap""]"
 1787855820,3,IRY-6538,Gold,Coupe,"[""Sunroof"", ""Custom rims""]"
 1787855820,2,KES-9323,Maroon,Bus,"[""Spoiler"", ""Missing hubcap""]"
@@ -1289,7 +1289,7 @@ unix_timestamp,camera_id,vehicle_plate,vehicle_color,vehicle_type,vehicle_featur
 1787857410,5,KES-9323,Maroon,Bus,"[""Spoiler"", ""Missing hubcap""]"
 1787857410,1,LHA-6933,Gray,Bus,"[""Missing hubcap""]"
 1787857500,5,FHL-3560,Silver,Van,[]
-1787857500,3,RRT-3341,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
+1787857500,3,TEM-0422,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
 1787857530,2,ZFD-3277,Green,Hatchback,"[""Bumper sticker"", ""Missing hubcap""]"
 1787857560,3,IRY-6538,Gold,Coupe,"[""Sunroof"", ""Custom rims""]"
 1787857590,2,EQL-6876,Green,Bus,"[""Cracked windshield""]"
@@ -1324,7 +1324,7 @@ unix_timestamp,camera_id,vehicle_plate,vehicle_color,vehicle_type,vehicle_featur
 1787859660,1,DOP-3475,Silver,SUV,[]
 1787859660,2,BPU-4332,White,Motorcycle,[]
 1787859720,5,FCH-7617,Maroon,Sedan,[]
-1787859750,3,RRT-3341,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
+1787859750,3,TEM-0422,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
 1787859870,5,FHL-3560,Silver,Van,[]
 1787860050,2,AIT-2702,Blue,Pickup Truck,"[""Dented rear bumper"", ""Tow hitch""]"
 1787860260,3,VJM-7944,Beige,Sedan,[]
@@ -1341,7 +1341,7 @@ unix_timestamp,camera_id,vehicle_plate,vehicle_color,vehicle_type,vehicle_featur
 1787861160,3,DOP-3475,Silver,SUV,[]
 1787861250,3,DOP-3475,Silver,SUV,[]
 1787861310,1,OYU-1228,Maroon,Bus,[]
-1787861400,1,RRT-3341,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
+1787861400,1,TEM-0422,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
 1787861400,1,DYT-5541,Maroon,Hatchback,[]
 1787861430,2,FHL-3560,Silver,Van,[]
 1787861820,5,RQA-7745,Red,Motorcycle,"[""Sunroof""]"
@@ -1389,7 +1389,7 @@ unix_timestamp,camera_id,vehicle_plate,vehicle_color,vehicle_type,vehicle_featur
 1787865240,5,UHR-2612,White,Pickup Truck,[]
 1787865270,5,EQL-6876,Green,Bus,"[""Cracked windshield""]"
 1787865330,3,OYU-1228,Maroon,Bus,[]
-1787865360,2,RRT-3341,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
+1787865360,2,TEM-0422,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
 1787865420,3,VQJ-3851,Beige,Hatchback,[]
 1787865510,3,BLF-4771,Gray,Sedan,[]
 1787865540,3,EHW-3879,Maroon,Coupe,[]
@@ -1414,7 +1414,7 @@ unix_timestamp,camera_id,vehicle_plate,vehicle_color,vehicle_type,vehicle_featur
 1787866950,1,EWE-8741,Blue,Bus,"[""Custom rims""]"
 1787867250,5,EQL-6876,Green,Bus,"[""Cracked windshield""]"
 1787867340,3,DYT-5541,Maroon,Hatchback,[]
-1787867340,2,RRT-3341,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
+1787867340,2,TEM-0422,Red,Sedan,"[""Tinted windows"", ""Dented rear bumper""]"
 1787867400,5,RQA-7745,Red,Motorcycle,"[""Sunroof""]"
 1787867430,3,LHA-6933,Gray,Bus,"[""Missing hubcap""]"
 1787867610,3,VQJ-3851,Beige,Hatchback,[]
