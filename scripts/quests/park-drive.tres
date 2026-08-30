@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://cynwhphkteous"]
+
+[ext_resource type="Script" uid="uid://dy022jdobl3k8" path="res://scripts/quests/quest.gd" id="1_y3m8q"]
+
+[resource]
+script = ExtResource("1_y3m8q")
+correct_plate = "VOM-7998"
+incident = "Park Drive"
+details = "Morning of the 27th, someone drove straight across the park in town before high-tailing it down the South-East highway"
+metadata/_custom_type_script = "uid://dy022jdobl3k8"

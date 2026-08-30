@@ -7,5 +7,4 @@ script = ExtResource("1_mvs6o")
 correct_plate = "AIT-2702"
 incident = "Streaker"
 details = "Full moons have been appearing over our innocent city.  We have our suspect list down to three people, all of whom insist they were out of town the day of the crime.  Their cars are as follows: BTZ-5167, AIT-2702, OGN-4489"
-datetime_start = "2026-08-27T09:00:00"
 metadata/_custom_type_script = "uid://dy022jdobl3k8"

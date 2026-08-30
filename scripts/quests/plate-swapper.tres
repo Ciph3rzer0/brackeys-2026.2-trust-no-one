@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://wwcls5ws6gr3"]
+
+[ext_resource type="Script" uid="uid://dy022jdobl3k8" path="res://scripts/quests/quest.gd" id="1_fyya6"]
+
+[resource]
+script = ExtResource("1_fyya6")
+correct_plate = "BMT216A"
+incident = "Plate Swapper"
+details = "We got an anonymous tip some foreigner with a smooth accent has been snooping around.  That's all above board, but Louie caught him on the 25th swapping his license plates.  We didn't have a reason to write down his old plates, but now we need you to figure out the new one so we can cite the son-of-a-bitch."
+metadata/_custom_type_script = "uid://dy022jdobl3k8"

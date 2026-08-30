@@ -4,9 +4,9 @@
 
 [resource]
 script = ExtResource("1_cje57")
-correct_plate = "AIT-2702"
+correct_plate = "DPP-3145"
 incident = "Streaker"
-details = "An elaborate heist was performed on the gas station before escaping out onto the Southbound highway.  This kind of Ocean's 11-type stuff must have required several days of careful observation.  \"Casing the joint,\" as it were."
+details = "An elaborate heist was performed on the gas station before escaping out onto a Southbound highway.  This kind of Ocean's 11-type stuff must have required several days of careful observation.  \"Casing the joint,\" as it were."
 datetime_start = "Aug27"
 datetime_end = "Aug28"
 metadata/_custom_type_script = "uid://dy022jdobl3k8"

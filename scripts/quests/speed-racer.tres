@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://cds1na0q5bfbc"]
+
+[ext_resource type="Script" uid="uid://dy022jdobl3k8" path="res://scripts/quests/quest.gd" id="1_u3hcy"]
+
+[resource]
+script = ExtResource("1_u3hcy")
+correct_plate = "EEL-1976"
+incident = "Speed Racer"
+details = "Someone has been burnin' rubber on main street.  Reports of a real speed demon racing back and forth early in the morning.  Perhaps worst of all, he's breaking our rule about not performing U-turns!  Maniac!"
+datetime_start = "2026-08-26T00:05:00"
+metadata/_custom_type_script = "uid://dy022jdobl3k8"

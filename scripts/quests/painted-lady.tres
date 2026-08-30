@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://8r7m8ffdovfb"]
+
+[ext_resource type="Script" uid="uid://dy022jdobl3k8" path="res://scripts/quests/quest.gd" id="1_8qb37"]
+
+[resource]
+script = ExtResource("1_8qb37")
+correct_plate = "RRT-3341"
+incident = "Painted Lady"
+details = "Morning of the 27th, the paint shop owner hears a loud noise and calls in to report a truck-shaped hole in her walls.  Said they really made a mess of the place."
+metadata/_custom_type_script = "uid://dy022jdobl3k8"

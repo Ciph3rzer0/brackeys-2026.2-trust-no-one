@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://2fteb1211ft1"]
+
+[ext_resource type="Script" uid="uid://dy022jdobl3k8" path="res://scripts/quests/quest.gd" id="1_d4fyr"]
+
+[resource]
+script = ExtResource("1_d4fyr")
+correct_plate = "OUTATIME"
+incident = "Another Speedster"
+details = "Crazy old man came out of nowhere the morning of the 28th, seen speeding by the airport at nearly 90 MPH, leaving flaming skid marks.  Witnesses lost sight soon after"
+metadata/_custom_type_script = "uid://dy022jdobl3k8"

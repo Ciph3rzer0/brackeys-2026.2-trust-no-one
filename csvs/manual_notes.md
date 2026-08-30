@@ -39,26 +39,27 @@
 
 # A5: casing gas station before robbery (circled it each past morning)
 
-"2026-08-25T06:31:00",3,LPA1,Red,WEINERMOBILE,"[""Mustard stains""]"
-"2026-08-25T06:32:11",4,LPA1,Red,WEINERMOBILE,"[""Mustard stains""]"
-"2026-08-25T06:33:12",3,LPA1,Red,WEINERMOBILE,"[""Mustard stains""]"
-"2026-08-25T06:34:58",4,LPA1,Red,WEINERMOBILE,"[""Mustard stains""]"
-"2026-08-25T06:35:10",3,LPA1,Red,WEINERMOBILE,"[""Mustard stains""]"
-"2026-08-25T06:36:35",4,LPA1,Red,WEINERMOBILE,"[""Mustard stains""]"
-"2026-08-26T06:31:10",3,LPA1,Red,WEINERMOBILE,"[""Mustard stains""]"
-"2026-08-26T06:32:41",4,LPA1,Red,WEINERMOBILE,"[""Mustard stains""]"
-"2026-08-26T06:33:22",3,LPA1,Red,WEINERMOBILE,"[""Mustard stains""]"
-"2026-08-26T06:34:55",4,LPA1,Red,WEINERMOBILE,"[""Mustard stains""]"
-"2026-08-26T06:35:11",3,LPA1,Red,WEINERMOBILE,"[""Mustard stains""]"
-"2026-08-26T06:36:32",4,LPA1,Red,WEINERMOBILE,"[""Mustard stains""]"
+"2026-08-25T06:31:00",3,DPP-3145,Red,WEINERMOBILE,"[""Mustard stains""]"
+"2026-08-25T06:32:11",4,DPP-3145,Red,WEINERMOBILE,"[""Mustard stains""]"
+"2026-08-25T06:33:12",3,DPP-3145,Red,WEINERMOBILE,"[""Mustard stains""]"
+"2026-08-25T06:34:58",4,DPP-3145,Red,WEINERMOBILE,"[""Mustard stains""]"
+"2026-08-25T06:35:10",3,DPP-3145,Red,WEINERMOBILE,"[""Mustard stains""]"
+"2026-08-25T06:36:35",4,DPP-3145,Red,WEINERMOBILE,"[""Mustard stains""]"
+"2026-08-26T06:31:10",3,DPP-3145,Red,WEINERMOBILE,"[""Mustard stains""]"
+"2026-08-26T06:32:41",4,DPP-3145,Red,WEINERMOBILE,"[""Mustard stains""]"
+"2026-08-26T06:33:22",3,DPP-3145,Red,WEINERMOBILE,"[""Mustard stains""]"
+"2026-08-26T06:34:55",4,DPP-3145,Red,WEINERMOBILE,"[""Mustard stains""]"
+"2026-08-26T06:35:11",3,DPP-3145,Red,WEINERMOBILE,"[""Mustard stains""]"
+"2026-08-26T06:36:32",4,DPP-3145,Red,WEINERMOBILE,"[""Mustard stains""]"
 +travel noise?
++maybe reserve weinermobile for something special?
 
 # B1: keeps throwing a brick at the hospital and speeding away
 
-"2026-08-25T07:16:00",1,LPB1,White,KIA OPTIMA,"[""Honor student bumper sticker""]"
-"2026-08-25T07:16:15",1,LPB1,White,KIA OPTIMA,"[""Honor student bumper sticker""]"
-"2026-09-25T11:50:10",1,LPB1,White,KIA OPTIMA,"[""Honor student bumper sticker""]"
-"2026-09-25T11:50:25",1,LPB1,White,KIA OPTIMA,"[""Honor student bumper sticker""]"
+"2026-08-25T07:16:00",1,HTR-2444,White,KIA OPTIMA,"[""Honor student bumper sticker""]"
+"2026-08-25T07:16:15",1,HTR-2444,White,KIA OPTIMA,"[""Honor student bumper sticker""]"
+"2026-09-25T11:50:10",1,HTR-2444,White,KIA OPTIMA,"[""Honor student bumper sticker""]"
+"2026-09-25T11:50:25",1,HTR-2444,White,KIA OPTIMA,"[""Honor student bumper sticker""]"
 + travel noise?
 
 # B2: stalking
@@ -67,13 +68,13 @@
 
 # B3: using the main road for high speed racing during the evening home commute
 
-"2026-08-26T00:05:01",3,LPB3,White,FORMULA 1,"[""Flame decals"", ""Aluminum spoiler""]"
-"2026-08-26T00:05:05",5,LPB3,White,FORMULA 1,"[""Flame decals"", ""Aluminum spoiler""]"
-"2026-08-26T00:05:09",3,LPB3,White,FORMULA 1,"[""Flame decals"", ""Aluminum spoiler""]"
-"2026-08-26T00:05:13",5,LPB3,White,FORMULA 1,"[""Flame decals"", ""Aluminum spoiler""]"
-"2026-08-26T00:05:17",3,LPB3,White,FORMULA 1,"[""Flame decals"", ""Aluminum spoiler""]"
-"2026-08-26T00:05:21",5,LPB3,White,FORMULA 1,"[""Flame decals"", ""Aluminum spoiler""]"
-"2026-08-26T00:05:25",3,LPB3,White,FORMULA 1,"[""Flame decals"", ""Aluminum spoiler""]"
+"2026-08-26T00:05:01",3,EEL-1976,White,FORMULA 1,"[""Flame decals"", ""Aluminum spoiler""]"
+"2026-08-26T00:05:05",5,EEL-1976,White,FORMULA 1,"[""Flame decals"", ""Aluminum spoiler""]"
+"2026-08-26T00:05:09",3,EEL-1976,White,FORMULA 1,"[""Flame decals"", ""Aluminum spoiler""]"
+"2026-08-26T00:05:13",5,EEL-1976,White,FORMULA 1,"[""Flame decals"", ""Aluminum spoiler""]"
+"2026-08-26T00:05:17",3,EEL-1976,White,FORMULA 1,"[""Flame decals"", ""Aluminum spoiler""]"
+"2026-08-26T00:05:21",5,EEL-1976,White,FORMULA 1,"[""Flame decals"", ""Aluminum spoiler""]"
+"2026-08-26T00:05:25",3,EEL-1976,White,FORMULA 1,"[""Flame decals"", ""Aluminum spoiler""]"
 +travel noise?
 
 # B4: British fugitive disappeared, believed to be evading police by swapping out license plate
@@ -106,39 +107,41 @@
 "2026-08-26T21:31:30",3,BMT216A,Gray,ASTON MARTIN,"[""Truck nuts"", ""Yosemite Sam mud flap""]"
 "2026-08-26T23:46:00",5,BMT216A,Gray,ASTON MARTIN,"[""Truck nuts"", ""Yosemite Sam mud flap""]"
 
-# B5: reports of out-of-town car camping out by the Capitol building
+# B5: reports of out-of-town car camping out by the Capitol building (WORKSHOP MORE?  Too much like the airport?)
 
 "2026-08-26T00:07:01",5,B5,Beige,STATION WAGON,"[""Political bumper sticker""]"
 +NO TRAVEL NOISE before or after this sighting
 
 # C1: Crashed car into paint store
-"2026-08-27T08:15:59",3,LPC1,White,FORD F-150,"[""Banana in tailpipe""]"
+"2026-08-27T08:15:59",3,RRT-3341,White,FORD F-150,"[""Banana in tailpipe""]"
 +travel noise before this sighting:
 
-"2026-08-27T06:09:30",1,LPC1,White,FORD F-150,"[""Banana in tailpipe""]"
-"2026-08-27T06:34:00",3,LPC1,White,FORD F-150,"[""Banana in tailpipe""]"
-"2026-08-27T06:58:30",5,LPC1,White,FORD F-150,"[""Banana in tailpipe""]"
-"2026-08-27T07:14:00",2,LPC1,White,FORD F-150,"[""Banana in tailpipe""]"
-"2026-08-27T07:28:30",4,LPC1,White,FORD F-150,"[""Banana in tailpipe""]"
-"2026-08-27T07:42:00",1,LPC1,White,FORD F-150,"[""Banana in tailpipe""]"
-"2026-08-27T07:53:30",3,LPC1,White,FORD F-150,"[""Banana in tailpipe""]"
-"2026-08-27T08:03:00",5,LPC1,White,FORD F-150,"[""Banana in tailpipe""]"
-"2026-08-27T08:09:30",2,LPC1,White,FORD F-150,"[""Banana in tailpipe""]"
-"2026-08-27T08:15:30",4,LPC1,White,FORD F-150,"[""Banana in tailpipe""]"
+"2026-08-27T06:09:30",1,RRT-3341,White,FORD F-150,"[""Banana in tailpipe""]"
+"2026-08-27T06:34:00",3,RRT-3341,White,FORD F-150,"[""Banana in tailpipe""]"
+"2026-08-27T06:58:30",5,RRT-3341,White,FORD F-150,"[""Banana in tailpipe""]"
+"2026-08-27T07:14:00",2,RRT-3341,White,FORD F-150,"[""Banana in tailpipe""]"
+"2026-08-27T07:28:30",4,RRT-3341,White,FORD F-150,"[""Banana in tailpipe""]"
+"2026-08-27T07:42:00",1,RRT-3341,White,FORD F-150,"[""Banana in tailpipe""]"
+"2026-08-27T07:53:30",3,RRT-3341,White,FORD F-150,"[""Banana in tailpipe""]"
+"2026-08-27T08:03:00",5,RRT-3341,White,FORD F-150,"[""Banana in tailpipe""]"
+"2026-08-27T08:09:30",2,RRT-3341,White,FORD F-150,"[""Banana in tailpipe""]"
+"2026-08-27T08:15:30",4,RRT-3341,White,FORD F-150,"[""Banana in tailpipe""]"
 
-"2026-08-27T08:16:05",5,LPC1,Rainbow,FORD F-150,"[""Banana in tailpipe""]"
+"2026-08-27T08:16:05",5,RRT-3341,Rainbow,FORD F-150,"[""Banana in tailpipe""]"
 +travel noise before this sighting:
 
-"2026-08-27T08:16:30",2,LPC1,Rainbow,FORD F-150,"[""Banana in tailpipe""]"
-"2026-08-27T08:34:00",4,LPC1,Rainbow,FORD F-150,"[""Banana in tailpipe""]"
-"2026-08-27T09:02:00",1,LPC1,Rainbow,FORD F-150,"[""Banana in tailpipe""]"
-"2026-08-27T09:27:30",3,LPC1,Rainbow,FORD F-150,"[""Banana in tailpipe""]"
-"2026-08-27T10:18:00",5,LPC1,Rainbow,FORD F-150,"[""Banana in tailpipe""]"
-"2026-08-27T17:24:00",2,LPC1,Rainbow,FORD F-150,"[""Banana in tailpipe""]"
-"2026-08-27T18:51:00",4,LPC1,Rainbow,FORD F-150,"[""Banana in tailpipe""]"
-"2026-08-27T20:13:30",1,LPC1,Rainbow,FORD F-150,"[""Banana in tailpipe""]"
-"2026-08-27T21:48:00",3,LPC1,Rainbow,FORD F-150,"[""Banana in tailpipe""]"
-"2026-08-27T23:32:00",5,LPC1,Rainbow,FORD F-150,"[""Banana in tailpipe""]"
+"2026-08-27T08:16:30",2,RRT-3341,Rainbow,FORD F-150,"[""Banana in tailpipe""]"
+"2026-08-27T08:34:00",4,RRT-3341,Rainbow,FORD F-150,"[""Banana in tailpipe""]"
+"2026-08-27T09:02:00",1,RRT-3341,Rainbow,FORD F-150,"[""Banana in tailpipe""]"
+"2026-08-27T09:27:30",3,RRT-3341,Rainbow,FORD F-150,"[""Banana in tailpipe""]"
+"2026-08-27T10:18:00",5,RRT-3341,Rainbow,FORD F-150,"[""Banana in tailpipe""]"
+"2026-08-27T17:24:00",2,RRT-3341,Rainbow,FORD F-150,"[""Banana in tailpipe""]"
+"2026-08-27T18:51:00",4,RRT-3341,Rainbow,FORD F-150,"[""Banana in tailpipe""]"
+"2026-08-27T20:13:30",1,RRT-3341,Rainbow,FORD F-150,"[""Banana in tailpipe""]"
+"2026-08-27T21:48:00",3,RRT-3341,Rainbow,FORD F-150,"[""Banana in tailpipe""]"
+"2026-08-27T23:32:00",5,RRT-3341,Rainbow,FORD F-150,"[""Banana in tailpipe""]"
+
++maybe move banana in the tailpipe to a random other person?
 
 # C2: Drove through the park
 "2026-08-27T08:15:59",2,LPC2,Green,VAN,"[""]"
