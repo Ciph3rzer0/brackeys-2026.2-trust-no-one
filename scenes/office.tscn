@@ -139,9 +139,8 @@ background_mode = 2
 background_color = Color(1, 1, 1, 1)
 ambient_light_color = Color(0.90408707, 0.92056644, 0.9382726, 1)
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_142py"]
-radius = 1.1386719
-height = 2.2773438
+[sub_resource type="BoxShape3D" id="BoxShape3D_chair_interaction"]
+size = Vector3(0.55, 1.4, 1.4)
 
 [node name="Office" type="Node3D" unique_id=2119133953]
 
@@ -4213,8 +4212,8 @@ stream = ExtResource("38_computer_mount")
 bus = &"SFX"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Chair Interaction" unique_id=1177674249]
-transform = Transform3D(1.0000001, 0, -5.9604623e-08, 0, 1.0000159, 0, 5.9604623e-08, 0, 1.0000001, 0.72741795, 0.91308296, 0.43940037)
-shape = SubResource("CapsuleShape3D_142py")
+transform = Transform3D(1.0000001, 0, -5.9604623e-08, 0, 1.0000159, 0, 5.9604623e-08, 0, 1.0000001, 0.72741795, 0.91308296, 0.25)
+shape = SubResource("BoxShape3D_chair_interaction")
 
 [node name="SubmitQuest" type="Node3D" parent="Gameplay" unique_id=1509242997]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.37737, 56.985577, -139.55121)
