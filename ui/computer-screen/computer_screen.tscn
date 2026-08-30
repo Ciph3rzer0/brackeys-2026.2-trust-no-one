@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cfglhopesv3kn" path="res://ui/computer-screen/computer_screen.gd" id="1_5btdj"]
 [ext_resource type="Theme" uid="uid://t1raxlx3ogkq" path="res://ui/tables/table_theme.tres" id="1_lc2gm"]
 [ext_resource type="Script" uid="uid://cflir6f77prq" path="res://ui/tables/text_edit_filter.gd" id="2_i7m88"]
+[ext_resource type="Script" path="res://ui/tables/line_edit_filter.gd" id="2_line_filter"]
 [ext_resource type="Theme" uid="uid://brneh6lnfaibv" path="res://theme/main_theme.tres" id="3_ni5x2"]
 [ext_resource type="PackedScene" uid="uid://cg32ljqw0tgrn" path="res://ui/tables/rms_persons/rms_persons_table_view.tscn" id="4_tb1cc"]
 [ext_resource type="PackedScene" uid="uid://dvphuceq43kt8" path="res://ui/tables/vehicle_sightings/vehicle_sightings_table_view.tscn" id="5_hkea7"]
@@ -105,17 +106,23 @@ theme_type_variation = &"white_text"
 theme_override_font_sizes/font_size = 15
 text = "Camera:"
 
-[node name="DateFilter" type="TextEdit" parent="." unique_id=1025718184]
+[node name="DayFilter" type="LineEdit" parent="." unique_id=1025718184]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 344.0
 offset_top = 41.0
 offset_right = 444.0
 offset_bottom = 74.0
-placeholder_text = "Day of month"
-script = ExtResource("2_i7m88")
+theme = ExtResource("3_ni5x2")
+placeholder_text = "DD"
+alignment = 1
+max_length = 2
+select_all_on_focus = true
+script = ExtResource("2_line_filter")
+validation_mode = 0
+validation_hint = "Day of August 2026 (1-31)."
 
-[node name="Label" type="Label" parent="DateFilter" unique_id=16784460]
+[node name="Label" type="Label" parent="DayFilter" unique_id=16784460]
 layout_mode = 0
 offset_left = 1.0
 offset_top = -25.0
@@ -124,19 +131,25 @@ offset_bottom = -2.0
 theme = ExtResource("3_ni5x2")
 theme_type_variation = &"white_text"
 theme_override_font_sizes/font_size = 15
-text = "Date"
+text = "Day"
 
-[node name="TimeFilter" type="TextEdit" parent="." unique_id=2085964683]
+[node name="FromTimeFilter" type="LineEdit" parent="." unique_id=2085964683]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 448.0
 offset_top = 41.0
 offset_right = 548.0
 offset_bottom = 74.0
-placeholder_text = "24 hour format"
-script = ExtResource("2_i7m88")
+theme = ExtResource("3_ni5x2")
+placeholder_text = "00:00"
+alignment = 1
+max_length = 5
+select_all_on_focus = true
+script = ExtResource("2_line_filter")
+validation_mode = 1
+validation_hint = "Start time in 24-hour HH:MM format. Defaults to 00:00."
 
-[node name="Label" type="Label" parent="TimeFilter" unique_id=1355078998]
+[node name="Label" type="Label" parent="FromTimeFilter" unique_id=1355078998]
 layout_mode = 0
 offset_left = 1.0
 offset_top = -25.0
@@ -145,19 +158,25 @@ offset_bottom = -2.0
 theme = ExtResource("3_ni5x2")
 theme_type_variation = &"white_text"
 theme_override_font_sizes/font_size = 15
-text = "Time"
+text = "From"
 
-[node name="TimeRangeFilter" type="TextEdit" parent="." unique_id=685891661]
+[node name="ToTimeFilter" type="LineEdit" parent="." unique_id=685891661]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 552.0
 offset_top = 41.0
 offset_right = 652.0
 offset_bottom = 74.0
-placeholder_text = "2h or 5m"
-script = ExtResource("2_i7m88")
+theme = ExtResource("3_ni5x2")
+placeholder_text = "23:59"
+alignment = 1
+max_length = 5
+select_all_on_focus = true
+script = ExtResource("2_line_filter")
+validation_mode = 1
+validation_hint = "End time in 24-hour HH:MM format. Defaults to 23:59."
 
-[node name="Label" type="Label" parent="TimeRangeFilter" unique_id=499115972]
+[node name="Label" type="Label" parent="ToTimeFilter" unique_id=499115972]
 layout_mode = 0
 offset_left = 1.0
 offset_top = -25.0
@@ -166,7 +185,7 @@ offset_bottom = -2.0
 theme = ExtResource("3_ni5x2")
 theme_type_variation = &"white_text"
 theme_override_font_sizes/font_size = 15
-text = "Range "
+text = "To"
 
 [node name="ColorFilter" type="OptionButton" parent="." unique_id=1377963714]
 unique_name_in_owner = true
@@ -266,9 +285,9 @@ content_scene_path = "uid://dukf0r3kv7h3u"
 
 [connection signal="filter_changed" from="PlateFilter" to="VehicleSightingsTableView" method="_on_plate_filter_filter_changed"]
 [connection signal="filter_changed" from="CameraFilter" to="VehicleSightingsTableView" method="_on_camera_filter_filter_changed"]
-[connection signal="filter_changed" from="DateFilter" to="VehicleSightingsTableView" method="_on_date_filter_filter_changed"]
-[connection signal="filter_changed" from="TimeFilter" to="VehicleSightingsTableView" method="_on_time_filter_filter_changed"]
-[connection signal="filter_changed" from="TimeRangeFilter" to="VehicleSightingsTableView" method="_on_time_range_filter_filter_changed"]
+[connection signal="filter_changed" from="DayFilter" to="VehicleSightingsTableView" method="_on_day_filter_filter_changed"]
+[connection signal="filter_changed" from="FromTimeFilter" to="VehicleSightingsTableView" method="_on_from_time_filter_filter_changed"]
+[connection signal="filter_changed" from="ToTimeFilter" to="VehicleSightingsTableView" method="_on_to_time_filter_filter_changed"]
 [connection signal="filter_changed" from="ColorFilter" to="VehicleSightingsTableView" method="_on_color_filter_filter_changed"]
 [connection signal="filter_changed" from="TypeFilter" to="VehicleSightingsTableView" method="_on_type_filter_filter_changed"]
 [connection signal="filter_changed" from="FeaturesFilter" to="VehicleSightingsTableView" method="_on_features_filter_filter_changed"]

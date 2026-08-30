@@ -48,52 +48,52 @@ var color_filter := ''
 var type_filter := ''
 var features_filter := ''
 
-var date_filter := ''
-var time_filter := ''
-var range_filter := ''
+const DEFAULT_FROM_TIME := "00:00"
+const DEFAULT_TO_TIME := "23:59"
+
+var day_filter := ''
+var from_time_filter := ''
+var to_time_filter := ''
 
 func _filter_rows():
-	var start := -1
-	var end := -1
-	
-	if date_filter.length() <= 2 and date_filter.is_valid_int():
-		var date = "2026-08-" + date_filter
-		var time_regex = RegEx.new()
-		var range_regex = RegEx.new()
-		
-		# Double backslash is required so GDScript passes '\d' to the engine
-		time_regex.compile("(\\d{1,2}):(\\d{2})") 
-		var time_r := time_regex.search(time_filter)
-		if time_r:
-			var hour = time_r.get_string(1).pad_zeros(2)
-			var minute  = time_r.get_string(2)
-			date += "T"+hour+":"+minute+":00"
-		
-		start = Time.get_unix_time_from_datetime_string(date)
-				
-		# Determine range
-		range_regex.compile("([+-]?)(\\d{1,2})([hm])") 
-		var range_r := range_regex.search(range_filter)
-		if range_r:
-			# Individual capture groups
-			var sign_part = range_r.get_string(1)  # Yields "-"
-			var num_part  = range_r.get_string(2)  # Yields "45"
-			var unit_part = range_r.get_string(3)  # Yields "m"
-			
-			# Example use case: Convert text to a clean integer
-			var second_range = num_part.to_int() * 60
-			
-			if unit_part == "h":
-				second_range *= 60
-			
-			end = start + second_range
+	var start_timestamp := -1
+	var end_timestamp := -1
+	var normalized_day := day_filter.strip_edges()
+	var normalized_from := from_time_filter.strip_edges()
+	var normalized_to := to_time_filter.strip_edges()
+	var effective_from := normalized_from if !normalized_from.is_empty() else DEFAULT_FROM_TIME
+	var effective_to := normalized_to if !normalized_to.is_empty() else DEFAULT_TO_TIME
+
+	var day_is_valid := normalized_day.is_empty() or LineEditFilter.is_valid_day_text(normalized_day)
+	var from_is_valid := LineEditFilter.is_valid_time_text(effective_from)
+	var to_is_valid := LineEditFilter.is_valid_time_text(effective_to)
+	var time_order_is_valid := (
+		from_is_valid
+		and to_is_valid
+		and _time_to_minutes(effective_from) <= _time_to_minutes(effective_to)
+	)
+	var to_precedes_from := (
+		from_is_valid
+		and to_is_valid
+		and _time_to_minutes(effective_to) < _time_to_minutes(effective_from)
+	)
+	_update_time_order_validation(to_precedes_from)
+
+	if !normalized_day.is_empty() and day_is_valid and time_order_is_valid:
+		var date := "2026-08-%02d" % normalized_day.to_int()
+		start_timestamp = Time.get_unix_time_from_datetime_string(
+			"%sT%s:00" % [date, effective_from]
+		)
+		end_timestamp = Time.get_unix_time_from_datetime_string(
+			"%sT%s:59" % [date, effective_to]
+		)
 		
 	#remaining filters
 	for row in _rows:
-		if row.source_row.unix_timestamp < start:
+		if start_timestamp >= 0 and row.source_row.unix_timestamp < start_timestamp:
 			row.visible = false
 			continue
-		if end > 0 and row.source_row.unix_timestamp > end:
+		if end_timestamp >= 0 and row.source_row.unix_timestamp > end_timestamp:
 			row.visible = false
 			continue
 		
@@ -124,6 +124,20 @@ func _filter_rows():
 		
 		row.visible = true
 
+
+func _time_to_minutes(time_text: String) -> int:
+	return time_text.substr(0, 2).to_int() * 60 + time_text.substr(3, 2).to_int()
+
+
+func _update_time_order_validation(to_precedes_from: bool) -> void:
+	var to_filter_control := get_parent().get_node_or_null("ToTimeFilter") as LineEditFilter
+	if !to_filter_control:
+		return
+	if to_precedes_from:
+		to_filter_control.set_external_validation_error("To must be the same as or later than From.")
+	else:
+		to_filter_control.set_external_validation_error("")
+
 #region Filter signal hooks
 func _on_plate_filter_filter_changed(text: String) -> void:
 	plate_filter = text
@@ -145,15 +159,15 @@ func _on_features_filter_filter_changed(text: String) -> void:
 	features_filter = text
 	_filter_rows()
 
-func _on_date_filter_filter_changed(text: String) -> void:
-	date_filter = text
+func _on_day_filter_filter_changed(text: String) -> void:
+	day_filter = text
 	_filter_rows()
 
-func _on_time_filter_filter_changed(text: String) -> void:
-	time_filter = text
+func _on_from_time_filter_filter_changed(text: String) -> void:
+	from_time_filter = text
 	_filter_rows()
 
-func _on_time_range_filter_filter_changed(text: String) -> void:
-	range_filter = text
+func _on_to_time_filter_filter_changed(text: String) -> void:
+	to_time_filter = text
 	_filter_rows()
 #endregion
