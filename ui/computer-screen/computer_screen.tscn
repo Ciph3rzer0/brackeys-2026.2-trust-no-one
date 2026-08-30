@@ -112,6 +112,7 @@ offset_left = 344.0
 offset_top = 41.0
 offset_right = 444.0
 offset_bottom = 74.0
+placeholder_text = "Day of month"
 script = ExtResource("2_i7m88")
 
 [node name="Label" type="Label" parent="DateFilter" unique_id=16784460]
@@ -132,6 +133,7 @@ offset_left = 448.0
 offset_top = 41.0
 offset_right = 548.0
 offset_bottom = 74.0
+placeholder_text = "24 hour format"
 script = ExtResource("2_i7m88")
 
 [node name="Label" type="Label" parent="TimeFilter" unique_id=1355078998]
@@ -152,6 +154,7 @@ offset_left = 552.0
 offset_top = 41.0
 offset_right = 652.0
 offset_bottom = 74.0
+placeholder_text = "2h or 5m"
 script = ExtResource("2_i7m88")
 
 [node name="Label" type="Label" parent="TimeRangeFilter" unique_id=499115972]
