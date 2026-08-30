@@ -54,7 +54,7 @@
 +travel noise?
 +maybe reserve weinermobile for something special?
 
-# B1: keeps throwing a brick at the hospital and speeding away
+# B1: keeps throwing eggs at the hospital and speeding away
 
 "2026-08-25T07:16:00",1,HTR-2444,White,KIA OPTIMA,"[""Honor student bumper sticker""]"
 "2026-08-25T07:16:15",1,HTR-2444,White,KIA OPTIMA,"[""Honor student bumper sticker""]"

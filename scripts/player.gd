@@ -139,6 +139,7 @@ func try_mount():
 	change_fov(50.0, 0.27)
 	set_mouse_free(true)
 	mount.play_mount_sound()
+	mount.notify_mounted()
 
 
 func get_available_mount() -> InteractableMount:
@@ -150,9 +151,12 @@ func get_available_mount() -> InteractableMount:
 	return null
 
 func dismount():
+	var previous_mount := _mounted_object
 	_mounted_object = null
 	change_fov(75.0, 0.05)
 	set_mouse_free(false)
+	if previous_mount:
+		previous_mount.notify_dismounted()
 
 
 var fov_tween: Tween
@@ -330,12 +334,6 @@ func _physics_process(delta: float) -> void:
 func landing_animation(landing_velocity):
 	if landing_velocity >= 2:
 		play_random_footstep_sound()
-
-	var tween = get_tree().create_tween().set_trans(Tween.TRANS_SINE)
-	var amplitude = clamp(landing_velocity / 100, 0.0, 0.3)
-#
-	#tween.tween_property(%LandingAnimation, "position:y", -amplitude, amplitude)
-	#tween.tween_property(%LandingAnimation, "position:y", 0, amplitude)
 
 
 func play_random_footstep_sound() -> void:

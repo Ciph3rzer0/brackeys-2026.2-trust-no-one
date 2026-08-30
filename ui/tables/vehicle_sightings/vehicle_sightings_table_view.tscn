@@ -15,17 +15,16 @@ script = ExtResource("2_5i2x8")
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=418277657]
 layout_mode = 2
 
-[node name="HSplitContainer" type="VSplitContainer" parent="MarginContainer" unique_id=1241418990]
+[node name="HSplitContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1241418990]
 layout_mode = 2
-split_offsets = PackedInt32Array(23)
-dragging_enabled = false
-split_offset = 23
 
 [node name="TableHeader" parent="MarginContainer/HSplitContainer" unique_id=1285161061 instance=ExtResource("3_5i2x8")]
 layout_mode = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HSplitContainer" unique_id=572966982]
+unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="TableBody" type="VBoxContainer" parent="MarginContainer/HSplitContainer/ScrollContainer" unique_id=62885424]
 unique_name_in_owner = true
@@ -36,3 +35,34 @@ size_flags_horizontal = 3
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+
+[node name="PaginationBar" type="HBoxContainer" parent="MarginContainer/HSplitContainer"]
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="PreviousPageButton" type="Button" parent="MarginContainer/HSplitContainer/PaginationBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 32)
+layout_mode = 2
+disabled = true
+text = "Previous"
+
+[node name="PageLabel" type="Label" parent="MarginContainer/HSplitContainer/PaginationBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+text = "Open computer to load records"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NextPageButton" type="Button" parent="MarginContainer/HSplitContainer/PaginationBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 32)
+layout_mode = 2
+disabled = true
+text = "Next"
+
+[connection signal="pressed" from="MarginContainer/HSplitContainer/PaginationBar/PreviousPageButton" to="." method="_on_previous_page_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HSplitContainer/PaginationBar/NextPageButton" to="." method="_on_next_page_button_pressed"]

@@ -1,7 +1,25 @@
 class_name VehicleSightingsTableView
 extends PanelContainer
 
+const PAGE_SIZE := 50
+const DEFAULT_FROM_TIME := "00:00"
+const DEFAULT_TO_TIME := "23:59"
+
 var _rows: Array[VehicleSightingsRowView] = []
+var _source_rows: Array[SchemaVehicleSightings] = []
+var _filtered_rows: Array[SchemaVehicleSightings] = []
+var _current_page := 0
+var _is_active := false
+
+var plate_filter := ''
+var camera_filter := ''
+var color_filter := ''
+var type_filter := ''
+var features_filter := ''
+var day_filter := ''
+var from_time_filter := ''
+var to_time_filter := ''
+
 
 func _ready() -> void:
 	if GameManager.database:
@@ -24,36 +42,99 @@ func _connect_to_database() -> void:
 func _on_database_refreshed() -> void:
 	set_table_items(GameManager.database.vehicle_sightings)
 
-func set_table_items(rows: Array[SchemaVehicleSightings]):
-	if rows.size() < _rows.size():
-		clear_table_rows()
-	if rows.size() == _rows.size():
+
+func activate() -> void:
+	if _is_active:
 		return
 
-	for new_source_row in rows.slice(_rows.size()):
+	_is_active = true
+	_ensure_row_pool()
+	_filter_rows()
+
+
+func set_table_items(rows: Array[SchemaVehicleSightings]) -> void:
+	_source_rows.clear()
+	_source_rows.append_array(rows)
+	if _is_active:
+		_filter_rows()
+	else:
+		_update_pagination_controls()
+
+
+func _ensure_row_pool() -> void:
+	if !_rows.is_empty():
+		return
+
+	for index in range(PAGE_SIZE):
 		var new_table_row: VehicleSightingsRowView = %TableRow.duplicate()
-		new_table_row.set_source_row(new_source_row)
-		new_table_row.visible = true
+		new_table_row.name = "PooledTableRow%d" % index
+		new_table_row.visible = false
 		_rows.append(new_table_row)
 		%TableBody.add_child(new_table_row)
+
+
+func _render_current_page() -> void:
+	if !_is_active:
+		return
+
+	var page_count := _get_page_count()
+	_current_page = clampi(_current_page, 0, page_count - 1)
+	var start_index := _current_page * PAGE_SIZE
+	for index in range(_rows.size()):
+		var source_index := start_index + index
+		var table_row := _rows[index]
+		if source_index < _filtered_rows.size():
+			table_row.set_source_row(_filtered_rows[source_index])
+			table_row.visible = true
+		else:
+			table_row.visible = false
+
+	%ScrollContainer.scroll_vertical = 0
+	_update_pagination_controls()
+
+
+func _get_page_count() -> int:
+	return maxi(1, ceili(float(_filtered_rows.size()) / PAGE_SIZE))
+
+
+func _update_pagination_controls() -> void:
+	var result_count := _filtered_rows.size() if _is_active else _source_rows.size()
+	var page_count := maxi(1, ceili(float(result_count) / PAGE_SIZE))
+	_current_page = clampi(_current_page, 0, page_count - 1)
+	%PreviousPageButton.disabled = !_is_active or result_count == 0 or _current_page == 0
+	%NextPageButton.disabled = (
+		!_is_active
+		or result_count == 0
+		or _current_page >= page_count - 1
+	)
+
+	if !_is_active:
+		%PageLabel.text = "Open computer to load records"
+	elif result_count == 0:
+		%PageLabel.text = "No matching records"
+	else:
+		var first_result := _current_page * PAGE_SIZE + 1
+		var last_result := mini(first_result + PAGE_SIZE - 1, result_count)
+		%PageLabel.text = "%d-%d of %d" % [first_result, last_result, result_count]
+
+
+func _on_previous_page_button_pressed() -> void:
+	if _current_page <= 0:
+		return
+	_current_page -= 1
+	_render_current_page()
+
+
+func _on_next_page_button_pressed() -> void:
+	if _current_page >= _get_page_count() - 1:
+		return
+	_current_page += 1
+	_render_current_page()
 
 func clear_table_rows():
 	for row in _rows:
 		row.queue_free()
 	_rows.clear()
-
-var plate_filter := ''
-var camera_filter := ''
-var color_filter := ''
-var type_filter := ''
-var features_filter := ''
-
-const DEFAULT_FROM_TIME := "00:00"
-const DEFAULT_TO_TIME := "23:59"
-
-var day_filter := ''
-var from_time_filter := ''
-var to_time_filter := ''
 
 func _filter_rows():
 	var start_timestamp := -1
@@ -97,48 +178,38 @@ func _filter_rows():
 		start_time_of_day = _time_to_minutes(effective_from) * 60
 		end_time_of_day = _time_to_minutes(effective_to) * 60 + 59
 		
-	#remaining filters
-	for row in _rows:
-		if start_timestamp >= 0 and row.source_row.unix_timestamp < start_timestamp:
-			row.visible = false
+	_filtered_rows.clear()
+	for source_row in _source_rows:
+		if start_timestamp >= 0 and source_row.unix_timestamp < start_timestamp:
 			continue
-		if end_timestamp >= 0 and row.source_row.unix_timestamp > end_timestamp:
-			row.visible = false
+		if end_timestamp >= 0 and source_row.unix_timestamp > end_timestamp:
 			continue
 		if start_time_of_day >= 0:
 			var row_time_of_day := _timestamp_to_seconds_since_midnight(
-				row.source_row.unix_timestamp
+				source_row.unix_timestamp
 			)
 			if row_time_of_day < start_time_of_day or row_time_of_day > end_time_of_day:
-				row.visible = false
 				continue
 		
-		if plate_filter.length() and !plate_filter.is_subsequence_ofn(row.source_row.vehicle_plate):
-			row.visible = false
+		if plate_filter.length() and !plate_filter.is_subsequence_ofn(source_row.vehicle_plate):
 			continue
 			
-		if camera_filter.length() and !camera_filter.is_subsequence_ofn(row.source_row.camera_id):
-			row.visible = false
+		if camera_filter.length() and !camera_filter.is_subsequence_ofn(source_row.camera_id):
 			continue
 			
-		if color_filter.length() and !color_filter.is_subsequence_ofn(row.source_row.vehicle_color):
-			row.visible = false
+		if color_filter.length() and !color_filter.is_subsequence_ofn(source_row.vehicle_color):
 			continue
 			
-		if type_filter.length() and !type_filter.is_subsequence_ofn(row.source_row.vehicle_type):
-			row.visible = false
+		if type_filter.length() and !type_filter.is_subsequence_ofn(source_row.vehicle_type):
 			continue
 			
-		if features_filter.length() and !features_filter.is_subsequence_ofn(", ".join(row.source_row.vehicle_features)):
-			row.visible = false
+		if features_filter.length() and !features_filter.is_subsequence_ofn(", ".join(source_row.vehicle_features)):
 			continue
-		
-		
-		if features_filter.length() and !features_filter.is_subsequence_ofn(", ".join(row.source_row.vehicle_features)):
-			row.visible = false
-			continue
-		
-		row.visible = true
+
+		_filtered_rows.append(source_row)
+
+	_current_page = 0
+	_render_current_page()
 
 
 func _time_to_minutes(time_text: String) -> int:

@@ -1,6 +1,9 @@
 class_name InteractableMount
 extends Area3D
 
+signal mounted
+signal dismounted
+
 @export var redirect_input: SubViewport
 @export var interaction_text := "press e to sit down"
 
@@ -13,6 +16,14 @@ func play_mount_sound() -> void:
 	var mount_sound := get_node_or_null("MountSound") as AudioStreamPlayer3D
 	if mount_sound:
 		mount_sound.play()
+
+
+func notify_mounted() -> void:
+	mounted.emit()
+
+
+func notify_dismounted() -> void:
+	dismounted.emit()
 
 
 func push_event_to_viewport(event: InputEvent) -> bool:

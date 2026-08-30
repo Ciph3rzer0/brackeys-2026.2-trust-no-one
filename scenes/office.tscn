@@ -4163,12 +4163,14 @@ physics_object_picking_sort = true
 physics_object_picking_first_only = true
 gui_embed_subwindows = true
 size = Vector2i(1280, 960)
+render_target_update_mode = 1
 
 [node name="ComputerScreenUI" parent="ComputerScreenRenders/ComputerMonitor" unique_id=694152180 instance=ExtResource("25_eet0l")]
 theme = null
 
 [node name="MapGrid" type="SubViewport" parent="ComputerScreenRenders" unique_id=1310840569]
 size = Vector2i(1170, 720)
+render_target_update_mode = 0
 
 [node name="Camera3D" type="Camera3D" parent="ComputerScreenRenders/MapGrid" unique_id=1651358438]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 40.38, 1000, 47.21)
@@ -4225,3 +4227,6 @@ transform = Transform3D(1.3806835, 0, 0, 0, 1.3806835, 0, 0, 0, 1.3806835, 3.927
 
 [node name="wallmap" parent="." unique_id=874970357 instance=ExtResource("29_g1ciw")]
 transform = Transform3D(0, -1, 4.371139e-08, -4.371139e-08, -4.3711385e-08, -1, 1, 0, -4.371139e-08, 5.6501093, 2.7866902, 1.55321)
+
+[connection signal="mounted" from="Gameplay/Chair Interaction" to="ComputerScreenRenders/ComputerMonitor/ComputerScreenUI" method="_on_computer_mounted"]
+[connection signal="dismounted" from="Gameplay/Chair Interaction" to="ComputerScreenRenders/ComputerMonitor/ComputerScreenUI" method="_on_computer_dismounted"]
