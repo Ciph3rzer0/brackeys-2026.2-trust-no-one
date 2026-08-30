@@ -36,6 +36,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_lc2gm")
 theme_override_styles/panel = SubResource("StyleBoxFlat_uhg71")
 
 [node name="Button" type="Button" parent="." unique_id=1762318741]
@@ -171,6 +172,7 @@ offset_left = 696.0
 offset_top = 41.0
 offset_right = 841.0
 offset_bottom = 74.0
+theme = ExtResource("1_lc2gm")
 fit_to_longest_item = false
 script = ExtResource("9_clvma")
 
@@ -192,6 +194,7 @@ offset_left = 856.0
 offset_top = 41.0
 offset_right = 1001.0
 offset_bottom = 74.0
+theme = ExtResource("1_lc2gm")
 fit_to_longest_item = false
 script = ExtResource("9_clvma")
 
@@ -213,6 +216,7 @@ offset_left = 1016.0
 offset_top = 41.0
 offset_right = 1257.0
 offset_bottom = 74.0
+theme = ExtResource("1_lc2gm")
 fit_to_longest_item = false
 script = ExtResource("9_clvma")
 
