@@ -246,6 +246,7 @@ outline_size = 0
 
 [node name="roomLight" type="AreaLight3D" parent="." unique_id=378018363]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 1.060077, 7.32155, -0.91183126)
+visible = false
 light_color = Color(0.9999996, 0.8725206, 0.8106262, 1)
 light_energy = 10.0
 light_size = 0.123
