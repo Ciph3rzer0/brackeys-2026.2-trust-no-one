@@ -66,7 +66,7 @@ expand_icon = true
 script = ExtResource("10_5sf7k")
 quest = ExtResource("12_n1ots")
 
-[node name="PlateFilter" type="TextEdit" parent="." unique_id=2046144793]
+[node name="PlateFilter" type="LineEdit" parent="." unique_id=2046144793]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 16.0
@@ -86,7 +86,7 @@ theme_type_variation = &"white_text"
 theme_override_font_sizes/font_size = 15
 text = "License Plate:"
 
-[node name="CameraFilter" type="TextEdit" parent="." unique_id=1794576891]
+[node name="CameraFilter" type="LineEdit" parent="." unique_id=1794576891]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 184.0

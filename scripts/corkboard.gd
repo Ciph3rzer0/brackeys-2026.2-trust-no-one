@@ -4,18 +4,18 @@ extends ReportHolder3D
 @export var report_scene: PackedScene = preload("res://scenes/crime_report_3d.tscn")
 @export_range(0.0, 600.0, 1.0, "or_greater") var refill_delay_seconds := 60.0
 @export var initial_report_quests: Array[Quest] = [
-	preload("res://scripts/quests/haircut-robbery.tres"), 
 	preload("res://scripts/quests/late-nighter.tres"),
+	preload("res://scripts/quests/haircut-robbery.tres"), 
 	preload("res://scripts/quests/streaker.tres"),
 	preload("res://scripts/quests/airport-camper.tres"),
 	preload("res://scripts/quests/speed-racer.tres"),
 	preload("res://scripts/quests/stalker.tres"),
-	preload("res://scripts/quests/hospital-egging.tres"),
-	preload("res://scripts/quests/park-drive.tres"),
+	# preload("res://scripts/quests/hospital-egging.tres"),
 	preload("res://scripts/quests/painted-lady.tres"),
 	preload("res://scripts/quests/plate-swapper.tres"),
 	#preload("res://scripts/quests/a-case-of-gas.tres"),
-	preload("res://scripts/quests/another-speedster.tres")	
+	preload("res://scripts/quests/another-speedster.tres"),
+	preload("res://scripts/quests/park-drive.tres")
 	]
 
 var _queued_reports: Array[Dictionary] = []
