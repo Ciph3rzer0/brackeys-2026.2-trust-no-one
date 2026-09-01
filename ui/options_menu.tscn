@@ -78,7 +78,9 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(290, 36)
 layout_mode = 2
 size_flags_horizontal = 3
-value = 100.0
+value = 75.0
+tick_count = 5
+ticks_on_borders = true
 
 [node name="MusicLabel" type="Label" parent="Dimmer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=681041608]
 layout_mode = 2
@@ -90,7 +92,9 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(290, 36)
 layout_mode = 2
 size_flags_horizontal = 3
-value = 100.0
+value = 75.0
+tick_count = 5
+ticks_on_borders = true
 
 [node name="SFXLabel" type="Label" parent="Dimmer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=1801006441]
 layout_mode = 2
@@ -102,7 +106,9 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(290, 36)
 layout_mode = 2
 size_flags_horizontal = 3
-value = 100.0
+value = 75.0
+tick_count = 5
+ticks_on_borders = true
 
 [node name="Hint" type="Label" parent="Dimmer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1937984059]
 layout_mode = 2

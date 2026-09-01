@@ -2,7 +2,7 @@
 
 [sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_options"]
 resource_name = "OptionsMenuLowPass"
-cutoff_hz = 1400.0
+cutoff_hz = 5400.0
 resonance = 0.4
 db = 1
 
@@ -20,13 +20,14 @@ hipass = 0.8
 wet = 0.23
 
 [resource]
+bus/0/volume_db = -2.498775
 bus/0/effect/0/effect = SubResource("AudioEffectLowPassFilter_options")
 bus/0/effect/0/enabled = false
 bus/1/name = &"Music"
 bus/1/solo = false
 bus/1/mute = false
 bus/1/bypass_fx = false
-bus/1/volume_db = -0.0105095
+bus/1/volume_db = -2.498775
 bus/1/send = &"Master"
 bus/1/effect/0/effect = SubResource("AudioEffectLowPassFilter_j3pel")
 bus/1/effect/0/enabled = false
@@ -36,5 +37,5 @@ bus/2/name = &"SFX"
 bus/2/solo = false
 bus/2/mute = false
 bus/2/bypass_fx = false
-bus/2/volume_db = 0.0
+bus/2/volume_db = -2.498775
 bus/2/send = &"Master"
