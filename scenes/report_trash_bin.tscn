@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bd5vomef1fioj"]
 
 [ext_resource type="Script" uid="uid://c840l7dahwy5i" path="res://scripts/report_trash_bin.gd" id="1_bin_script"]
-[ext_resource type="AudioStream" path="res://assets/audio/sfx/pin.wav" id="2_pin_sound"]
-[ext_resource type="AudioStream" path="res://assets/audio/sfx/unpin.wav" id="3_unpin_sound"]
+[ext_resource type="AudioStream" uid="uid://2gdana8vjdw4" path="res://assets/audio/sfx/pin.wav" id="2_pin_sound"]
+[ext_resource type="AudioStream" uid="uid://ccyc3yrudhypt" path="res://assets/audio/sfx/unpin.wav" id="3_unpin_sound"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cardboard"]
 albedo_color = Color(0.38, 0.245, 0.12, 1)
@@ -20,24 +20,19 @@ size = Vector3(0.08, 0.65, 1.1)
 material = SubResource("StandardMaterial3D_cardboard")
 size = Vector3(0.82, 0.65, 0.08)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_bottom"]
-size = Vector3(0.9, 0.08, 1.1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_side"]
-size = Vector3(0.08, 0.65, 1.1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_end"]
-size = Vector3(0.82, 0.65, 0.08)
+[sub_resource type="BoxShape3D" id="BoxShape3D_qts7m"]
+size = Vector3(0.9, 0.78808594, 1.1)
 
 [node name="ReportTrashBin" type="StaticBody3D" unique_id=536759489 groups=["Interactable", "ReportTrashBin"]]
+collision_layer = 65
 script = ExtResource("1_bin_script")
 holder_label = "trash bin"
 
-[node name="PinSound" type="AudioStreamPlayer3D" parent="."]
+[node name="PinSound" type="AudioStreamPlayer3D" parent="." unique_id=1945284393]
 stream = ExtResource("2_pin_sound")
 bus = &"SFX"
 
-[node name="UnpinSound" type="AudioStreamPlayer3D" parent="."]
+[node name="UnpinSound" type="AudioStreamPlayer3D" parent="." unique_id=498746426]
 stream = ExtResource("3_unpin_sound")
 bus = &"SFX"
 
@@ -61,25 +56,9 @@ mesh = SubResource("BoxMesh_end")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.325, -0.51)
 mesh = SubResource("BoxMesh_end")
 
-[node name="BottomCollision" type="CollisionShape3D" parent="." unique_id=648354509]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
-shape = SubResource("BoxShape3D_bottom")
-
-[node name="LeftWallCollision" type="CollisionShape3D" parent="." unique_id=775591439]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.41, 0.325, 0)
-shape = SubResource("BoxShape3D_side")
-
-[node name="RightWallCollision" type="CollisionShape3D" parent="." unique_id=1378553634]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.41, 0.325, 0)
-shape = SubResource("BoxShape3D_side")
-
-[node name="FrontWallCollision" type="CollisionShape3D" parent="." unique_id=890380947]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.325, 0.51)
-shape = SubResource("BoxShape3D_end")
-
-[node name="BackWallCollision" type="CollisionShape3D" parent="." unique_id=277459718]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.325, -0.51)
-shape = SubResource("BoxShape3D_end")
+[node name="FullBoxCollision" type="CollisionShape3D" parent="." unique_id=98077625]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.39404294, 0)
+shape = SubResource("BoxShape3D_qts7m")
 
 [node name="Label3D" type="Label3D" parent="." unique_id=1507883431]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.36, 0.555)

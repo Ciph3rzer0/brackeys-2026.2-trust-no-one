@@ -174,6 +174,8 @@ attenuation_filter_db = 0.0
 
 [node name="lightswitch" type="StaticBody3D" parent="." unique_id=2027954198 groups=["Interactable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.379394, 3.202806, -5.727557)
+collision_layer = 32
+collision_mask = 0
 script = ExtResource("18_light_switch")
 
 [node name="SwitchMesh" type="MeshInstance3D" parent="lightswitch" unique_id=387037093]
@@ -189,6 +191,8 @@ bus = &"SFX"
 
 [node name="optionsSwitch" type="StaticBody3D" parent="." unique_id=1148509935 groups=["Interactable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.11305, 3.202806, -5.727557)
+collision_layer = 32
+collision_mask = 0
 script = ExtResource("21_options_switch")
 
 [node name="SwitchMesh" type="MeshInstance3D" parent="optionsSwitch" unique_id=994532343]
@@ -204,6 +208,7 @@ bus = &"SFX"
 
 [node name="rulesSwitch" type="StaticBody3D" parent="." unique_id=13043266 groups=["Interactable"]]
 transform = Transform3D(0.99570346, -0.15822184, 1.9459496e-09, -4.5741717e-16, -7.468908e-08, -0.48076594, 0.0925985, 1.7013456, -2.092465e-08, 2.442842, 1.9391851, 2.652288)
+collision_layer = 33
 script = ExtResource("33_rules_switch")
 
 [node name="SwitchMesh" type="MeshInstance3D" parent="rulesSwitch" unique_id=704972217]
