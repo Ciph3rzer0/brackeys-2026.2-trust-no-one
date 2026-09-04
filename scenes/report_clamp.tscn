@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://df0no6x57akfx" path="res://assets/audio/sfx/computerAction-2.wav" id="3_report_sound"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_clamp"]
-size = Vector3(0.42, 0.32, 0.12)
+size = Vector3(0.42, 0.53060055, 0.12)
 
 [node name="ReportClamp" type="StaticBody3D" unique_id=374785967 groups=["Interactable"]]
 collision_layer = 65
@@ -25,5 +25,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14324117, -0.13566402, 0.0
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.1, -0.05)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1990760561]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0.04, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, -0.06530028, 0)
 shape = SubResource("BoxShape3D_clamp")

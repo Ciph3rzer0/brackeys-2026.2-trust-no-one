@@ -40,7 +40,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1
 cull_mask = 32767
 
 [node name="InteractionRay" type="RayCast3D" parent="Camera3D" unique_id=1399246955]
-target_position = Vector3(0, 0, -2.5)
+target_position = Vector3(0, 0, -3)
 collision_mask = 108
 
 [node name="HeldReportAnchor" type="Node3D" parent="Camera3D" unique_id=387417500]

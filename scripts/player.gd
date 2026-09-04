@@ -48,12 +48,12 @@ func set_mouse_free(val: bool):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _input(event: InputEvent) -> void:
-	# if event.is_action_pressed("ui_cancel"):
-	# 	set_mouse_free(!is_mouse_free)
-	# 	if _mounted_object and !is_mouse_free:
-	# 		_release_input_viewport_focus()
-	# 	get_viewport().set_input_as_handled()
-	# 	return
+	if false && event.is_action_pressed("ui_cancel"):
+		set_mouse_free(!is_mouse_free)
+		if _mounted_object and !is_mouse_free:
+			_release_input_viewport_focus()
+		get_viewport().set_input_as_handled()
+		return
 	
 	if is_mouse_free: return
 	if event is InputEventMouseMotion:
@@ -166,7 +166,7 @@ func dismount():
 	var previous_mount := _mounted_object
 	_mounted_object = null
 	_release_input_viewport_focus()
-	change_fov(75.0, 0.05)
+	change_fov(65.0, 0.05)
 	set_mouse_free(false)
 	$InteractionUI/GetUpButton.visible = false
 	if previous_mount:
@@ -202,14 +202,8 @@ func _process(delta: float) -> void:
 	var interactable := get_faced_interactable()
 	var available_mount := get_available_mount() if !_mounted_object else null
 	var prompt_target: Node = interactable if interactable else available_mount
-	if _mounted_object:
-		interaction_prompt.visible = true
-		if is_mouse_free:
-			interaction_prompt.text = "tab — free look"
-		else:
-			interaction_prompt.text = "wasd — stand up    tab — use cursor"
-	else:
-		interaction_prompt.visible = !is_mouse_free and prompt_target != null
+	
+	interaction_prompt.visible = !is_mouse_free and prompt_target != null
 	if interaction_prompt.visible and !_mounted_object:
 		if prompt_target.has_method("get_interaction_text"):
 			interaction_prompt.text = prompt_target.get_interaction_text(self)
@@ -279,24 +273,28 @@ func place_held_report(holder: ReportHolder3D) -> bool:
 	var report := held_report
 	if !holder.place_report(report):
 		return false
+	
+	_release_held_report()
+	return true
 
+
+func _release_held_report():
 	held_report = null
-
+	
 	# Turn on Report collision
 	interaction_ray.set_collision_mask_value(3, true)
 	# Turn off Report Slot collision
 	interaction_ray.set_collision_mask_value(7, false)
-	return true
 
 func fax_held_report() -> bool:
 	if !held_report:
 		return false
-
+	
 	var rejection_reason := get_fax_rejection_reason()
 	if !rejection_reason.is_empty():
 		print("fax rejected: ", rejection_reason)
 		return false
-
+	
 	var report := held_report
 	var quest := report.quest
 	var submitted_plate := report.get_plate_entry().strip_edges().to_upper()
@@ -304,10 +302,12 @@ func fax_held_report() -> bool:
 	print("report faxed: ", report.get_report_title())
 	QuestSystem.submit_faxed_report(report, quest, submitted_plate)
 	print("report ", report)
+	
+	_release_held_report()
 	report.queue_free()
-
+	
 	return true
-		
+
 func _physics_process(delta: float) -> void:
 	var input_dir = Input.get_vector( "pc_right", "pc_left", "pc_back" ,"pc_forward")
 	
