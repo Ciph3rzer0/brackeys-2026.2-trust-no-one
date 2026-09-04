@@ -1,10 +1,10 @@
 [gd_resource type="Theme" format=3 uid="uid://bem6t8jrt20f3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p3m2w"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
+content_margin_left = 28.0
+content_margin_top = 10.0
+content_margin_right = 28.0
+content_margin_bottom = 10.0
 bg_color = Color(0.2, 0.2, 0.2, 0.78431374)
 border_width_left = 3
 border_width_right = 3
@@ -13,16 +13,12 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
-expand_margin_left = 24.0
-expand_margin_top = 6.0
-expand_margin_right = 24.0
-expand_margin_bottom = 6.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1d34q"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
+content_margin_left = 28.0
+content_margin_top = 10.0
+content_margin_right = 28.0
+content_margin_bottom = 10.0
 bg_color = Color(0.2, 0.2, 0.2, 0.9019608)
 border_width_left = 3
 border_width_right = 3
@@ -31,16 +27,12 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
-expand_margin_left = 24.0
-expand_margin_top = 6.0
-expand_margin_right = 24.0
-expand_margin_bottom = 6.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tyge1"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
+content_margin_left = 28.0
+content_margin_top = 10.0
+content_margin_right = 28.0
+content_margin_bottom = 10.0
 bg_color = Color(0.1, 0.1, 0.1, 0.78431374)
 border_width_left = 3
 border_width_right = 3
@@ -49,10 +41,6 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
-expand_margin_left = 24.0
-expand_margin_top = 6.0
-expand_margin_right = 24.0
-expand_margin_bottom = 6.0
 
 [resource]
 Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
