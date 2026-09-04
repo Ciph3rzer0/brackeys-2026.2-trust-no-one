@@ -264,8 +264,10 @@ func pick_up_report(report: CrimeReport3D) -> bool:
 	report.reparent(held_report_anchor, false)
 	report.global_transform = held_report_anchor.global_transform.orthonormalized()
 	report.set_held(true)
-	# Turn off report collision while it's in your hand
+	# Turn off Report collision while it's in your hand
 	interaction_ray.set_collision_mask_value(3, false)
+	# Turn on Report Slot collision
+	interaction_ray.set_collision_mask_value(7, true)
 	return true
 
 func place_held_report(holder: ReportHolder3D) -> bool:
@@ -278,8 +280,10 @@ func place_held_report(holder: ReportHolder3D) -> bool:
 
 	held_report = null
 
-	# Turn on report collision when you let go
+	# Turn on Report collision
 	interaction_ray.set_collision_mask_value(3, true)
+	# Turn off Report Slot collision
+	interaction_ray.set_collision_mask_value(7, false)
 	return true
 
 func fax_held_report() -> bool:

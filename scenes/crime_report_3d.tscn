@@ -11,7 +11,7 @@ viewport_path = NodePath("SubViewport")
 size = Vector3(0.5628418, 0.6633545, 0.02)
 
 [node name="CrimeReport3D" type="StaticBody3D" unique_id=890512404 node_paths=PackedStringArray("crime_report_viewport") groups=["CrimeReport", "Interactable"]]
-collision_layer = 64
+collision_layer = 4
 script = ExtResource("3_report_script")
 quest = ExtResource("2_m6e72")
 crime_report_viewport = NodePath("SubViewport")
