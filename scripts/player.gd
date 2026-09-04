@@ -12,7 +12,7 @@ extends CharacterBody3D
 @onready var crosshair_dot: Control = $InteractionUI/CrosshairDot
 @onready var held_report_anchor: Node3D = $Camera3D/HeldReportAnchor
 
-var run_speed = 5.5
+var run_speed = 4.5
 var speed = run_speed
 var walk_speed = 3
 var crouch_speed = 1.8
@@ -335,13 +335,13 @@ func _physics_process(delta: float) -> void:
 			landing_animation(landing_velocity)
 			landing_velocity = 0
 
-		speed = run_speed
+		speed = walk_speed
 		# Crouch with Control
 		if Input.is_key_pressed(KEY_CTRL):
 			speed = crouch_speed
 		# Walk with Shift
 		elif Input.is_key_pressed(KEY_SHIFT):
-			speed = walk_speed
+			speed = run_speed
 
 	if Input.is_key_pressed(KEY_CTRL):
 		$CollisionShape3D.shape.height = lerp($CollisionShape3D.shape.height, 1.38, 0.1)
