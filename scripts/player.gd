@@ -149,7 +149,9 @@ func try_mount():
 	cam.rotation_degrees.x = 0
 	change_fov(50.0, 0.27)
 	set_mouse_free(true)
-	$InteractionUI/GetUpButton.visible = true
+	%LookAtMapButton.visible = true
+	%GetUpButton.visible = true
+	%LookAtComputerButton.visible = false
 	mount.play_mount_sound()
 	mount.notify_mounted()
 
@@ -168,7 +170,9 @@ func dismount():
 	_release_input_viewport_focus()
 	change_fov(65.0, 0.05)
 	set_mouse_free(false)
-	$InteractionUI/GetUpButton.visible = false
+	%GetUpButton.visible = false
+	%LookAtMapButton.visible = false
+	%LookAtComputerButton.visible = false
 	if previous_mount:
 		previous_mount.notify_dismounted()
 
@@ -377,3 +381,17 @@ func play_random_footstep_sound() -> void:
 
 func _on_get_up_button_pressed() -> void:
 	dismount()
+
+
+func _on_look_at_map_button_pressed() -> void:
+	rotation.y = (deg_to_rad(70))
+	rotation.x = (deg_to_rad(-5))
+	%LookAtMapButton.visible = false
+	%LookAtComputerButton.visible = true
+
+
+func _on_look_at_computer_button_pressed() -> void:
+	rotation.y = (deg_to_rad(0))
+	rotation.x = (deg_to_rad(0))
+	%LookAtMapButton.visible = true
+	%LookAtComputerButton.visible = false

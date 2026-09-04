@@ -85,14 +85,42 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="GetUpButton" type="Button" parent="InteractionUI" unique_id=1317281799]
+[node name="MarginContainer" type="MarginContainer" parent="InteractionUI" unique_id=1186867520]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -96.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+
+[node name="LookAtMapButton" type="Button" parent="InteractionUI/MarginContainer" unique_id=1700827490]
+unique_name_in_owner = true
 visible = false
-offset_left = 591.0
-offset_top = 624.0
-offset_right = 688.0
-offset_bottom = 660.0
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("2_g2els")
+text = "Look at Map"
+
+[node name="GetUpButton" type="Button" parent="InteractionUI/MarginContainer" unique_id=1317281799]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
 theme = ExtResource("2_g2els")
 text = "Stand Up"
+
+[node name="LookAtComputerButton" type="Button" parent="InteractionUI/MarginContainer" unique_id=256820542]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+theme = ExtResource("2_g2els")
+text = "Look At Computer"
 
 [node name="CapsuleBody" type="MeshInstance3D" parent="." unique_id=311267293]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -109,4 +137,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 visible = false
 shape = SubResource("CapsuleShape3D_h45xw")
 
-[connection signal="pressed" from="InteractionUI/GetUpButton" to="." method="_on_get_up_button_pressed"]
+[connection signal="pressed" from="InteractionUI/MarginContainer/LookAtMapButton" to="." method="_on_look_at_map_button_pressed"]
+[connection signal="pressed" from="InteractionUI/MarginContainer/GetUpButton" to="." method="_on_get_up_button_pressed"]
+[connection signal="pressed" from="InteractionUI/MarginContainer/LookAtComputerButton" to="." method="_on_look_at_computer_button_pressed"]
