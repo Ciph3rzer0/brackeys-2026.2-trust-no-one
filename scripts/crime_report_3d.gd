@@ -53,7 +53,7 @@ func interact(player: Player = null) -> void:
 		player.pick_up_report(self)
 
 func set_held(is_held: bool) -> void:
-	pass
+	report_sprite.no_depth_test = is_held
 
 func get_report_title() -> String:
 	if quest and !quest.incident.is_empty():
