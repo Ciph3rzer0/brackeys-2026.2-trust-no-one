@@ -48,12 +48,12 @@ func set_mouse_free(val: bool):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel"):
-		set_mouse_free(!is_mouse_free)
-		if _mounted_object and !is_mouse_free:
-			_release_input_viewport_focus()
-		get_viewport().set_input_as_handled()
-		return
+	# if event.is_action_pressed("ui_cancel"):
+	# 	set_mouse_free(!is_mouse_free)
+	# 	if _mounted_object and !is_mouse_free:
+	# 		_release_input_viewport_focus()
+	# 	get_viewport().set_input_as_handled()
+	# 	return
 	
 	if is_mouse_free: return
 	if event is InputEventMouseMotion:
@@ -149,6 +149,7 @@ func try_mount():
 	cam.rotation_degrees.x = 0
 	change_fov(50.0, 0.27)
 	set_mouse_free(true)
+	$InteractionUI/GetUpButton.visible = true
 	mount.play_mount_sound()
 	mount.notify_mounted()
 
@@ -167,6 +168,7 @@ func dismount():
 	_release_input_viewport_focus()
 	change_fov(75.0, 0.05)
 	set_mouse_free(false)
+	$InteractionUI/GetUpButton.visible = false
 	if previous_mount:
 		previous_mount.notify_dismounted()
 
@@ -376,3 +378,7 @@ func play_random_footstep_sound() -> void:
 	if footstep_sound.size() > 0:
 		$FootstepSound.stream = footstep_sound.pick_random()
 		$FootstepSound.play()
+
+
+func _on_get_up_button_pressed() -> void:
+	dismount()

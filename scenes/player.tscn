@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bxc4ceq66ael3"]
 
 [ext_resource type="Script" uid="uid://b38bjfcu3wwbu" path="res://scripts/player.gd" id="1_3vyb7"]
+[ext_resource type="Theme" uid="uid://bem6t8jrt20f3" path="res://player_interaction_ui_theme.tres" id="2_g2els"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_crosshair_dot"]
 bg_color = Color(0.92, 0.92, 0.9, 1)
@@ -84,6 +85,15 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
+[node name="GetUpButton" type="Button" parent="InteractionUI" unique_id=1317281799]
+visible = false
+offset_left = 591.0
+offset_top = 624.0
+offset_right = 688.0
+offset_bottom = 660.0
+theme = ExtResource("2_g2els")
+text = "Stand Up"
+
 [node name="CapsuleBody" type="MeshInstance3D" parent="." unique_id=311267293]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_0o143")
@@ -96,3 +106,5 @@ mesh = SubResource("PrismMesh_obbxu")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 visible = false
 shape = SubResource("CapsuleShape3D_h45xw")
+
+[connection signal="pressed" from="InteractionUI/GetUpButton" to="." method="_on_get_up_button_pressed"]
