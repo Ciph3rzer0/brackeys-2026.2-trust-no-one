@@ -311,11 +311,6 @@ func fax_held_report() -> bool:
 func _physics_process(delta: float) -> void:
 	var input_dir = Input.get_vector( "pc_right", "pc_left", "pc_back" ,"pc_forward")
 	
-	# Preserve movement letters while a text field is active. Once text entry
-	# finishes, the same movement press stands the player up and moves them.
-	if _mounted_object and !input_dir.is_zero_approx() and !_has_focused_text_input():
-		dismount()
-	
 	# No player movement while mounted
 	if _mounted_object: return
 	
