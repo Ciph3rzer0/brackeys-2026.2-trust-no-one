@@ -384,14 +384,22 @@ func _on_get_up_button_pressed() -> void:
 
 
 func _on_look_at_map_button_pressed() -> void:
-	rotation.y = (deg_to_rad(70))
-	rotation.x = (deg_to_rad(-5))
+	var tween = create_tween()
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_QUAD)
+	var look_dir = Vector3(deg_to_rad(-5), deg_to_rad(70), deg_to_rad(-0))
+	tween.tween_property(self, "rotation", look_dir, 0.5)
+
+	#rotation.y = (deg_to_rad(70))
+	#rotation.x = (deg_to_rad(-5))
 	%LookAtMapButton.visible = false
 	%LookAtComputerButton.visible = true
 
 
 func _on_look_at_computer_button_pressed() -> void:
-	rotation.y = (deg_to_rad(0))
-	rotation.x = (deg_to_rad(0))
+	var tween = create_tween()
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_QUAD)
+	tween.tween_property(self, "rotation", Vector3.ZERO, 0.5)
 	%LookAtMapButton.visible = true
 	%LookAtComputerButton.visible = false
