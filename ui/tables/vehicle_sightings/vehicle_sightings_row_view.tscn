@@ -42,13 +42,13 @@ text_overrun_behavior = 5
 unique_name_in_owner = true
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
-text = "License Plate"
+text = "Plate"
 clip_text = true
 text_overrun_behavior = 5
 
 [node name="Date" type="Label" parent="MarginContainer/HBoxContainer" unique_id=2036714697]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(70, 0)
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 text = "Date"
 clip_text = true
@@ -56,7 +56,7 @@ text_overrun_behavior = 5
 
 [node name="Time" type="Label" parent="MarginContainer/HBoxContainer" unique_id=318960022]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(80, 0)
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "Time"
 clip_text = true
@@ -64,25 +64,26 @@ text_overrun_behavior = 5
 
 [node name="CameraID" type="Label" parent="MarginContainer/HBoxContainer" unique_id=94543752]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(120, 0)
+custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
-text = "Camera ID"
+text = "Camera"
+horizontal_alignment = 1
 clip_text = true
 text_overrun_behavior = 5
 
 [node name="VehicleColor" type="Label" parent="MarginContainer/HBoxContainer" unique_id=811470654]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(120, 0)
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-text = "Vehicle Color"
+text = "Color"
 clip_text = true
 text_overrun_behavior = 5
 
 [node name="VehicleType" type="Label" parent="MarginContainer/HBoxContainer" unique_id=900088983]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(120, 0)
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-text = "Vehicle Type"
+text = "Type"
 clip_text = true
 text_overrun_behavior = 5
 

@@ -8,12 +8,14 @@ const TYPING_SOUNDS: Array[AudioStream] = [
 
 @export var computer_viewport: SubViewport
 @export var quad_mesh: QuadMesh
+@export var glow_lights: Array[SpotLight3D]
 
 var screen_size: Vector2
 var _typing_sound_player: AudioStreamPlayer3D
 
 
 func _ready() -> void:
+	assert(glow_lights.size() > 0)
 	screen_size = quad_mesh.size
 	_typing_sound_player = AudioStreamPlayer3D.new()
 	_typing_sound_player.name = "TypingSoundPlayer"
@@ -94,3 +96,12 @@ func spawn_sphere_3d(spawn_position: Vector3):
 
 	# Add as a child to the current node
 	add_child(mesh_instance)
+
+
+func _on_lightswitch_switch_flipped(on: bool) -> void:
+	# Hide computer glow when lights are on
+	for light in glow_lights:
+		if on:
+			light.light_energy = 0.0
+		else:
+			light.light_energy = 0.5

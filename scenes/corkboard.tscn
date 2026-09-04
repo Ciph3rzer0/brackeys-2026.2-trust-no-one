@@ -13,6 +13,8 @@ albedo_color = Color(0.96202856, 0.83949524, 3.85046e-07, 1)
 material = SubResource("StandardMaterial3D_fgrfp")
 
 [node name="Corkboard" type="StaticBody3D" unique_id=1029173645 groups=["CrimeReportCorkboard", "Interactable"]]
+collision_layer = 65
+collision_mask = 0
 script = ExtResource("2_corkboard_script")
 holder_label = "corkboard"
 slot_container_path = NodePath("corkboard2/pin locations")
@@ -24,7 +26,7 @@ shape = SubResource("BoxShape3D_corkboard")
 [node name="corkboard2" parent="." unique_id=118271081 instance=ExtResource("1_iwwb2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0634726, -0.44753733, 0.24951664)
 
-[node name="corkboard" parent="corkboard2" index="0" unique_id=2066175340]
+[node name="corkboard" parent="corkboard2" index="0" unique_id=520441171]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06466091, -0.07382575, -0.2173571)
 
 [node name="memo" type="MeshInstance3D" parent="corkboard2" unique_id=1757999416]

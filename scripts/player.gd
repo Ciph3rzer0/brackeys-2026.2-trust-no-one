@@ -12,7 +12,7 @@ extends CharacterBody3D
 @onready var crosshair_dot: Control = $InteractionUI/CrosshairDot
 @onready var held_report_anchor: Node3D = $Camera3D/HeldReportAnchor
 
-var run_speed = 5.5
+var run_speed = 4.5
 var speed = run_speed
 var walk_speed = 3
 var crouch_speed = 1.8
@@ -48,7 +48,7 @@ func set_mouse_free(val: bool):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel"):
+	if false && event.is_action_pressed("ui_cancel"):
 		set_mouse_free(!is_mouse_free)
 		if _mounted_object and !is_mouse_free:
 			_release_input_viewport_focus()
@@ -149,6 +149,9 @@ func try_mount():
 	cam.rotation_degrees.x = 0
 	change_fov(50.0, 0.27)
 	set_mouse_free(true)
+	%LookAtMapButton.visible = true
+	%GetUpButton.visible = true
+	%LookAtComputerButton.visible = false
 	mount.play_mount_sound()
 	mount.notify_mounted()
 
@@ -165,8 +168,11 @@ func dismount():
 	var previous_mount := _mounted_object
 	_mounted_object = null
 	_release_input_viewport_focus()
-	change_fov(75.0, 0.05)
+	change_fov(65.0, 0.05)
 	set_mouse_free(false)
+	%GetUpButton.visible = false
+	%LookAtMapButton.visible = false
+	%LookAtComputerButton.visible = false
 	if previous_mount:
 		previous_mount.notify_dismounted()
 
@@ -200,14 +206,8 @@ func _process(delta: float) -> void:
 	var interactable := get_faced_interactable()
 	var available_mount := get_available_mount() if !_mounted_object else null
 	var prompt_target: Node = interactable if interactable else available_mount
-	if _mounted_object:
-		interaction_prompt.visible = true
-		if is_mouse_free:
-			interaction_prompt.text = "tab — free look"
-		else:
-			interaction_prompt.text = "wasd — stand up    tab — use cursor"
-	else:
-		interaction_prompt.visible = !is_mouse_free and prompt_target != null
+	
+	interaction_prompt.visible = !is_mouse_free and prompt_target != null
 	if interaction_prompt.visible and !_mounted_object:
 		if prompt_target.has_method("get_interaction_text"):
 			interaction_prompt.text = prompt_target.get_interaction_text(self)
@@ -264,6 +264,10 @@ func pick_up_report(report: CrimeReport3D) -> bool:
 	report.reparent(held_report_anchor, false)
 	report.global_transform = held_report_anchor.global_transform.orthonormalized()
 	report.set_held(true)
+	# Turn off Report collision while it's in your hand
+	interaction_ray.set_collision_mask_value(3, false)
+	# Turn on Report Slot collision
+	interaction_ray.set_collision_mask_value(7, true)
 	return true
 
 func place_held_report(holder: ReportHolder3D) -> bool:
@@ -273,19 +277,28 @@ func place_held_report(holder: ReportHolder3D) -> bool:
 	var report := held_report
 	if !holder.place_report(report):
 		return false
-
-	held_report = null
+	
+	_release_held_report()
 	return true
+
+
+func _release_held_report():
+	held_report = null
+	
+	# Turn on Report collision
+	interaction_ray.set_collision_mask_value(3, true)
+	# Turn off Report Slot collision
+	interaction_ray.set_collision_mask_value(7, false)
 
 func fax_held_report() -> bool:
 	if !held_report:
 		return false
-
+	
 	var rejection_reason := get_fax_rejection_reason()
 	if !rejection_reason.is_empty():
 		print("fax rejected: ", rejection_reason)
 		return false
-
+	
 	var report := held_report
 	var quest := report.quest
 	var submitted_plate := report.get_plate_entry().strip_edges().to_upper()
@@ -293,17 +306,14 @@ func fax_held_report() -> bool:
 	print("report faxed: ", report.get_report_title())
 	QuestSystem.submit_faxed_report(report, quest, submitted_plate)
 	print("report ", report)
+	
+	_release_held_report()
 	report.queue_free()
-
+	
 	return true
-		
+
 func _physics_process(delta: float) -> void:
 	var input_dir = Input.get_vector( "pc_right", "pc_left", "pc_back" ,"pc_forward")
-	
-	# Preserve movement letters while a text field is active. Once text entry
-	# finishes, the same movement press stands the player up and moves them.
-	if _mounted_object and !input_dir.is_zero_approx() and !_has_focused_text_input():
-		dismount()
 	
 	# No player movement while mounted
 	if _mounted_object: return
@@ -325,13 +335,13 @@ func _physics_process(delta: float) -> void:
 			landing_animation(landing_velocity)
 			landing_velocity = 0
 
-		speed = run_speed
+		speed = walk_speed
 		# Crouch with Control
 		if Input.is_key_pressed(KEY_CTRL):
 			speed = crouch_speed
 		# Walk with Shift
 		elif Input.is_key_pressed(KEY_SHIFT):
-			speed = walk_speed
+			speed = run_speed
 
 	if Input.is_key_pressed(KEY_CTRL):
 		$CollisionShape3D.shape.height = lerp($CollisionShape3D.shape.height, 1.38, 0.1)
@@ -367,3 +377,29 @@ func play_random_footstep_sound() -> void:
 	if footstep_sound.size() > 0:
 		$FootstepSound.stream = footstep_sound.pick_random()
 		$FootstepSound.play()
+
+
+func _on_get_up_button_pressed() -> void:
+	dismount()
+
+
+func _on_look_at_map_button_pressed() -> void:
+	var tween = create_tween()
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_QUAD)
+	var look_dir = Vector3(deg_to_rad(-5), deg_to_rad(70), deg_to_rad(-0))
+	tween.tween_property(self, "rotation", look_dir, 0.5)
+
+	#rotation.y = (deg_to_rad(70))
+	#rotation.x = (deg_to_rad(-5))
+	%LookAtMapButton.visible = false
+	%LookAtComputerButton.visible = true
+
+
+func _on_look_at_computer_button_pressed() -> void:
+	var tween = create_tween()
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_QUAD)
+	tween.tween_property(self, "rotation", Vector3.ZERO, 0.5)
+	%LookAtMapButton.visible = true
+	%LookAtComputerButton.visible = false

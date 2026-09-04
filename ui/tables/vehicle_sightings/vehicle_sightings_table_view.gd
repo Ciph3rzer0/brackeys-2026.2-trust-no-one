@@ -1,7 +1,7 @@
 class_name VehicleSightingsTableView
 extends PanelContainer
 
-const PAGE_SIZE := 50
+const PAGE_SIZE := 18
 const DEFAULT_FROM_TIME := "00:00"
 const DEFAULT_TO_TIME := "23:59"
 
