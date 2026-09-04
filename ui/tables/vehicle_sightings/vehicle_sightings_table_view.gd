@@ -1,6 +1,8 @@
 class_name VehicleSightingsTableView
 extends PanelContainer
 
+signal options_filters_updated(colors: Array[String], types: Array[String], features: Array[String])
+
 const PAGE_SIZE := 18
 const DEFAULT_FROM_TIME := "00:00"
 const DEFAULT_TO_TIME := "23:59"
@@ -41,7 +43,28 @@ func _connect_to_database() -> void:
 
 func _on_database_refreshed() -> void:
 	set_table_items(GameManager.database.vehicle_sightings)
+	set_table_options(GameManager.database.vehicle_sightings)
 
+func set_table_options(rows: Array[SchemaVehicleSightings]) -> void:
+	var colors_dict: Dictionary[String, bool] = {}
+	var types_dict: Dictionary[String, bool] = {}
+	var features_dict: Dictionary[String, bool] = {}
+	
+	colors_dict[""] = true
+	types_dict[""] = true
+	features_dict[""] = true
+	
+	for row in rows:
+		colors_dict[row.vehicle_color] = true
+		types_dict[row.vehicle_type] = true
+		for feature in row.vehicle_features:
+			features_dict[feature] = true
+	
+	var colors = colors_dict.keys(); colors.sort()
+	var types = types_dict.keys(); types.sort()
+	var features = features_dict.keys(); features.sort()
+	
+	options_filters_updated.emit(colors, types, features)
 
 func activate() -> void:
 	if _is_active:
