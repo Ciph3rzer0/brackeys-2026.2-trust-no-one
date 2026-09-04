@@ -143,6 +143,9 @@ ambient_light_color = Color(0.90408707, 0.92056644, 0.9382726, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_chair_interaction"]
 size = Vector3(0.6295105, 0.9106811, 2.0118499)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_krb5w"]
+size = Vector3(1.5463333, 1.2046509, 0.58239746)
+
 [node name="Office" type="Node3D" unique_id=2119133953]
 
 [node name="Player" parent="." unique_id=1865119778 node_paths=PackedStringArray("viewports") instance=ExtResource("10_gnmmx")]
@@ -4207,6 +4210,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.37737, 56.985577, -139.551
 
 [node name="desk" parent="." unique_id=2107914153 instance=ExtResource("4_2knxt")]
 transform = Transform3D(1.7488817, 0, 0, 0, 1.7488817, 0, 0, 0, 1.7488817, 3.3157055, 0.6540642, 2.5794885)
+
+[node name="Desk Collision" type="StaticBody3D" parent="desk" unique_id=2110332680]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="desk/Desk Collision" unique_id=712057960]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1615181, 0.10232535, -0.043762207)
+shape = SubResource("BoxShape3D_krb5w")
 
 [node name="computer-keyboard2" parent="." unique_id=1110257665 instance=ExtResource("16_jp1e5")]
 transform = Transform3D(1.3806835, 0, 0, 0, 1.3806835, 0, 0, 0, 1.3806835, 3.927921, 1.7878904, 1.90239)
