@@ -14,6 +14,10 @@ script = ExtResource("2_5i2x8")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=418277657]
 layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 8
 
 [node name="HSplitContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1241418990]
 layout_mode = 2
@@ -30,26 +34,27 @@ size_flags_vertical = 3
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 6
 
 [node name="TableRow" parent="MarginContainer/HSplitContainer/ScrollContainer/TableBody" unique_id=1493474001 instance=ExtResource("3_5i2x8")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 
-[node name="PaginationBar" type="HBoxContainer" parent="MarginContainer/HSplitContainer"]
+[node name="PaginationBar" type="HBoxContainer" parent="MarginContainer/HSplitContainer" unique_id=358612843]
 custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
 theme_override_constants/separation = 14
 alignment = 1
 
-[node name="PreviousPageButton" type="Button" parent="MarginContainer/HSplitContainer/PaginationBar"]
+[node name="PreviousPageButton" type="Button" parent="MarginContainer/HSplitContainer/PaginationBar" unique_id=1507895682]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(120, 32)
 layout_mode = 2
 disabled = true
 text = "Previous"
 
-[node name="PageLabel" type="Label" parent="MarginContainer/HSplitContainer/PaginationBar"]
+[node name="PageLabel" type="Label" parent="MarginContainer/HSplitContainer/PaginationBar" unique_id=294989561]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
@@ -57,7 +62,7 @@ text = "Open computer to load records"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NextPageButton" type="Button" parent="MarginContainer/HSplitContainer/PaginationBar"]
+[node name="NextPageButton" type="Button" parent="MarginContainer/HSplitContainer/PaginationBar" unique_id=1459047387]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(120, 32)
 layout_mode = 2
