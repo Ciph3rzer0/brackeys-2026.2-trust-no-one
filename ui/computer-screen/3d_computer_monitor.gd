@@ -96,3 +96,12 @@ func spawn_sphere_3d(spawn_position: Vector3):
 
 	# Add as a child to the current node
 	add_child(mesh_instance)
+
+
+func _on_lightswitch_switch_flipped(on: bool) -> void:
+	# Hide computer glow when lights are on
+	for light in glow_lights:
+		if on:
+			light.light_energy = 0.0
+		else:
+			light.light_energy = 0.5
