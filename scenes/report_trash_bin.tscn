@@ -62,7 +62,8 @@ shape = SubResource("BoxShape3D_qts7m")
 
 [node name="Label3D" type="Label3D" parent="." unique_id=1507883431]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.36, 0.555)
-modulate = Color(0.51475984, 0.23988795, 0.16956273, 1)
+shaded = true
+modulate = Color(0.76, 0.55935997, 0.5092, 1)
 text = "trash"
 font_size = 24
 outline_size = 0
