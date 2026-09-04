@@ -102,6 +102,9 @@ viewport_path = NodePath("ComputerScreenRenders/ComputerMonitor")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fsavt"]
 resource_local_to_scene = true
 albedo_texture = SubResource("ViewportTexture_gf52q")
+emission_enabled = true
+emission_energy_multiplier = 0.6
+emission_texture = SubResource("ViewportTexture_gf52q")
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_8pip0"]
 data = PackedVector3Array(0.41349998, -0.31, 0, -0.41349998, -0.31, 0, 0.41349998, 0.31, 0, -0.41349998, -0.31, 0, -0.41349998, 0.31, 0, 0.41349998, 0.31, 0)
@@ -352,6 +355,35 @@ collision_layer = 4096
 script = ExtResource("21_fw3ux")
 computer_viewport = NodePath("../../ComputerScreenRenders/ComputerMonitor")
 quad_mesh = ExtResource("22_g1ciw")
+
+[node name="DirectionalLight3D" type="SpotLight3D" parent="Screens/ComputerScreen" unique_id=1905058819]
+transform = Transform3D(-0.70665747, 0, 6.177796e-08, 0, 0.70665747, 0, -6.177796e-08, 0, -0.70665747, -0.13669205, 0, 0.02096641)
+visible = false
+light_color = Color(0.88, 0.906, 1, 1)
+light_energy = 0.5
+light_specular = 1.0
+light_bake_mode = 1
+shadow_enabled = true
+shadow_bias = 0.0
+shadow_normal_bias = 4.0
+shadow_opacity = 0.7
+spot_range = 7.3367844
+spot_angle = 81.50302
+spot_angle_attenuation = 5.0
+
+[node name="DirectionalLight3D2" type="SpotLight3D" parent="Screens/ComputerScreen" unique_id=1699555848]
+transform = Transform3D(-0.70665747, 0, 6.177796e-08, 0, 0.70665747, 0, -6.177796e-08, 0, -0.70665747, 0.15754747, 0, 0.02096641)
+light_color = Color(0.88, 0.906, 1, 1)
+light_energy = 0.5
+light_specular = 1.0
+light_bake_mode = 1
+shadow_enabled = true
+shadow_bias = 0.0
+shadow_normal_bias = 4.0
+shadow_opacity = 0.7
+spot_range = 7.3367844
+spot_angle = 81.50302
+spot_angle_attenuation = 5.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Screens/ComputerScreen" unique_id=677057215]
 transform = Transform3D(1, 0, 9.32811e-15, 0, 1, 0, -9.32811e-15, 0, 1, 0, 0, 0)

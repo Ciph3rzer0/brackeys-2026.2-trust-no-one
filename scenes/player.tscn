@@ -96,10 +96,12 @@ text = "Stand Up"
 
 [node name="CapsuleBody" type="MeshInstance3D" parent="." unique_id=311267293]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+layers = 32768
 mesh = SubResource("CapsuleMesh_0o143")
 
 [node name="FacingIndicator" type="MeshInstance3D" parent="." unique_id=81546355]
 transform = Transform3D(0.3, 0, 0, 0, -1.3113416e-08, -0.05885305, 0, 0.29999998, -2.5725486e-09, 0, 2.2002637, -0.045395434)
+layers = 32768
 mesh = SubResource("PrismMesh_obbxu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=561644201]
