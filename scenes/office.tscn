@@ -4187,7 +4187,7 @@ size = 150.0
 transform = Transform3D(1.4151126, 0, 0, 0, 1.4151126, 0, 0, 0, 1.4151126, 0.5436454, 2.1912403, -1.4963394)
 
 [node name="Chair Interaction" type="Area3D" parent="Gameplay" unique_id=292098836 groups=["InteractiveMount"]]
-transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 2.046382, -1.8649222, 1.7275102)
+transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 2.07, -1.865, 1.728)
 collision_layer = 0
 input_ray_pickable = false
 monitorable = false
