@@ -8,12 +8,14 @@ const TYPING_SOUNDS: Array[AudioStream] = [
 
 @export var computer_viewport: SubViewport
 @export var quad_mesh: QuadMesh
+@export var glow_lights: Array[SpotLight3D]
 
 var screen_size: Vector2
 var _typing_sound_player: AudioStreamPlayer3D
 
 
 func _ready() -> void:
+	assert(glow_lights.size() > 0)
 	screen_size = quad_mesh.size
 	_typing_sound_player = AudioStreamPlayer3D.new()
 	_typing_sound_player.name = "TypingSoundPlayer"

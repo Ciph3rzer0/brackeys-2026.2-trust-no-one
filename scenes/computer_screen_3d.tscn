@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://egf54ntvp4me"]
+
+[ext_resource type="Script" uid="uid://biuonnjp64bgo" path="res://ui/computer-screen/3d_computer_monitor.gd" id="1_bidd5"]
+[ext_resource type="QuadMesh" uid="uid://qaplr8l4g05l" path="res://ui/computer-screen/screen_quad_mesh.tres" id="2_slv2f"]
+[ext_resource type="PackedScene" uid="uid://bkmp0qtqdsq8u" path="res://ui/computer-screen/computer_screen.tscn" id="3_slv2f"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_gf52q"]
+viewport_path = NodePath("ComputerMonitor")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_8v8tf"]
+viewport_path = NodePath("ComputerMonitor")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fsavt"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_gf52q")
+emission_enabled = true
+emission_energy_multiplier = 0.8
+emission_texture = SubResource("ViewportTexture_8v8tf")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_8pip0"]
+data = PackedVector3Array(0.41349998, -0.31, 0, -0.41349998, -0.31, 0, 0.41349998, 0.31, 0, -0.41349998, -0.31, 0, -0.41349998, 0.31, 0, 0.41349998, 0.31, 0)
+
+[node name="ComputerScreen" type="StaticBody3D" unique_id=1778593620 node_paths=PackedStringArray("computer_viewport", "glow_lights")]
+transform = Transform3D(-1.0000001, 0, -8.7422784e-08, 0, 1.0000001, 0, 8.7422784e-08, 0, -1.0000001, 0, 0, 0)
+collision_layer = 4096
+script = ExtResource("1_bidd5")
+computer_viewport = NodePath("ComputerMonitor")
+quad_mesh = ExtResource("2_slv2f")
+glow_lights = [NodePath("SpotLight3D"), NodePath("SpotLight3D2")]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=2136973327]
+transform = Transform3D(-0.9999999, 0, 1.5099579e-07, 0, 0.9999999, 0, -1.5099579e-07, 0, -0.9999999, -0.17, 0, -0.0001762695)
+light_color = Color(0.88, 0.906, 1, 1)
+light_energy = 0.5
+light_specular = 1.0
+light_bake_mode = 1
+shadow_enabled = true
+shadow_bias = 0.0
+shadow_normal_bias = 4.0
+shadow_opacity = 0.7
+spot_range = 7.3367844
+spot_angle = 81.50302
+spot_angle_attenuation = 5.0
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="." unique_id=2039800593]
+transform = Transform3D(-0.9999999, 0, 1.5099579e-07, 0, 0.9999999, 0, -1.5099579e-07, 0, -0.9999999, 0.17, 0, -0.00017626959)
+light_color = Color(0.88, 0.906, 1, 1)
+light_energy = 0.5
+light_specular = 1.0
+light_bake_mode = 1
+shadow_enabled = true
+shadow_bias = 0.0
+shadow_normal_bias = 4.0
+shadow_opacity = 0.7
+spot_range = 7.3367844
+spot_angle = 81.50302
+spot_angle_attenuation = 5.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=4221138]
+transform = Transform3D(1, 0, 9.32811e-15, 0, 1, 0, -9.32811e-15, 0, 1, 0, 0, 0)
+mesh = ExtResource("2_slv2f")
+surface_material_override/0 = SubResource("StandardMaterial3D_fsavt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=844788986]
+shape = SubResource("ConcavePolygonShape3D_8pip0")
+
+[node name="ComputerMonitor" type="SubViewport" parent="." unique_id=1534130124]
+physics_object_picking = true
+physics_object_picking_sort = true
+physics_object_picking_first_only = true
+gui_embed_subwindows = true
+size = Vector2i(1280, 960)
+render_target_update_mode = 1
+
+[node name="ComputerScreenUI" parent="ComputerMonitor" unique_id=694152180 instance=ExtResource("3_slv2f")]
+theme = null
