@@ -6,5 +6,5 @@
 script = ExtResource("1_25mi1")
 correct_plate = "FCT-7517"
 incident = "Late-Nighter"
-details = "Our CIs have reported sightings a curfew-breaker"
+details = "Witnesses report a curfew-breaker, though they don't remember which night"
 metadata/_custom_type_script = "uid://dy022jdobl3k8"
