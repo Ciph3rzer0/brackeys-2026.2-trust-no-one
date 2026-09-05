@@ -14,15 +14,15 @@ func _process(_delta: float) -> void:
 
 	var global_pos: Vector3 = target.global_position
 	
-	# 1. Check if the target is in front of or behind the camera
-	var is_behind: bool = camera.is_position_behind(global_pos)
-	
-	# 2. Project 3D position to 2D screen coordinates
+	# 1. Project to 2D to see where it would be if it's strictly in front
 	var screen_pos: Vector2 = camera.unproject_position(global_pos)
 	var viewport_size: Vector2 = get_viewport_rect().size
 	var screen_center: Vector2 = viewport_size / 2.0
+	
+	# Check if the target is physically behind the camera plane
+	var is_behind: bool = camera.is_position_behind(global_pos)
 
-	# 3. Determine if it's offscreen
+	# Check if the projected position is off the visible screen edges
 	var is_offscreen: bool = (
 		screen_pos.x < margin or 
 		screen_pos.x > viewport_size.x - margin or 
@@ -30,27 +30,35 @@ func _process(_delta: float) -> void:
 		screen_pos.y > viewport_size.y - margin
 	)
 
-	# If it's onscreen and in front, hide the offscreen arrow (or position it directly over the target)
+	# If it's fully onscreen and in front, hide the arrow tracker
 	if not is_offscreen and not is_behind:
 		hide() 
 		return
 		
 	show()
 
-	# 4. Flip the projection vector if the target is behind the camera
-	if is_behind:
-		screen_pos = screen_center - (screen_pos - screen_center)
-
-	# 5. Calculate direction from screen center to target screen position
-	var direction: Vector2 = (screen_pos - screen_center).normalized()
-
-	# 6. Clamp the position to the viewport bounds with margins
-	var clamped_x: float = clamp(screen_pos.x, margin, viewport_size.x - margin)
-	var clamped_y: float = clamp(screen_pos.y, margin, viewport_size.y - margin)
+	# 2. FIX FOR THE 90-DEGREE FLIP: Calculate direction using true 3D space
+	# Get the camera's local transform matrix
+	var cam_transform: Transform3D = camera.global_transform
 	
-	# Alternatively, for perfect radial clamping along the screen boundary:
-	# (This is standard bounding-box ray intersection)
+	# Vector pointing from the camera to the target in world space
+	var to_target_3d: Vector3 = global_pos - cam_transform.origin
+	
+	# Extract the Right (X) and Up (Y) depth offsets relative to the camera's face
+	# cam_transform.basis.x is the camera's "Right" vector
+	# cam_transform.basis.y is the camera's "Up" vector
+	var local_x: float = to_target_3d.dot(cam_transform.basis.x)
+	var local_y: float = to_target_3d.dot(cam_transform.basis.y)
+	
+	# Create a true 2D direction pointing from screen center to target
+	# 2D Screen Y goes DOWN, but 3D Up goes UP, so invert local_y
+	var direction: Vector2 = Vector2(local_x, -local_y).normalized()
+
+	# 3. Use Bounding Box Intersection to stick the arrow perfectly to the rim
+	var clamped_x: float = screen_center.x
+	var clamped_y: float = screen_center.y
 	var max_slope: Vector2 = (viewport_size / 2.0) - Vector2(margin, margin)
+	
 	if abs(direction.x) * max_slope.y > abs(direction.y) * max_slope.x:
 		# Hits left or right boundary
 		clamped_x = screen_center.x + sign(direction.x) * max_slope.x
@@ -60,7 +68,6 @@ func _process(_delta: float) -> void:
 		clamped_x = screen_center.x + direction.x * (max_slope.y / abs(direction.y))
 		clamped_y = screen_center.y + sign(direction.y) * max_slope.y
 
-	# 7. Apply position and rotation to the arrow
-	# Since (0,0) is now the center of the arrow, we do not subtract size offsets!
+	# 4. Position and rotate the centered vector arrow
 	arrow.global_position = Vector2(clamped_x, clamped_y)
 	arrow.rotation = direction.angle()
