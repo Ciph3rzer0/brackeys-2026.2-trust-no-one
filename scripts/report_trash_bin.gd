@@ -44,9 +44,6 @@ func _on_report_placed(report: CrimeReport3D, _slot: Node3D) -> void:
 	pin_sound.play()
 	_report_stack.erase(report)
 	_report_stack.append(report)
-	# Let the bin receive the interaction ray instead of buried reports.
-	report.collision_layer = 0
-	report.collision_mask = 0
 	QuestSystem.mark_report_binned(report)
 
 

@@ -1,6 +1,8 @@
 class_name CrimeReport3D
 extends StaticBody3D
 
+signal was_interacted_with()
+
 @export var quest: Quest:
 	set(value):
 		quest = value
@@ -47,14 +49,14 @@ func get_interaction_text(_player: Player) -> String:
 	return "press e to pick up report"
 
 func interact(player: Player = null) -> void:
+	was_interacted_with.emit()
 	if !player:
 		player = GameManager.player
 	if player:
 		player.pick_up_report(self)
 
 func set_held(is_held: bool) -> void:
-	collision_layer = 0 if is_held else 1
-	collision_mask = 0 if is_held else 1
+	report_sprite.no_depth_test = is_held
 
 func get_report_title() -> String:
 	if quest and !quest.incident.is_empty():

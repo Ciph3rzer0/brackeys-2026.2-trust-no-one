@@ -1,6 +1,7 @@
 class_name InteractableMount
 extends Area3D
 
+signal was_interacted_with()
 signal mounted
 signal dismounted
 
@@ -19,10 +20,12 @@ func play_mount_sound() -> void:
 
 
 func notify_mounted() -> void:
+	was_interacted_with.emit()
 	mounted.emit()
 
 
 func notify_dismounted() -> void:
+	was_interacted_with.emit()
 	dismounted.emit()
 
 

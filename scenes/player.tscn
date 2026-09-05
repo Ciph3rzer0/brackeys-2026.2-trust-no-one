@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bxc4ceq66ael3"]
 
 [ext_resource type="Script" uid="uid://b38bjfcu3wwbu" path="res://scripts/player.gd" id="1_3vyb7"]
+[ext_resource type="Theme" uid="uid://bem6t8jrt20f3" path="res://player_interaction_ui_theme.tres" id="2_g2els"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_crosshair_dot"]
 bg_color = Color(0.92, 0.92, 0.9, 1)
@@ -15,8 +16,12 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
 [sub_resource type="LabelSettings" id="LabelSettings_e7sg5"]
-outline_size = 2
+font_size = 28
+outline_size = 4
 outline_color = Color(0, 0, 0, 1)
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 0.39215687)
+shadow_offset = Vector2(2, 2)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0o143"]
 radius = 0.25
@@ -27,6 +32,7 @@ radius = 0.25
 radius = 0.25
 
 [node name="Player" type="CharacterBody3D" unique_id=1865119778 node_paths=PackedStringArray("cam")]
+collision_layer = 3
 script = ExtResource("1_3vyb7")
 cam = NodePath("Camera3D")
 
@@ -38,10 +44,11 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1
 cull_mask = 32767
 
 [node name="InteractionRay" type="RayCast3D" parent="Camera3D" unique_id=1399246955]
-target_position = Vector3(0, 0, -2.5)
+target_position = Vector3(0, 0, -3)
+collision_mask = 108
 
 [node name="HeldReportAnchor" type="Node3D" parent="Camera3D" unique_id=387417500]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, -0.8)
+transform = Transform3D(0.71151626, -0.24574074, 0.65829784, -0.1294096, 0.8750002, 0.46650648, -0.6906503, -0.41711697, 0.5907757, -0.5055023, -0.05032313, -0.7738045)
 
 [node name="InteractionUI" type="CanvasLayer" parent="." unique_id=402336998]
 
@@ -82,15 +89,94 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
+[node name="MarginContainer" type="MarginContainer" parent="InteractionUI" unique_id=1186867520]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -96.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+
+[node name="LookAtMapButton" type="Button" parent="InteractionUI/MarginContainer" unique_id=1700827490]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("2_g2els")
+text = "Look at Map"
+
+[node name="GetUpButton" type="Button" parent="InteractionUI/MarginContainer" unique_id=1317281799]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_g2els")
+text = "Stand Up"
+
+[node name="LookAtComputerButton" type="Button" parent="InteractionUI/MarginContainer" unique_id=256820542]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+theme = ExtResource("2_g2els")
+text = "Look At Computer"
+
+[node name="TutorialMargin" type="MarginContainer" parent="InteractionUI" unique_id=1424967789]
+visible = false
+custom_minimum_size = Vector2(600, 200)
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -8.5
+offset_right = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InteractionUI/TutorialMargin" unique_id=254646113]
+layout_mode = 2
+alignment = 2
+
+[node name="TutorialPanel" type="PanelContainer" parent="InteractionUI/TutorialMargin/VBoxContainer" unique_id=161675576]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="InteractionUI/TutorialMargin/VBoxContainer/TutorialPanel" unique_id=1771647872]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Label" type="Label" parent="InteractionUI/TutorialMargin/VBoxContainer/TutorialPanel/MarginContainer" unique_id=173145445]
+custom_minimum_size = Vector2(1, 0.1)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 20
+text = "Pick up a crime report from the clipboard."
+autowrap_mode = 2
+
 [node name="CapsuleBody" type="MeshInstance3D" parent="." unique_id=311267293]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+layers = 32768
 mesh = SubResource("CapsuleMesh_0o143")
 
 [node name="FacingIndicator" type="MeshInstance3D" parent="." unique_id=81546355]
 transform = Transform3D(0.3, 0, 0, 0, -1.3113416e-08, -0.05885305, 0, 0.29999998, -2.5725486e-09, 0, 2.2002637, -0.045395434)
+layers = 32768
 mesh = SubResource("PrismMesh_obbxu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=561644201]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 visible = false
 shape = SubResource("CapsuleShape3D_h45xw")
+
+[connection signal="pressed" from="InteractionUI/MarginContainer/LookAtMapButton" to="." method="_on_look_at_map_button_pressed"]
+[connection signal="pressed" from="InteractionUI/MarginContainer/GetUpButton" to="." method="_on_get_up_button_pressed"]
+[connection signal="pressed" from="InteractionUI/MarginContainer/LookAtComputerButton" to="." method="_on_look_at_computer_button_pressed"]

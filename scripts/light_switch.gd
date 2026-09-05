@@ -1,5 +1,8 @@
 extends Node3D
 
+signal was_interacted_with()
+signal switch_flipped(on: bool)
+
 @export var room_light_path := NodePath("../roomLight")
 @export var off_glow_color := Color(0.225, 0.6, 0.56)
 @export_range(0.0, 2.0, 0.05) var off_glow_energy := 0.35
@@ -30,11 +33,13 @@ func get_interaction_text(_player: Player) -> String:
 
 
 func interact(_player: Player = null) -> void:
+	was_interacted_with.emit()
 	var room_light := _get_room_light()
 	if !room_light:
 		return
 
 	room_light.visible = !room_light.visible
+	switch_flipped.emit(room_light.visible)
 	_update_switch_glow()
 	click_sound.play()
 

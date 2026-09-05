@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cfglhopesv3kn" path="res://ui/computer-screen/computer_screen.gd" id="1_5btdj"]
 [ext_resource type="Theme" uid="uid://t1raxlx3ogkq" path="res://ui/tables/table_theme.tres" id="1_lc2gm"]
 [ext_resource type="Script" uid="uid://cflir6f77prq" path="res://ui/tables/text_edit_filter.gd" id="2_i7m88"]
-[ext_resource type="Script" path="res://ui/tables/line_edit_filter.gd" id="2_line_filter"]
+[ext_resource type="Script" uid="uid://c8kfbc50eno4w" path="res://ui/tables/line_edit_filter.gd" id="2_line_filter"]
 [ext_resource type="Theme" uid="uid://brneh6lnfaibv" path="res://theme/main_theme.tres" id="3_ni5x2"]
 [ext_resource type="PackedScene" uid="uid://cg32ljqw0tgrn" path="res://ui/tables/rms_persons/rms_persons_table_view.tscn" id="4_tb1cc"]
 [ext_resource type="PackedScene" uid="uid://dvphuceq43kt8" path="res://ui/tables/vehicle_sightings/vehicle_sightings_table_view.tscn" id="5_hkea7"]
@@ -70,49 +70,48 @@ quest = ExtResource("12_n1ots")
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 16.0
-offset_top = 41.0
-offset_right = 161.0
-offset_bottom = 74.0
+offset_top = 37.0
+offset_right = 191.0
+offset_bottom = 73.0
+max_length = 12
 script = ExtResource("2_i7m88")
 
-[node name="LablePlate" type="Label" parent="PlateFilter" unique_id=1775027030]
+[node name="LabelPlate" type="Label" parent="PlateFilter" unique_id=1775027030]
 layout_mode = 0
 offset_left = 1.0
-offset_top = -25.0
-offset_right = 107.0
+offset_top = -33.0
+offset_right = 146.0
 offset_bottom = -2.0
 theme = ExtResource("3_ni5x2")
 theme_type_variation = &"white_text"
-theme_override_font_sizes/font_size = 15
 text = "License Plate:"
 
 [node name="CameraFilter" type="LineEdit" parent="." unique_id=1794576891]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 184.0
-offset_top = 41.0
+offset_left = 207.0
+offset_top = 37.0
 offset_right = 329.0
-offset_bottom = 74.0
+offset_bottom = 73.0
+max_length = 1
 script = ExtResource("2_i7m88")
 
 [node name="LabelCamera" type="Label" parent="CameraFilter" unique_id=415045348]
 layout_mode = 0
 offset_left = 1.0
-offset_top = -25.0
+offset_top = -31.0
 offset_right = 107.0
-offset_bottom = -2.0
 theme = ExtResource("3_ni5x2")
 theme_type_variation = &"white_text"
-theme_override_font_sizes/font_size = 15
 text = "Camera:"
 
 [node name="DayFilter" type="LineEdit" parent="." unique_id=1025718184]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 344.0
-offset_top = 41.0
+offset_top = 37.0
 offset_right = 444.0
-offset_bottom = 74.0
+offset_bottom = 73.0
 theme = ExtResource("3_ni5x2")
 placeholder_text = "DD"
 alignment = 1
@@ -125,75 +124,67 @@ validation_hint = "Day of August 2026 (1-31)."
 [node name="Label" type="Label" parent="DayFilter" unique_id=16784460]
 layout_mode = 0
 offset_left = 1.0
-offset_top = -25.0
+offset_top = -31.0
 offset_right = 107.0
-offset_bottom = -2.0
 theme = ExtResource("3_ni5x2")
 theme_type_variation = &"white_text"
-theme_override_font_sizes/font_size = 15
 text = "Day"
 
 [node name="FromTimeFilter" type="LineEdit" parent="." unique_id=2085964683]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 448.0
-offset_top = 41.0
+offset_top = 37.0
 offset_right = 548.0
-offset_bottom = 74.0
+offset_bottom = 73.0
 theme = ExtResource("3_ni5x2")
 placeholder_text = "00:00"
 alignment = 1
 max_length = 5
 select_all_on_focus = true
 script = ExtResource("2_line_filter")
-validation_mode = 1
 validation_hint = "Start time in 24-hour H:MM or HH:MM format. Defaults to 00:00."
 
 [node name="Label" type="Label" parent="FromTimeFilter" unique_id=1355078998]
 layout_mode = 0
 offset_left = 1.0
-offset_top = -25.0
+offset_top = -31.0
 offset_right = 107.0
-offset_bottom = -2.0
 theme = ExtResource("3_ni5x2")
 theme_type_variation = &"white_text"
-theme_override_font_sizes/font_size = 15
 text = "From"
 
 [node name="ToTimeFilter" type="LineEdit" parent="." unique_id=685891661]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 552.0
-offset_top = 41.0
+offset_top = 37.0
 offset_right = 652.0
-offset_bottom = 74.0
+offset_bottom = 73.0
 theme = ExtResource("3_ni5x2")
 placeholder_text = "23:59"
 alignment = 1
 max_length = 5
 select_all_on_focus = true
 script = ExtResource("2_line_filter")
-validation_mode = 1
 validation_hint = "End time in 24-hour H:MM or HH:MM format. Defaults to 23:59."
 
 [node name="Label" type="Label" parent="ToTimeFilter" unique_id=499115972]
 layout_mode = 0
 offset_left = 1.0
-offset_top = -25.0
+offset_top = -31.0
 offset_right = 107.0
-offset_bottom = -2.0
 theme = ExtResource("3_ni5x2")
 theme_type_variation = &"white_text"
-theme_override_font_sizes/font_size = 15
 text = "To"
 
 [node name="ColorFilter" type="OptionButton" parent="." unique_id=1377963714]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 696.0
-offset_top = 41.0
+offset_top = 38.0
 offset_right = 841.0
-offset_bottom = 74.0
+offset_bottom = 71.0
 theme = ExtResource("1_lc2gm")
 fit_to_longest_item = false
 script = ExtResource("9_clvma")
@@ -201,21 +192,19 @@ script = ExtResource("9_clvma")
 [node name="LabelColor" type="Label" parent="ColorFilter" unique_id=1871928094]
 layout_mode = 0
 offset_left = 1.0
-offset_top = -25.0
+offset_top = -31.0
 offset_right = 107.0
-offset_bottom = -2.0
 theme = ExtResource("3_ni5x2")
 theme_type_variation = &"white_text"
-theme_override_font_sizes/font_size = 15
 text = "Color"
 
 [node name="TypeFilter" type="OptionButton" parent="." unique_id=1467428637]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 856.0
-offset_top = 41.0
+offset_top = 38.0
 offset_right = 1001.0
-offset_bottom = 74.0
+offset_bottom = 71.0
 theme = ExtResource("1_lc2gm")
 fit_to_longest_item = false
 script = ExtResource("9_clvma")
@@ -223,21 +212,19 @@ script = ExtResource("9_clvma")
 [node name="LabelType" type="Label" parent="TypeFilter" unique_id=311373947]
 layout_mode = 0
 offset_left = 1.0
-offset_top = -25.0
+offset_top = -31.0
 offset_right = 107.0
-offset_bottom = -2.0
 theme = ExtResource("3_ni5x2")
 theme_type_variation = &"white_text"
-theme_override_font_sizes/font_size = 15
 text = "Type"
 
 [node name="FeaturesFilter" type="OptionButton" parent="." unique_id=1437918686]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 1016.0
-offset_top = 41.0
+offset_top = 38.0
 offset_right = 1257.0
-offset_bottom = 74.0
+offset_bottom = 71.0
 theme = ExtResource("1_lc2gm")
 fit_to_longest_item = false
 script = ExtResource("9_clvma")
@@ -245,12 +232,10 @@ script = ExtResource("9_clvma")
 [node name="LabelFeatures" type="Label" parent="FeaturesFilter" unique_id=113921603]
 layout_mode = 0
 offset_left = 1.0
-offset_top = -25.0
+offset_top = -31.0
 offset_right = 107.0
-offset_bottom = -2.0
 theme = ExtResource("3_ni5x2")
 theme_type_variation = &"white_text"
-theme_override_font_sizes/font_size = 15
 text = "Features"
 
 [node name="RmsPersonsTableView" parent="." unique_id=737813966 instance=ExtResource("4_tb1cc")]
@@ -291,3 +276,4 @@ content_scene_path = "uid://dukf0r3kv7h3u"
 [connection signal="filter_changed" from="ColorFilter" to="VehicleSightingsTableView" method="_on_color_filter_filter_changed"]
 [connection signal="filter_changed" from="TypeFilter" to="VehicleSightingsTableView" method="_on_type_filter_filter_changed"]
 [connection signal="filter_changed" from="FeaturesFilter" to="VehicleSightingsTableView" method="_on_features_filter_filter_changed"]
+[connection signal="options_filters_updated" from="VehicleSightingsTableView" to="." method="_on_vehicle_sightings_table_view_options_filters_updated"]

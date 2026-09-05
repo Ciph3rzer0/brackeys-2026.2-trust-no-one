@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://ox8j3o8ij8qc"]
+
+[ext_resource type="Script" uid="uid://c5ht274kgmitc" path="res://ui/waypoint/waypoint.gd" id="1_740cn"]
+[ext_resource type="Script" uid="uid://cld7l1xoo47i0" path="res://ui/waypoint/arrow.gd" id="2_jkgnl"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_wwlo0"]
+
+[node name="WaypointMarker" type="Control" unique_id=2136004305]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_740cn")
+
+[node name="Arrow" type="Control" parent="." unique_id=613258326]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_jkgnl")
+
+[node name="Arrowa" type="TextureRect" parent="." unique_id=1667059087]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("CanvasTexture_wwlo0")

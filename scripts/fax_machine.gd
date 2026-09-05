@@ -1,7 +1,8 @@
 extends Node3D
 
-@onready var fax_sound: AudioStreamPlayer3D = $FaxSound
+signal was_interacted_with()
 
+@onready var fax_sound: AudioStreamPlayer3D = $FaxSound
 
 func get_interaction_text(player: Player) -> String:
 	if player and player.has_held_report():
@@ -17,7 +18,6 @@ func interact(player: Player = null) -> void:
 
 	if player and player.has_held_report():
 		if player.fax_held_report():
+			was_interacted_with.emit()
 			fax_sound.play()
 		return
-
-	print("interacted with fax")
