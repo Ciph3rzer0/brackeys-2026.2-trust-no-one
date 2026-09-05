@@ -1,5 +1,6 @@
-extends Node
+extends CanvasLayer
 
+@export var waypoint_marker: WaypointMarker
 @export var outline_material: StandardMaterial3D
 @onready var outline_material_next := (outline_material.next_pass as StandardMaterial3D)
 
@@ -33,6 +34,7 @@ func next_tutorial_item(index: int = _index + 1):
 	if index >= tutorial_objects.size(): return
 	
 	_current_object = tutorial_objects[_index]
+	waypoint_marker.target = _current_object
 	
 	_current_object.was_interacted_with.connect(next_tutorial_item, ConnectFlags.CONNECT_ONE_SHOT)
 	_current_mesh = _find_child_mesh(_current_object)

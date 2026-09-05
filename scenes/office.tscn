@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c1q51y6vqxm1" path="res://assets/models/office/pottedPlant.glb" id="2_7jj4f"]
 [ext_resource type="Material" uid="uid://dfom6yeys18xt" path="res://outline_material_overlay.tres" id="2_fsavt"]
 [ext_resource type="AudioStream" uid="uid://ndcuts0a2vjr" path="res://assets/audio/music/morning-coffee-loop.wav" id="2_gnmmx"]
+[ext_resource type="PackedScene" uid="uid://ox8j3o8ij8qc" path="res://ui/waypoint/waypoint.tscn" id="3_8pip0"]
 [ext_resource type="PackedScene" uid="uid://bevtot6h0we4v" path="res://assets/models/office/chair.glb" id="3_qphb6"]
 [ext_resource type="PackedScene" uid="uid://b8vxt6ijnj74q" path="res://assets/models/office/desk.glb" id="4_2knxt"]
 [ext_resource type="PackedScene" uid="uid://cis13gq7hy3o0" path="res://scenes/faxMachine.tscn" id="4_07d2k"]
@@ -99,18 +100,18 @@ shader_parameter/frosted_noise_scale = 200.0
 shader_parameter/glass_thickness = 0.2
 shader_parameter/ior = 1.45
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_fsavt"]
-viewport_path = NodePath("ComputerMonitor")
-
 [sub_resource type="ViewportTexture" id="ViewportTexture_8pip0"]
 viewport_path = NodePath("ComputerMonitor")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_skov3"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_skov3"]
+viewport_path = NodePath("ComputerMonitor")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wwlo0"]
 resource_local_to_scene = true
-albedo_texture = SubResource("ViewportTexture_fsavt")
+albedo_texture = SubResource("ViewportTexture_8pip0")
 emission_enabled = true
 emission_energy_multiplier = 0.8
-emission_texture = SubResource("ViewportTexture_8pip0")
+emission_texture = SubResource("ViewportTexture_skov3")
 
 [sub_resource type="QuadMesh" id="QuadMesh_skov3"]
 size = Vector2(4.615, 2.84)
@@ -150,12 +151,23 @@ size = Vector3(1.5463333, 1.2046509, 0.58239746)
 
 [node name="Office" type="Node3D" unique_id=2119133953]
 
-[node name="TutorialSystem" type="Node" parent="." unique_id=226189154 node_paths=PackedStringArray("tutorial_objects")]
+[node name="TutorialSystem" type="CanvasLayer" parent="." unique_id=1625426462 node_paths=PackedStringArray("waypoint_marker", "tutorial_objects")]
+layer = 8
+follow_viewport_enabled = true
 script = ExtResource("1_gf52q")
+waypoint_marker = NodePath("WaypointMarker")
 outline_material = ExtResource("2_fsavt")
 base_grow = 0.02
 pulse_intensity = 0.015
 tutorial_objects = [NodePath("../lightswitch"), NodePath("../corkboard"), NodePath("../work area/computerAccessories/gooseneckClamp"), NodePath("../work area/Chair Interaction"), NodePath("../work area/FaxMachine")]
+
+[node name="WaypointMarker" parent="TutorialSystem" unique_id=2136004305 instance=ExtResource("3_8pip0")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="Player" parent="." unique_id=1865119778 node_paths=PackedStringArray("viewports") instance=ExtResource("10_gnmmx")]
 transform = Transform3D(1.5650182, 0, 1.4565594, 0, 2.137954, 0, -1.4565594, 0, 1.5650182, -0.9295535, 0.24758434, -4.357947)
@@ -379,7 +391,7 @@ transform = Transform3D(1.4151126, 0, 0, 0, 1.4151126, 0, 0, 0, 1.4151126, 0.399
 transform = Transform3D(-1.0000001, 0, -1.5099582e-07, 0, 1.0000001, 0, 1.5099582e-07, 0, -1.0000001, 2.4352121, 1.7018765, 1.2243075)
 
 [node name="MeshInstance3D" parent="Screens/ComputerScreen" index="2" unique_id=4221138]
-surface_material_override/0 = SubResource("StandardMaterial3D_skov3")
+surface_material_override/0 = SubResource("StandardMaterial3D_wwlo0")
 
 [node name="TabletScreen" type="MeshInstance3D" parent="Screens" unique_id=608109503]
 transform = Transform3D(-0.10099794, 0, 0, 0, 0.10099794, 0, 0, 0, -0.10099794, 2.4122164, 2.221246, 1.2942262)

@@ -13,13 +13,11 @@ func get_interaction_text(player: Player) -> String:
 	return ""
 
 func interact(player: Player = null) -> void:
-	was_interacted_with.emit()
 	if !player:
 		player = GameManager.player
 
 	if player and player.has_held_report():
 		if player.fax_held_report():
+			was_interacted_with.emit()
 			fax_sound.play()
 		return
-
-	print("interacted with fax")
