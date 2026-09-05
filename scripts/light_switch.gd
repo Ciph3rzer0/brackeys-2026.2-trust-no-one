@@ -1,5 +1,6 @@
 extends Node3D
 
+signal was_interacted_with()
 signal switch_flipped(on: bool)
 
 @export var room_light_path := NodePath("../roomLight")
@@ -32,6 +33,7 @@ func get_interaction_text(_player: Player) -> String:
 
 
 func interact(_player: Player = null) -> void:
+	was_interacted_with.emit()
 	var room_light := _get_room_light()
 	if !room_light:
 		return

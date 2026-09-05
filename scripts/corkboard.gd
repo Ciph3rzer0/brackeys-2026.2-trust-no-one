@@ -1,6 +1,8 @@
 class_name Corkboard
 extends ReportHolder3D
 
+signal was_interacted_with()
+
 @export var report_scene: PackedScene = preload("res://scenes/crime_report_3d.tscn")
 @export_range(0.0, 600.0, 1.0, "or_greater") var refill_delay_seconds := 60.0
 @export var initial_report_quests: Array[Quest] = [
@@ -87,6 +89,7 @@ func _spawn_report_in_slot(
 		return null
 
 	QuestSystem.register_report(report, count_as_new_case)
+	report.was_interacted_with.connect(func(): was_interacted_with.emit())
 	return report
 
 

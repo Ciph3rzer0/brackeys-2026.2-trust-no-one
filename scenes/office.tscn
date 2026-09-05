@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://ddl1mvjku5iq"]
 
+[ext_resource type="Script" uid="uid://dgud8rhjndiig" path="res://tutorial_system.gd" id="1_gf52q"]
 [ext_resource type="PackedScene" uid="uid://dlxjetybghqpd" path="res://assets/models/office/room.glb" id="1_jwaux"]
 [ext_resource type="PackedScene" uid="uid://c1q51y6vqxm1" path="res://assets/models/office/pottedPlant.glb" id="2_7jj4f"]
+[ext_resource type="Material" uid="uid://dfom6yeys18xt" path="res://outline_material_overlay.tres" id="2_fsavt"]
 [ext_resource type="AudioStream" uid="uid://ndcuts0a2vjr" path="res://assets/audio/music/morning-coffee-loop.wav" id="2_gnmmx"]
 [ext_resource type="PackedScene" uid="uid://bevtot6h0we4v" path="res://assets/models/office/chair.glb" id="3_qphb6"]
 [ext_resource type="PackedScene" uid="uid://b8vxt6ijnj74q" path="res://assets/models/office/desk.glb" id="4_2knxt"]
@@ -69,6 +71,9 @@ material = SubResource("StandardMaterial3D_42gc7")
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_6hbky"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_chair_interaction"]
+size = Vector3(0.6295105, 0.9106811, 2.0118499)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0o143"]
 albedo_color = Color(0.96202856, 0.83949524, 3.85046e-07, 1)
 
@@ -94,18 +99,18 @@ shader_parameter/frosted_noise_scale = 200.0
 shader_parameter/glass_thickness = 0.2
 shader_parameter/ior = 1.45
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_42gc7"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_fsavt"]
 viewport_path = NodePath("ComputerMonitor")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_gf52q"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_8pip0"]
 viewport_path = NodePath("ComputerMonitor")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fsavt"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_skov3"]
 resource_local_to_scene = true
-albedo_texture = SubResource("ViewportTexture_42gc7")
+albedo_texture = SubResource("ViewportTexture_fsavt")
 emission_enabled = true
 emission_energy_multiplier = 0.8
-emission_texture = SubResource("ViewportTexture_gf52q")
+emission_texture = SubResource("ViewportTexture_8pip0")
 
 [sub_resource type="QuadMesh" id="QuadMesh_skov3"]
 size = Vector2(4.615, 2.84)
@@ -140,13 +145,17 @@ background_mode = 2
 background_color = Color(1, 1, 1, 1)
 ambient_light_color = Color(0.90408707, 0.92056644, 0.9382726, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_chair_interaction"]
-size = Vector3(0.6295105, 0.9106811, 2.0118499)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_krb5w"]
 size = Vector3(1.5463333, 1.2046509, 0.58239746)
 
 [node name="Office" type="Node3D" unique_id=2119133953]
+
+[node name="TutorialSystem" type="Node" parent="." unique_id=226189154 node_paths=PackedStringArray("tutorial_objects")]
+script = ExtResource("1_gf52q")
+outline_material = ExtResource("2_fsavt")
+base_grow = 0.02
+pulse_intensity = 0.015
+tutorial_objects = [NodePath("../lightswitch"), NodePath("../corkboard"), NodePath("../work area/computerAccessories/gooseneckClamp"), NodePath("../work area/Chair Interaction"), NodePath("../work area/FaxMachine")]
 
 [node name="Player" parent="." unique_id=1865119778 node_paths=PackedStringArray("viewports") instance=ExtResource("10_gnmmx")]
 transform = Transform3D(1.5650182, 0, 1.4565594, 0, 2.137954, 0, -1.4565594, 0, 1.5650182, -0.9295535, 0.24758434, -4.357947)
@@ -285,8 +294,24 @@ transform = Transform3D(1, 0, 0, 0, 1.213446, 0, 0, 0, 1, -1.2435572, -0.5, 0.19
 [node name="coffeeCup" parent="work area" unique_id=2141730045 instance=ExtResource("16_gnmmx")]
 transform = Transform3D(0.36970007, 0, 0.6403394, 0, 0.7394002, 0, -0.6403394, 0, 0.36970007, -1.0748136, 0.63390625, 5.0525484)
 
-[node name="chair" parent="work area" unique_id=114191316 instance=ExtResource("3_qphb6")]
-transform = Transform3D(0.7690236, 0, -0.3096981, 0, 0.8290418, 0, 0.3096981, 0, 0.7690236, -0.3383708, -0.5210763, 3.8219342)
+[node name="Chair Interaction" type="Area3D" parent="work area" unique_id=292098836 groups=["InteractiveMount"]]
+transform = Transform3D(1.0063326, 0, 0, 0, 1.0063326, 0, 0, 0, 1.0063326, -0.8234744, -1.0960085, 4.179614)
+collision_layer = 0
+input_ray_pickable = false
+monitorable = false
+script = ExtResource("26_42gc7")
+interaction_text = "press e to sit at computer"
+
+[node name="chair" parent="work area/Chair Interaction" unique_id=114191316 instance=ExtResource("3_qphb6")]
+transform = Transform3D(0.7641843, 0, -0.30774924, 0, 0.8238248, 0, 0.30774924, 0, 0.7641843, 0.4820509, 0.57131433, -0.35542932)
+
+[node name="MountSound" type="AudioStreamPlayer3D" parent="work area/Chair Interaction" unique_id=543076116]
+stream = ExtResource("38_computer_mount")
+bus = &"SFX"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="work area/Chair Interaction" unique_id=1177674249]
+transform = Transform3D(1.0000001, 0, -5.9604623e-08, 0, 1.0000159, 0, 5.9604623e-08, 0, 1.0000001, 0.3413446, 1.9777787, 0.5003223)
+shape = SubResource("BoxShape3D_chair_interaction")
 
 [node name="computerAccessories" type="Node3D" parent="work area" unique_id=965257853]
 
@@ -354,7 +379,7 @@ transform = Transform3D(1.4151126, 0, 0, 0, 1.4151126, 0, 0, 0, 1.4151126, 0.399
 transform = Transform3D(-1.0000001, 0, -1.5099582e-07, 0, 1.0000001, 0, 1.5099582e-07, 0, -1.0000001, 2.4352121, 1.7018765, 1.2243075)
 
 [node name="MeshInstance3D" parent="Screens/ComputerScreen" index="2" unique_id=4221138]
-surface_material_override/0 = SubResource("StandardMaterial3D_fsavt")
+surface_material_override/0 = SubResource("StandardMaterial3D_skov3")
 
 [node name="TabletScreen" type="MeshInstance3D" parent="Screens" unique_id=608109503]
 transform = Transform3D(-0.10099794, 0, 0, 0, 0.10099794, 0, 0, 0, -0.10099794, 2.4122164, 2.221246, 1.2942262)
@@ -4189,25 +4214,6 @@ size = 150.0
 [node name="Gameplay" type="Node3D" parent="." unique_id=1667574802]
 transform = Transform3D(1.4151126, 0, 0, 0, 1.4151126, 0, 0, 0, 1.4151126, 0.5436454, 2.1912403, -1.4963394)
 
-[node name="Chair Interaction" type="Area3D" parent="Gameplay" unique_id=292098836 groups=["InteractiveMount"]]
-transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 2.07, -1.865, 1.728)
-collision_layer = 0
-input_ray_pickable = false
-monitorable = false
-script = ExtResource("26_42gc7")
-interaction_text = "press e to sit at computer"
-
-[node name="MountSound" type="AudioStreamPlayer3D" parent="Gameplay/Chair Interaction" unique_id=543076116]
-stream = ExtResource("38_computer_mount")
-bus = &"SFX"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Chair Interaction" unique_id=1177674249]
-transform = Transform3D(1.0000001, 0, -5.9604623e-08, 0, 1.0000159, 0, 5.9604623e-08, 0, 1.0000001, 0.3413446, 1.9777787, 0.5003223)
-shape = SubResource("BoxShape3D_chair_interaction")
-
-[node name="SubmitQuest" type="Node3D" parent="Gameplay" unique_id=1509242997]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.37737, 56.985577, -139.55121)
-
 [node name="desk" parent="." unique_id=2107914153 instance=ExtResource("4_2knxt")]
 transform = Transform3D(1.7488817, 0, 0, 0, 1.7488817, 0, 0, 0, 1.7488817, 3.3157055, 0.6540642, 2.5794885)
 
@@ -4224,7 +4230,7 @@ transform = Transform3D(1.3806835, 0, 0, 0, 1.3806835, 0, 0, 0, 1.3806835, 3.927
 transform = Transform3D(0, -1, 4.371139e-08, -4.371139e-08, -4.3711385e-08, -1, 1, 0, -4.371139e-08, 5.6501093, 2.7866902, 1.55321)
 
 [connection signal="switch_flipped" from="lightswitch" to="Screens/ComputerScreen" method="_on_lightswitch_switch_flipped"]
-[connection signal="dismounted" from="Gameplay/Chair Interaction" to="Screens/ComputerScreen/ComputerMonitor/ComputerScreenUI" method="_on_computer_dismounted"]
-[connection signal="mounted" from="Gameplay/Chair Interaction" to="Screens/ComputerScreen/ComputerMonitor/ComputerScreenUI" method="_on_computer_mounted"]
+[connection signal="dismounted" from="work area/Chair Interaction" to="Screens/ComputerScreen/ComputerMonitor/ComputerScreenUI" method="_on_computer_dismounted"]
+[connection signal="mounted" from="work area/Chair Interaction" to="Screens/ComputerScreen/ComputerMonitor/ComputerScreenUI" method="_on_computer_mounted"]
 
 [editable path="Screens/ComputerScreen"]
